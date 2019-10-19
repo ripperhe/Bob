@@ -1,0 +1,32 @@
+PODS:
+  - AFNetworking (3.2.1):
+    - AFNetworking/NSURLSession (= 3.2.1)
+    - AFNetworking/Reachability (= 3.2.1)
+    - AFNetworking/Security (= 3.2.1)
+    - AFNetworking/Serialization (= 3.2.1)
+    - AFNetworking/UIKit (= 3.2.1)
+  - AFNetworking/NSURLSession (3.2.1):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/Reachability (3.2.1)
+  - AFNetworking/Security (3.2.1)
+  - AFNetworking/Serialization (3.2.1)
+  - MJExtension (3.2.1)
+
+DEPENDENCIES:
+  - AFNetworking (~> 3.2.1)
+  - MJExtension (~> 3.2.1)
+
+SPEC REPOS:
+  trunk:
+    - AFNetworking
+    - MJExtension
+
+SPEC CHECKSUMS:
+  AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
+  MJExtension: 635f2c663dcb1bf76fa4b715b2570a5710aec545
+
+PODFILE CHECKSUM: 66a371f1729d9153c71803baa23362c157a7eeeb
+
+COCOAPODS: 1.8.4
