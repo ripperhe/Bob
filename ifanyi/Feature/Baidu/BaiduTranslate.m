@@ -13,6 +13,7 @@
 @interface BaiduTranslate ()
 
 @property (nonatomic, strong) JSContext *jsContext;
+@property (nonatomic, strong) JSValue *jsFunction;
 @property (nonatomic, strong) AFHTTPSessionManager *htmlSession;
 @property (nonatomic, strong) AFHTTPSessionManager *jsonSession;
 
@@ -25,13 +26,21 @@
 
 - (JSContext *)jsContext {
     if (!_jsContext) {
-        _jsContext = [JSContext new];
+        JSContext *jsContext = [JSContext new];
         NSString *jsPath = [[NSBundle mainBundle] pathForResource:@"baidu-sign" ofType:@"js"];
         NSString *jsString = [NSString stringWithContentsOfFile:jsPath encoding:NSUTF8StringEncoding error:nil];
         // 加载方法
-        [_jsContext evaluateScript:jsString];
+        [jsContext evaluateScript:jsString];
+        _jsContext = jsContext;
     }
     return _jsContext;
+}
+
+- (JSValue *)jsFunction {
+    if (!_jsFunction) {
+        _jsFunction = [self.jsContext objectForKeyedSubscript:@"token"];
+    }
+    return _jsFunction;
 }
 
 - (AFHTTPSessionManager *)htmlSession {
@@ -155,7 +164,8 @@
                 return;
             }
             
-            JSValue *value = [self.jsContext evaluateScript:[NSString stringWithFormat:@"token('%@', '%@')", queryString, self.gtk]];
+            
+            JSValue *value = [self.jsFunction callWithArguments:@[queryString, self.gtk]];
             NSString *sign = [value toString];
             NSLog(@"sign: %@", sign);
 
