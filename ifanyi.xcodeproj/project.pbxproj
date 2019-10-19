@@ -107,9 +107,9 @@
 		C9E263DC235B3CE600E1D491 /* Baidu */ = {
 			isa = PBXGroup;
 			children = (
+				C9E263E0235B3D7D00E1D491 /* baidu-sign.js */,
 				C9E263DD235B3D3800E1D491 /* BaiduTranslate.h */,
 				C9E263DE235B3D3800E1D491 /* BaiduTranslate.m */,
-				C9E263E0235B3D7D00E1D491 /* baidu-sign.js */,
 			);
 			path = Baidu;
 			sourceTree = "<group>";
