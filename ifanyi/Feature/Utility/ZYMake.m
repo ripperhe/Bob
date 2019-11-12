@@ -58,5 +58,8 @@
 
 @end
 
+@implementation NSImageView (ZYMake)
+
+@end
 
 #pragma clang diagnostic pop

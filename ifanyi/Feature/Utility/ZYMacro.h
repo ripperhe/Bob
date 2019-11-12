@@ -8,3 +8,5 @@
 
 #define zy_weakify(...) @weakify(__VA_ARGS__)
 #define zy_strongify(...) @strongify(__VA_ARGS__)
+
+#define ignoreUnusedVariableWarning(var) (void)(var);

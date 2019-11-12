@@ -22,6 +22,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// 同上，用于自定义类型手动修改类型（防止警告）
 - (id)zy_anyPut:(void (^)(id obj))block;
 
+
 @end
 
 @interface NSView (ZYMake)
@@ -59,6 +60,13 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (instancetype)zy_make:(void (^)(NSScrollView *scrollView))block;
 - (id)zy_put:(void (^)(NSScrollView *scrollView))block;
+
+@end
+
+@interface NSImageView (ZYMake)
+
++ (instancetype)zy_make:(void (^)(NSImageView *imageView))block;
+- (id)zy_put:(void (^)(NSImageView *imageView))block;
 
 @end
 
