@@ -706,48 +706,13 @@
             <objects>
                 <viewController id="XfG-lQ-9wD" customClass="ViewController" sceneMemberID="viewController">
                     <view key="view" id="m2S-Jp-Qdl">
-                        <rect key="frame" x="0.0" y="0.0" width="480" height="300"/>
+                        <rect key="frame" x="0.0" y="0.0" width="480" height="340"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <subviews>
-                            <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="eYg-kE-gm2">
-                                <rect key="frame" x="20" y="160" width="440" height="120"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="120" id="1H5-Sh-hmi"/>
-                                </constraints>
-                                <textFieldCell key="cell" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" id="yLv-k0-ps8">
-                                    <font key="font" usesAppearanceFont="YES"/>
-                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
-                            <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Cfh-N8-oaw">
-                                <rect key="frame" x="20" y="20" width="440" height="120"/>
-                                <textFieldCell key="cell" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" id="5ZZ-nR-aod">
-                                    <font key="font" usesAppearanceFont="YES"/>
-                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
-                        </subviews>
-                        <constraints>
-                            <constraint firstAttribute="bottom" secondItem="Cfh-N8-oaw" secondAttribute="bottom" constant="20" id="2Qc-r5-tjK"/>
-                            <constraint firstItem="eYg-kE-gm2" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="20" id="MY5-Uy-YBp"/>
-                            <constraint firstAttribute="trailing" secondItem="Cfh-N8-oaw" secondAttribute="trailing" constant="20" id="ceT-58-6nN"/>
-                            <constraint firstItem="Cfh-N8-oaw" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" id="fRB-wJ-4hY"/>
-                            <constraint firstItem="eYg-kE-gm2" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" id="fqt-Yl-yAd"/>
-                            <constraint firstItem="Cfh-N8-oaw" firstAttribute="top" secondItem="eYg-kE-gm2" secondAttribute="bottom" constant="20" id="k8d-LG-Ykx"/>
-                            <constraint firstAttribute="trailing" secondItem="eYg-kE-gm2" secondAttribute="trailing" constant="20" id="s4C-4O-284"/>
-                            <constraint firstItem="Cfh-N8-oaw" firstAttribute="height" secondItem="eYg-kE-gm2" secondAttribute="height" id="wnr-9R-swg"/>
-                        </constraints>
                     </view>
-                    <connections>
-                        <outlet property="queryTextField" destination="eYg-kE-gm2" id="X1G-RO-iQN"/>
-                        <outlet property="resultTextField" destination="Cfh-N8-oaw" id="Cv1-R3-8iN"/>
-                    </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="75" y="655"/>
+            <point key="canvasLocation" x="75" y="801"/>
         </scene>
     </scenes>
 </document>

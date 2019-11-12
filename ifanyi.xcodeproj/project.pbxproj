@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1DA290527826C220AD309012 /* Pods_ifanyi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6F84FA6D0A6E0ECE99CFC8C /* Pods_ifanyi.framework */; };
+		C9B81AB8237A5C2F0024CCDB /* ZYMake.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B81AB7237A5C2F0024CCDB /* ZYMake.m */; };
 		C9E263C8235B3B1600E1D491 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C9E263C7235B3B1600E1D491 /* AppDelegate.m */; };
 		C9E263CB235B3B1600E1D491 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9E263CA235B3B1600E1D491 /* ViewController.m */; };
 		C9E263CD235B3B1800E1D491 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C9E263CC235B3B1800E1D491 /* Assets.xcassets */; };
@@ -20,6 +21,10 @@
 
 /* Begin PBXFileReference section */
 		266A10346AE127F8A8794265 /* Pods-ifanyi.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ifanyi.release.xcconfig"; path = "Target Support Files/Pods-ifanyi/Pods-ifanyi.release.xcconfig"; sourceTree = "<group>"; };
+		C9B81AB6237A5C2F0024CCDB /* ZYMake.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZYMake.h; sourceTree = "<group>"; };
+		C9B81AB7237A5C2F0024CCDB /* ZYMake.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZYMake.m; sourceTree = "<group>"; };
+		C9B81AB9237A5D9E0024CCDB /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		C9B81ABA237A8E970024CCDB /* ZYMacro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZYMacro.h; sourceTree = "<group>"; };
 		C9E263C3235B3B1600E1D491 /* ifanyi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ifanyi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9E263C6235B3B1600E1D491 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		C9E263C7235B3B1600E1D491 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -60,6 +65,16 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		C9B81AB5237A5BC80024CCDB /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				C9B81ABA237A8E970024CCDB /* ZYMacro.h */,
+				C9B81AB6237A5C2F0024CCDB /* ZYMake.h */,
+				C9B81AB7237A5C2F0024CCDB /* ZYMake.m */,
+			);
+			path = Utility;
+			sourceTree = "<group>";
+		};
 		C9E263BA235B3B1600E1D491 = {
 			isa = PBXGroup;
 			children = (
@@ -86,6 +101,7 @@
 				C9E263C7235B3B1600E1D491 /* AppDelegate.m */,
 				C9E263C9235B3B1600E1D491 /* ViewController.h */,
 				C9E263CA235B3B1600E1D491 /* ViewController.m */,
+				C9B81AB9237A5D9E0024CCDB /* PrefixHeader.pch */,
 				C9E263CC235B3B1800E1D491 /* Assets.xcassets */,
 				C9E263CE235B3B1800E1D491 /* Main.storyboard */,
 				C9E263D1235B3B1800E1D491 /* Info.plist */,
@@ -98,6 +114,7 @@
 		C9E263DA235B3CD300E1D491 /* Feature */ = {
 			isa = PBXGroup;
 			children = (
+				C9B81AB5237A5BC80024CCDB /* Utility */,
 				C9E263E2235B457B00E1D491 /* Selection */,
 				C9E263DC235B3CE600E1D491 /* Baidu */,
 			);
@@ -246,6 +263,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C9E263CB235B3B1600E1D491 /* ViewController.m in Sources */,
+				C9B81AB8237A5C2F0024CCDB /* ZYMake.m in Sources */,
 				C9E263D3235B3B1800E1D491 /* main.m in Sources */,
 				C9E263E5235B458D00E1D491 /* Selection.m in Sources */,
 				C9E263DF235B3D3800E1D491 /* BaiduTranslate.m in Sources */,
@@ -384,6 +402,7 @@
 				CODE_SIGN_ENTITLEMENTS = ifanyi/ifanyi.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/ifanyi/PrefixHeader.pch";
 				INFOPLIST_FILE = ifanyi/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -402,6 +421,7 @@
 				CODE_SIGN_ENTITLEMENTS = ifanyi/ifanyi.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/ifanyi/PrefixHeader.pch";
 				INFOPLIST_FILE = ifanyi/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
