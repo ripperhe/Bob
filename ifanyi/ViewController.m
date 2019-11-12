@@ -115,6 +115,12 @@
             scrollView.hasHorizontalScroller = NO;
             scrollView.autohidesScrollers = YES;
             self.queryTextView = [NSTextView zy_make:^(NSTextView * _Nonnull textView) {
+                // https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/Rulers/Concepts/AboutParaStyles.html#//apple_ref/doc/uid/20000879-CJBBEHJA
+                [textView setDefaultParagraphStyle:[NSMutableParagraphStyle zy_anyMake:^(NSMutableParagraphStyle *  _Nonnull style) {
+//                    style.lineSpacing = 3;
+                    style.lineHeightMultiple = 1.2;
+                    style.paragraphSpacing = 5;
+                }]];
                 textView.string = @"I believe that in this world, some people have some things and some love. The first time they see it, they are destined to be fettered for a lifetime. They are destined to grow like a tree in their hearts and live for generations.";
                 textView.font = [NSFont systemFontOfSize:14];
                 textView.textColor = [NSColor zy_colorWithHexString:@"#333333"];
@@ -320,7 +326,13 @@
             scrollView.hasHorizontalScroller = NO;
             scrollView.autohidesScrollers = YES;
             self.resultTextView = [NSTextView zy_make:^(NSTextView * _Nonnull textView) {
+                [textView setDefaultParagraphStyle:[NSMutableParagraphStyle zy_anyMake:^(NSMutableParagraphStyle *  _Nonnull style) {
+                    style.lineHeightMultiple = 1.2;
+                    style.paragraphSpacing = 5;
+                }]];
                 textView.string = @"我相信这世界上，有些人有些事有些爱，在见到的第一次，就注定要羁绊一生，就注定像一棵树一样，生长在心里，生生世世。我相信这世界上，有些人有些事有些爱，在见到的第一次，就注定要羁绊一生，就注定像一棵树一样，生长在心里，生生世世。";
+
+                textView.editable = NO;
                 textView.font = [NSFont systemFontOfSize:14];
                 textView.textColor = [NSColor zy_colorWithHexString:@"#333333"];
                 textView.alignment = NSTextAlignmentJustified;
