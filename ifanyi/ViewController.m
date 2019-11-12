@@ -15,6 +15,7 @@
 @property (nonatomic, strong) BaiduTranslate *baiduTranslate;
 
 @property (nonatomic, strong) NSButton *pinButton;
+@property (nonatomic, strong) NSButton *foldButton;
 @property (nonatomic, strong) NSView *queryContainerView;
 @property (nonatomic, strong) NSScrollView *queryScrollView;
 @property (nonatomic, strong) NSTextView *queryTextView;
@@ -52,6 +53,28 @@
         [button mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.left.offset(6);
             make.width.height.mas_equalTo(32);
+        }];
+        zy_weakify(button)
+        [button setRac_command:[[RACCommand alloc] initWithSignalBlock:^RACSignal * _Nonnull(id  _Nullable input) {
+            zy_strongify(button)
+            NSLog(@"点击按钮 %@", button.state == NSControlStateValueOn ? @"ON" : @"OFF");
+            return RACSignal.empty;
+        }]];
+    }];
+    
+    self.foldButton = [NSButton zy_make:^(NSButton * _Nonnull button) {
+        [self.view addSubview:button];
+        button.bordered = NO;
+        button.imageScaling = NSImageScaleProportionallyDown;
+        button.bezelStyle = NSBezelStyleRegularSquare;
+        [button setButtonType:NSButtonTypeToggle];
+        button.attributedTitle = [NSAttributedString zy_attributedStringWithString:@"展开" font:[NSFont systemFontOfSize:13] color:[NSColor zy_colorWithHexString:@"#007AFF"]];
+        button.attributedAlternateTitle = [NSAttributedString zy_attributedStringWithString:@"折叠" font:[NSFont systemFontOfSize:13] color:[NSColor zy_colorWithHexString:@"#007AFF"]];
+        [button mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.offset(6);
+            make.right.inset(6);
+            make.height.mas_equalTo(32);
+            make.width.mas_equalTo(38);
         }];
         zy_weakify(button)
         [button setRac_command:[[RACCommand alloc] initWithSignalBlock:^RACSignal * _Nonnull(id  _Nullable input) {

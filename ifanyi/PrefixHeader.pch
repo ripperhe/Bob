@@ -12,3 +12,6 @@
 
 #import "ZYMake.h"
 #import "ZYMacro.h"
+#import "NSColor+ZY.h"
+#import "NSAttributedString+ZY.h"
+#import "NSMutableAttributedString+ZY.h"

@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		1DA290527826C220AD309012 /* Pods_ifanyi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6F84FA6D0A6E0ECE99CFC8C /* Pods_ifanyi.framework */; };
 		C9B81AB8237A5C2F0024CCDB /* ZYMake.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B81AB7237A5C2F0024CCDB /* ZYMake.m */; };
+		C9B81ABD237ABD260024CCDB /* NSColor+ZY.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B81ABC237ABD260024CCDB /* NSColor+ZY.m */; };
+		C9B81AC0237ABF800024CCDB /* NSAttributedString+ZY.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B81ABF237ABF800024CCDB /* NSAttributedString+ZY.m */; };
+		C9B81AC3237ABFAF0024CCDB /* NSMutableAttributedString+ZY.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B81AC2237ABFAF0024CCDB /* NSMutableAttributedString+ZY.m */; };
 		C9E263C8235B3B1600E1D491 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C9E263C7235B3B1600E1D491 /* AppDelegate.m */; };
 		C9E263CB235B3B1600E1D491 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9E263CA235B3B1600E1D491 /* ViewController.m */; };
 		C9E263CD235B3B1800E1D491 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C9E263CC235B3B1800E1D491 /* Assets.xcassets */; };
@@ -25,6 +28,12 @@
 		C9B81AB7237A5C2F0024CCDB /* ZYMake.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZYMake.m; sourceTree = "<group>"; };
 		C9B81AB9237A5D9E0024CCDB /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		C9B81ABA237A8E970024CCDB /* ZYMacro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZYMacro.h; sourceTree = "<group>"; };
+		C9B81ABB237ABD260024CCDB /* NSColor+ZY.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSColor+ZY.h"; sourceTree = "<group>"; };
+		C9B81ABC237ABD260024CCDB /* NSColor+ZY.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSColor+ZY.m"; sourceTree = "<group>"; };
+		C9B81ABE237ABF800024CCDB /* NSAttributedString+ZY.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSAttributedString+ZY.h"; sourceTree = "<group>"; };
+		C9B81ABF237ABF800024CCDB /* NSAttributedString+ZY.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSAttributedString+ZY.m"; sourceTree = "<group>"; };
+		C9B81AC1237ABFAF0024CCDB /* NSMutableAttributedString+ZY.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSMutableAttributedString+ZY.h"; sourceTree = "<group>"; };
+		C9B81AC2237ABFAF0024CCDB /* NSMutableAttributedString+ZY.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSMutableAttributedString+ZY.m"; sourceTree = "<group>"; };
 		C9E263C3235B3B1600E1D491 /* ifanyi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ifanyi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9E263C6235B3B1600E1D491 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		C9E263C7235B3B1600E1D491 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -71,6 +80,12 @@
 				C9B81ABA237A8E970024CCDB /* ZYMacro.h */,
 				C9B81AB6237A5C2F0024CCDB /* ZYMake.h */,
 				C9B81AB7237A5C2F0024CCDB /* ZYMake.m */,
+				C9B81ABB237ABD260024CCDB /* NSColor+ZY.h */,
+				C9B81ABC237ABD260024CCDB /* NSColor+ZY.m */,
+				C9B81ABE237ABF800024CCDB /* NSAttributedString+ZY.h */,
+				C9B81ABF237ABF800024CCDB /* NSAttributedString+ZY.m */,
+				C9B81AC1237ABFAF0024CCDB /* NSMutableAttributedString+ZY.h */,
+				C9B81AC2237ABFAF0024CCDB /* NSMutableAttributedString+ZY.m */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -262,7 +277,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C9B81AC0237ABF800024CCDB /* NSAttributedString+ZY.m in Sources */,
+				C9B81AC3237ABFAF0024CCDB /* NSMutableAttributedString+ZY.m in Sources */,
 				C9E263CB235B3B1600E1D491 /* ViewController.m in Sources */,
+				C9B81ABD237ABD260024CCDB /* NSColor+ZY.m in Sources */,
 				C9B81AB8237A5C2F0024CCDB /* ZYMake.m in Sources */,
 				C9E263D3235B3B1800E1D491 /* main.m in Sources */,
 				C9E263E5235B458D00E1D491 /* Selection.m in Sources */,
