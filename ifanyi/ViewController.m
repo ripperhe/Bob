@@ -21,6 +21,8 @@
 @property (nonatomic, strong) NSTextView *queryTextView;
 @property (nonatomic, strong) NSButton *queryAudioButton;
 @property (nonatomic, strong) NSButton *queryCopyButton;
+@property (nonatomic, strong) NSButton *fromLanguageButton;
+@property (nonatomic, strong) NSButton *toLanguageButton;
 @property (nonatomic, strong) NSView *resultContainerView;
 @property (nonatomic, strong) NSScrollView *resultScrollView;
 @property (nonatomic, strong) NSTextView *resultTextView;
@@ -41,6 +43,9 @@
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         self.view.window.movableByWindowBackground = YES;
     });
+    
+    self.view.wantsLayer = YES;
+    self.view.layer.backgroundColor = NSColor.whiteColor.CGColor;
     
     self.pinButton = [NSButton zy_make:^(NSButton * button) {
         [self.view addSubview:button];
@@ -87,7 +92,9 @@
     self.queryContainerView = [NSView zy_make:^(NSView * _Nonnull view) {
         [self.view addSubview:view];
         view.wantsLayer = YES;
-        view.layer.backgroundColor = NSColor.greenColor.CGColor;
+        view.layer.backgroundColor = NSColor.zy_randomColor.CGColor;
+        view.layer.borderColor = [NSColor zy_colorWithHexString:@"#EEEEEE"].CGColor;
+        view.layer.borderWidth = 1;
         [view mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.right.inset(12);
             make.top.equalTo(self.pinButton.mas_bottom).offset(2);
@@ -97,7 +104,7 @@
         self.queryScrollView = [NSScrollView zy_make:^(NSScrollView *  _Nonnull scrollView) {
             [view addSubview:scrollView];
             scrollView.wantsLayer = YES;
-            scrollView.backgroundColor = NSColor.redColor;
+            scrollView.backgroundColor = NSColor.zy_randomColor;
             scrollView.hasVerticalScroller = YES;
             scrollView.hasHorizontalScroller = NO;
             scrollView.autohidesScrollers = YES;
@@ -152,6 +159,31 @@
         [view addSubview:self.queryScrollView];
     }];
 
+    self.fromLanguageButton = [NSButton zy_make:^(NSButton * _Nonnull button) {
+        [self.view addSubview:button];
+        button.wantsLayer = YES;
+        button.layer.backgroundColor = NSColor.zy_randomColor.CGColor;
+        button.layer.borderColor = [NSColor zy_colorWithHexString:@"#EEEEEE"].CGColor;
+        button.layer.borderWidth = 1;
+        button.bordered = NO;
+        button.imageScaling = NSImageScaleProportionallyDown;
+        button.bezelStyle = NSBezelStyleRegularSquare;
+        [button setButtonType:NSButtonTypeMomentaryPushIn];
+        button.title = @"英语";
+        button.image = [NSImage imageNamed:@"xx"];
+        button.imagePosition = NSImageRight;
+        [button mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(self.queryContainerView.mas_bottom).offset(12);
+            make.left.offset(12);
+            make.width.mas_equalTo(94);
+            make.height.mas_equalTo(25);
+        }];
+        [button setRac_command:[[RACCommand alloc] initWithSignalBlock:^RACSignal * _Nonnull(id  _Nullable input) {
+            NSLog(@"点击拷贝按钮");
+            return RACSignal.empty;
+        }]];
+    }];
+    
 }
 
 
