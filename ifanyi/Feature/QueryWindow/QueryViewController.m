@@ -6,11 +6,11 @@
 //  Copyright © 2019 ripperhe. All rights reserved.
 //
 
-#import "ViewController.h"
+#import "QueryViewController.h"
 #import "BaiduTranslate.h"
 #import "Selection.h"
 
-@interface ViewController ()
+@interface QueryViewController ()
 
 @property (nonatomic, strong) BaiduTranslate *baiduTranslate;
 
@@ -35,13 +35,17 @@
 
 @end
 
-@implementation ViewController
+@implementation QueryViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     [self setupViews];
     [self setupTranslate];
+    
+    [self.baiduTranslate queryString:@"love" completion:^(id  _Nonnull result) {
+        NSLog(@"result %@", result);
+    }];
 }
 
 - (void)setupViews {

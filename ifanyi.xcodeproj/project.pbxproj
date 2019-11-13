@@ -13,7 +13,7 @@
 		C9B81AC0237ABF800024CCDB /* NSAttributedString+ZY.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B81ABF237ABF800024CCDB /* NSAttributedString+ZY.m */; };
 		C9B81AC3237ABFAF0024CCDB /* NSMutableAttributedString+ZY.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B81AC2237ABFAF0024CCDB /* NSMutableAttributedString+ZY.m */; };
 		C9E263C8235B3B1600E1D491 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C9E263C7235B3B1600E1D491 /* AppDelegate.m */; };
-		C9E263CB235B3B1600E1D491 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9E263CA235B3B1600E1D491 /* ViewController.m */; };
+		C9E263CB235B3B1600E1D491 /* QueryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9E263CA235B3B1600E1D491 /* QueryViewController.m */; };
 		C9E263CD235B3B1800E1D491 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C9E263CC235B3B1800E1D491 /* Assets.xcassets */; };
 		C9E263D0235B3B1800E1D491 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9E263CE235B3B1800E1D491 /* Main.storyboard */; };
 		C9E263D3235B3B1800E1D491 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C9E263D2235B3B1800E1D491 /* main.m */; };
@@ -37,8 +37,8 @@
 		C9E263C3235B3B1600E1D491 /* ifanyi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ifanyi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9E263C6235B3B1600E1D491 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		C9E263C7235B3B1600E1D491 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		C9E263C9235B3B1600E1D491 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		C9E263CA235B3B1600E1D491 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		C9E263C9235B3B1600E1D491 /* QueryViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QueryViewController.h; sourceTree = "<group>"; };
+		C9E263CA235B3B1600E1D491 /* QueryViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QueryViewController.m; sourceTree = "<group>"; };
 		C9E263CC235B3B1800E1D491 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C9E263CF235B3B1800E1D491 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C9E263D1235B3B1800E1D491 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -72,6 +72,15 @@
 				266A10346AE127F8A8794265 /* Pods-ifanyi.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		C9896921237B9ACC00F16CE4 /* QueryWindow */ = {
+			isa = PBXGroup;
+			children = (
+				C9E263C9235B3B1600E1D491 /* QueryViewController.h */,
+				C9E263CA235B3B1600E1D491 /* QueryViewController.m */,
+			);
+			path = QueryWindow;
 			sourceTree = "<group>";
 		};
 		C9B81AB5237A5BC80024CCDB /* Utility */ = {
@@ -114,8 +123,6 @@
 				C9E263DA235B3CD300E1D491 /* Feature */,
 				C9E263C6235B3B1600E1D491 /* AppDelegate.h */,
 				C9E263C7235B3B1600E1D491 /* AppDelegate.m */,
-				C9E263C9235B3B1600E1D491 /* ViewController.h */,
-				C9E263CA235B3B1600E1D491 /* ViewController.m */,
 				C9B81AB9237A5D9E0024CCDB /* PrefixHeader.pch */,
 				C9E263CC235B3B1800E1D491 /* Assets.xcassets */,
 				C9E263CE235B3B1800E1D491 /* Main.storyboard */,
@@ -132,6 +139,7 @@
 				C9B81AB5237A5BC80024CCDB /* Utility */,
 				C9E263E2235B457B00E1D491 /* Selection */,
 				C9E263DC235B3CE600E1D491 /* Baidu */,
+				C9896921237B9ACC00F16CE4 /* QueryWindow */,
 			);
 			path = Feature;
 			sourceTree = "<group>";
@@ -279,7 +287,7 @@
 			files = (
 				C9B81AC0237ABF800024CCDB /* NSAttributedString+ZY.m in Sources */,
 				C9B81AC3237ABFAF0024CCDB /* NSMutableAttributedString+ZY.m in Sources */,
-				C9E263CB235B3B1600E1D491 /* ViewController.m in Sources */,
+				C9E263CB235B3B1600E1D491 /* QueryViewController.m in Sources */,
 				C9B81ABD237ABD260024CCDB /* NSColor+ZY.m in Sources */,
 				C9B81AB8237A5C2F0024CCDB /* ZYMake.m in Sources */,
 				C9E263D3235B3B1800E1D491 /* main.m in Sources */,
