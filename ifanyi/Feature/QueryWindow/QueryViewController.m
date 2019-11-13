@@ -43,8 +43,12 @@
     [self setupViews];
     [self setupTranslate];
     
-    [self.baiduTranslate queryString:@"love" completion:^(id  _Nonnull result) {
-        NSLog(@"result %@", result);
+//    [self.baiduTranslate queryString:@"love" completion:^(id  _Nonnull result) {
+//        NSLog(@"result %@", result);
+//    }];
+    
+    [self.baiduTranslate translate:@"If you tell them this shocking news, I believe that will put the cat among the pigeons. \n\nIf you tell them this shocking news, I believe that will put the cat among the pigeons. " from:@"en" to:@"zh" completion:^(TranslateResult * _Nullable result, NSError * _Nullable error) {
+        NSLog(@"翻译结果 %@", result);
     }];
 }
 
@@ -397,25 +401,25 @@
 - (void)setupTranslate {
     self.baiduTranslate = [BaiduTranslate new];
     
-    [[NSNotificationCenter defaultCenter] addObserverForName:@"translate" object:nil queue:NSOperationQueue.mainQueue usingBlock:^(NSNotification * _Nonnull note) {
-        [Selection getText:^(NSString * _Nullable text) {
-            if (text.length) {
-                self.queryTextView.string = text;
-                self.resultTextView.string = @"查询中...";
-                [self.baiduTranslate queryString:text completion:^(id  _Nonnull result) {
-                    NSLog(@"翻译结果\n %@", result);
-                    if (result) {
-                        self.resultTextView.string = result;
-                    }else {
-                        self.resultTextView.string = @"查询失败";
-                    }
-                }];
-            }else {
-                self.queryTextView.string = @"";
-                self.resultTextView.string = @"";
-            }
-        }];
-    }];
+//    [[NSNotificationCenter defaultCenter] addObserverForName:@"translate" object:nil queue:NSOperationQueue.mainQueue usingBlock:^(NSNotification * _Nonnull note) {
+//        [Selection getText:^(NSString * _Nullable text) {
+//            if (text.length) {
+//                self.queryTextView.string = text;
+//                self.resultTextView.string = @"查询中...";
+//                [self.baiduTranslate queryString:text completion:^(id  _Nonnull result) {
+//                    NSLog(@"翻译结果\n %@", result);
+//                    if (result) {
+//                        self.resultTextView.string = result;
+//                    }else {
+//                        self.resultTextView.string = @"查询失败";
+//                    }
+//                }];
+//            }else {
+//                self.queryTextView.string = @"";
+//                self.resultTextView.string = @"";
+//            }
+//        }];
+//    }];
 }
 
 - (void)updateHeight:(id)sender {

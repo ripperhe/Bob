@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		1DA290527826C220AD309012 /* Pods_ifanyi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6F84FA6D0A6E0ECE99CFC8C /* Pods_ifanyi.framework */; };
+		C9896924237BA8AC00F16CE4 /* TranslateResult.m in Sources */ = {isa = PBXBuildFile; fileRef = C9896923237BA8AC00F16CE4 /* TranslateResult.m */; };
+		C9896927237BAF6B00F16CE4 /* TranslateError.m in Sources */ = {isa = PBXBuildFile; fileRef = C9896926237BAF6B00F16CE4 /* TranslateError.m */; };
+		C989692A237BDE3A00F16CE4 /* BaiduTranslateResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = C9896929237BDE3A00F16CE4 /* BaiduTranslateResponse.m */; };
+		C989692E237BF05500F16CE4 /* NSString+ZY.m in Sources */ = {isa = PBXBuildFile; fileRef = C989692D237BF05500F16CE4 /* NSString+ZY.m */; };
 		C9B81AB8237A5C2F0024CCDB /* ZYMake.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B81AB7237A5C2F0024CCDB /* ZYMake.m */; };
 		C9B81ABD237ABD260024CCDB /* NSColor+ZY.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B81ABC237ABD260024CCDB /* NSColor+ZY.m */; };
 		C9B81AC0237ABF800024CCDB /* NSAttributedString+ZY.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B81ABF237ABF800024CCDB /* NSAttributedString+ZY.m */; };
@@ -24,6 +28,14 @@
 
 /* Begin PBXFileReference section */
 		266A10346AE127F8A8794265 /* Pods-ifanyi.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ifanyi.release.xcconfig"; path = "Target Support Files/Pods-ifanyi/Pods-ifanyi.release.xcconfig"; sourceTree = "<group>"; };
+		C9896922237BA8AC00F16CE4 /* TranslateResult.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TranslateResult.h; sourceTree = "<group>"; };
+		C9896923237BA8AC00F16CE4 /* TranslateResult.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TranslateResult.m; sourceTree = "<group>"; };
+		C9896925237BAF6B00F16CE4 /* TranslateError.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TranslateError.h; sourceTree = "<group>"; };
+		C9896926237BAF6B00F16CE4 /* TranslateError.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TranslateError.m; sourceTree = "<group>"; };
+		C9896928237BDE3A00F16CE4 /* BaiduTranslateResponse.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaiduTranslateResponse.h; sourceTree = "<group>"; };
+		C9896929237BDE3A00F16CE4 /* BaiduTranslateResponse.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaiduTranslateResponse.m; sourceTree = "<group>"; };
+		C989692C237BF05500F16CE4 /* NSString+ZY.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+ZY.h"; sourceTree = "<group>"; };
+		C989692D237BF05500F16CE4 /* NSString+ZY.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+ZY.m"; sourceTree = "<group>"; };
 		C9B81AB6237A5C2F0024CCDB /* ZYMake.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZYMake.h; sourceTree = "<group>"; };
 		C9B81AB7237A5C2F0024CCDB /* ZYMake.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZYMake.m; sourceTree = "<group>"; };
 		C9B81AB9237A5D9E0024CCDB /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
@@ -95,6 +107,8 @@
 				C9B81ABF237ABF800024CCDB /* NSAttributedString+ZY.m */,
 				C9B81AC1237ABFAF0024CCDB /* NSMutableAttributedString+ZY.h */,
 				C9B81AC2237ABFAF0024CCDB /* NSMutableAttributedString+ZY.m */,
+				C989692C237BF05500F16CE4 /* NSString+ZY.h */,
+				C989692D237BF05500F16CE4 /* NSString+ZY.m */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -150,6 +164,12 @@
 				C9E263E0235B3D7D00E1D491 /* baidu-sign.js */,
 				C9E263DD235B3D3800E1D491 /* BaiduTranslate.h */,
 				C9E263DE235B3D3800E1D491 /* BaiduTranslate.m */,
+				C9896928237BDE3A00F16CE4 /* BaiduTranslateResponse.h */,
+				C9896929237BDE3A00F16CE4 /* BaiduTranslateResponse.m */,
+				C9896922237BA8AC00F16CE4 /* TranslateResult.h */,
+				C9896923237BA8AC00F16CE4 /* TranslateResult.m */,
+				C9896925237BAF6B00F16CE4 /* TranslateError.h */,
+				C9896926237BAF6B00F16CE4 /* TranslateError.m */,
 			);
 			path = Baidu;
 			sourceTree = "<group>";
@@ -286,12 +306,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				C9B81AC0237ABF800024CCDB /* NSAttributedString+ZY.m in Sources */,
+				C9896927237BAF6B00F16CE4 /* TranslateError.m in Sources */,
 				C9B81AC3237ABFAF0024CCDB /* NSMutableAttributedString+ZY.m in Sources */,
 				C9E263CB235B3B1600E1D491 /* QueryViewController.m in Sources */,
 				C9B81ABD237ABD260024CCDB /* NSColor+ZY.m in Sources */,
+				C989692E237BF05500F16CE4 /* NSString+ZY.m in Sources */,
+				C989692A237BDE3A00F16CE4 /* BaiduTranslateResponse.m in Sources */,
 				C9B81AB8237A5C2F0024CCDB /* ZYMake.m in Sources */,
 				C9E263D3235B3B1800E1D491 /* main.m in Sources */,
 				C9E263E5235B458D00E1D491 /* Selection.m in Sources */,
+				C9896924237BA8AC00F16CE4 /* TranslateResult.m in Sources */,
 				C9E263DF235B3D3800E1D491 /* BaiduTranslate.m in Sources */,
 				C9E263C8235B3B1600E1D491 /* AppDelegate.m in Sources */,
 			);
