@@ -11,6 +11,7 @@
 #import "Selection.h"
 #import "PopUpButton.h"
 #import "QueryView.h"
+#import "ResultView.h"
 
 @interface TranslateViewController ()
 
@@ -18,18 +19,11 @@
 
 @property (nonatomic, strong) NSButton *pinButton;
 @property (nonatomic, strong) NSButton *foldButton;
-
 @property (nonatomic, strong) QueryView *queryView;
-
-@property (nonatomic, strong) NSButton *fromLanguageButton;
+@property (nonatomic, strong) PopUpButton *fromLanguageButton;
 @property (nonatomic, strong) NSButton *transformButton;
 @property (nonatomic, strong) PopUpButton *toLanguageButton;
-
-@property (nonatomic, strong) NSView *resultContainerView;
-@property (nonatomic, strong) NSScrollView *resultScrollView;
-@property (nonatomic, strong) NSTextView *resultTextView;
-@property (nonatomic, strong) NSButton *resultAudioButton;
-@property (nonatomic, strong) NSButton *resultCopyButton;
+@property (nonatomic, strong) ResultView *resultView;
 
 @end
 
@@ -40,14 +34,6 @@
     
     [self setupViews];
     [self setupTranslate];
-    
-//    [self.baiduTranslate queryString:@"love" completion:^(id  _Nonnull result) {
-//        NSLog(@"result %@", result);
-//    }];
-    
-//    [self.baiduTranslate translate:@"If you tell them this shocking news, I believe that will put the cat among the pigeons. \n\nIf you tell them this shocking news, I believe that will put the cat among the pigeons. " from:@"en" to:@"zh" completion:^(TranslateResult * _Nullable result, NSError * _Nullable error) {
-//        NSLog(@"翻译结果 %@", result);
-//    }];
 }
 
 - (void)setupViews {
@@ -161,113 +147,56 @@
             NSLog(@"点击 to");
         }];
     }];
-        
-    self.resultContainerView = [NSView mm_make:^(NSView * _Nonnull view) {
+    
+    self.resultView = [ResultView mm_anyMake:^(ResultView *  _Nonnull view) {
         [self.view addSubview:view];
-        view.wantsLayer = YES;
-        view.layer.backgroundColor = [NSColor mm_colorWithHexString:@"#EEEEEE"].CGColor;
-        view.layer.borderColor = [NSColor mm_colorWithHexString:@"#EEEEEE"].CGColor;
-        view.layer.borderWidth = 1;
         [view mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.equalTo(self.fromLanguageButton.mas_bottom).offset(12);
             make.left.right.equalTo(self.queryView);
             make.height.equalTo(@176);
         }];
-        
-        self.resultContainerView = [NSScrollView mm_make:^(NSScrollView *  _Nonnull scrollView) {
-            [view addSubview:scrollView];
-            scrollView.wantsLayer = YES;
-            scrollView.backgroundColor = NSColor.mm_randomColor;
-            scrollView.hasVerticalScroller = YES;
-            scrollView.hasHorizontalScroller = NO;
-            scrollView.autohidesScrollers = YES;
-            self.resultTextView = [NSTextView mm_make:^(NSTextView * _Nonnull textView) {
-                [textView setDefaultParagraphStyle:[NSMutableParagraphStyle mm_anyMake:^(NSMutableParagraphStyle *  _Nonnull style) {
-                    style.lineHeightMultiple = 1.2;
-                    style.paragraphSpacing = 5;
-                }]];
-                textView.string = @"我相信这世界上，有些人有些事有些爱，在见到的第一次，就注定要羁绊一生，就注定像一棵树一样，生长在心里，生生世世。我相信这世界上，有些人有些事有些爱，在见到的第一次，就注定要羁绊一生，就注定像一棵树一样，生长在心里，生生世世。";
-
-                textView.editable = NO;
-                textView.font = [NSFont systemFontOfSize:14];
-                textView.textColor = [NSColor mm_colorWithHexString:@"#333333"];
-                textView.alignment = NSTextAlignmentJustified;
-                textView.textContainerInset = CGSizeMake(16, 12);
-                textView.backgroundColor = [NSColor mm_colorWithHexString:@"#EEEEEE"];
-                [textView setAutoresizingMask:NSViewHeightSizable | NSViewWidthSizable];
-            }];
-            scrollView.documentView = self.resultTextView;
-            [scrollView mas_makeConstraints:^(MASConstraintMaker *make) {
-                make.top.left.right.inset(0);
-                make.bottom.inset(26);
-            }];
+        [view setAudioActionBlock:^(ResultView * _Nonnull view) {
+            NSLog(@"点击音频按钮");
         }];
-        
-        self.resultAudioButton = [NSButton mm_make:^(NSButton * _Nonnull button) {
-            [view addSubview:button];
-            button.bordered = NO;
-            button.imageScaling = NSImageScaleProportionallyDown;
-            button.bezelStyle = NSBezelStyleRegularSquare;
-            [button setButtonType:NSButtonTypeToggle];
-            button.image = [NSImage imageNamed:@"audio"];
-            [button mas_makeConstraints:^(MASConstraintMaker *make) {
-                make.left.offset(9.5);
-                make.bottom.inset(3);
-                make.width.height.equalTo(@26);
-            }];
-            [button setRac_command:[[RACCommand alloc] initWithSignalBlock:^RACSignal * _Nonnull(id  _Nullable input) {
-                NSLog(@"点击音频按钮");
-                return RACSignal.empty;
-            }]];
+        [view setCopyActionBlock:^(ResultView * _Nonnull view) {
+            NSLog(@"点击复制按钮");
         }];
-        
-        self.resultCopyButton = [NSButton mm_make:^(NSButton * _Nonnull button) {
-            [view addSubview:button];
-            button.bordered = NO;
-            button.imageScaling = NSImageScaleProportionallyDown;
-            button.bezelStyle = NSBezelStyleRegularSquare;
-            [button setButtonType:NSButtonTypeToggle];
-            button.image = [NSImage imageNamed:@"copy"];
-            [button mas_makeConstraints:^(MASConstraintMaker *make) {
-                make.left.equalTo(self.resultAudioButton.mas_right).offset(1.5);
-                make.bottom.equalTo(self.resultAudioButton);
-                make.width.height.equalTo(@26);
-            }];
-            [button setRac_command:[[RACCommand alloc] initWithSignalBlock:^RACSignal * _Nonnull(id  _Nullable input) {
-                NSLog(@"点击拷贝按钮");
-                return RACSignal.empty;
-            }]];
-        }];
-        
-        // 将scrollview放到最上层
-        [view addSubview:self.resultContainerView];
     }];
-
 }
-
 
 - (void)setupTranslate {
     self.baiduTranslate = [BaiduTranslate new];
     
-//    [[NSNotificationCenter defaultCenter] addObserverForName:@"translate" object:nil queue:NSOperationQueue.mainQueue usingBlock:^(NSNotification * _Nonnull note) {
-//        [Selection getText:^(NSString * _Nullable text) {
-//            if (text.length) {
-//                self.queryTextView.string = text;
-//                self.resultTextView.string = @"查询中...";
-//                [self.baiduTranslate queryString:text completion:^(id  _Nonnull result) {
-//                    NSLog(@"翻译结果\n %@", result);
-//                    if (result) {
-//                        self.resultTextView.string = result;
-//                    }else {
-//                        self.resultTextView.string = @"查询失败";
-//                    }
-//                }];
-//            }else {
-//                self.queryTextView.string = @"";
-//                self.resultTextView.string = @"";
-//            }
-//        }];
-//    }];
+    [[NSNotificationCenter defaultCenter] addObserverForName:@"translate" object:nil queue:NSOperationQueue.mainQueue usingBlock:^(NSNotification * _Nonnull note) {
+        [Selection getText:^(NSString * _Nullable text) {
+            if (text.length) {
+                self.queryView.textView.string = text;
+                self.resultView.textView.string = @"查询中...";
+                [self.baiduTranslate translate:text from:@"en" to:@"zh" completion:^(TranslateResult * _Nullable result, NSError * _Nullable error) {
+                    if (error) {
+                        self.resultView.textView.string = @"查询失败";
+                    }else {
+                        self.resultView.textView.string = [NSString mm_stringByCombineComponents:result.normalResults separatedString:@"\n"];
+                    }
+                }];
+            }else {
+                self.queryView.textView.string = @"";
+                self.queryView.textView.string = @"";
+            }
+        }];
+    }];
+}
+
+- (IBAction)xx:(id)sender {
+    NSString *text = self.queryView.textView.string;
+    self.resultView.textView.string = @"查询中...";
+    [self.baiduTranslate translate:text from:@"en" to:@"zh" completion:^(TranslateResult * _Nullable result, NSError * _Nullable error) {
+        if (error) {
+            self.resultView.textView.string = @"查询失败";
+        }else {
+            self.resultView.textView.string = [NSString mm_stringByCombineComponents:result.normalResults separatedString:@"\n"];
+        }
+    }];
 }
 
 - (void)updateHeight:(id)sender {
