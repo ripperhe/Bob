@@ -12,18 +12,20 @@
 		C9896927237BAF6B00F16CE4 /* TranslateError.m in Sources */ = {isa = PBXBuildFile; fileRef = C9896926237BAF6B00F16CE4 /* TranslateError.m */; };
 		C989692A237BDE3A00F16CE4 /* BaiduTranslateResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = C9896929237BDE3A00F16CE4 /* BaiduTranslateResponse.m */; };
 		C989692E237BF05500F16CE4 /* NSString+ZY.m in Sources */ = {isa = PBXBuildFile; fileRef = C989692D237BF05500F16CE4 /* NSString+ZY.m */; };
+		C98B495E237C12BA006DAE2A /* ZYQueryView.m in Sources */ = {isa = PBXBuildFile; fileRef = C98B495D237C12BA006DAE2A /* ZYQueryView.m */; };
 		C9B81AB8237A5C2F0024CCDB /* ZYMake.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B81AB7237A5C2F0024CCDB /* ZYMake.m */; };
 		C9B81ABD237ABD260024CCDB /* NSColor+ZY.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B81ABC237ABD260024CCDB /* NSColor+ZY.m */; };
 		C9B81AC0237ABF800024CCDB /* NSAttributedString+ZY.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B81ABF237ABF800024CCDB /* NSAttributedString+ZY.m */; };
 		C9B81AC3237ABFAF0024CCDB /* NSMutableAttributedString+ZY.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B81AC2237ABFAF0024CCDB /* NSMutableAttributedString+ZY.m */; };
 		C9E263C8235B3B1600E1D491 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C9E263C7235B3B1600E1D491 /* AppDelegate.m */; };
-		C9E263CB235B3B1600E1D491 /* QueryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9E263CA235B3B1600E1D491 /* QueryViewController.m */; };
+		C9E263CB235B3B1600E1D491 /* TranslateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9E263CA235B3B1600E1D491 /* TranslateViewController.m */; };
 		C9E263CD235B3B1800E1D491 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C9E263CC235B3B1800E1D491 /* Assets.xcassets */; };
 		C9E263D0235B3B1800E1D491 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9E263CE235B3B1800E1D491 /* Main.storyboard */; };
 		C9E263D3235B3B1800E1D491 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C9E263D2235B3B1800E1D491 /* main.m */; };
 		C9E263DF235B3D3800E1D491 /* BaiduTranslate.m in Sources */ = {isa = PBXBuildFile; fileRef = C9E263DE235B3D3800E1D491 /* BaiduTranslate.m */; };
 		C9E263E1235B3D7D00E1D491 /* baidu-sign.js in Resources */ = {isa = PBXBuildFile; fileRef = C9E263E0235B3D7D00E1D491 /* baidu-sign.js */; };
 		C9E263E5235B458D00E1D491 /* Selection.m in Sources */ = {isa = PBXBuildFile; fileRef = C9E263E4235B458D00E1D491 /* Selection.m */; };
+		C9E50409237C0D1300A500B7 /* ZYPopUpButton.m in Sources */ = {isa = PBXBuildFile; fileRef = C9E50408237C0D1300A500B7 /* ZYPopUpButton.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +38,8 @@
 		C9896929237BDE3A00F16CE4 /* BaiduTranslateResponse.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaiduTranslateResponse.m; sourceTree = "<group>"; };
 		C989692C237BF05500F16CE4 /* NSString+ZY.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+ZY.h"; sourceTree = "<group>"; };
 		C989692D237BF05500F16CE4 /* NSString+ZY.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+ZY.m"; sourceTree = "<group>"; };
+		C98B495C237C12BA006DAE2A /* ZYQueryView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZYQueryView.h; sourceTree = "<group>"; };
+		C98B495D237C12BA006DAE2A /* ZYQueryView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZYQueryView.m; sourceTree = "<group>"; };
 		C9B81AB6237A5C2F0024CCDB /* ZYMake.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZYMake.h; sourceTree = "<group>"; };
 		C9B81AB7237A5C2F0024CCDB /* ZYMake.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZYMake.m; sourceTree = "<group>"; };
 		C9B81AB9237A5D9E0024CCDB /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
@@ -49,8 +53,8 @@
 		C9E263C3235B3B1600E1D491 /* ifanyi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ifanyi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9E263C6235B3B1600E1D491 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		C9E263C7235B3B1600E1D491 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		C9E263C9235B3B1600E1D491 /* QueryViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QueryViewController.h; sourceTree = "<group>"; };
-		C9E263CA235B3B1600E1D491 /* QueryViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QueryViewController.m; sourceTree = "<group>"; };
+		C9E263C9235B3B1600E1D491 /* TranslateViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TranslateViewController.h; sourceTree = "<group>"; };
+		C9E263CA235B3B1600E1D491 /* TranslateViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TranslateViewController.m; sourceTree = "<group>"; };
 		C9E263CC235B3B1800E1D491 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C9E263CF235B3B1800E1D491 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C9E263D1235B3B1800E1D491 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -61,6 +65,8 @@
 		C9E263E0235B3D7D00E1D491 /* baidu-sign.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = "baidu-sign.js"; sourceTree = "<group>"; };
 		C9E263E3235B458D00E1D491 /* Selection.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Selection.h; sourceTree = "<group>"; };
 		C9E263E4235B458D00E1D491 /* Selection.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Selection.m; sourceTree = "<group>"; };
+		C9E50407237C0D1300A500B7 /* ZYPopUpButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZYPopUpButton.h; sourceTree = "<group>"; };
+		C9E50408237C0D1300A500B7 /* ZYPopUpButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZYPopUpButton.m; sourceTree = "<group>"; };
 		D2CBA4416AE9E960EAD837ED /* Pods-ifanyi.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ifanyi.debug.xcconfig"; path = "Target Support Files/Pods-ifanyi/Pods-ifanyi.debug.xcconfig"; sourceTree = "<group>"; };
 		F6F84FA6D0A6E0ECE99CFC8C /* Pods_ifanyi.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ifanyi.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -86,13 +92,17 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
-		C9896921237B9ACC00F16CE4 /* QueryWindow */ = {
+		C9896921237B9ACC00F16CE4 /* TranslateWindow */ = {
 			isa = PBXGroup;
 			children = (
-				C9E263C9235B3B1600E1D491 /* QueryViewController.h */,
-				C9E263CA235B3B1600E1D491 /* QueryViewController.m */,
+				C9E263C9235B3B1600E1D491 /* TranslateViewController.h */,
+				C9E263CA235B3B1600E1D491 /* TranslateViewController.m */,
+				C9E50407237C0D1300A500B7 /* ZYPopUpButton.h */,
+				C9E50408237C0D1300A500B7 /* ZYPopUpButton.m */,
+				C98B495C237C12BA006DAE2A /* ZYQueryView.h */,
+				C98B495D237C12BA006DAE2A /* ZYQueryView.m */,
 			);
-			path = QueryWindow;
+			path = TranslateWindow;
 			sourceTree = "<group>";
 		};
 		C9B81AB5237A5BC80024CCDB /* Utility */ = {
@@ -153,7 +163,7 @@
 				C9B81AB5237A5BC80024CCDB /* Utility */,
 				C9E263E2235B457B00E1D491 /* Selection */,
 				C9E263DC235B3CE600E1D491 /* Baidu */,
-				C9896921237B9ACC00F16CE4 /* QueryWindow */,
+				C9896921237B9ACC00F16CE4 /* TranslateWindow */,
 			);
 			path = Feature;
 			sourceTree = "<group>";
@@ -308,8 +318,10 @@
 				C9B81AC0237ABF800024CCDB /* NSAttributedString+ZY.m in Sources */,
 				C9896927237BAF6B00F16CE4 /* TranslateError.m in Sources */,
 				C9B81AC3237ABFAF0024CCDB /* NSMutableAttributedString+ZY.m in Sources */,
-				C9E263CB235B3B1600E1D491 /* QueryViewController.m in Sources */,
+				C9E263CB235B3B1600E1D491 /* TranslateViewController.m in Sources */,
 				C9B81ABD237ABD260024CCDB /* NSColor+ZY.m in Sources */,
+				C98B495E237C12BA006DAE2A /* ZYQueryView.m in Sources */,
+				C9E50409237C0D1300A500B7 /* ZYPopUpButton.m in Sources */,
 				C989692E237BF05500F16CE4 /* NSString+ZY.m in Sources */,
 				C989692A237BDE3A00F16CE4 /* BaiduTranslateResponse.m in Sources */,
 				C9B81AB8237A5C2F0024CCDB /* ZYMake.m in Sources */,

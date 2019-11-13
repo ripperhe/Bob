@@ -8,7 +8,7 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface QueryViewController : NSViewController
+@interface TranslateViewController : NSViewController
 
 
 @end
