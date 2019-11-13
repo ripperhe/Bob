@@ -9,8 +9,8 @@
 #import "TranslateViewController.h"
 #import "BaiduTranslate.h"
 #import "Selection.h"
-#import "ZYPopUpButton.h"
-#import "ZYQueryView.h"
+#import "PopUpButton.h"
+#import "QueryView.h"
 
 @interface TranslateViewController ()
 
@@ -19,11 +19,11 @@
 @property (nonatomic, strong) NSButton *pinButton;
 @property (nonatomic, strong) NSButton *foldButton;
 
-@property (nonatomic, strong) ZYQueryView *queryView;
+@property (nonatomic, strong) QueryView *queryView;
 
 @property (nonatomic, strong) NSButton *fromLanguageButton;
 @property (nonatomic, strong) NSButton *transformButton;
-@property (nonatomic, strong) ZYPopUpButton *toLanguageButton;
+@property (nonatomic, strong) PopUpButton *toLanguageButton;
 
 @property (nonatomic, strong) NSView *resultContainerView;
 @property (nonatomic, strong) NSScrollView *resultScrollView;
@@ -59,7 +59,7 @@
     self.view.wantsLayer = YES;
     self.view.layer.backgroundColor = NSColor.whiteColor.CGColor;
     
-    self.pinButton = [NSButton zy_make:^(NSButton * button) {
+    self.pinButton = [NSButton mm_make:^(NSButton * button) {
         [self.view addSubview:button];
         button.bordered = NO;
         button.imageScaling = NSImageScaleProportionallyDown;
@@ -71,52 +71,52 @@
             make.top.left.offset(6);
             make.width.height.mas_equalTo(32);
         }];
-        zy_weakify(button)
+        mm_weakify(button)
         [button setRac_command:[[RACCommand alloc] initWithSignalBlock:^RACSignal * _Nonnull(id  _Nullable input) {
-            zy_strongify(button)
+            mm_strongify(button)
             NSLog(@"点击按钮 %@", button.state == NSControlStateValueOn ? @"ON" : @"OFF");
             return RACSignal.empty;
         }]];
     }];
     
-    self.foldButton = [NSButton zy_make:^(NSButton * _Nonnull button) {
+    self.foldButton = [NSButton mm_make:^(NSButton * _Nonnull button) {
         [self.view addSubview:button];
         button.bordered = NO;
         button.imageScaling = NSImageScaleProportionallyDown;
         button.bezelStyle = NSBezelStyleRegularSquare;
         [button setButtonType:NSButtonTypeToggle];
-        button.attributedTitle = [NSAttributedString zy_attributedStringWithString:@"展开" font:[NSFont systemFontOfSize:13] color:[NSColor zy_colorWithHexString:@"#007AFF"]];
-        button.attributedAlternateTitle = [NSAttributedString zy_attributedStringWithString:@"折叠" font:[NSFont systemFontOfSize:13] color:[NSColor zy_colorWithHexString:@"#007AFF"]];
+        button.attributedTitle = [NSAttributedString mm_attributedStringWithString:@"展开" font:[NSFont systemFontOfSize:13] color:[NSColor mm_colorWithHexString:@"#007AFF"]];
+        button.attributedAlternateTitle = [NSAttributedString mm_attributedStringWithString:@"折叠" font:[NSFont systemFontOfSize:13] color:[NSColor mm_colorWithHexString:@"#007AFF"]];
         [button mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.offset(6);
             make.right.inset(6);
             make.height.mas_equalTo(32);
             make.width.mas_equalTo(38);
         }];
-        zy_weakify(button)
+        mm_weakify(button)
         [button setRac_command:[[RACCommand alloc] initWithSignalBlock:^RACSignal * _Nonnull(id  _Nullable input) {
-            zy_strongify(button)
+            mm_strongify(button)
             NSLog(@"点击按钮 %@", button.state == NSControlStateValueOn ? @"ON" : @"OFF");
             return RACSignal.empty;
         }]];
     }];
     
-    self.queryView = [ZYQueryView zy_anyMake:^(ZYQueryView * _Nonnull view) {
+    self.queryView = [QueryView mm_anyMake:^(QueryView * _Nonnull view) {
         [self.view addSubview:view];
         [view mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.right.inset(12);
             make.top.equalTo(self.pinButton.mas_bottom).offset(2);
             make.height.equalTo(@176);
         }];
-        [view setCopyActionBlock:^(ZYQueryView * _Nonnull view) {
+        [view setCopyActionBlock:^(QueryView * _Nonnull view) {
             NSLog(@"点击拷贝");
         }];
-        [view setAudioActionBlock:^(ZYQueryView * _Nonnull view) {
+        [view setAudioActionBlock:^(QueryView * _Nonnull view) {
             NSLog(@"点击音频");
         }];
     }];
     
-    self.fromLanguageButton = [ZYPopUpButton zy_anyMake:^(ZYPopUpButton *  _Nonnull button) {
+    self.fromLanguageButton = [PopUpButton mm_anyMake:^(PopUpButton *  _Nonnull button) {
         [self.view addSubview:button];
         button.textField.stringValue = @"英语";
         [button mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -125,12 +125,12 @@
             make.width.mas_equalTo(94);
             make.height.mas_equalTo(25);
         }];
-        [button setActionBlock:^(ZYPopUpButton * _Nonnull button) {
+        [button setActionBlock:^(PopUpButton * _Nonnull button) {
             NSLog(@"点击 from");
         }];
     }];
     
-    self.transformButton = [NSButton zy_make:^(NSButton * _Nonnull button) {
+    self.transformButton = [NSButton mm_make:^(NSButton * _Nonnull button) {
         [self.view addSubview:button];
         button.bordered = NO;
         button.imageScaling = NSImageScaleProportionallyDown;
@@ -149,7 +149,7 @@
         }]];
     }];
     
-    self.toLanguageButton = [ZYPopUpButton zy_anyMake:^(ZYPopUpButton *  _Nonnull button) {
+    self.toLanguageButton = [PopUpButton mm_anyMake:^(PopUpButton *  _Nonnull button) {
         [self.view addSubview:button];
         button.textField.stringValue = @"中文";
         [button mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -157,16 +157,16 @@
             make.right.inset(12);
             make.width.height.equalTo(self.fromLanguageButton);
         }];
-        [button setActionBlock:^(ZYPopUpButton * _Nonnull button) {
+        [button setActionBlock:^(PopUpButton * _Nonnull button) {
             NSLog(@"点击 to");
         }];
     }];
         
-    self.resultContainerView = [NSView zy_make:^(NSView * _Nonnull view) {
+    self.resultContainerView = [NSView mm_make:^(NSView * _Nonnull view) {
         [self.view addSubview:view];
         view.wantsLayer = YES;
-        view.layer.backgroundColor = [NSColor zy_colorWithHexString:@"#EEEEEE"].CGColor;
-        view.layer.borderColor = [NSColor zy_colorWithHexString:@"#EEEEEE"].CGColor;
+        view.layer.backgroundColor = [NSColor mm_colorWithHexString:@"#EEEEEE"].CGColor;
+        view.layer.borderColor = [NSColor mm_colorWithHexString:@"#EEEEEE"].CGColor;
         view.layer.borderWidth = 1;
         [view mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.equalTo(self.fromLanguageButton.mas_bottom).offset(12);
@@ -174,15 +174,15 @@
             make.height.equalTo(@176);
         }];
         
-        self.resultContainerView = [NSScrollView zy_make:^(NSScrollView *  _Nonnull scrollView) {
+        self.resultContainerView = [NSScrollView mm_make:^(NSScrollView *  _Nonnull scrollView) {
             [view addSubview:scrollView];
             scrollView.wantsLayer = YES;
-            scrollView.backgroundColor = NSColor.zy_randomColor;
+            scrollView.backgroundColor = NSColor.mm_randomColor;
             scrollView.hasVerticalScroller = YES;
             scrollView.hasHorizontalScroller = NO;
             scrollView.autohidesScrollers = YES;
-            self.resultTextView = [NSTextView zy_make:^(NSTextView * _Nonnull textView) {
-                [textView setDefaultParagraphStyle:[NSMutableParagraphStyle zy_anyMake:^(NSMutableParagraphStyle *  _Nonnull style) {
+            self.resultTextView = [NSTextView mm_make:^(NSTextView * _Nonnull textView) {
+                [textView setDefaultParagraphStyle:[NSMutableParagraphStyle mm_anyMake:^(NSMutableParagraphStyle *  _Nonnull style) {
                     style.lineHeightMultiple = 1.2;
                     style.paragraphSpacing = 5;
                 }]];
@@ -190,10 +190,10 @@
 
                 textView.editable = NO;
                 textView.font = [NSFont systemFontOfSize:14];
-                textView.textColor = [NSColor zy_colorWithHexString:@"#333333"];
+                textView.textColor = [NSColor mm_colorWithHexString:@"#333333"];
                 textView.alignment = NSTextAlignmentJustified;
                 textView.textContainerInset = CGSizeMake(16, 12);
-                textView.backgroundColor = [NSColor zy_colorWithHexString:@"#EEEEEE"];
+                textView.backgroundColor = [NSColor mm_colorWithHexString:@"#EEEEEE"];
                 [textView setAutoresizingMask:NSViewHeightSizable | NSViewWidthSizable];
             }];
             scrollView.documentView = self.resultTextView;
@@ -203,7 +203,7 @@
             }];
         }];
         
-        self.resultAudioButton = [NSButton zy_make:^(NSButton * _Nonnull button) {
+        self.resultAudioButton = [NSButton mm_make:^(NSButton * _Nonnull button) {
             [view addSubview:button];
             button.bordered = NO;
             button.imageScaling = NSImageScaleProportionallyDown;
@@ -221,7 +221,7 @@
             }]];
         }];
         
-        self.resultCopyButton = [NSButton zy_make:^(NSButton * _Nonnull button) {
+        self.resultCopyButton = [NSButton mm_make:^(NSButton * _Nonnull button) {
             [view addSubview:button];
             button.bordered = NO;
             button.imageScaling = NSImageScaleProportionallyDown;

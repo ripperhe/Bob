@@ -1,5 +1,5 @@
 //
-//  NSAttributedString+ZY.h
+//  NSAttributedString+MM.h
 //  ifanyi
 //
 //  Created by ripper on 2019/11/12.
@@ -10,9 +10,9 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface NSAttributedString (ZY)
+@interface NSAttributedString (MM)
 
-+ (NSAttributedString *)zy_attributedStringWithString:(NSString *)text font:(NSFont *)font color:(NSColor *)color;
++ (NSAttributedString *)mm_attributedStringWithString:(NSString *)text font:(NSFont *)font color:(NSColor *)color;
 
 @end
 

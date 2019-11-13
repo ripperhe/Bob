@@ -1,14 +1,14 @@
 //
-//  ZYQueryView.m
+//  QueryView.m
 //  ifanyi
 //
 //  Created by ripper on 2019/11/13.
 //  Copyright © 2019 ripperhe. All rights reserved.
 //
 
-#import "ZYQueryView.h"
+#import "QueryView.h"
 
-@implementation ZYQueryView
+@implementation QueryView
 
 - (instancetype)initWithFrame:(NSRect)frame {
     self = [super initWithFrame:frame];
@@ -21,26 +21,26 @@
 - (void)setup {
     self.wantsLayer = YES;
     self.layer.backgroundColor = NSColor.whiteColor.CGColor;
-    self.layer.borderColor = [NSColor zy_colorWithHexString:@"#EEEEEE"].CGColor;
+    self.layer.borderColor = [NSColor mm_colorWithHexString:@"#EEEEEE"].CGColor;
     self.layer.borderWidth = 1;
 
-    self.scrollView = [NSScrollView zy_make:^(NSScrollView *  _Nonnull scrollView) {
+    self.scrollView = [NSScrollView mm_make:^(NSScrollView *  _Nonnull scrollView) {
         [self addSubview:scrollView];
         scrollView.wantsLayer = YES;
-        scrollView.backgroundColor = NSColor.zy_randomColor;
+        scrollView.backgroundColor = NSColor.mm_randomColor;
         scrollView.hasVerticalScroller = YES;
         scrollView.hasHorizontalScroller = NO;
         scrollView.autohidesScrollers = YES;
-        self.textView = [NSTextView zy_make:^(NSTextView * _Nonnull textView) {
+        self.textView = [NSTextView mm_make:^(NSTextView * _Nonnull textView) {
             // https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/Rulers/Concepts/AboutParaStyles.html#//apple_ref/doc/uid/20000879-CJBBEHJA
-            [textView setDefaultParagraphStyle:[NSMutableParagraphStyle zy_anyMake:^(NSMutableParagraphStyle *  _Nonnull style) {
+            [textView setDefaultParagraphStyle:[NSMutableParagraphStyle mm_anyMake:^(NSMutableParagraphStyle *  _Nonnull style) {
                 //                    style.lineSpacing = 3;
                 style.lineHeightMultiple = 1.2;
                 style.paragraphSpacing = 5;
             }]];
             textView.string = @"I believe that in this world, some people have some things and some love. The first time they see it, they are destined to be fettered for a lifetime. They are destined to grow like a tree in their hearts and live for generations.";
             textView.font = [NSFont systemFontOfSize:14];
-            textView.textColor = [NSColor zy_colorWithHexString:@"#333333"];
+            textView.textColor = [NSColor mm_colorWithHexString:@"#333333"];
             textView.alignment = NSTextAlignmentJustified;
             textView.textContainerInset  = CGSizeMake(16, 12);
             textView.backgroundColor = NSColor.whiteColor;
@@ -53,7 +53,7 @@
         }];
     }];
     
-    self.audioButton = [NSButton zy_make:^(NSButton * _Nonnull button) {
+    self.audioButton = [NSButton mm_make:^(NSButton * _Nonnull button) {
         [self addSubview:button];
         button.bordered = NO;
         button.imageScaling = NSImageScaleProportionallyDown;
@@ -65,9 +65,9 @@
             make.bottom.inset(3);
             make.width.height.equalTo(@26);
         }];
-        zy_weakify(self)
+        mm_weakify(self)
         [button setRac_command:[[RACCommand alloc] initWithSignalBlock:^RACSignal * _Nonnull(id  _Nullable input) {
-            zy_strongify(self)
+            mm_strongify(self)
             if (self.audioActionBlock) {
                 self.audioActionBlock(self);
             }
@@ -75,7 +75,7 @@
         }]];
     }];
     
-    self.textCopyButton = [NSButton zy_make:^(NSButton * _Nonnull button) {
+    self.textCopyButton = [NSButton mm_make:^(NSButton * _Nonnull button) {
         [self addSubview:button];
         button.bordered = NO;
         button.imageScaling = NSImageScaleProportionallyDown;
@@ -87,9 +87,9 @@
             make.bottom.equalTo(self.audioButton);
             make.width.height.equalTo(@26);
         }];
-        zy_weakify(self)
+        mm_weakify(self)
         [button setRac_command:[[RACCommand alloc] initWithSignalBlock:^RACSignal * _Nonnull(id  _Nullable input) {
-            zy_strongify(self)
+            mm_strongify(self)
             if (self.copyActionBlock) {
                 self.copyActionBlock(self);
             }

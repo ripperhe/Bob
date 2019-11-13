@@ -1,64 +1,64 @@
 //
-//  ZYMake.m
+//  MMMake.m
 //  ifanyi
 //
 //  Created by ripper on 2019/11/12.
 //  Copyright © 2019 ripperhe. All rights reserved.
 //
 
-#import "ZYMake.h"
+#import "MMMake.h"
 
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wincomplete-implementation"
 
 
-@implementation NSObject (ZYMake)
+@implementation NSObject (MMMake)
 
-+ (instancetype)zy_make:(void (^)(id _Nonnull))block {
++ (instancetype)mm_make:(void (^)(id _Nonnull))block {
     NSObject *obj = [self new];
     block(obj);
     return obj;
 }
 
-+ (instancetype)zy_anyMake:(void (^)(id _Nonnull))block {
++ (instancetype)mm_anyMake:(void (^)(id _Nonnull))block {
     NSObject *obj = [self new];
     block(obj);
     return obj;
 }
 
-- (id)zy_put:(void (^)(id _Nonnull))block {
+- (id)mm_put:(void (^)(id _Nonnull))block {
     block(self);
     return self;
 }
 
-- (id)zy_anyPut:(void (^)(id _Nonnull))block {
+- (id)mm_anyPut:(void (^)(id _Nonnull))block {
     block(self);
     return self;
 }
 
 @end
 
-@implementation NSView (ZYMake)
+@implementation NSView (MMMake)
 
 @end
 
-@implementation NSButton (ZYMake)
+@implementation NSButton (MMMake)
 
 @end
 
-@implementation NSTextField (ZYMake)
+@implementation NSTextField (MMMake)
 
 @end
 
-@implementation NSTextView (ZYMake)
+@implementation NSTextView (MMMake)
 
 @end
 
-@implementation NSScrollView (ZYMake)
+@implementation NSScrollView (MMMake)
 
 @end
 
-@implementation NSImageView (ZYMake)
+@implementation NSImageView (MMMake)
 
 @end
 

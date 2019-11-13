@@ -10,9 +10,9 @@
 #import <MJExtension/MJExtension.h>
 #import <ReactiveObjC/ReactiveObjC.h>
 
-#import "ZYMake.h"
-#import "ZYMacro.h"
-#import "NSColor+ZY.h"
-#import "NSAttributedString+ZY.h"
-#import "NSMutableAttributedString+ZY.h"
-#import "NSString+ZY.h"
+#import "MMMake.h"
+#import "MMMacro.h"
+#import "NSColor+MM.h"
+#import "NSAttributedString+MM.h"
+#import "NSMutableAttributedString+MM.h"
+#import "NSString+MM.h"

@@ -1,18 +1,18 @@
 //
-//  NSAttributedString+ZY.m
+//  NSAttributedString+MM.m
 //  ifanyi
 //
 //  Created by ripper on 2019/11/12.
 //  Copyright © 2019 ripperhe. All rights reserved.
 //
 
-#import "NSAttributedString+ZY.h"
+#import "NSAttributedString+MM.h"
 
-@implementation NSAttributedString (ZY)
+@implementation NSAttributedString (MM)
 
-+ (NSAttributedString *)zy_attributedStringWithString:(NSString *)text font:(NSFont *)font color:(NSColor *)color {
++ (NSAttributedString *)mm_attributedStringWithString:(NSString *)text font:(NSFont *)font color:(NSColor *)color {
     if (!text.length || !font || !color) {
-        NSAssert(0, @"zy_attributedStringWithString: 参数不对");
+        NSAssert(0, @"mm_attributedStringWithString: 参数不对");
         return nil;
     }
     

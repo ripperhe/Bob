@@ -1,5 +1,5 @@
 //
-//  ZYPopUpButton.h
+//  PopUpButton.h
 //  ifanyi
 //
 //  Created by ripper on 2019/11/13.
@@ -10,11 +10,11 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface ZYPopUpButton : NSButton
+@interface PopUpButton : NSButton
 
 @property (nonatomic, strong) NSTextField *textField;
 @property (nonatomic, strong) NSImageView *imageView;
-@property (nonatomic, copy) void(^actionBlock)(ZYPopUpButton *button);
+@property (nonatomic, copy) void(^actionBlock)(PopUpButton *button);
 
 @end
 

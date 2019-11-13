@@ -1,17 +1,17 @@
 //
-//  NSString+ZY.m
+//  NSString+MM.m
 //  ifanyi
 //
 //  Created by ripper on 2019/11/13.
 //  Copyright © 2019 ripperhe. All rights reserved.
 //
 
-#import "NSString+ZY.h"
+#import "NSString+MM.h"
 
-@implementation NSString (ZY)
+@implementation NSString (MM)
 
 // https://stackoverflow.com/questions/8088473/how-do-i-url-encode-a-string
-- (NSString *)zy_urlencode {
+- (NSString *)mm_urlencode {
     NSMutableString *output = [NSMutableString string];
     const unsigned char *source = (const unsigned char *)[self UTF8String];
     unsigned long sourceLen = strlen((const char *)source);

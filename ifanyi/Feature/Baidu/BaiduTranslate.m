@@ -152,35 +152,35 @@
         @"token": self.token,
     };
     
-    zy_weakify(self)
+    mm_weakify(self)
     [self.jsonSession POST:@"https://fanyi.baidu.com/v2transapi" parameters:params progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        zy_strongify(self)
+        mm_strongify(self)
         if (responseObject) {
             BaiduTranslateResponse *response = [BaiduTranslateResponse mj_objectWithKeyValues:responseObject];
             if (response) {
                 if (response.error == 0) {
                     TranslateResult *result = [TranslateResult new];
                     result.text = text;
-                    result.link = [NSString stringWithFormat:@"%@/#%@/%@/%@", kRoot, response.trans_result.from, response.trans_result.to, text.zy_urlencode];
+                    result.link = [NSString stringWithFormat:@"%@/#%@/%@/%@", kRoot, response.trans_result.from, response.trans_result.to, text.mm_urlencode];
                     result.from = response.trans_result.from;
                     result.to = response.trans_result.to;
                     
                     // 解析单词释义
-                    [response.dict_result.simple_means zy_anyPut:^(BaiduTranslateResponseSimpleMean *  _Nonnull simple_means) {
+                    [response.dict_result.simple_means mm_anyPut:^(BaiduTranslateResponseSimpleMean *  _Nonnull simple_means) {
                         TranslateWordResult *wordResult = [TranslateWordResult new];
                         
-                        [simple_means.symbols.firstObject zy_anyPut:^(BaiduTranslateResponseSymbol *  _Nonnull symbol) {
+                        [simple_means.symbols.firstObject mm_anyPut:^(BaiduTranslateResponseSymbol *  _Nonnull symbol) {
                             // 解析音标
                             NSMutableArray *phonetics = [NSMutableArray array];
                             if (symbol.ph_am.length) {
-                                [phonetics addObject:[TranslatePhonetic zy_anyMake:^(TranslatePhonetic *  _Nonnull obj) {
+                                [phonetics addObject:[TranslatePhonetic mm_anyMake:^(TranslatePhonetic *  _Nonnull obj) {
                                     obj.name = @"美";
                                     obj.value = symbol.ph_am;
                                     obj.ttsURI = [self getAudioURLWithText:result.text language:@"en"];
                                 }]];
                             }
                             if (symbol.ph_en.length) {
-                                [phonetics addObject:[TranslatePhonetic zy_anyMake:^(TranslatePhonetic *  _Nonnull obj) {
+                                [phonetics addObject:[TranslatePhonetic mm_anyMake:^(TranslatePhonetic *  _Nonnull obj) {
                                     obj.name = @"英";
                                     obj.value = symbol.ph_en;
                                     obj.ttsURI = [self getAudioURLWithText:result.text language:@"uk"];
@@ -191,7 +191,7 @@
                             // 解析词性词义
                             NSMutableArray *parts = [NSMutableArray array];
                             [symbol.parts enumerateObjectsUsingBlock:^(BaiduTranslateResponsePart * _Nonnull resultPart, NSUInteger idx, BOOL * _Nonnull stop) {
-                                [parts addObject:[TranslatePart zy_anyMake:^(TranslatePart *  _Nonnull obj) {
+                                [parts addObject:[TranslatePart mm_anyMake:^(TranslatePart *  _Nonnull obj) {
                                     obj.part = resultPart.part.length ? resultPart.part : nil;
                                     obj.means = resultPart.means;
                                 }]];
@@ -200,52 +200,52 @@
                         }];
                         
                         // 解析其他形式
-                        [simple_means.exchange zy_anyPut:^(BaiduTranslateResponseExchange*  _Nonnull exchange) {
+                        [simple_means.exchange mm_anyPut:^(BaiduTranslateResponseExchange*  _Nonnull exchange) {
                             NSMutableArray *exchanges = [NSMutableArray array];
                             if (exchange.word_third.count) {
-                                [exchanges addObject:[TranslateExchange zy_anyMake:^(TranslateExchange *  _Nonnull obj) {
+                                [exchanges addObject:[TranslateExchange mm_anyMake:^(TranslateExchange *  _Nonnull obj) {
                                     obj.name = @"第三人称单数";
                                     obj.words = exchange.word_third;
                                 }]];
                             }
                             if (exchange.word_pl.count) {
-                                [exchanges addObject:[TranslateExchange zy_anyMake:^(TranslateExchange *  _Nonnull obj) {
+                                [exchanges addObject:[TranslateExchange mm_anyMake:^(TranslateExchange *  _Nonnull obj) {
                                     obj.name = @"复数";
                                     obj.words = exchange.word_pl;
                                 }]];
                             }
                             if (exchange.word_er.count) {
-                                [exchanges addObject:[TranslateExchange zy_anyMake:^(TranslateExchange *  _Nonnull obj) {
+                                [exchanges addObject:[TranslateExchange mm_anyMake:^(TranslateExchange *  _Nonnull obj) {
                                     obj.name = @"比较级";
                                     obj.words = exchange.word_er;
                                 }]];
                             }
                             if (exchange.word_est.count) {
-                                [exchanges addObject:[TranslateExchange zy_anyMake:^(TranslateExchange *  _Nonnull obj) {
+                                [exchanges addObject:[TranslateExchange mm_anyMake:^(TranslateExchange *  _Nonnull obj) {
                                     obj.name = @"最高级";
                                     obj.words = exchange.word_est;
                                 }]];
                             }
                             if (exchange.word_past.count) {
-                                [exchanges addObject:[TranslateExchange zy_anyMake:^(TranslateExchange *  _Nonnull obj) {
+                                [exchanges addObject:[TranslateExchange mm_anyMake:^(TranslateExchange *  _Nonnull obj) {
                                     obj.name = @"过去式";
                                     obj.words = exchange.word_past;
                                 }]];
                             }
                             if (exchange.word_done.count) {
-                                [exchanges addObject:[TranslateExchange zy_anyMake:^(TranslateExchange *  _Nonnull obj) {
+                                [exchanges addObject:[TranslateExchange mm_anyMake:^(TranslateExchange *  _Nonnull obj) {
                                     obj.name = @"过去分词";
                                     obj.words = exchange.word_done;
                                 }]];
                             }
                             if (exchange.word_ing.count) {
-                                [exchanges addObject:[TranslateExchange zy_anyMake:^(TranslateExchange *  _Nonnull obj) {
+                                [exchanges addObject:[TranslateExchange mm_anyMake:^(TranslateExchange *  _Nonnull obj) {
                                     obj.name = @"现在分词";
                                     obj.words = exchange.word_ing;
                                 }]];
                             }
                             if (exchange.word_proto.count) {
-                                [exchanges addObject:[TranslateExchange zy_anyMake:^(TranslateExchange *  _Nonnull obj) {
+                                [exchanges addObject:[TranslateExchange mm_anyMake:^(TranslateExchange *  _Nonnull obj) {
                                     obj.name = @"词根";
                                     obj.words = exchange.word_proto;
                                 }]];
@@ -299,9 +299,9 @@
     
     void(^request)(void) = ^(void) {
         if (!from) {
-            zy_weakify(self)
+            mm_weakify(self)
             [self detect:text completion:^(NSString * _Nullable language, NSError * _Nullable error) {
-                zy_strongify(self)
+                mm_strongify(self)
                 if (error) {
                     completion(nil, error);
                     return;
@@ -326,9 +326,9 @@
     
     if (!self.token || !self.gtk) {
         // 获取 token
-        zy_weakify(self)
+        mm_weakify(self)
         [self sendGetTokenAndGtkRequestWithCompletion:^(NSString *token, NSString *gtk, NSError *error) {
-            zy_strongify(self)
+            mm_strongify(self)
             if (error) {
                 completion(nil, error);
                 return;
@@ -390,7 +390,7 @@
 }
 
 - (NSString *)getAudioURLWithText:(NSString *)text language:(NSString *)language {
-    return [NSString stringWithFormat:@"%@/gettts?lan=%@&text=%@&spd=3&source=web", kRoot, language, text.zy_urlencode];
+    return [NSString stringWithFormat:@"%@/gettts?lan=%@&text=%@&spd=3&source=web", kRoot, language, text.mm_urlencode];
 }
 
 @end

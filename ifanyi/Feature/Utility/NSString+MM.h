@@ -1,5 +1,5 @@
 //
-//  NSString+ZY.h
+//  NSString+MM.h
 //  ifanyi
 //
 //  Created by ripper on 2019/11/13.
@@ -10,9 +10,9 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface NSString (ZY)
+@interface NSString (MM)
 
-- (NSString *)zy_urlencode;
+- (NSString *)mm_urlencode;
 
 @end
 
