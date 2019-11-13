@@ -59,8 +59,8 @@
         button.imageScaling = NSImageScaleProportionallyDown;
         button.bezelStyle = NSBezelStyleRegularSquare;
         [button setButtonType:NSButtonTypeToggle];
-        button.image = [NSImage imageNamed:@"xx"];
-        button.alternateImage = [NSImage imageNamed:@"oo"];
+        button.image = [NSImage imageNamed:@"pin_normal"];
+        button.alternateImage = [NSImage imageNamed:@"pin_selected"];
         [button mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.left.offset(6);
             make.width.height.mas_equalTo(32);
@@ -142,7 +142,7 @@
             button.imageScaling = NSImageScaleProportionallyDown;
             button.bezelStyle = NSBezelStyleRegularSquare;
             [button setButtonType:NSButtonTypeToggle];
-            button.image = [NSImage imageNamed:@"xx"];
+            button.image = [NSImage imageNamed:@"audio"];
             [button mas_makeConstraints:^(MASConstraintMaker *make) {
                 make.left.offset(9.5);
                 make.bottom.inset(3);
@@ -160,7 +160,7 @@
             button.imageScaling = NSImageScaleProportionallyDown;
             button.bezelStyle = NSBezelStyleRegularSquare;
             [button setButtonType:NSButtonTypeToggle];
-            button.image = [NSImage imageNamed:@"xx"];
+            button.image = [NSImage imageNamed:@"copy"];
             [button mas_makeConstraints:^(MASConstraintMaker *make) {
                 make.left.equalTo(self.queryAudioButton.mas_right).offset(1.5);
                 make.bottom.equalTo(self.queryAudioButton);
@@ -220,7 +220,7 @@
             
             NSImageView *imageView = [NSImageView zy_make:^(NSImageView * _Nonnull imageView) {
                 [titleContainerView addSubview:imageView];
-                imageView.image = [NSImage imageNamed:@"xx"];
+                imageView.image = [NSImage imageNamed:@"arrow_down"];
                 [imageView mas_makeConstraints:^(MASConstraintMaker *make) {
                     make.left.equalTo(titleTextField.mas_right).offset(6);
                     make.centerY.equalTo(titleTextField);
@@ -238,7 +238,7 @@
         button.imageScaling = NSImageScaleProportionallyDown;
         button.bezelStyle = NSBezelStyleRegularSquare;
         [button setButtonType:NSButtonTypeToggle];
-        button.image = [NSImage imageNamed:@"oo"];
+        button.image = [NSImage imageNamed:@"transform"];
         [button mas_makeConstraints:^(MASConstraintMaker *make) {
             make.centerY.equalTo(self.fromLanguageButton);
             make.centerX.equalTo(self.queryContainerView);
@@ -294,7 +294,7 @@
             
             NSImageView *imageView = [NSImageView zy_make:^(NSImageView * _Nonnull imageView) {
                 [titleContainerView addSubview:imageView];
-                imageView.image = [NSImage imageNamed:@"xx"];
+                imageView.image = [NSImage imageNamed:@"arrow_down"];
                 [imageView mas_makeConstraints:^(MASConstraintMaker *make) {
                     make.left.equalTo(titleTextField.mas_right).offset(6);
                     make.centerY.equalTo(titleTextField);
@@ -353,7 +353,7 @@
             button.imageScaling = NSImageScaleProportionallyDown;
             button.bezelStyle = NSBezelStyleRegularSquare;
             [button setButtonType:NSButtonTypeToggle];
-            button.image = [NSImage imageNamed:@"xx"];
+            button.image = [NSImage imageNamed:@"audio"];
             [button mas_makeConstraints:^(MASConstraintMaker *make) {
                 make.left.offset(9.5);
                 make.bottom.inset(3);
@@ -371,7 +371,7 @@
             button.imageScaling = NSImageScaleProportionallyDown;
             button.bezelStyle = NSBezelStyleRegularSquare;
             [button setButtonType:NSButtonTypeToggle];
-            button.image = [NSImage imageNamed:@"xx"];
+            button.image = [NSImage imageNamed:@"copy"];
             [button mas_makeConstraints:^(MASConstraintMaker *make) {
                 make.left.equalTo(self.resultAudioButton.mas_right).offset(1.5);
                 make.bottom.equalTo(self.resultAudioButton);
