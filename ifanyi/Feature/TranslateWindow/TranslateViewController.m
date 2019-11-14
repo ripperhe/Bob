@@ -13,11 +13,13 @@
 #import "QueryView.h"
 #import "ResultView.h"
 #import "Configuration.h"
+#import <AVFoundation/AVFoundation.h>
 
 @interface TranslateViewController ()
 
 @property (nonatomic, strong) BaiduTranslate *baiduTranslate;
 @property (nonatomic, strong) NSArray<NSNumber *> *languages;
+@property (nonatomic, strong) AVPlayer *player;
 
 @property (nonatomic, strong) NSButton *pinButton;
 @property (nonatomic, strong) NSButton *foldButton;
@@ -101,8 +103,10 @@
             [[NSPasteboard generalPasteboard] clearContents];
             [[NSPasteboard generalPasteboard] setString:view.textView.string forType:NSPasteboardTypeString];
         }];
+        mm_weakify(self)
         [view setAudioActionBlock:^(QueryView * _Nonnull view) {
-            NSLog(@"点击音频");
+            mm_strongify(self);
+            [self playAudioWithText:view.textView.string lang:Configuration.shared.from];
         }];
     }];
     
@@ -182,8 +186,10 @@
             make.height.equalTo(@176);
             make.bottom.inset(12);
         }];
+        mm_weakify(self)
         [view setAudioActionBlock:^(ResultView * _Nonnull view) {
-            NSLog(@"点击音频按钮");
+            mm_strongify(self);
+            [self playAudioWithText:view.textView.string lang:Configuration.shared.to];
         }];
         [view setCopyActionBlock:^(ResultView * _Nonnull view) {
             [[NSPasteboard generalPasteboard] clearContents];
@@ -225,6 +231,7 @@
         @(Language_hu),
         @(Language_vie),
     ];
+    self.player = [[AVPlayer alloc] init];
     
     [[NSNotificationCenter defaultCenter] addObserverForName:@"translate" object:nil queue:NSOperationQueue.mainQueue usingBlock:^(NSNotification * _Nonnull note) {
         [Selection getText:^(NSString * _Nullable text) {
@@ -254,6 +261,24 @@
         }
         return NO;
     }].firstObject integerValue];
+}
+
+- (void)playAudioWithText:(NSString *)text lang:(Language)lang {
+    if (text.length) {
+        mm_weakify(self)
+        [self.baiduTranslate audio:text from:lang completion:^(NSString * _Nullable url, NSError * _Nullable error) {
+            mm_strongify(self);
+            if (!error) {
+                [self playAudioWithURL:url];
+            }
+        }];
+    }
+}
+
+- (void)playAudioWithURL:(NSString *)url {
+    [self.player pause];
+    [self.player replaceCurrentItemWithPlayerItem:[AVPlayerItem playerItemWithURL:[NSURL URLWithString:url]]];
+    [self.player play];
 }
 
 - (void)foldQueryView:(BOOL)isFold {
