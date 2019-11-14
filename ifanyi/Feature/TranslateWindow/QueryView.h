@@ -19,6 +19,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, copy) void(^audioActionBlock)(QueryView *view);
 @property (nonatomic, copy) void(^copyActionBlock)(QueryView *view);
+@property (nonatomic, copy) void(^enterActionBlock)(QueryView *view);
 
 @end
 

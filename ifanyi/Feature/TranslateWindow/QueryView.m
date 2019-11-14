@@ -8,6 +8,10 @@
 
 #import "QueryView.h"
 
+@interface QueryView ()<NSTextViewDelegate>
+
+@end
+
 @implementation QueryView
 
 - (instancetype)initWithFrame:(NSRect)frame {
@@ -45,6 +49,7 @@
             textView.textContainerInset  = CGSizeMake(16, 12);
             textView.backgroundColor = NSColor.whiteColor;
             [textView setAutoresizingMask:NSViewHeightSizable | NSViewWidthSizable];
+            textView.delegate = self;
         }];
         scrollView.documentView = self.textView;
         [scrollView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -99,6 +104,23 @@
     
     // 将scrollview放到最上层
     [self addSubview:self.scrollView];
+}
+
+#pragma mark - NSTextViewDelegate
+
+- (BOOL)textView:(NSTextView *)textView doCommandBySelector:(SEL)commandSelector {
+    if (commandSelector == @selector(insertNewline:)) {
+        NSEventModifierFlags flags = NSApplication.sharedApplication.currentEvent.modifierFlags;
+        if(flags & NSEventModifierFlagShift) {
+            return NO;
+        }else {
+            if (self.enterActionBlock) {
+                self.enterActionBlock(self);
+            }
+            return YES;
+        }
+    }
+    return NO;
 }
 
 @end

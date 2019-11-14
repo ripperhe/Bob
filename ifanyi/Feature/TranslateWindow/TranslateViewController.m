@@ -108,6 +108,12 @@
             mm_strongify(self);
             [self playAudioWithText:view.textView.string lang:Configuration.shared.from];
         }];
+        [view setEnterActionBlock:^(QueryView * _Nonnull view) {
+            mm_strongify(self);
+            if (view.textView.string.length) {
+                [self translate:view.textView.string];
+            }
+        }];
     }];
     
     self.fromLanguageButton = [PopUpButton mm_anyMake:^(PopUpButton *  _Nonnull button) {
@@ -233,18 +239,14 @@
     ];
     self.player = [[AVPlayer alloc] init];
     
+    mm_weakify(self)
     [[NSNotificationCenter defaultCenter] addObserverForName:@"translate" object:nil queue:NSOperationQueue.mainQueue usingBlock:^(NSNotification * _Nonnull note) {
+        mm_strongify(self)
+        mm_weakify(self)
         [Selection getText:^(NSString * _Nullable text) {
+            mm_strongify(self)
             if (text.length) {
-                self.queryView.textView.string = text;
-                self.resultView.textView.string = @"查询中...";
-                [self.baiduTranslate translate:text from:Language_en to:Language_zh completion:^(TranslateResult * _Nullable result, NSError * _Nullable error) {
-                    if (error) {
-                        self.resultView.textView.string = @"查询失败";
-                    }else {
-                        self.resultView.textView.string = [NSString mm_stringByCombineComponents:result.normalResults separatedString:@"\n"];
-                    }
-                }];
+                [self translate:text];
             }else {
                 self.queryView.textView.string = @"";
                 self.queryView.textView.string = @"";
@@ -298,10 +300,10 @@
     }];
 }
 
-- (IBAction)xx:(id)sender {
-    NSString *text = self.queryView.textView.string;
+- (void)translate:(NSString *)text {
+    self.queryView.textView.string = text;
     self.resultView.textView.string = @"查询中...";
-    [self.baiduTranslate translate:text from:Configuration.shared.from to:Configuration.shared.to completion:^(TranslateResult * _Nullable result, NSError * _Nullable error) {
+    [self.baiduTranslate translate:text from:Language_en to:Language_zh completion:^(TranslateResult * _Nullable result, NSError * _Nullable error) {
         if (error) {
             self.resultView.textView.string = [error.userInfo objectForKey:NSLocalizedDescriptionKey];
         }else {
