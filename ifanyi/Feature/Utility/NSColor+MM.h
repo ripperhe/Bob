@@ -14,7 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (NSColor *)mm_randomColor;
 
-/** 16进制字符串 e.g. #666666 */
+/// 16进制字符串 e.g. #666666
 + (NSColor *)mm_colorWithHexString:(NSString *)hexStr;
 + (NSColor *)mm_colorWithHexString:(NSString *)hexStr alpha:(CGFloat)alpha;
 
