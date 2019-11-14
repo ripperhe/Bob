@@ -8,6 +8,23 @@
 
 #import <AppKit/AppKit.h>
 
+/// 定义make方法
+#define DefineMethodMMMake_h(class, obj) \
++ (instancetype)mm_make:(void (^)(class *obj))block; \
+- (id)mm_put:(void (^)(class *obj))block;
+
+/// 实现make方法
+#define DefineMethodMMMake_m(class) \
++ (instancetype)mm_make:(void (^)(class * _Nonnull))block { \
+NSObject *obj = [self new]; \
+block(obj); \
+return obj; \
+} \
+- (id)mm_put:(void (^)(class * _Nonnull))block { \
+block(self); \
+return self; \
+}
+
 NS_ASSUME_NONNULL_BEGIN
 
 @interface NSObject (MMMake)
@@ -21,7 +38,6 @@ NS_ASSUME_NONNULL_BEGIN
 - (id)mm_put:(void (^)(id obj))block;
 /// 同上，用于自定义类型手动修改类型（防止警告）
 - (id)mm_anyPut:(void (^)(id obj))block;
-
 
 @end
 

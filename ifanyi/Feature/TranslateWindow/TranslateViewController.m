@@ -14,6 +14,7 @@
 #import "ResultView.h"
 #import "Configuration.h"
 #import <AVFoundation/AVFoundation.h>
+#import "ImageButton.h"
 
 @interface TranslateViewController ()
 
@@ -25,7 +26,7 @@
 @property (nonatomic, strong) NSButton *foldButton;
 @property (nonatomic, strong) QueryView *queryView;
 @property (nonatomic, strong) PopUpButton *fromLanguageButton;
-@property (nonatomic, strong) NSButton *transformButton;
+@property (nonatomic, strong) ImageButton *transformButton;
 @property (nonatomic, strong) PopUpButton *toLanguageButton;
 @property (nonatomic, strong) ResultView *resultView;
 
@@ -92,7 +93,7 @@
         }]];
     }];
     
-    self.queryView = [QueryView mm_anyMake:^(QueryView * _Nonnull view) {
+    self.queryView = [QueryView mm_make:^(QueryView * _Nonnull view) {
         [self.view addSubview:view];
         [view mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.right.inset(12);
@@ -116,7 +117,7 @@
         }];
     }];
     
-    self.fromLanguageButton = [PopUpButton mm_anyMake:^(PopUpButton *  _Nonnull button) {
+    self.fromLanguageButton = [PopUpButton mm_make:^(PopUpButton *  _Nonnull button) {
         [self.view addSubview:button];
         [button mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.equalTo(self.queryView.mas_bottom).offset(12);
@@ -138,7 +139,7 @@
         }];
     }];
     
-    self.transformButton = [NSButton mm_make:^(NSButton * _Nonnull button) {
+    self.transformButton = [ImageButton mm_make:^(NSButton * _Nonnull button) {
         [self.view addSubview:button];
         button.bordered = NO;
         button.imageScaling = NSImageScaleProportionallyDown;
@@ -163,7 +164,7 @@
         }]];
     }];
     
-    self.toLanguageButton = [PopUpButton mm_anyMake:^(PopUpButton *  _Nonnull button) {
+    self.toLanguageButton = [PopUpButton mm_make:^(PopUpButton *  _Nonnull button) {
         [self.view addSubview:button];
         [button mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.equalTo(self.queryView.mas_bottom).offset(12);

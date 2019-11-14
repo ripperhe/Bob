@@ -12,6 +12,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface ResultView : NSView
 
+DefineMethodMMMake_h(ResultView, button)
+
 @property (nonatomic, strong) NSScrollView *scrollView;
 @property (nonatomic, strong) NSTextView *textView;
 @property (nonatomic, strong) NSButton *audioButton;

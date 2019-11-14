@@ -12,6 +12,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface PopUpButton : NSButton
 
+DefineMethodMMMake_h(PopUpButton, button)
+
 @property (nonatomic, strong) NSTextField *textField;
 @property (nonatomic, strong) NSImageView *imageView;
 @property (nonatomic, strong, nullable) NSMenu *customMenu;

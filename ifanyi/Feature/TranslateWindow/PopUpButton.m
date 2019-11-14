@@ -16,6 +16,8 @@
 
 @implementation PopUpButton
 
+DefineMethodMMMake_m(PopUpButton)
+
 - (instancetype)initWithFrame:(NSRect)frameRect {
     if (self = [super initWithFrame:frameRect]) {
         [self setup];

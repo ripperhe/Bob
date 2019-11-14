@@ -10,6 +10,8 @@
 
 @implementation ResultView
 
+DefineMethodMMMake_m(ResultView)
+
 - (instancetype)initWithFrame:(NSRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
@@ -32,7 +34,7 @@
         scrollView.hasHorizontalScroller = NO;
         scrollView.autohidesScrollers = YES;
         self.textView = [NSTextView mm_make:^(NSTextView * _Nonnull textView) {
-            [textView setDefaultParagraphStyle:[NSMutableParagraphStyle mm_anyMake:^(NSMutableParagraphStyle *  _Nonnull style) {
+            [textView setDefaultParagraphStyle:[NSMutableParagraphStyle mm_make:^(NSMutableParagraphStyle *  _Nonnull style) {
                 style.lineHeightMultiple = 1.2;
                 style.paragraphSpacing = 5;
             }]];

@@ -10,6 +10,7 @@
 		1DA290527826C220AD309012 /* Pods_ifanyi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6F84FA6D0A6E0ECE99CFC8C /* Pods_ifanyi.framework */; };
 		C92B6B79237C4C2400424B74 /* ResultView.m in Sources */ = {isa = PBXBuildFile; fileRef = C92B6B78237C4C2400424B74 /* ResultView.m */; };
 		C92B6B7C237C522A00424B74 /* NSArray+MM.m in Sources */ = {isa = PBXBuildFile; fileRef = C92B6B7B237C522A00424B74 /* NSArray+MM.m */; };
+		C9304C99237D857D005FBB21 /* ImageButton.m in Sources */ = {isa = PBXBuildFile; fileRef = C9304C98237D857D005FBB21 /* ImageButton.m */; };
 		C9896924237BA8AC00F16CE4 /* TranslateResult.m in Sources */ = {isa = PBXBuildFile; fileRef = C9896923237BA8AC00F16CE4 /* TranslateResult.m */; };
 		C9896927237BAF6B00F16CE4 /* TranslateError.m in Sources */ = {isa = PBXBuildFile; fileRef = C9896926237BAF6B00F16CE4 /* TranslateError.m */; };
 		C989692A237BDE3A00F16CE4 /* BaiduTranslateResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = C9896929237BDE3A00F16CE4 /* BaiduTranslateResponse.m */; };
@@ -39,6 +40,8 @@
 		C92B6B78237C4C2400424B74 /* ResultView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ResultView.m; sourceTree = "<group>"; };
 		C92B6B7A237C522A00424B74 /* NSArray+MM.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSArray+MM.h"; sourceTree = "<group>"; };
 		C92B6B7B237C522A00424B74 /* NSArray+MM.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSArray+MM.m"; sourceTree = "<group>"; };
+		C9304C97237D857D005FBB21 /* ImageButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ImageButton.h; sourceTree = "<group>"; };
+		C9304C98237D857D005FBB21 /* ImageButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ImageButton.m; sourceTree = "<group>"; };
 		C9896922237BA8AC00F16CE4 /* TranslateResult.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TranslateResult.h; sourceTree = "<group>"; };
 		C9896923237BA8AC00F16CE4 /* TranslateResult.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TranslateResult.m; sourceTree = "<group>"; };
 		C9896925237BAF6B00F16CE4 /* TranslateError.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TranslateError.h; sourceTree = "<group>"; };
@@ -114,6 +117,8 @@
 				C9E263CA235B3B1600E1D491 /* TranslateViewController.m */,
 				C9E50407237C0D1300A500B7 /* PopUpButton.h */,
 				C9E50408237C0D1300A500B7 /* PopUpButton.m */,
+				C9304C97237D857D005FBB21 /* ImageButton.h */,
+				C9304C98237D857D005FBB21 /* ImageButton.m */,
 				C98B495C237C12BA006DAE2A /* QueryView.h */,
 				C98B495D237C12BA006DAE2A /* QueryView.m */,
 				C92B6B77237C4C2400424B74 /* ResultView.h */,
@@ -351,6 +356,7 @@
 				C9B81AC0237ABF800024CCDB /* NSAttributedString+MM.m in Sources */,
 				C92B6B79237C4C2400424B74 /* ResultView.m in Sources */,
 				C9896927237BAF6B00F16CE4 /* TranslateError.m in Sources */,
+				C9304C99237D857D005FBB21 /* ImageButton.m in Sources */,
 				C9D56CC0237D39C2003051E2 /* NSUserDefaults+MM.m in Sources */,
 				C9B81AC3237ABFAF0024CCDB /* NSMutableAttributedString+MM.m in Sources */,
 				C9E263CB235B3B1600E1D491 /* TranslateViewController.m in Sources */,

@@ -7,12 +7,15 @@
 //
 
 #import "QueryView.h"
+#import "ImageButton.h"
 
 @interface QueryView ()<NSTextViewDelegate>
 
 @end
 
 @implementation QueryView
+
+DefineMethodMMMake_m(QueryView)
 
 - (instancetype)initWithFrame:(NSRect)frame {
     self = [super initWithFrame:frame];
@@ -37,7 +40,7 @@
         scrollView.autohidesScrollers = YES;
         self.textView = [NSTextView mm_make:^(NSTextView * _Nonnull textView) {
             // https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/Rulers/Concepts/AboutParaStyles.html#//apple_ref/doc/uid/20000879-CJBBEHJA
-            [textView setDefaultParagraphStyle:[NSMutableParagraphStyle mm_anyMake:^(NSMutableParagraphStyle *  _Nonnull style) {
+            [textView setDefaultParagraphStyle:[NSMutableParagraphStyle mm_make:^(NSMutableParagraphStyle *  _Nonnull style) {
                 //                    style.lineSpacing = 3;
                 style.lineHeightMultiple = 1.2;
                 style.paragraphSpacing = 5;
@@ -57,7 +60,7 @@
         }];
     }];
     
-    self.audioButton = [NSButton mm_make:^(NSButton * _Nonnull button) {
+    self.audioButton = [ImageButton mm_make:^(ImageButton * _Nonnull button) {
         [self addSubview:button];
         button.bordered = NO;
         button.imageScaling = NSImageScaleProportionallyDown;
@@ -79,7 +82,7 @@
         }]];
     }];
     
-    self.textCopyButton = [NSButton mm_make:^(NSButton * _Nonnull button) {
+    self.textCopyButton = [ImageButton mm_make:^(ImageButton * _Nonnull button) {
         [self addSubview:button];
         button.bordered = NO;
         button.imageScaling = NSImageScaleProportionallyDown;
