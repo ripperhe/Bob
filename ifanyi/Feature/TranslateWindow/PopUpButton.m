@@ -8,6 +8,12 @@
 
 #import "PopUpButton.h"
 
+@interface PopUpButton ()
+
+@property (nonatomic, strong) NSArray<NSString *> *titles;
+
+@end
+
 @implementation PopUpButton
 
 - (instancetype)initWithFrame:(NSRect)frameRect {
@@ -31,8 +37,10 @@
     mm_weakify(self)
     [self setRac_command:[[RACCommand alloc] initWithSignalBlock:^RACSignal * _Nonnull(id  _Nullable input) {
         mm_strongify(self)
-        if (self.actionBlock) {
-            self.actionBlock(self);
+        // 显示menu
+        if (self.titles.count) {
+            [self setupMenu];
+            [self.customMenu popUpMenuPositioningItem:nil atLocation:NSMakePoint(0, 0) inView:self];
         }
         return RACSignal.empty;
     }]];
@@ -45,7 +53,7 @@
         
         self.textField = [NSTextField mm_make:^(NSTextField * _Nonnull textField) {
             [titleContainerView addSubview:textField];
-            textField.stringValue = @"xx";
+            textField.stringValue = @"";
             textField.editable = NO;
             textField.bordered = NO;
             textField.backgroundColor = NSColor.clearColor;
@@ -66,6 +74,43 @@
             }];
         }];
     }];
+}
+
+#pragma mark -
+
+- (void)setupMenu {
+    if (!self.customMenu) {
+        self.customMenu = [NSMenu new];
+    }
+    [self.customMenu removeAllItems];
+    [self.titles enumerateObjectsUsingBlock:^(NSString * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        NSMenuItem *item = [[NSMenuItem alloc] initWithTitle:obj action:@selector(clickItem:) keyEquivalent:@""];
+        item.tag = idx;
+        item.target = self;
+        [self.customMenu addItem:item];
+    }];
+}
+
+- (void)clickItem:(NSMenuItem *)item {
+    [self updateWithIndex:item.tag];
+    if (self.menuItemSeletedBlock) {
+        self.menuItemSeletedBlock(item.tag, item.title);
+    }
+    self.customMenu = nil;
+}
+
+- (void)updateMenuWithTitleArray:(NSArray<NSString *> *)titles {
+    self.titles = titles;
+    
+    if (self.customMenu) {
+        [self setupMenu];
+    }
+}
+
+- (void)updateWithIndex:(NSInteger)index {
+    if (index >= 0 && index < self.titles.count) {
+        self.textField.stringValue = [self.titles objectAtIndex:index];
+    }
 }
 
 @end

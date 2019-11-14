@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "TranslateLanguage.h"
 #import "TranslateResult.h"
 #import "TranslateError.h"
 

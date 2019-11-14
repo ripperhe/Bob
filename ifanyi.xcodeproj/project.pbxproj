@@ -19,6 +19,8 @@
 		C9B81ABD237ABD260024CCDB /* NSColor+MM.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B81ABC237ABD260024CCDB /* NSColor+MM.m */; };
 		C9B81AC0237ABF800024CCDB /* NSAttributedString+MM.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B81ABF237ABF800024CCDB /* NSAttributedString+MM.m */; };
 		C9B81AC3237ABFAF0024CCDB /* NSMutableAttributedString+MM.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B81AC2237ABFAF0024CCDB /* NSMutableAttributedString+MM.m */; };
+		C9D56CBA237CEF60003051E2 /* Configuration.m in Sources */ = {isa = PBXBuildFile; fileRef = C9D56CB9237CEF60003051E2 /* Configuration.m */; };
+		C9D56CBD237CF243003051E2 /* TranslateLanguage.m in Sources */ = {isa = PBXBuildFile; fileRef = C9D56CBC237CF243003051E2 /* TranslateLanguage.m */; };
 		C9E263C8235B3B1600E1D491 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C9E263C7235B3B1600E1D491 /* AppDelegate.m */; };
 		C9E263CB235B3B1600E1D491 /* TranslateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9E263CA235B3B1600E1D491 /* TranslateViewController.m */; };
 		C9E263CD235B3B1800E1D491 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C9E263CC235B3B1800E1D491 /* Assets.xcassets */; };
@@ -56,6 +58,10 @@
 		C9B81ABF237ABF800024CCDB /* NSAttributedString+MM.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSAttributedString+MM.m"; sourceTree = "<group>"; };
 		C9B81AC1237ABFAF0024CCDB /* NSMutableAttributedString+MM.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSMutableAttributedString+MM.h"; sourceTree = "<group>"; };
 		C9B81AC2237ABFAF0024CCDB /* NSMutableAttributedString+MM.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSMutableAttributedString+MM.m"; sourceTree = "<group>"; };
+		C9D56CB8237CEF60003051E2 /* Configuration.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Configuration.h; sourceTree = "<group>"; };
+		C9D56CB9237CEF60003051E2 /* Configuration.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Configuration.m; sourceTree = "<group>"; };
+		C9D56CBB237CF243003051E2 /* TranslateLanguage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TranslateLanguage.h; sourceTree = "<group>"; };
+		C9D56CBC237CF243003051E2 /* TranslateLanguage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TranslateLanguage.m; sourceTree = "<group>"; };
 		C9E263C3235B3B1600E1D491 /* ifanyi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ifanyi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9E263C6235B3B1600E1D491 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		C9E263C7235B3B1600E1D491 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -133,6 +139,15 @@
 			path = Utility;
 			sourceTree = "<group>";
 		};
+		C9D56CB7237CEF41003051E2 /* Configuration */ = {
+			isa = PBXGroup;
+			children = (
+				C9D56CB8237CEF60003051E2 /* Configuration.h */,
+				C9D56CB9237CEF60003051E2 /* Configuration.m */,
+			);
+			path = Configuration;
+			sourceTree = "<group>";
+		};
 		C9E263BA235B3B1600E1D491 = {
 			isa = PBXGroup;
 			children = (
@@ -173,6 +188,7 @@
 				C9B81AB5237A5BC80024CCDB /* Utility */,
 				C9E263E2235B457B00E1D491 /* Selection */,
 				C9E263DC235B3CE600E1D491 /* Baidu */,
+				C9D56CB7237CEF41003051E2 /* Configuration */,
 				C9896921237B9ACC00F16CE4 /* TranslateWindow */,
 			);
 			path = Feature;
@@ -186,6 +202,8 @@
 				C9E263DE235B3D3800E1D491 /* BaiduTranslate.m */,
 				C9896928237BDE3A00F16CE4 /* BaiduTranslateResponse.h */,
 				C9896929237BDE3A00F16CE4 /* BaiduTranslateResponse.m */,
+				C9D56CBB237CF243003051E2 /* TranslateLanguage.h */,
+				C9D56CBC237CF243003051E2 /* TranslateLanguage.m */,
 				C9896922237BA8AC00F16CE4 /* TranslateResult.h */,
 				C9896923237BA8AC00F16CE4 /* TranslateResult.m */,
 				C9896925237BAF6B00F16CE4 /* TranslateError.h */,
@@ -330,11 +348,13 @@
 				C9896927237BAF6B00F16CE4 /* TranslateError.m in Sources */,
 				C9B81AC3237ABFAF0024CCDB /* NSMutableAttributedString+MM.m in Sources */,
 				C9E263CB235B3B1600E1D491 /* TranslateViewController.m in Sources */,
+				C9D56CBD237CF243003051E2 /* TranslateLanguage.m in Sources */,
 				C9B81ABD237ABD260024CCDB /* NSColor+MM.m in Sources */,
 				C98B495E237C12BA006DAE2A /* QueryView.m in Sources */,
 				C9E50409237C0D1300A500B7 /* PopUpButton.m in Sources */,
 				C989692E237BF05500F16CE4 /* NSString+MM.m in Sources */,
 				C989692A237BDE3A00F16CE4 /* BaiduTranslateResponse.m in Sources */,
+				C9D56CBA237CEF60003051E2 /* Configuration.m in Sources */,
 				C9B81AB8237A5C2F0024CCDB /* MMMake.m in Sources */,
 				C9E263D3235B3B1800E1D491 /* main.m in Sources */,
 				C9E263E5235B458D00E1D491 /* Selection.m in Sources */,

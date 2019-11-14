@@ -11,7 +11,7 @@
 #import <AFNetworking/AFNetworking.h>
 #import "BaiduTranslateResponse.h"
 
-#define kRoot @"https://fanyi.baidu.com"
+#define kRootPage @"https://fanyi.baidu.com"
 #define kError(type) [TranslateError errorWithType:type message:nil]
 
 @interface BaiduTranslate ()
@@ -84,7 +84,7 @@
 #pragma mark -
 
 - (void)sendGetTokenAndGtkRequestWithCompletion:(void (^)(NSString *token, NSString *gtk, NSError *error))completion {
-    [self.htmlSession GET:@"https://fanyi.baidu.com" parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    [self.htmlSession GET:kRootPage parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         __block NSString *tokenResult = nil;
         __block NSString *gtkResult = nil;
         NSString *string = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
@@ -98,16 +98,14 @@
         [tokenRegex enumerateMatchesInString:string options:NSMatchingReportCompletion range:NSMakeRange(0, string.length) usingBlock:^(NSTextCheckingResult * _Nullable result, NSMatchingFlags flags, BOOL * _Nonnull stop) {
             if (result) {
                 NSString *token = [string substringWithRange:result.range];
-                //                NSLog(@"\n%@", token);
                 if (token.length > 10) {
                     token = [token substringWithRange:NSMakeRange(8, token.length - 10)];
                     tokenResult = token;
                 }
-                NSLog(@"token 匹配结果: %@", token);
+//                NSLog(@"token 匹配结果: %@", token);
                 *stop = YES;
             }
         }];
-        
         
         // window.gtk = '320305.131321201';
         NSError *error2;
@@ -118,12 +116,11 @@
         [gtkRegex enumerateMatchesInString:string options:NSMatchingReportCompletion range:NSMakeRange(0, string.length) usingBlock:^(NSTextCheckingResult * _Nullable result, NSMatchingFlags flags, BOOL * _Nonnull stop) {
             if (result) {
                 NSString *gtk = [string substringWithRange:result.range];
-                //                NSLog(@"\n%@", gtk);
                 if (gtk.length > 16) {
                     gtk = [gtk substringWithRange:NSMakeRange(14, gtk.length - 16)];
                     gtkResult = gtk;
                 }
-                NSLog(@"gtk 匹配结果: %@", gtk);
+//                NSLog(@"gtk 匹配结果: %@", gtk);
                 *stop = YES;
             }
         }];
@@ -153,7 +150,7 @@
     };
     
     mm_weakify(self)
-    [self.jsonSession POST:@"https://fanyi.baidu.com/v2transapi" parameters:params progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    [self.jsonSession POST:[kRootPage stringByAppendingString:@"/v2transapi"] parameters:params progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         mm_strongify(self)
         if (responseObject) {
             BaiduTranslateResponse *response = [BaiduTranslateResponse mj_objectWithKeyValues:responseObject];
@@ -161,7 +158,7 @@
                 if (response.error == 0) {
                     TranslateResult *result = [TranslateResult new];
                     result.text = text;
-                    result.link = [NSString stringWithFormat:@"%@/#%@/%@/%@", kRoot, response.trans_result.from, response.trans_result.to, text.mm_urlencode];
+                    result.link = [NSString stringWithFormat:@"%@/#%@/%@/%@", kRootPage, response.trans_result.from, response.trans_result.to, text.mm_urlencode];
                     result.from = response.trans_result.from;
                     result.to = response.trans_result.to;
                     
@@ -353,7 +350,7 @@
     if (queryString.length >= 73) {
         queryString = [queryString substringToIndex:73];
     }
-    [self.jsonSession POST:@"https://fanyi.baidu.com/langdetect" parameters:@{@"query":queryString} progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    [self.jsonSession POST:[kRootPage stringByAppendingString:@"/langdetect"] parameters:@{@"query":queryString} progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         if (responseObject && [responseObject isKindOfClass:[NSDictionary class]]) {
             NSDictionary *jsonResult = responseObject;
             NSString *from = [jsonResult objectForKey:@"lan"];
@@ -390,7 +387,7 @@
 }
 
 - (NSString *)getAudioURLWithText:(NSString *)text language:(NSString *)language {
-    return [NSString stringWithFormat:@"%@/gettts?lan=%@&text=%@&spd=3&source=web", kRoot, language, text.mm_urlencode];
+    return [NSString stringWithFormat:@"%@/gettts?lan=%@&text=%@&spd=3&source=web", kRootPage, language, text.mm_urlencode];
 }
 
 @end

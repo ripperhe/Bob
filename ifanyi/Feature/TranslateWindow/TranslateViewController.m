@@ -82,6 +82,7 @@
         mm_weakify(button)
         [button setRac_command:[[RACCommand alloc] initWithSignalBlock:^RACSignal * _Nonnull(id  _Nullable input) {
             mm_strongify(button)
+            [self foldQueryView:button.state == NSControlStateValueOn];
             NSLog(@"点击按钮 %@", button.state == NSControlStateValueOn ? @"ON" : @"OFF");
             return RACSignal.empty;
         }]];
@@ -104,15 +105,52 @@
     
     self.fromLanguageButton = [PopUpButton mm_anyMake:^(PopUpButton *  _Nonnull button) {
         [self.view addSubview:button];
-        button.textField.stringValue = @"英语";
         [button mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.equalTo(self.queryView.mas_bottom).offset(12);
             make.left.offset(12);
             make.width.mas_equalTo(94);
             make.height.mas_equalTo(25);
         }];
-        [button setActionBlock:^(PopUpButton * _Nonnull button) {
-            NSLog(@"点击 from");
+        NSArray *languages = @[
+            @(Language_auto),
+            @(Language_zh),
+            @(Language_cht),
+            @(Language_en),
+            @(Language_yue),
+            @(Language_wyw),
+            @(Language_jp),
+            @(Language_kor),
+            @(Language_fra),
+            @(Language_spa),
+            @(Language_th),
+            @(Language_ara),
+            @(Language_ru),
+            @(Language_pt),
+            @(Language_de),
+            @(Language_it),
+            @(Language_el),
+            @(Language_nl),
+            @(Language_pl),
+            @(Language_bul),
+            @(Language_est),
+            @(Language_dan),
+            @(Language_fin),
+            @(Language_cs),
+            @(Language_rom),
+            @(Language_slo),
+            @(Language_swe),
+            @(Language_hu),
+            @(Language_vie),
+        ];
+        [button updateMenuWithTitleArray:[languages mm_map:^id _Nullable(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            if ([obj integerValue] == Language_auto) {
+                return @"自动检测";
+            }
+            return LanguageDescFromEnum([obj integerValue]);
+        }]];
+        [button updateWithIndex:1];
+        [button setMenuItemSeletedBlock:^(NSInteger index, NSString *title) {
+            NSLog(@"%@", title);
         }];
     }];
     
@@ -137,14 +175,51 @@
     
     self.toLanguageButton = [PopUpButton mm_anyMake:^(PopUpButton *  _Nonnull button) {
         [self.view addSubview:button];
-        button.textField.stringValue = @"中文";
         [button mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.equalTo(self.queryView.mas_bottom).offset(12);
             make.right.inset(12);
             make.width.height.equalTo(self.fromLanguageButton);
         }];
-        [button setActionBlock:^(PopUpButton * _Nonnull button) {
-            NSLog(@"点击 to");
+        NSArray *languages = @[
+            @(Language_auto),
+            @(Language_zh),
+            @(Language_cht),
+            @(Language_en),
+            @(Language_yue),
+            @(Language_wyw),
+            @(Language_jp),
+            @(Language_kor),
+            @(Language_fra),
+            @(Language_spa),
+            @(Language_th),
+            @(Language_ara),
+            @(Language_ru),
+            @(Language_pt),
+            @(Language_de),
+            @(Language_it),
+            @(Language_el),
+            @(Language_nl),
+            @(Language_pl),
+            @(Language_bul),
+            @(Language_est),
+            @(Language_dan),
+            @(Language_fin),
+            @(Language_cs),
+            @(Language_rom),
+            @(Language_slo),
+            @(Language_swe),
+            @(Language_hu),
+            @(Language_vie),
+        ];
+        [button updateMenuWithTitleArray:[languages mm_map:^id _Nullable(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            if ([obj integerValue] == Language_auto) {
+                return @"自动选择";
+            }
+            return LanguageDescFromEnum([obj integerValue]);
+        }]];
+        [button updateWithIndex:3];
+        [button setMenuItemSeletedBlock:^(NSInteger index, NSString *title) {
+            NSLog(@"%@", title);
         }];
     }];
     
@@ -154,6 +229,7 @@
             make.top.equalTo(self.fromLanguageButton.mas_bottom).offset(12);
             make.left.right.equalTo(self.queryView);
             make.height.equalTo(@176);
+            make.bottom.inset(12);
         }];
         [view setAudioActionBlock:^(ResultView * _Nonnull view) {
             NSLog(@"点击音频按钮");
@@ -187,12 +263,29 @@
     }];
 }
 
+- (void)foldQueryView:(BOOL)isFold {
+    self.queryView.hidden = isFold;
+    self.fromLanguageButton.hidden = isFold;
+    self.transformButton.hidden = isFold;
+    self.toLanguageButton.hidden = isFold;
+    [self.resultView mas_remakeConstraints:^(MASConstraintMaker *make) {
+        if (isFold) {
+            make.top.equalTo(self.pinButton.mas_bottom).offset(2);
+        }else {
+            make.top.equalTo(self.fromLanguageButton.mas_bottom).offset(12);
+        }
+        make.left.right.equalTo(self.queryView);
+        make.height.equalTo(@176);
+        make.bottom.inset(12);
+    }];
+}
+
 - (IBAction)xx:(id)sender {
     NSString *text = self.queryView.textView.string;
     self.resultView.textView.string = @"查询中...";
     [self.baiduTranslate translate:text from:@"en" to:@"zh" completion:^(TranslateResult * _Nullable result, NSError * _Nullable error) {
         if (error) {
-            self.resultView.textView.string = @"查询失败";
+            self.resultView.textView.string = [error.userInfo objectForKey:NSLocalizedDescriptionKey];
         }else {
             self.resultView.textView.string = [NSString mm_stringByCombineComponents:result.normalResults separatedString:@"\n"];
         }
