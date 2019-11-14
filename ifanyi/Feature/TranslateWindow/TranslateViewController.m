@@ -17,6 +17,7 @@
 @interface TranslateViewController ()
 
 @property (nonatomic, strong) BaiduTranslate *baiduTranslate;
+@property (nonatomic, strong) NSArray<NSNumber *> *languages;
 
 @property (nonatomic, strong) NSButton *pinButton;
 @property (nonatomic, strong) NSButton *foldButton;
@@ -33,8 +34,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self setupViews];
     [self setupTranslate];
+    [self setupViews];
 }
 
 - (void)setupViews {
@@ -97,7 +98,8 @@
             make.height.equalTo(@176);
         }];
         [view setCopyActionBlock:^(QueryView * _Nonnull view) {
-            NSLog(@"点击拷贝");
+            [[NSPasteboard generalPasteboard] clearContents];
+            [[NSPasteboard generalPasteboard] setString:view.textView.string forType:NSPasteboardTypeString];
         }];
         [view setAudioActionBlock:^(QueryView * _Nonnull view) {
             NSLog(@"点击音频");
@@ -112,52 +114,17 @@
             make.width.mas_equalTo(94);
             make.height.mas_equalTo(25);
         }];
-        NSArray *languages = @[
-            @(Language_auto),
-            @(Language_zh),
-            @(Language_cht),
-            @(Language_en),
-            @(Language_yue),
-            @(Language_wyw),
-            @(Language_jp),
-            @(Language_kor),
-            @(Language_fra),
-            @(Language_spa),
-            @(Language_th),
-            @(Language_ara),
-            @(Language_ru),
-            @(Language_pt),
-            @(Language_de),
-            @(Language_it),
-            @(Language_el),
-            @(Language_nl),
-            @(Language_pl),
-            @(Language_bul),
-            @(Language_est),
-            @(Language_dan),
-            @(Language_fin),
-            @(Language_cs),
-            @(Language_rom),
-            @(Language_slo),
-            @(Language_swe),
-            @(Language_hu),
-            @(Language_vie),
-        ];
-        [button updateMenuWithTitleArray:[languages mm_map:^id _Nullable(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        [button updateMenuWithTitleArray:[self.languages mm_map:^id _Nullable(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
             if ([obj integerValue] == Language_auto) {
                 return @"自动检测";
             }
             return LanguageDescFromEnum([obj integerValue]);
         }]];
-        [button updateWithIndex:[[languages mm_where:^BOOL(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-            if ([obj integerValue] == Configuration.shared.from) {
-                *stop = YES;
-                return YES;
-            }
-            return NO;
-        }].firstObject integerValue]];
+        [button updateWithIndex:[self indexFromLangages:Configuration.shared.from]];
+        mm_weakify(self);
         [button setMenuItemSeletedBlock:^(NSInteger index, NSString *title) {
-            Configuration.shared.from = [[languages objectAtIndex:index] integerValue];
+            mm_strongify(self);
+            Configuration.shared.from = [[self.languages objectAtIndex:index] integerValue];
         }];
     }];
     
@@ -174,8 +141,14 @@
             make.width.equalTo(@40);
             make.height.equalTo(@40);
         }];
+        mm_weakify(self)
         [button setRac_command:[[RACCommand alloc] initWithSignalBlock:^RACSignal * _Nonnull(id  _Nullable input) {
-            NSLog(@"点击转换按钮");
+            mm_strongify(self)
+            Language from = Configuration.shared.from;
+            Configuration.shared.from = Configuration.shared.to;
+            Configuration.shared.to = from;
+            [self.fromLanguageButton updateWithIndex:[self indexFromLangages:Configuration.shared.from]];
+            [self.toLanguageButton updateWithIndex:[self indexFromLangages:Configuration.shared.to]];
             return RACSignal.empty;
         }]];
     }];
@@ -187,52 +160,17 @@
             make.right.inset(12);
             make.width.height.equalTo(self.fromLanguageButton);
         }];
-        NSArray *languages = @[
-            @(Language_auto),
-            @(Language_zh),
-            @(Language_cht),
-            @(Language_en),
-            @(Language_yue),
-            @(Language_wyw),
-            @(Language_jp),
-            @(Language_kor),
-            @(Language_fra),
-            @(Language_spa),
-            @(Language_th),
-            @(Language_ara),
-            @(Language_ru),
-            @(Language_pt),
-            @(Language_de),
-            @(Language_it),
-            @(Language_el),
-            @(Language_nl),
-            @(Language_pl),
-            @(Language_bul),
-            @(Language_est),
-            @(Language_dan),
-            @(Language_fin),
-            @(Language_cs),
-            @(Language_rom),
-            @(Language_slo),
-            @(Language_swe),
-            @(Language_hu),
-            @(Language_vie),
-        ];
-        [button updateMenuWithTitleArray:[languages mm_map:^id _Nullable(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        [button updateMenuWithTitleArray:[self.languages mm_map:^id _Nullable(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
             if ([obj integerValue] == Language_auto) {
                 return @"自动选择";
             }
             return LanguageDescFromEnum([obj integerValue]);
         }]];
-        [button updateWithIndex:[[languages mm_where:^BOOL(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-            if ([obj integerValue] == Configuration.shared.to) {
-                *stop = YES;
-                return YES;
-            }
-            return NO;
-        }].firstObject integerValue]];
+        [button updateWithIndex:[self indexFromLangages:Configuration.shared.to]];
+        mm_weakify(self);
         [button setMenuItemSeletedBlock:^(NSInteger index, NSString *title) {
-            Configuration.shared.to = [[languages objectAtIndex:index] integerValue];
+            mm_strongify(self);
+            Configuration.shared.to = [[self.languages objectAtIndex:index] integerValue];
         }];
     }];
     
@@ -248,13 +186,45 @@
             NSLog(@"点击音频按钮");
         }];
         [view setCopyActionBlock:^(ResultView * _Nonnull view) {
-            NSLog(@"点击复制按钮");
+            [[NSPasteboard generalPasteboard] clearContents];
+            [[NSPasteboard generalPasteboard] setString:view.textView.string forType:NSPasteboardTypeString];
         }];
     }];
 }
 
 - (void)setupTranslate {
     self.baiduTranslate = [BaiduTranslate new];
+    self.languages = @[
+        @(Language_auto),
+        @(Language_zh),
+        @(Language_cht),
+        @(Language_en),
+        @(Language_yue),
+        @(Language_wyw),
+        @(Language_jp),
+        @(Language_kor),
+        @(Language_fra),
+        @(Language_spa),
+        @(Language_th),
+        @(Language_ara),
+        @(Language_ru),
+        @(Language_pt),
+        @(Language_de),
+        @(Language_it),
+        @(Language_el),
+        @(Language_nl),
+        @(Language_pl),
+        @(Language_bul),
+        @(Language_est),
+        @(Language_dan),
+        @(Language_fin),
+        @(Language_cs),
+        @(Language_rom),
+        @(Language_slo),
+        @(Language_swe),
+        @(Language_hu),
+        @(Language_vie),
+    ];
     
     [[NSNotificationCenter defaultCenter] addObserverForName:@"translate" object:nil queue:NSOperationQueue.mainQueue usingBlock:^(NSNotification * _Nonnull note) {
         [Selection getText:^(NSString * _Nullable text) {
@@ -274,6 +244,16 @@
             }
         }];
     }];
+}
+
+- (NSInteger)indexFromLangages:(Language)lang {
+    return [[self.languages mm_where:^BOOL(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        if ([obj integerValue] == lang) {
+            *stop = YES;
+            return YES;
+        }
+        return NO;
+    }].firstObject integerValue];
 }
 
 - (void)foldQueryView:(BOOL)isFold {
