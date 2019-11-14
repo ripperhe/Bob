@@ -303,7 +303,7 @@
 - (void)translate:(NSString *)text {
     self.queryView.textView.string = text;
     self.resultView.textView.string = @"查询中...";
-    [self.baiduTranslate translate:text from:Language_en to:Language_zh completion:^(TranslateResult * _Nullable result, NSError * _Nullable error) {
+    [self.baiduTranslate translate:text from:Configuration.shared.from to:Configuration.shared.to completion:^(TranslateResult * _Nullable result, NSError * _Nullable error) {
         if (error) {
             self.resultView.textView.string = [error.userInfo objectForKey:NSLocalizedDescriptionKey];
         }else {

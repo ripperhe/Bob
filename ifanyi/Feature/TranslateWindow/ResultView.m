@@ -36,8 +36,6 @@
                 style.lineHeightMultiple = 1.2;
                 style.paragraphSpacing = 5;
             }]];
-            textView.string = @"我相信这世界上，有些人有些事有些爱，在见到的第一次，就注定要羁绊一生，就注定像一棵树一样，生长在心里，生生世世。我相信这世界上，有些人有些事有些爱，在见到的第一次，就注定要羁绊一生，就注定像一棵树一样，生长在心里，生生世世。";
-
             textView.editable = NO;
             textView.font = [NSFont systemFontOfSize:14];
             textView.textColor = [NSColor mm_colorWithHexString:@"#333333"];

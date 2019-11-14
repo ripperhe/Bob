@@ -42,7 +42,6 @@
                 style.lineHeightMultiple = 1.2;
                 style.paragraphSpacing = 5;
             }]];
-            textView.string = @"I believe that in this world, some people have some things and some love. The first time they see it, they are destined to be fettered for a lifetime. They are destined to grow like a tree in their hearts and live for generations.";
             textView.font = [NSFont systemFontOfSize:14];
             textView.textColor = [NSColor mm_colorWithHexString:@"#333333"];
             textView.alignment = NSTextAlignmentJustified;
