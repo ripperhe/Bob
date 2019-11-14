@@ -16,7 +16,7 @@
 /// 实现make方法
 #define DefineMethodMMMake_m(class) \
 + (instancetype)mm_make:(void (^)(class * _Nonnull))block { \
-NSObject *obj = [self new]; \
+id obj = [self new]; \
 block(obj); \
 return obj; \
 } \
