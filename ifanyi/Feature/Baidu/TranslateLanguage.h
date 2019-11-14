@@ -75,7 +75,7 @@ typedef NS_ENUM(NSUInteger, Language) {
 /// 根据枚举获取百度翻译字符串
 NSString * _Nullable BaiduLanguageStringFromEnum(Language lang);
 /// 根据百度翻译字符串获取枚举
-Language LanguageEnumFromBaiduString(NSString *lang);
+Language BaiduLanguageEnumFromString(NSString *lang);
 /// 根据枚举获取描述
 NSString * _Nullable LanguageDescFromEnum(Language lang);
 

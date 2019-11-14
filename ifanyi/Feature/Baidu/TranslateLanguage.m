@@ -46,7 +46,7 @@ NSString * _Nullable BaiduLanguageStringFromEnum(Language lang) {
     return [_stringDict objectForKey:@(lang)];
 }
 
-Language LanguageEnumFromBaiduString(NSString *lang) {
+Language BaiduLanguageEnumFromString(NSString *lang) {
     static NSDictionary *_stringDict = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{

@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "TranslateLanguage.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -57,9 +58,9 @@ NS_ASSUME_NONNULL_BEGIN
 /// 此翻译接口的在线查询地址
 @property (nonatomic, copy) NSString *link;
 /// 由翻译接口提供的源语种，可能会与查询对象的 from 不同
-@property (nonatomic, copy) NSString *from;
+@property (nonatomic, assign) Language from;
 /// 由翻译接口提供的目标语种，注意可能会与查询对象的 to 不同
-@property (nonatomic, copy) NSString *to;
+@property (nonatomic, assign) Language to;
 /// 如果查询的是英文单词(或某些固定词组)，翻译接口会返回这个单词的详细释义
 @property (nonatomic, strong, nullable) TranslateWordResult *wordResult;
 /// 普通翻译结果，可以有多条（一个段落对应一个翻译结果）

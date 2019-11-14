@@ -12,6 +12,7 @@
 #import "PopUpButton.h"
 #import "QueryView.h"
 #import "ResultView.h"
+#import "Configuration.h"
 
 @interface TranslateViewController ()
 
@@ -148,9 +149,15 @@
             }
             return LanguageDescFromEnum([obj integerValue]);
         }]];
-        [button updateWithIndex:1];
+        [button updateWithIndex:[[languages mm_where:^BOOL(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            if ([obj integerValue] == Configuration.shared.from) {
+                *stop = YES;
+                return YES;
+            }
+            return NO;
+        }].firstObject integerValue]];
         [button setMenuItemSeletedBlock:^(NSInteger index, NSString *title) {
-            NSLog(@"%@", title);
+            Configuration.shared.from = [[languages objectAtIndex:index] integerValue];
         }];
     }];
     
@@ -217,9 +224,15 @@
             }
             return LanguageDescFromEnum([obj integerValue]);
         }]];
-        [button updateWithIndex:3];
+        [button updateWithIndex:[[languages mm_where:^BOOL(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            if ([obj integerValue] == Configuration.shared.to) {
+                *stop = YES;
+                return YES;
+            }
+            return NO;
+        }].firstObject integerValue]];
         [button setMenuItemSeletedBlock:^(NSInteger index, NSString *title) {
-            NSLog(@"%@", title);
+            Configuration.shared.to = [[languages objectAtIndex:index] integerValue];
         }];
     }];
     
@@ -248,7 +261,7 @@
             if (text.length) {
                 self.queryView.textView.string = text;
                 self.resultView.textView.string = @"查询中...";
-                [self.baiduTranslate translate:text from:@"en" to:@"zh" completion:^(TranslateResult * _Nullable result, NSError * _Nullable error) {
+                [self.baiduTranslate translate:text from:Language_en to:Language_zh completion:^(TranslateResult * _Nullable result, NSError * _Nullable error) {
                     if (error) {
                         self.resultView.textView.string = @"查询失败";
                     }else {
@@ -283,7 +296,7 @@
 - (IBAction)xx:(id)sender {
     NSString *text = self.queryView.textView.string;
     self.resultView.textView.string = @"查询中...";
-    [self.baiduTranslate translate:text from:@"en" to:@"zh" completion:^(TranslateResult * _Nullable result, NSError * _Nullable error) {
+    [self.baiduTranslate translate:text from:Configuration.shared.from to:Configuration.shared.to completion:^(TranslateResult * _Nullable result, NSError * _Nullable error) {
         if (error) {
             self.resultView.textView.string = [error.userInfo objectForKey:NSLocalizedDescriptionKey];
         }else {

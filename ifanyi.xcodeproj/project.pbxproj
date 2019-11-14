@@ -21,6 +21,7 @@
 		C9B81AC3237ABFAF0024CCDB /* NSMutableAttributedString+MM.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B81AC2237ABFAF0024CCDB /* NSMutableAttributedString+MM.m */; };
 		C9D56CBA237CEF60003051E2 /* Configuration.m in Sources */ = {isa = PBXBuildFile; fileRef = C9D56CB9237CEF60003051E2 /* Configuration.m */; };
 		C9D56CBD237CF243003051E2 /* TranslateLanguage.m in Sources */ = {isa = PBXBuildFile; fileRef = C9D56CBC237CF243003051E2 /* TranslateLanguage.m */; };
+		C9D56CC0237D39C2003051E2 /* NSUserDefaults+MM.m in Sources */ = {isa = PBXBuildFile; fileRef = C9D56CBF237D39C2003051E2 /* NSUserDefaults+MM.m */; };
 		C9E263C8235B3B1600E1D491 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C9E263C7235B3B1600E1D491 /* AppDelegate.m */; };
 		C9E263CB235B3B1600E1D491 /* TranslateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9E263CA235B3B1600E1D491 /* TranslateViewController.m */; };
 		C9E263CD235B3B1800E1D491 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C9E263CC235B3B1800E1D491 /* Assets.xcassets */; };
@@ -62,6 +63,8 @@
 		C9D56CB9237CEF60003051E2 /* Configuration.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Configuration.m; sourceTree = "<group>"; };
 		C9D56CBB237CF243003051E2 /* TranslateLanguage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TranslateLanguage.h; sourceTree = "<group>"; };
 		C9D56CBC237CF243003051E2 /* TranslateLanguage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TranslateLanguage.m; sourceTree = "<group>"; };
+		C9D56CBE237D39C2003051E2 /* NSUserDefaults+MM.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSUserDefaults+MM.h"; sourceTree = "<group>"; };
+		C9D56CBF237D39C2003051E2 /* NSUserDefaults+MM.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSUserDefaults+MM.m"; sourceTree = "<group>"; };
 		C9E263C3235B3B1600E1D491 /* ifanyi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ifanyi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9E263C6235B3B1600E1D491 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		C9E263C7235B3B1600E1D491 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -135,6 +138,8 @@
 				C989692D237BF05500F16CE4 /* NSString+MM.m */,
 				C92B6B7A237C522A00424B74 /* NSArray+MM.h */,
 				C92B6B7B237C522A00424B74 /* NSArray+MM.m */,
+				C9D56CBE237D39C2003051E2 /* NSUserDefaults+MM.h */,
+				C9D56CBF237D39C2003051E2 /* NSUserDefaults+MM.m */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -346,6 +351,7 @@
 				C9B81AC0237ABF800024CCDB /* NSAttributedString+MM.m in Sources */,
 				C92B6B79237C4C2400424B74 /* ResultView.m in Sources */,
 				C9896927237BAF6B00F16CE4 /* TranslateError.m in Sources */,
+				C9D56CC0237D39C2003051E2 /* NSUserDefaults+MM.m in Sources */,
 				C9B81AC3237ABFAF0024CCDB /* NSMutableAttributedString+MM.m in Sources */,
 				C9E263CB235B3B1600E1D491 /* TranslateViewController.m in Sources */,
 				C9D56CBD237CF243003051E2 /* TranslateLanguage.m in Sources */,

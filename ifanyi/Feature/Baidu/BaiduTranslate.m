@@ -135,14 +135,14 @@
     } ];
 }
 
-- (void)sendTranslateRequest:(NSString *)text from:(NSString *)from to:(NSString *)to completion:(nonnull void (^)(TranslateResult * _Nullable, NSError * _Nullable))completion {
-    // 发送翻译请求
+- (void)sendTranslateRequest:(NSString *)text from:(Language)from to:(Language)to completion:(nonnull void (^)(TranslateResult * _Nullable, NSError * _Nullable))completion {
+    // 获取sign
     JSValue *value = [self.jsFunction callWithArguments:@[text, self.gtk]];
     NSString *sign = [value toString];
 
     NSDictionary *params = @{
-        @"from": from,
-        @"to": to,
+        @"from": BaiduLanguageStringFromEnum(from),
+        @"to": BaiduLanguageStringFromEnum(to),
         @"query": text,
         @"simple_means_flag": @3,
         @"sign": sign,
@@ -159,8 +159,8 @@
                     TranslateResult *result = [TranslateResult new];
                     result.text = text;
                     result.link = [NSString stringWithFormat:@"%@/#%@/%@/%@", kRootPage, response.trans_result.from, response.trans_result.to, text.mm_urlencode];
-                    result.from = response.trans_result.from;
-                    result.to = response.trans_result.to;
+                    result.from = BaiduLanguageEnumFromString(response.trans_result.from);
+                    result.to = BaiduLanguageEnumFromString(response.trans_result.to);
                     
                     // 解析单词释义
                     [response.dict_result.simple_means mm_anyPut:^(BaiduTranslateResponseSimpleMean *  _Nonnull simple_means) {
@@ -288,7 +288,7 @@
 
 #pragma mark -
 
-- (void)translate:(NSString *)text from:(NSString *)from to:(NSString *)to completion:(nonnull void (^)(TranslateResult * _Nullable, NSError * _Nullable))completion {
+- (void)translate:(NSString *)text from:(Language)from to:(Language)to completion:(nonnull void (^)(TranslateResult * _Nullable, NSError * _Nullable))completion {
     if (!text.length) {
         completion(nil, kError(TranslateErrorTypeParamError));
         return;
@@ -297,27 +297,27 @@
     void(^request)(void) = ^(void) {
         if (!from) {
             mm_weakify(self)
-            [self detect:text completion:^(NSString * _Nullable language, NSError * _Nullable error) {
+            [self detect:text completion:^(Language lang, NSError * _Nullable error) {
                 mm_strongify(self)
                 if (error) {
                     completion(nil, error);
                     return;
                 }
                 
-                NSString *toLanguage = to;
-                if (!toLanguage) {
-                    toLanguage = [language.lowercaseString hasPrefix:@"zh"] ? @"en" : @"zh";
+                Language toLang = to;
+                if (toLang == Language_auto) {
+                    toLang = (lang == Language_zh || lang == Language_cht) ? Language_en : Language_zh;
                 }
 
-                [self sendTranslateRequest:text from:language to:toLanguage completion:completion];
+                [self sendTranslateRequest:text from:lang to:toLang completion:completion];
             }];
         }else {
-            NSString *toLanguage = to;
-            if (!toLanguage) {
-                toLanguage = [from.lowercaseString hasPrefix:@"zh"] ? @"en" : @"zh";
+            Language toLang = to;
+            if (toLang == Language_auto) {
+                toLang = (from == Language_zh || from == Language_cht) ? Language_en : Language_zh;
             }
 
-            [self sendTranslateRequest:text from:from to:toLanguage completion:completion];
+            [self sendTranslateRequest:text from:from to:toLang completion:completion];
         }
     };
     
@@ -340,9 +340,9 @@
     }
 }
 
-- (void)detect:(NSString *)text completion:(nonnull void (^)(NSString * _Nullable, NSError * _Nullable))completion {
+- (void)detect:(NSString *)text completion:(nonnull void (^)(Language, NSError * _Nullable))completion {
     if (!text.length) {
-        completion(nil, kError(TranslateErrorTypeParamError));
+        completion(Language_auto, kError(TranslateErrorTypeParamError));
         return;
     }
     
@@ -355,34 +355,34 @@
             NSDictionary *jsonResult = responseObject;
             NSString *from = [jsonResult objectForKey:@"lan"];
             if ([from isKindOfClass:NSString.class] && from.length) {
-                completion(from, nil);
+                completion(BaiduLanguageEnumFromString(from), nil);
             }else {
-                completion(nil, kError(TranslateErrorTypeUnsupportLanguage));
+                completion(Language_auto, kError(TranslateErrorTypeUnsupportLanguage));
             }
             return;
         }
-        completion(nil, kError(TranslateErrorTypeAPIError));
+        completion(Language_auto, kError(TranslateErrorTypeAPIError));
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        completion(nil, kError(TranslateErrorTypeNetworkError));
+        completion(Language_auto, kError(TranslateErrorTypeNetworkError));
     }];
 }
 
-- (void)audio:(NSString *)text from:(NSString *)from completion:(void (^)(NSString * _Nullable, NSError * _Nullable))completion {
+- (void)audio:(NSString *)text from:(Language)from completion:(void (^)(NSString * _Nullable, NSError * _Nullable))completion {
     if (!text.length) {
         completion(nil, kError(TranslateErrorTypeParamError));
         return;
     }
     
-    if (from.length) {
-        completion([self getAudioURLWithText:text language:from], nil);
-    }else {
-        [self detect:text completion:^(NSString * _Nullable language, NSError * _Nullable error) {
+    if (from == Language_auto) {
+        [self detect:text completion:^(Language lang, NSError * _Nullable error) {
             if (!error) {
-                completion([self getAudioURLWithText:text language:language], nil);
+                completion([self getAudioURLWithText:text language:BaiduLanguageStringFromEnum(lang)], nil);
             }else {
                 completion(nil, error);
             }
         }];
+    }else {
+        completion([self getAudioURLWithText:text language:BaiduLanguageStringFromEnum(from)], nil);
     }
 }
 
