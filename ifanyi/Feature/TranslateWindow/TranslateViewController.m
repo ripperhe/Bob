@@ -122,7 +122,7 @@
         [button mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.equalTo(self.queryView.mas_bottom).offset(12);
             make.left.offset(12);
-            make.width.mas_equalTo(94);
+            make.width.mas_equalTo(100);
             make.height.mas_equalTo(25);
         }];
         [button updateMenuWithTitleArray:[self.languages mm_map:^id _Nullable(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
@@ -148,7 +148,8 @@
         button.image = [NSImage imageNamed:@"transform"];
         [button mas_makeConstraints:^(MASConstraintMaker *make) {
             make.centerY.equalTo(self.fromLanguageButton);
-            make.centerX.equalTo(self.queryView);
+//            make.centerX.equalTo(self.queryView);
+            make.left.equalTo(self.fromLanguageButton.mas_right).offset(30);
             make.width.equalTo(@40);
             make.height.equalTo(@40);
         }];
@@ -167,9 +168,12 @@
     self.toLanguageButton = [PopUpButton mm_make:^(PopUpButton *  _Nonnull button) {
         [self.view addSubview:button];
         [button mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.equalTo(self.queryView.mas_bottom).offset(12);
-            make.right.inset(12);
+//            make.top.equalTo(self.queryView.mas_bottom).offset(12);
+//            make.right.inset(12);
+            make.left.equalTo(self.transformButton.mas_right).offset(30);
+            make.centerY.equalTo(self.transformButton);
             make.width.height.equalTo(self.fromLanguageButton);
+            make.right.lessThanOrEqualTo(self.view.mas_right).offset(-12);
         }];
         [button updateMenuWithTitleArray:[self.languages mm_map:^id _Nullable(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
             if ([obj integerValue] == Language_auto) {

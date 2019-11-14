@@ -7,6 +7,7 @@
 //
 
 #import "ResultView.h"
+#import "ImageButton.h"
 
 @implementation ResultView
 
@@ -53,7 +54,7 @@ DefineMethodMMMake_m(ResultView)
         }];
     }];
     
-    self.audioButton = [NSButton mm_make:^(NSButton * _Nonnull button) {
+    self.audioButton = [ImageButton mm_make:^(ImageButton * _Nonnull button) {
         [self addSubview:button];
         button.bordered = NO;
         button.imageScaling = NSImageScaleProportionallyDown;
@@ -75,7 +76,7 @@ DefineMethodMMMake_m(ResultView)
         }]];
     }];
     
-    self.textCopyButton = [NSButton mm_make:^(NSButton * _Nonnull button) {
+    self.textCopyButton = [ImageButton mm_make:^(ImageButton * _Nonnull button) {
         [self addSubview:button];
         button.bordered = NO;
         button.imageScaling = NSImageScaleProportionallyDown;
