@@ -62,7 +62,7 @@ static Configuration *_instance;
         fold = @YES;
         [NSUserDefaults mm_write:fold forKey:kFoldKey];
     }
-    self.isFold = [to boolValue];
+    self.isFold = [fold boolValue];
 }
 
 - (void)setFrom:(Language)from {

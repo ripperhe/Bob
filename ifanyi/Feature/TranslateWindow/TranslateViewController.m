@@ -102,7 +102,7 @@
         [view mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.right.inset(12);
             make.top.equalTo(self.pinButton.mas_bottom).offset(2);
-            make.height.equalTo(@176);
+            make.height.greaterThanOrEqualTo(@100);
         }];
         [view setCopyActionBlock:^(QueryView * _Nonnull view) {
             [[NSPasteboard generalPasteboard] clearContents];
@@ -198,8 +198,8 @@
         [view mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.equalTo(self.fromLanguageButton.mas_bottom).offset(12);
             make.left.right.equalTo(self.queryView);
-            make.height.equalTo(@176);
             make.bottom.inset(12);
+            make.height.mas_equalTo(self.queryView);
         }];
         mm_weakify(self)
         [view setAudioActionBlock:^(ResultView * _Nonnull view) {
@@ -307,8 +307,8 @@
             make.top.equalTo(self.fromLanguageButton.mas_bottom).offset(12);
         }
         make.left.right.equalTo(self.queryView);
-        make.height.equalTo(@176);
         make.bottom.inset(12);
+        make.height.mas_equalTo(self.queryView);
     }];
 }
 

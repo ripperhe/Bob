@@ -59,8 +59,9 @@ DefineMethodMMMake_m(ResultView)
         button.bordered = NO;
         button.imageScaling = NSImageScaleProportionallyDown;
         button.bezelStyle = NSBezelStyleRegularSquare;
-        [button setButtonType:NSButtonTypeToggle];
+        [button setButtonType:NSButtonTypeMomentaryChange];
         button.image = [NSImage imageNamed:@"audio"];
+        button.toolTip = @"播放音频";
         [button mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.offset(9.5);
             make.bottom.inset(3);
@@ -81,8 +82,9 @@ DefineMethodMMMake_m(ResultView)
         button.bordered = NO;
         button.imageScaling = NSImageScaleProportionallyDown;
         button.bezelStyle = NSBezelStyleRegularSquare;
-        [button setButtonType:NSButtonTypeToggle];
+        [button setButtonType:NSButtonTypeMomentaryChange];
         button.image = [NSImage imageNamed:@"copy"];
+        button.toolTip = @"复制";
         [button mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.equalTo(self.audioButton.mas_right).offset(1.5);
             make.bottom.equalTo(self.audioButton);
