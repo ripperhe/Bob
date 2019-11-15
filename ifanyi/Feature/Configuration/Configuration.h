@@ -16,6 +16,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign) Language from;
 @property (nonatomic, assign) Language to;
 
+@property (nonatomic, assign) BOOL isPin;
+@property (nonatomic, assign) BOOL isFold;
+
 + (instancetype)shared;
 
 @end

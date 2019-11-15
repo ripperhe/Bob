@@ -58,6 +58,7 @@
         [button setButtonType:NSButtonTypeToggle];
         button.image = [NSImage imageNamed:@"pin_normal"];
         button.alternateImage = [NSImage imageNamed:@"pin_selected"];
+        button.mm_isOn = Configuration.shared.isPin;
         [button mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.left.offset(6);
             make.width.height.mas_equalTo(32);
@@ -65,7 +66,8 @@
         mm_weakify(button)
         [button setRac_command:[[RACCommand alloc] initWithSignalBlock:^RACSignal * _Nonnull(id  _Nullable input) {
             mm_strongify(button)
-            NSLog(@"点击按钮 %@", button.state == NSControlStateValueOn ? @"ON" : @"OFF");
+            Configuration.shared.isPin = button.mm_isOn;
+            NSLog(@"点击按钮 %@", button.mm_isOn ? @"ON" : @"OFF");
             return RACSignal.empty;
         }]];
     }];
@@ -76,8 +78,9 @@
         button.imageScaling = NSImageScaleProportionallyDown;
         button.bezelStyle = NSBezelStyleRegularSquare;
         [button setButtonType:NSButtonTypeToggle];
-        button.attributedTitle = [NSAttributedString mm_attributedStringWithString:@"展开" font:[NSFont systemFontOfSize:13] color:[NSColor mm_colorWithHexString:@"#007AFF"]];
-        button.attributedAlternateTitle = [NSAttributedString mm_attributedStringWithString:@"折叠" font:[NSFont systemFontOfSize:13] color:[NSColor mm_colorWithHexString:@"#007AFF"]];
+        button.attributedTitle = [NSAttributedString mm_attributedStringWithString:@"折叠" font:[NSFont systemFontOfSize:13] color:[NSColor mm_colorWithHexString:@"#007AFF"]];
+        button.attributedAlternateTitle = [NSAttributedString mm_attributedStringWithString:@"展开" font:[NSFont systemFontOfSize:13] color:[NSColor mm_colorWithHexString:@"#007AFF"]];
+        button.mm_isOn = Configuration.shared.isFold;
         [button mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.offset(6);
             make.right.inset(6);
@@ -87,8 +90,9 @@
         mm_weakify(button)
         [button setRac_command:[[RACCommand alloc] initWithSignalBlock:^RACSignal * _Nonnull(id  _Nullable input) {
             mm_strongify(button)
-            [self foldQueryView:button.state == NSControlStateValueOn];
-            NSLog(@"点击按钮 %@", button.state == NSControlStateValueOn ? @"ON" : @"OFF");
+            Configuration.shared.isFold = button.mm_isOn;
+            [self foldQueryView:button.mm_isOn];
+            NSLog(@"点击按钮 %@", button.mm_isOn ? @"ON" : @"OFF");
             return RACSignal.empty;
         }]];
     }];
@@ -207,6 +211,9 @@
             [[NSPasteboard generalPasteboard] setString:view.textView.string forType:NSPasteboardTypeString];
         }];
     }];
+    
+    // 折叠或展开
+    [self foldQueryView:Configuration.shared.isFold];
 }
 
 - (void)setupTranslate {

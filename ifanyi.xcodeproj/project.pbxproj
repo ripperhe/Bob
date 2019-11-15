@@ -23,6 +23,7 @@
 		C9D56CBA237CEF60003051E2 /* Configuration.m in Sources */ = {isa = PBXBuildFile; fileRef = C9D56CB9237CEF60003051E2 /* Configuration.m */; };
 		C9D56CBD237CF243003051E2 /* TranslateLanguage.m in Sources */ = {isa = PBXBuildFile; fileRef = C9D56CBC237CF243003051E2 /* TranslateLanguage.m */; };
 		C9D56CC0237D39C2003051E2 /* NSUserDefaults+MM.m in Sources */ = {isa = PBXBuildFile; fileRef = C9D56CBF237D39C2003051E2 /* NSUserDefaults+MM.m */; };
+		C9E04389237ECB41009469C0 /* NSButton+MM.m in Sources */ = {isa = PBXBuildFile; fileRef = C9E04388237ECB41009469C0 /* NSButton+MM.m */; };
 		C9E263C8235B3B1600E1D491 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C9E263C7235B3B1600E1D491 /* AppDelegate.m */; };
 		C9E263CB235B3B1600E1D491 /* TranslateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9E263CA235B3B1600E1D491 /* TranslateViewController.m */; };
 		C9E263CD235B3B1800E1D491 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C9E263CC235B3B1800E1D491 /* Assets.xcassets */; };
@@ -68,6 +69,8 @@
 		C9D56CBC237CF243003051E2 /* TranslateLanguage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TranslateLanguage.m; sourceTree = "<group>"; };
 		C9D56CBE237D39C2003051E2 /* NSUserDefaults+MM.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSUserDefaults+MM.h"; sourceTree = "<group>"; };
 		C9D56CBF237D39C2003051E2 /* NSUserDefaults+MM.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSUserDefaults+MM.m"; sourceTree = "<group>"; };
+		C9E04387237ECB41009469C0 /* NSButton+MM.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSButton+MM.h"; sourceTree = "<group>"; };
+		C9E04388237ECB41009469C0 /* NSButton+MM.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSButton+MM.m"; sourceTree = "<group>"; };
 		C9E263C3235B3B1600E1D491 /* ifanyi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ifanyi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9E263C6235B3B1600E1D491 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		C9E263C7235B3B1600E1D491 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -145,6 +148,8 @@
 				C92B6B7B237C522A00424B74 /* NSArray+MM.m */,
 				C9D56CBE237D39C2003051E2 /* NSUserDefaults+MM.h */,
 				C9D56CBF237D39C2003051E2 /* NSUserDefaults+MM.m */,
+				C9E04387237ECB41009469C0 /* NSButton+MM.h */,
+				C9E04388237ECB41009469C0 /* NSButton+MM.m */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -361,6 +366,7 @@
 				C9B81AC3237ABFAF0024CCDB /* NSMutableAttributedString+MM.m in Sources */,
 				C9E263CB235B3B1600E1D491 /* TranslateViewController.m in Sources */,
 				C9D56CBD237CF243003051E2 /* TranslateLanguage.m in Sources */,
+				C9E04389237ECB41009469C0 /* NSButton+MM.m in Sources */,
 				C9B81ABD237ABD260024CCDB /* NSColor+MM.m in Sources */,
 				C98B495E237C12BA006DAE2A /* QueryView.m in Sources */,
 				C9E50409237C0D1300A500B7 /* PopUpButton.m in Sources */,
