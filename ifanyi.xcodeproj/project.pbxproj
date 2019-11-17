@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1DA290527826C220AD309012 /* Pods_ifanyi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6F84FA6D0A6E0ECE99CFC8C /* Pods_ifanyi.framework */; };
-		C92B6B79237C4C2400424B74 /* ResultView.m in Sources */ = {isa = PBXBuildFile; fileRef = C92B6B78237C4C2400424B74 /* ResultView.m */; };
+		C92B6B79237C4C2400424B74 /* NormalResultView.m in Sources */ = {isa = PBXBuildFile; fileRef = C92B6B78237C4C2400424B74 /* NormalResultView.m */; };
 		C92B6B7C237C522A00424B74 /* NSArray+MM.m in Sources */ = {isa = PBXBuildFile; fileRef = C92B6B7B237C522A00424B74 /* NSArray+MM.m */; };
 		C9304C99237D857D005FBB21 /* ImageButton.m in Sources */ = {isa = PBXBuildFile; fileRef = C9304C98237D857D005FBB21 /* ImageButton.m */; };
 		C9896924237BA8AC00F16CE4 /* TranslateResult.m in Sources */ = {isa = PBXBuildFile; fileRef = C9896923237BA8AC00F16CE4 /* TranslateResult.m */; };
@@ -33,12 +33,14 @@
 		C9E263E1235B3D7D00E1D491 /* baidu-sign.js in Resources */ = {isa = PBXBuildFile; fileRef = C9E263E0235B3D7D00E1D491 /* baidu-sign.js */; };
 		C9E263E5235B458D00E1D491 /* Selection.m in Sources */ = {isa = PBXBuildFile; fileRef = C9E263E4235B458D00E1D491 /* Selection.m */; };
 		C9E50409237C0D1300A500B7 /* PopUpButton.m in Sources */ = {isa = PBXBuildFile; fileRef = C9E50408237C0D1300A500B7 /* PopUpButton.m */; };
+		C9E60F94238105BC00C6E0A5 /* WordResultView.m in Sources */ = {isa = PBXBuildFile; fileRef = C9E60F93238105BC00C6E0A5 /* WordResultView.m */; };
+		C9E60F97238127B300C6E0A5 /* ResultView.m in Sources */ = {isa = PBXBuildFile; fileRef = C9E60F96238127B300C6E0A5 /* ResultView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		266A10346AE127F8A8794265 /* Pods-ifanyi.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ifanyi.release.xcconfig"; path = "Target Support Files/Pods-ifanyi/Pods-ifanyi.release.xcconfig"; sourceTree = "<group>"; };
-		C92B6B77237C4C2400424B74 /* ResultView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ResultView.h; sourceTree = "<group>"; };
-		C92B6B78237C4C2400424B74 /* ResultView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ResultView.m; sourceTree = "<group>"; };
+		C92B6B77237C4C2400424B74 /* NormalResultView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NormalResultView.h; sourceTree = "<group>"; };
+		C92B6B78237C4C2400424B74 /* NormalResultView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NormalResultView.m; sourceTree = "<group>"; };
 		C92B6B7A237C522A00424B74 /* NSArray+MM.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSArray+MM.h"; sourceTree = "<group>"; };
 		C92B6B7B237C522A00424B74 /* NSArray+MM.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSArray+MM.m"; sourceTree = "<group>"; };
 		C9304C97237D857D005FBB21 /* ImageButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ImageButton.h; sourceTree = "<group>"; };
@@ -88,6 +90,10 @@
 		C9E263E4235B458D00E1D491 /* Selection.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Selection.m; sourceTree = "<group>"; };
 		C9E50407237C0D1300A500B7 /* PopUpButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PopUpButton.h; sourceTree = "<group>"; };
 		C9E50408237C0D1300A500B7 /* PopUpButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PopUpButton.m; sourceTree = "<group>"; };
+		C9E60F92238105BC00C6E0A5 /* WordResultView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WordResultView.h; sourceTree = "<group>"; };
+		C9E60F93238105BC00C6E0A5 /* WordResultView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WordResultView.m; sourceTree = "<group>"; };
+		C9E60F95238127B300C6E0A5 /* ResultView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ResultView.h; sourceTree = "<group>"; };
+		C9E60F96238127B300C6E0A5 /* ResultView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ResultView.m; sourceTree = "<group>"; };
 		D2CBA4416AE9E960EAD837ED /* Pods-ifanyi.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ifanyi.debug.xcconfig"; path = "Target Support Files/Pods-ifanyi/Pods-ifanyi.debug.xcconfig"; sourceTree = "<group>"; };
 		F6F84FA6D0A6E0ECE99CFC8C /* Pods_ifanyi.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ifanyi.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -124,8 +130,12 @@
 				C9304C98237D857D005FBB21 /* ImageButton.m */,
 				C98B495C237C12BA006DAE2A /* QueryView.h */,
 				C98B495D237C12BA006DAE2A /* QueryView.m */,
-				C92B6B77237C4C2400424B74 /* ResultView.h */,
-				C92B6B78237C4C2400424B74 /* ResultView.m */,
+				C9E60F95238127B300C6E0A5 /* ResultView.h */,
+				C9E60F96238127B300C6E0A5 /* ResultView.m */,
+				C92B6B77237C4C2400424B74 /* NormalResultView.h */,
+				C92B6B78237C4C2400424B74 /* NormalResultView.m */,
+				C9E60F92238105BC00C6E0A5 /* WordResultView.h */,
+				C9E60F93238105BC00C6E0A5 /* WordResultView.m */,
 			);
 			path = TranslateWindow;
 			sourceTree = "<group>";
@@ -359,7 +369,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C9B81AC0237ABF800024CCDB /* NSAttributedString+MM.m in Sources */,
-				C92B6B79237C4C2400424B74 /* ResultView.m in Sources */,
+				C92B6B79237C4C2400424B74 /* NormalResultView.m in Sources */,
 				C9896927237BAF6B00F16CE4 /* TranslateError.m in Sources */,
 				C9304C99237D857D005FBB21 /* ImageButton.m in Sources */,
 				C9D56CC0237D39C2003051E2 /* NSUserDefaults+MM.m in Sources */,
@@ -367,6 +377,7 @@
 				C9E263CB235B3B1600E1D491 /* TranslateViewController.m in Sources */,
 				C9D56CBD237CF243003051E2 /* TranslateLanguage.m in Sources */,
 				C9E04389237ECB41009469C0 /* NSButton+MM.m in Sources */,
+				C9E60F97238127B300C6E0A5 /* ResultView.m in Sources */,
 				C9B81ABD237ABD260024CCDB /* NSColor+MM.m in Sources */,
 				C98B495E237C12BA006DAE2A /* QueryView.m in Sources */,
 				C9E50409237C0D1300A500B7 /* PopUpButton.m in Sources */,
@@ -374,6 +385,7 @@
 				C989692A237BDE3A00F16CE4 /* BaiduTranslateResponse.m in Sources */,
 				C9D56CBA237CEF60003051E2 /* Configuration.m in Sources */,
 				C9B81AB8237A5C2F0024CCDB /* MMMake.m in Sources */,
+				C9E60F94238105BC00C6E0A5 /* WordResultView.m in Sources */,
 				C9E263D3235B3B1800E1D491 /* main.m in Sources */,
 				C9E263E5235B458D00E1D491 /* Selection.m in Sources */,
 				C92B6B7C237C522A00424B74 /* NSArray+MM.m in Sources */,

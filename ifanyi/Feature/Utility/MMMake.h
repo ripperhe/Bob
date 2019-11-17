@@ -8,82 +8,70 @@
 
 #import <AppKit/AppKit.h>
 
-/// 定义make方法
+/// 定义 MMMake 方法
 #define DefineMethodMMMake_h(class, obj) \
-+ (instancetype)mm_make:(void (^)(class *obj))block; \
-- (id)mm_put:(void (^)(class *obj))block;
++ (instancetype)mm_make:(void (NS_NOESCAPE ^)(class *obj))block; \
++ (instancetype)mm_anyMake:(void (NS_NOESCAPE ^)(id obj))block; \
+- (id)mm_put:(void (NS_NOESCAPE ^)(class *obj))block; \
+- (id)mm_anyPut:(void (NS_NOESCAPE ^)(id obj))block;
 
-/// 实现make方法
+/// 实现 MMMake 方法
 #define DefineMethodMMMake_m(class) \
-+ (instancetype)mm_make:(void (^)(class * _Nonnull))block { \
++ (instancetype)mm_make:(void (NS_NOESCAPE ^)(class * _Nonnull))block { \
 id obj = [self new]; \
 block(obj); \
 return obj; \
 } \
-- (id)mm_put:(void (^)(class * _Nonnull))block { \
++ (instancetype)mm_anyMake:(void (NS_NOESCAPE ^)(id _Nonnull))block { \
+id obj = [self new]; \
+block(obj); \
+return obj; \
+} \
+- (id)mm_put:(void (NS_NOESCAPE ^)(class * _Nonnull))block { \
+block(self); \
+return self; \
+} \
+- (id)mm_anyPut:(void (NS_NOESCAPE ^)(id _Nonnull))block { \
 block(self); \
 return self; \
 }
 
+/// 定义 MMMake 分类
+#define DefineCategoryMMMake_h(class, obj) \
+@interface class (MMMake) \
+DefineMethodMMMake_h(class, obj) \
+@end
+
+/// 实现 MMMake 分类
+#define DefineCategoryMMMake_m(class) \
+@implementation class (MMMake) \
+DefineMethodMMMake_m(class) \
+@end
+
+
 NS_ASSUME_NONNULL_BEGIN
 
+
+/// 这个分类可以用宏定义实现，不过为了方便看注释，暂且手写
 @interface NSObject (MMMake)
 
 /// 初始化一个对象，并在block中作为参数传入
-+ (instancetype)mm_make:(void (^)(id obj))block;
++ (instancetype)mm_make:(void (NS_NOESCAPE ^)(id obj))block;
 /// 同上，用于自定义类型手动修改类型（防止警告）
-+ (instancetype)mm_anyMake:(void (^)(id obj))block;
++ (instancetype)mm_anyMake:(void (NS_NOESCAPE ^)(id obj))block;
 
 /// 用于传入self到block中进行操作
-- (id)mm_put:(void (^)(id obj))block;
+- (id)mm_put:(void (NS_NOESCAPE ^)(id obj))block;
 /// 同上，用于自定义类型手动修改类型（防止警告）
-- (id)mm_anyPut:(void (^)(id obj))block;
+- (id)mm_anyPut:(void (NS_NOESCAPE ^)(id obj))block;
 
 @end
 
-@interface NSView (MMMake)
-
-+ (instancetype)mm_make:(void (^)(NSView *view))block;
-+ (instancetype)mm_anyMake:(void (^)(id view))block;
-
-- (id)mm_put:(void (^)(NSView *view))block;
-- (id)mm_anyPut:(void (^)(id view))block;
-
-@end
-
-@interface NSButton (MMMake)
-
-+ (instancetype)mm_make:(void (^)(NSButton *button))block;
-- (id)mm_put:(void (^)(NSButton *button))block;
-
-@end
-
-@interface NSTextField (MMMake)
-
-+ (instancetype)mm_make:(void (^)(NSTextField *textField))block;
-- (id)mm_put:(void (^)(NSTextField *textField))block;
-
-@end
-
-@interface NSTextView (MMMake)
-
-+ (instancetype)mm_make:(void (^)(NSTextView *textView))block;
-- (id)mm_put:(void (^)(NSTextView *textView))block;
-
-@end
-
-@interface NSScrollView (MMMake)
-
-+ (instancetype)mm_make:(void (^)(NSScrollView *scrollView))block;
-- (id)mm_put:(void (^)(NSScrollView *scrollView))block;
-
-@end
-
-@interface NSImageView (MMMake)
-
-+ (instancetype)mm_make:(void (^)(NSImageView *imageView))block;
-- (id)mm_put:(void (^)(NSImageView *imageView))block;
-
-@end
+DefineCategoryMMMake_h(NSView, view)
+DefineCategoryMMMake_h(NSButton, button)
+DefineCategoryMMMake_h(NSTextField, textField)
+DefineCategoryMMMake_h(NSTextView, textView)
+DefineCategoryMMMake_h(NSScrollView, scrollView)
+DefineCategoryMMMake_h(NSImageView, imageView)
 
 NS_ASSUME_NONNULL_END

@@ -21,6 +21,7 @@
 @property (nonatomic, strong) BaiduTranslate *baiduTranslate;
 @property (nonatomic, strong) NSArray<NSNumber *> *languages;
 @property (nonatomic, strong) AVPlayer *player;
+@property (nonatomic, strong) TranslateResult *currentResult;
 
 @property (nonatomic, strong) NSButton *pinButton;
 @property (nonatomic, strong) NSButton *foldButton;
@@ -152,7 +153,6 @@
         button.image = [NSImage imageNamed:@"transform"];
         [button mas_makeConstraints:^(MASConstraintMaker *make) {
             make.centerY.equalTo(self.fromLanguageButton);
-//            make.centerX.equalTo(self.queryView);
             make.left.equalTo(self.fromLanguageButton.mas_right).offset(30);
             make.width.equalTo(@40);
             make.height.equalTo(@40);
@@ -172,8 +172,6 @@
     self.toLanguageButton = [PopUpButton mm_make:^(PopUpButton *  _Nonnull button) {
         [self.view addSubview:button];
         [button mas_makeConstraints:^(MASConstraintMaker *make) {
-//            make.top.equalTo(self.queryView.mas_bottom).offset(12);
-//            make.right.inset(12);
             make.left.equalTo(self.transformButton.mas_right).offset(30);
             make.centerY.equalTo(self.transformButton);
             make.width.height.equalTo(self.fromLanguageButton);
@@ -199,16 +197,27 @@
             make.top.equalTo(self.fromLanguageButton.mas_bottom).offset(12);
             make.left.right.equalTo(self.queryView);
             make.bottom.inset(12);
-            make.height.mas_equalTo(self.queryView);
+            make.height.equalTo(self.queryView);
         }];
         mm_weakify(self)
-        [view setAudioActionBlock:^(ResultView * _Nonnull view) {
+        [view.normalResultView setAudioActionBlock:^(NormalResultView * _Nonnull view) {
             mm_strongify(self);
-            [self playAudioWithText:view.textView.string lang:Configuration.shared.to];
+            if (!self.currentResult) return;
+            [self playAudioWithText:view.textView.string lang:self.currentResult.to];
         }];
-        [view setCopyActionBlock:^(ResultView * _Nonnull view) {
+        [view.normalResultView setCopyActionBlock:^(NormalResultView * _Nonnull view) {
+            mm_strongify(self);
+            if (!self.currentResult) return;
             [[NSPasteboard generalPasteboard] clearContents];
             [[NSPasteboard generalPasteboard] setString:view.textView.string forType:NSPasteboardTypeString];
+        }];
+        [view.wordResultView setPlayAudioBlock:^(WordResultView * _Nonnull view, NSString * _Nonnull url) {
+            mm_strongify(self);
+            [self playAudioWithURL:url];
+        }];
+        [view.wordResultView setSelectWordBlock:^(WordResultView * _Nonnull view, NSString * _Nonnull word) {
+            mm_strongify(self);
+            [self translate:word];
         }];
     }];
     
@@ -308,18 +317,22 @@
         }
         make.left.right.equalTo(self.queryView);
         make.bottom.inset(12);
-        make.height.mas_equalTo(self.queryView);
+        make.height.equalTo(self.queryView);
     }];
 }
 
 - (void)translate:(NSString *)text {
+    self.currentResult = nil;
     self.queryView.textView.string = text;
-    self.resultView.textView.string = @"查询中...";
+    [self.resultView refreshWithStateString:@"查询中..."];
+    mm_weakify(self)
     [self.baiduTranslate translate:text from:Configuration.shared.from to:Configuration.shared.to completion:^(TranslateResult * _Nullable result, NSError * _Nullable error) {
+        mm_strongify(self)
         if (error) {
-            self.resultView.textView.string = [error.userInfo objectForKey:NSLocalizedDescriptionKey];
+            [self.resultView refreshWithStateString:[error.userInfo objectForKey:NSLocalizedDescriptionKey]];
         }else {
-            self.resultView.textView.string = [NSString mm_stringByCombineComponents:result.normalResults separatedString:@"\n"];
+            self.currentResult = result;
+            [self.resultView refreshWithResult:result];
         }
     }];
 }

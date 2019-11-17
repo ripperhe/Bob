@@ -8,58 +8,40 @@
 
 #import "MMMake.h"
 
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wincomplete-implementation"
-
+//#pragma clang diagnostic push
+//#pragma clang diagnostic ignored "-Wincomplete-implementation"
 
 @implementation NSObject (MMMake)
 
-+ (instancetype)mm_make:(void (^)(id _Nonnull))block {
-    NSObject *obj = [self new];
++ (instancetype)mm_make:(void (NS_NOESCAPE ^)(id obj))block {
+    id obj = [self new];
     block(obj);
     return obj;
 }
 
-+ (instancetype)mm_anyMake:(void (^)(id _Nonnull))block {
-    NSObject *obj = [self new];
++ (instancetype)mm_anyMake:(void (NS_NOESCAPE ^)(id obj))block {
+    id obj = [self new];
     block(obj);
     return obj;
 }
 
-- (id)mm_put:(void (^)(id _Nonnull))block {
+- (id)mm_put:(void (NS_NOESCAPE ^)(id obj))block {
     block(self);
     return self;
 }
 
-- (id)mm_anyPut:(void (^)(id _Nonnull))block {
+- (id)mm_anyPut:(void (NS_NOESCAPE ^)(id obj))block {
     block(self);
     return self;
 }
 
 @end
 
-@implementation NSView (MMMake)
+DefineCategoryMMMake_m(NSView)
+DefineCategoryMMMake_m(NSButton)
+DefineCategoryMMMake_m(NSTextField)
+DefineCategoryMMMake_m(NSTextView)
+DefineCategoryMMMake_m(NSScrollView)
+DefineCategoryMMMake_m(NSImageView)
 
-@end
-
-@implementation NSButton (MMMake)
-
-@end
-
-@implementation NSTextField (MMMake)
-
-@end
-
-@implementation NSTextView (MMMake)
-
-@end
-
-@implementation NSScrollView (MMMake)
-
-@end
-
-@implementation NSImageView (MMMake)
-
-@end
-
-#pragma clang diagnostic pop
+//#pragma clang diagnostic pop
