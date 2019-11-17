@@ -22,6 +22,7 @@
 @property (nonatomic, strong) NSArray<NSNumber *> *languages;
 @property (nonatomic, strong) AVPlayer *player;
 @property (nonatomic, strong) TranslateResult *currentResult;
+@property (nonatomic, strong) MMEventMonitor *monitor;
 
 @property (nonatomic, strong) NSButton *pinButton;
 @property (nonatomic, strong) NSButton *foldButton;
@@ -38,6 +39,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [self setupMonitor];
     [self setupTranslate];
     [self setupViews];
 }
@@ -68,7 +70,11 @@
         [button setRac_command:[[RACCommand alloc] initWithSignalBlock:^RACSignal * _Nonnull(id  _Nullable input) {
             mm_strongify(button)
             Configuration.shared.isPin = button.mm_isOn;
-            NSLog(@"点击按钮 %@", button.mm_isOn ? @"ON" : @"OFF");
+            if (button.mm_isOn) {
+                [self.monitor stop];
+            }else {
+                [self.monitor start];
+            }
             return RACSignal.empty;
         }]];
     }];
@@ -275,6 +281,20 @@
         }];
     }];
 }
+
+- (void)setupMonitor {
+    mm_weakify(self)
+    self.monitor = [MMEventMonitor monitorWithEvent:NSEventMaskLeftMouseDown | NSEventMaskRightMouseDown handler:^(NSEvent * _Nonnull event) {
+        mm_strongify(self);
+        if (!Configuration.shared.isPin) {
+            // 关闭视图
+            NSLog(@"关闭视图");
+            [self.monitor stop];
+        }
+    }];
+}
+
+#pragma mark -
 
 - (NSInteger)indexFromLangages:(Language)lang {
     return [[self.languages mm_where:^BOOL(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {

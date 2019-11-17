@@ -35,6 +35,7 @@
 		C9E50409237C0D1300A500B7 /* PopUpButton.m in Sources */ = {isa = PBXBuildFile; fileRef = C9E50408237C0D1300A500B7 /* PopUpButton.m */; };
 		C9E60F94238105BC00C6E0A5 /* WordResultView.m in Sources */ = {isa = PBXBuildFile; fileRef = C9E60F93238105BC00C6E0A5 /* WordResultView.m */; };
 		C9E60F97238127B300C6E0A5 /* ResultView.m in Sources */ = {isa = PBXBuildFile; fileRef = C9E60F96238127B300C6E0A5 /* ResultView.m */; };
+		C9E60F9A238178D000C6E0A5 /* MMEventMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = C9E60F99238178D000C6E0A5 /* MMEventMonitor.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -94,6 +95,8 @@
 		C9E60F93238105BC00C6E0A5 /* WordResultView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WordResultView.m; sourceTree = "<group>"; };
 		C9E60F95238127B300C6E0A5 /* ResultView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ResultView.h; sourceTree = "<group>"; };
 		C9E60F96238127B300C6E0A5 /* ResultView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ResultView.m; sourceTree = "<group>"; };
+		C9E60F98238178D000C6E0A5 /* MMEventMonitor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MMEventMonitor.h; sourceTree = "<group>"; };
+		C9E60F99238178D000C6E0A5 /* MMEventMonitor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MMEventMonitor.m; sourceTree = "<group>"; };
 		D2CBA4416AE9E960EAD837ED /* Pods-ifanyi.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ifanyi.debug.xcconfig"; path = "Target Support Files/Pods-ifanyi/Pods-ifanyi.debug.xcconfig"; sourceTree = "<group>"; };
 		F6F84FA6D0A6E0ECE99CFC8C /* Pods_ifanyi.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ifanyi.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -160,6 +163,8 @@
 				C9D56CBF237D39C2003051E2 /* NSUserDefaults+MM.m */,
 				C9E04387237ECB41009469C0 /* NSButton+MM.h */,
 				C9E04388237ECB41009469C0 /* NSButton+MM.m */,
+				C9E60F98238178D000C6E0A5 /* MMEventMonitor.h */,
+				C9E60F99238178D000C6E0A5 /* MMEventMonitor.m */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -370,6 +375,7 @@
 			files = (
 				C9B81AC0237ABF800024CCDB /* NSAttributedString+MM.m in Sources */,
 				C92B6B79237C4C2400424B74 /* NormalResultView.m in Sources */,
+				C9E60F9A238178D000C6E0A5 /* MMEventMonitor.m in Sources */,
 				C9896927237BAF6B00F16CE4 /* TranslateError.m in Sources */,
 				C9304C99237D857D005FBB21 /* ImageButton.m in Sources */,
 				C9D56CC0237D39C2003051E2 /* NSUserDefaults+MM.m in Sources */,
