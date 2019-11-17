@@ -34,7 +34,7 @@
     [wordResult.phonetics enumerateObjectsUsingBlock:^(TranslatePhonetic * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         NSTextField *nameTextFiled = [NSTextField mm_make:^(NSTextField * _Nonnull textField) {
             [self addSubview:textField];
-            textField.stringValue = obj.name ?: @"❌";
+            textField.stringValue = obj.name;
             textField.textColor = [NSColor mm_colorWithHexString:@"#333333"];
             textField.font = [NSFont systemFontOfSize:13];
             textField.editable = NO;
@@ -51,7 +51,7 @@
         }];
         NSTextField *valueTextField = [NSTextField mm_make:^(NSTextField * _Nonnull textField) {
             [self addSubview:textField];
-            textField.stringValue = [NSString stringWithFormat:@"[%@]", obj.value ?: @"❌"];
+            textField.stringValue = [NSString stringWithFormat:@"[%@]", obj.value];
             textField.textColor = [NSColor mm_colorWithHexString:@"#333333"];
             textField.font = [NSFont systemFontOfSize:13];
             textField.editable = NO;
@@ -93,7 +93,7 @@
         if (obj.part.length) {
             partTextFiled = [NSTextField mm_make:^(NSTextField * _Nonnull textField) {
                 [self addSubview:textField];
-                textField.stringValue = obj.part ?: @"❌";
+                textField.stringValue = obj.part;
                 textField.textColor = [NSColor mm_colorWithHexString:@"#999999"];
                 textField.font = [NSFont systemFontOfSize:13];
                 textField.editable = NO;
@@ -146,7 +146,7 @@
     [wordResult.exchanges enumerateObjectsUsingBlock:^(TranslateExchange * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         NSTextField *nameTextFiled = [NSTextField mm_make:^(NSTextField * _Nonnull textField) {
             [self addSubview:textField];
-            textField.stringValue = [NSString stringWithFormat:@"%@: ", obj.name] ?: @"❌";
+            textField.stringValue = [NSString stringWithFormat:@"%@: ", obj.name];
             textField.textColor = [NSColor mm_colorWithHexString:@"#333333"];
             textField.font = [NSFont systemFontOfSize:13];
             textField.editable = NO;
