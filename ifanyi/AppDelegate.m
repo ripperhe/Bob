@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import <Carbon/Carbon.h>
+#import "StatusItem.h"
 
 OSStatus GlobalHotKeyHandler(EventHandlerCallRef nextHandler, EventRef theEvent, void *userData) {
     EventHotKeyID hotKeyCom;
@@ -28,14 +29,13 @@ OSStatus GlobalHotKeyHandler(EventHandlerCallRef nextHandler, EventRef theEvent,
 @implementation AppDelegate
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
-    // Insert code here to initialize your application
-    
     [self addGlobalHotKey:kVK_ANSI_D];
+    [StatusItem.shared setup];
 }
 
 
 - (void)applicationWillTerminate:(NSNotification *)aNotification {
-    // Insert code here to tear down your application
+    [StatusItem.shared remove];
 }
 
 - (void)addGlobalHotKey:(uint32)keyCode {

@@ -15,6 +15,7 @@
 #import "Configuration.h"
 #import <AVFoundation/AVFoundation.h>
 #import "ImageButton.h"
+#import "TranslateWindowController.h"
 
 @interface TranslateViewController ()
 
@@ -36,6 +37,11 @@
 
 @implementation TranslateViewController
 
+/// 用代码创建 NSViewController 貌似不会自动创建 view，需要手动初始化
+- (void)loadView {
+    self.view = [NSView new];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -44,12 +50,15 @@
     [self setupViews];
 }
 
-- (void)setupViews {
-    // 可整体拖拽，后期修改
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        self.view.window.movableByWindowBackground = YES;
-    });
+- (void)viewDidAppear {
+    [super viewDidAppear];
     
+    if (!Configuration.shared.isPin) {
+        [self.monitor start];
+    }
+}
+
+- (void)setupViews {
     self.view.wantsLayer = YES;
     self.view.layer.backgroundColor = NSColor.whiteColor.CGColor;
     
@@ -289,6 +298,7 @@
         if (!Configuration.shared.isPin) {
             // 关闭视图
             NSLog(@"关闭视图");
+            [TranslateWindowController.shared close];
             [self.monitor stop];
         }
     }];

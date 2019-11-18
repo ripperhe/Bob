@@ -36,6 +36,9 @@
 		C9E60F94238105BC00C6E0A5 /* WordResultView.m in Sources */ = {isa = PBXBuildFile; fileRef = C9E60F93238105BC00C6E0A5 /* WordResultView.m */; };
 		C9E60F97238127B300C6E0A5 /* ResultView.m in Sources */ = {isa = PBXBuildFile; fileRef = C9E60F96238127B300C6E0A5 /* ResultView.m */; };
 		C9E60F9A238178D000C6E0A5 /* MMEventMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = C9E60F99238178D000C6E0A5 /* MMEventMonitor.m */; };
+		C9E60F9D238185A800C6E0A5 /* TranslateWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9E60F9C238185A800C6E0A5 /* TranslateWindowController.m */; };
+		C9E60FA12381866A00C6E0A5 /* StatusItem.m in Sources */ = {isa = PBXBuildFile; fileRef = C9E60FA02381866A00C6E0A5 /* StatusItem.m */; };
+		C9E69A5123819A72002EB806 /* TranslateWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = C9E69A5023819A72002EB806 /* TranslateWindow.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -97,6 +100,12 @@
 		C9E60F96238127B300C6E0A5 /* ResultView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ResultView.m; sourceTree = "<group>"; };
 		C9E60F98238178D000C6E0A5 /* MMEventMonitor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MMEventMonitor.h; sourceTree = "<group>"; };
 		C9E60F99238178D000C6E0A5 /* MMEventMonitor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MMEventMonitor.m; sourceTree = "<group>"; };
+		C9E60F9B238185A800C6E0A5 /* TranslateWindowController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TranslateWindowController.h; sourceTree = "<group>"; };
+		C9E60F9C238185A800C6E0A5 /* TranslateWindowController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TranslateWindowController.m; sourceTree = "<group>"; };
+		C9E60F9F2381866A00C6E0A5 /* StatusItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StatusItem.h; sourceTree = "<group>"; };
+		C9E60FA02381866A00C6E0A5 /* StatusItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StatusItem.m; sourceTree = "<group>"; };
+		C9E69A4F23819A72002EB806 /* TranslateWindow.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TranslateWindow.h; sourceTree = "<group>"; };
+		C9E69A5023819A72002EB806 /* TranslateWindow.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TranslateWindow.m; sourceTree = "<group>"; };
 		D2CBA4416AE9E960EAD837ED /* Pods-ifanyi.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ifanyi.debug.xcconfig"; path = "Target Support Files/Pods-ifanyi/Pods-ifanyi.debug.xcconfig"; sourceTree = "<group>"; };
 		F6F84FA6D0A6E0ECE99CFC8C /* Pods_ifanyi.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ifanyi.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -125,6 +134,10 @@
 		C9896921237B9ACC00F16CE4 /* TranslateWindow */ = {
 			isa = PBXGroup;
 			children = (
+				C9E60F9B238185A800C6E0A5 /* TranslateWindowController.h */,
+				C9E60F9C238185A800C6E0A5 /* TranslateWindowController.m */,
+				C9E69A4F23819A72002EB806 /* TranslateWindow.h */,
+				C9E69A5023819A72002EB806 /* TranslateWindow.m */,
 				C9E263C9235B3B1600E1D491 /* TranslateViewController.h */,
 				C9E263CA235B3B1600E1D491 /* TranslateViewController.m */,
 				C9E50407237C0D1300A500B7 /* PopUpButton.h */,
@@ -219,6 +232,7 @@
 				C9E263E2235B457B00E1D491 /* Selection */,
 				C9E263DC235B3CE600E1D491 /* Baidu */,
 				C9D56CB7237CEF41003051E2 /* Configuration */,
+				C9E60F9E2381861E00C6E0A5 /* StatusItem */,
 				C9896921237B9ACC00F16CE4 /* TranslateWindow */,
 			);
 			path = Feature;
@@ -249,6 +263,15 @@
 				C9E263E4235B458D00E1D491 /* Selection.m */,
 			);
 			path = Selection;
+			sourceTree = "<group>";
+		};
+		C9E60F9E2381861E00C6E0A5 /* StatusItem */ = {
+			isa = PBXGroup;
+			children = (
+				C9E60F9F2381866A00C6E0A5 /* StatusItem.h */,
+				C9E60FA02381866A00C6E0A5 /* StatusItem.m */,
+			);
+			path = StatusItem;
 			sourceTree = "<group>";
 		};
 		D94A0D41797B9AE9BCD8D5BD /* Frameworks */ = {
@@ -389,7 +412,10 @@
 				C9E50409237C0D1300A500B7 /* PopUpButton.m in Sources */,
 				C989692E237BF05500F16CE4 /* NSString+MM.m in Sources */,
 				C989692A237BDE3A00F16CE4 /* BaiduTranslateResponse.m in Sources */,
+				C9E60F9D238185A800C6E0A5 /* TranslateWindowController.m in Sources */,
 				C9D56CBA237CEF60003051E2 /* Configuration.m in Sources */,
+				C9E69A5123819A72002EB806 /* TranslateWindow.m in Sources */,
+				C9E60FA12381866A00C6E0A5 /* StatusItem.m in Sources */,
 				C9B81AB8237A5C2F0024CCDB /* MMMake.m in Sources */,
 				C9E60F94238105BC00C6E0A5 /* WordResultView.m in Sources */,
 				C9E263D3235B3B1800E1D491 /* main.m in Sources */,
