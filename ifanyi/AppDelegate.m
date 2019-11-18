@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import <Carbon/Carbon.h>
 #import "StatusItem.h"
+#import "TranslateWindowController.h"
 
 OSStatus GlobalHotKeyHandler(EventHandlerCallRef nextHandler, EventRef theEvent, void *userData) {
     EventHotKeyID hotKeyCom;
@@ -16,6 +17,9 @@ OSStatus GlobalHotKeyHandler(EventHandlerCallRef nextHandler, EventRef theEvent,
     uint32 hotKeyId = hotKeyCom.id;
     switch (hotKeyId) {
         case kVK_ANSI_D:
+            if (!TranslateWindowController.shared.window.isVisible) {
+                [TranslateWindowController.shared showAtMouseLocation];
+            }
             [[NSNotificationCenter defaultCenter] postNotificationName:@"translate" object:nil];
             break;
     }

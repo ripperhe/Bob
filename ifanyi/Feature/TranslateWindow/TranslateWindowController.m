@@ -48,10 +48,16 @@ static TranslateWindowController *_instance;
 
 - (void)showAtCenter {
     [self.window orderFrontRegardless];
-    [self.window makeKeyWindow];
+//    [self.window makeKeyWindow];
     [self.window makeMainWindow];
-    [self.window becomeFirstResponder];
+//    [self.window becomeFirstResponder];
     [self.window center];
+}
+
+- (void)showAtMouseLocation {
+    [self.window orderFrontRegardless];
+    [self.window makeMainWindow];
+    [self.window setFrameTopLeftPoint:[NSEvent mouseLocation]];
 }
 
 @end
