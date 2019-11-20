@@ -1,7 +1,7 @@
 
 platform :osx, '10.12'
 
-target 'ifanyi' do
+target 'Bob' do
   use_frameworks!
 
   pod 'AFNetworking', '~> 3.2.1'
