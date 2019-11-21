@@ -136,7 +136,7 @@
                         make.top.offset(12);
                     }
                 }
-                make.right.inset(16).priorityLow();
+                make.right.lessThanOrEqualTo(self).offset(-16);
             }];
         }];
         
@@ -197,8 +197,8 @@
         }];
     }];
     
-    [self mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.bottom.greaterThanOrEqualTo(lastView.mas_bottom).offset(12);
+    [lastView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.bottom.inset(12);
     }];
 }
 

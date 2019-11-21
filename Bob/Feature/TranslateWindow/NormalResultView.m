@@ -8,6 +8,7 @@
 
 #import "NormalResultView.h"
 #import "ImageButton.h"
+#import "TranslateWindowController.h"
 
 @implementation NormalResultView
 
@@ -102,6 +103,22 @@ DefineMethodMMMake_m(NormalResultView)
     
     // 将scrollview放到最上层
     [self addSubview:self.scrollView];
+}
+
+- (CGFloat)refreshWithString:(NSString *)string {
+    self.textView.string = string;
+    CGFloat width = TranslateWindowController.shared.window.frame.size.width - 12 * 2 - 16 * 2;
+    NSDictionary *attributes = [NSDictionary dictionaryWithObjectsAndKeys:self.textView.font, NSFontAttributeName, [NSMutableParagraphStyle mm_make:^(NSMutableParagraphStyle *  _Nonnull style) {
+        style.lineHeightMultiple = 1.2;
+        style.paragraphSpacing = 5;
+    }], NSParagraphStyleAttributeName, nil];
+    NSAttributedString *attributedString = [[NSAttributedString alloc] initWithString:string attributes:attributes];
+    CGFloat height = [attributedString boundingRectWithSize:CGSizeMake(width, 300) options:NSStringDrawingUsesLineFragmentOrigin].size.height;
+    [self.textView mas_remakeConstraints:^(MASConstraintMaker *make) {
+        make.edges.inset(0);
+        make.height.equalTo(@(height + 2 * 12 + 10));
+    }];
+    return height + 26 + 12 * 2;
 }
 
 @end

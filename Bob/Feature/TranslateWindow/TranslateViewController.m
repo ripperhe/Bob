@@ -17,6 +17,8 @@
 #import "ImageButton.h"
 #import "TranslateWindowController.h"
 
+#define kMinHeight 100.0
+
 @interface TranslateViewController ()
 
 @property (nonatomic, strong) BaiduTranslate *baiduTranslate;
@@ -32,6 +34,8 @@
 @property (nonatomic, strong) ImageButton *transformButton;
 @property (nonatomic, strong) PopUpButton *toLanguageButton;
 @property (nonatomic, strong) ResultView *resultView;
+
+@property (nonatomic, strong) MASConstraint *resultTopConstraint;
 
 @end
 
@@ -118,7 +122,7 @@
         [view mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.right.inset(12);
             make.top.equalTo(self.pinButton.mas_bottom).offset(2);
-            make.height.greaterThanOrEqualTo(@100);
+            make.height.greaterThanOrEqualTo(@(kMinHeight));
         }];
         [view setCopyActionBlock:^(QueryView * _Nonnull view) {
             [[NSPasteboard generalPasteboard] clearContents];
@@ -209,10 +213,14 @@
     self.resultView = [ResultView mm_anyMake:^(ResultView *  _Nonnull view) {
         [self.view addSubview:view];
         [view mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.equalTo(self.fromLanguageButton.mas_bottom).offset(12);
+            if (Configuration.shared.isFold) {
+                self.resultTopConstraint = make.top.equalTo(self.pinButton.mas_bottom).offset(2);
+            }else {
+                self.resultTopConstraint = make.top.equalTo(self.fromLanguageButton.mas_bottom).offset(12);
+            }
             make.left.right.equalTo(self.queryView);
             make.bottom.inset(12);
-            make.height.equalTo(self.queryView);
+            make.height.greaterThanOrEqualTo(@(kMinHeight));
         }];
         mm_weakify(self)
         [view.normalResultView setAudioActionBlock:^(NormalResultView * _Nonnull view) {
@@ -236,7 +244,6 @@
         }];
     }];
     
-    // 折叠或展开
     [self foldQueryView:Configuration.shared.isFold];
 }
 
@@ -339,25 +346,30 @@
     self.fromLanguageButton.hidden = isFold;
     self.transformButton.hidden = isFold;
     self.toLanguageButton.hidden = isFold;
-    [self.resultView mas_remakeConstraints:^(MASConstraintMaker *make) {
+    [self.resultTopConstraint uninstall];
+    [self.resultView mas_updateConstraints:^(MASConstraintMaker *make) {
         if (isFold) {
-            make.top.equalTo(self.pinButton.mas_bottom).offset(2);
+            self.resultTopConstraint = make.top.equalTo(self.pinButton.mas_bottom).offset(2);
         }else {
-            make.top.equalTo(self.fromLanguageButton.mas_bottom).offset(12);
+            self.resultTopConstraint = make.top.equalTo(self.fromLanguageButton.mas_bottom).offset(12);
         }
-        make.left.right.equalTo(self.queryView);
-        make.bottom.inset(12);
-        make.height.equalTo(self.queryView);
     }];
+    [self resetWindowSize];
+}
+
+- (void)resetWindowSize {
+    // 保证size达到最紧致😍
+    [TranslateWindowController.shared.window setContentSize:CGSizeMake(TranslateWindowController.shared.window.frame.size.width, 0)];
 }
 
 - (void)translate:(NSString *)text {
     self.currentResult = nil;
     self.queryView.textView.string = text;
     [self.resultView refreshWithStateString:@"查询中..."];
+    [self resetWindowSize];
     mm_weakify(self)
     [self.baiduTranslate translate:text from:Configuration.shared.from to:Configuration.shared.to completion:^(TranslateResult * _Nullable result, NSError * _Nullable error) {
-        mm_strongify(self)
+        mm_strongify(self);
         if (error) {
             [self.resultView refreshWithStateString:[error.userInfo objectForKey:NSLocalizedDescriptionKey]];
         }else {
@@ -366,16 +378,6 @@
         }
     }];
 }
-
-- (void)updateHeight:(id)sender {
-    
-    //    NSDictionary *attributes = [NSDictionary dictionaryWithObjectsAndKeys:[textView font], NSFontAttributeName, nil];
-    //    NSAttributedString *attributedString = [[NSAttributedString alloc] initWithString:[textView string] attributes:attributes];
-    //    CGFloat height = [attributedString boundingRectWithSize:CGSizeMake(self.queryTextView.frame.size.width, CGFLOAT_MAX) options:NSStringDrawingUsesLineFragmentOrigin].size.height;
-    //    self.queryTextViewHeight.constant = height + 40;
-    //    [self.view setNeedsLayout:YES];
-}
-
 
 
 @end

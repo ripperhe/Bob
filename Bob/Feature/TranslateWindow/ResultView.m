@@ -49,10 +49,10 @@
         self.wordResultView.hidden = YES;
         [self addSubview:self.normalResultView];
         self.normalResultView.hidden = NO;
+        CGFloat height = [self.normalResultView refreshWithString:[NSString mm_stringByCombineComponents:result.normalResults separatedString:@"\n"]];
         [self.normalResultView mas_remakeConstraints:^(MASConstraintMaker *make) {
             make.edges.inset(0);
         }];
-        self.normalResultView.textView.string = [NSString mm_stringByCombineComponents:result.normalResults separatedString:@"\n"];
     }
 }
 
