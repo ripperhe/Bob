@@ -47,6 +47,7 @@ static TranslateWindowController *_instance;
 }
 
 - (void)showAtCenter {
+    self.hadShow = YES;
     [self.window orderFrontRegardless];
 //    [self.window makeKeyWindow];
     [self.window makeMainWindow];
@@ -55,6 +56,7 @@ static TranslateWindowController *_instance;
 }
 
 - (void)showAtMouseLocation {
+    self.hadShow = YES;
     [self.window orderFrontRegardless];
     [self.window makeMainWindow];
     [self.window setFrameTopLeftPoint:[NSEvent mouseLocation]];

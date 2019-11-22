@@ -17,7 +17,8 @@
 #import "ImageButton.h"
 #import "TranslateWindowController.h"
 
-#define kMinHeight 100.0
+#define kMargin 12.0
+#define kQueryMinHeight 120.0
 
 @interface TranslateViewController ()
 
@@ -35,6 +36,8 @@
 @property (nonatomic, strong) PopUpButton *toLanguageButton;
 @property (nonatomic, strong) ResultView *resultView;
 
+@property (nonatomic, assign) CGFloat queryHeightWhenFold;
+@property (nonatomic, strong) MASConstraint *queryHeightConstraint;
 @property (nonatomic, strong) MASConstraint *resultTopConstraint;
 
 @end
@@ -111,7 +114,7 @@
         [button setRac_command:[[RACCommand alloc] initWithSignalBlock:^RACSignal * _Nonnull(id  _Nullable input) {
             mm_strongify(button)
             Configuration.shared.isFold = button.mm_isOn;
-            [self foldQueryView:button.mm_isOn];
+            [self updateFoldState:button.mm_isOn];
             NSLog(@"点击按钮 %@", button.mm_isOn ? @"ON" : @"OFF");
             return RACSignal.empty;
         }]];
@@ -120,9 +123,9 @@
     self.queryView = [QueryView mm_make:^(QueryView * _Nonnull view) {
         [self.view addSubview:view];
         [view mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.right.inset(12);
             make.top.equalTo(self.pinButton.mas_bottom).offset(2);
-            make.height.greaterThanOrEqualTo(@(kMinHeight));
+            make.left.right.inset(kMargin);
+            self.queryHeightConstraint = make.height.greaterThanOrEqualTo(@(kQueryMinHeight));
         }];
         [view setCopyActionBlock:^(QueryView * _Nonnull view) {
             [[NSPasteboard generalPasteboard] clearContents];
@@ -145,7 +148,7 @@
         [self.view addSubview:button];
         [button mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.equalTo(self.queryView.mas_bottom).offset(12);
-            make.left.offset(12);
+            make.left.offset(kMargin);
             make.width.mas_equalTo(100);
             make.height.mas_equalTo(25);
         }];
@@ -194,7 +197,7 @@
             make.left.equalTo(self.transformButton.mas_right).offset(30);
             make.centerY.equalTo(self.transformButton);
             make.width.height.equalTo(self.fromLanguageButton);
-            make.right.lessThanOrEqualTo(self.view.mas_right).offset(-12);
+            make.right.lessThanOrEqualTo(self.view.mas_right).offset(-kMargin);
         }];
         [button updateMenuWithTitleArray:[self.languages mm_map:^id _Nullable(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
             if ([obj integerValue] == Language_auto) {
@@ -219,8 +222,8 @@
                 self.resultTopConstraint = make.top.equalTo(self.fromLanguageButton.mas_bottom).offset(12);
             }
             make.left.right.equalTo(self.queryView);
-            make.bottom.inset(12);
-            make.height.greaterThanOrEqualTo(@(kMinHeight));
+            make.bottom.inset(kMargin);
+            make.height.greaterThanOrEqualTo(@(100));
         }];
         mm_weakify(self)
         [view.normalResultView setAudioActionBlock:^(NormalResultView * _Nonnull view) {
@@ -244,7 +247,7 @@
         }];
     }];
     
-    [self foldQueryView:Configuration.shared.isFold];
+    [self updateFoldState:Configuration.shared.isFold];
 }
 
 - (void)setupTranslate {
@@ -291,8 +294,9 @@
             if (text.length) {
                 [self translate:text];
             }else {
+                self.currentResult = nil;
                 self.queryView.textView.string = @"";
-                self.queryView.textView.string = @"";
+                [self.resultView refreshWithStateString:@"没有获取到内容"];
             }
         }];
     }];
@@ -341,7 +345,10 @@
     [self.player play];
 }
 
-- (void)foldQueryView:(BOOL)isFold {
+- (void)updateFoldState:(BOOL)isFold {
+    if (isFold) {
+        self.queryHeightWhenFold = self.queryView.frame.size.height;
+    }
     self.queryView.hidden = isFold;
     self.fromLanguageButton.hidden = isFold;
     self.transformButton.hidden = isFold;
@@ -354,19 +361,22 @@
             self.resultTopConstraint = make.top.equalTo(self.fromLanguageButton.mas_bottom).offset(12);
         }
     }];
-    [self resetWindowSize];
+    [self resetWindowSizeWithExpectHeight:self.queryHeightWhenFold];
 }
 
-- (void)resetWindowSize {
+- (void)resetWindowSizeWithExpectHeight:(CGFloat)expectHeight {
     // 保证size达到最紧致😍
+    CGFloat height = expectHeight > 0 ? expectHeight : self.queryView.frame.size.height;
+    self.queryHeightConstraint.greaterThanOrEqualTo(@(height > kQueryMinHeight ? height : kQueryMinHeight));
     [TranslateWindowController.shared.window setContentSize:CGSizeMake(TranslateWindowController.shared.window.frame.size.width, 0)];
+//    self.queryHeightConstraint.greaterThanOrEqualTo(@(kQueryMinHeight));
 }
 
 - (void)translate:(NSString *)text {
     self.currentResult = nil;
     self.queryView.textView.string = text;
     [self.resultView refreshWithStateString:@"查询中..."];
-    [self resetWindowSize];
+    [self resetWindowSizeWithExpectHeight:0];
     mm_weakify(self)
     [self.baiduTranslate translate:text from:Configuration.shared.from to:Configuration.shared.to completion:^(TranslateResult * _Nullable result, NSError * _Nullable error) {
         mm_strongify(self);
@@ -376,8 +386,10 @@
             self.currentResult = result;
             [self.resultView refreshWithResult:result];
         }
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(.01 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            self.queryHeightConstraint.greaterThanOrEqualTo(@(kQueryMinHeight));
+        });
     }];
 }
-
 
 @end

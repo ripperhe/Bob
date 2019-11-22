@@ -17,10 +17,17 @@ OSStatus GlobalHotKeyHandler(EventHandlerCallRef nextHandler, EventRef theEvent,
     uint32 hotKeyId = hotKeyCom.id;
     switch (hotKeyId) {
         case kVK_ANSI_D:
-            if (!TranslateWindowController.shared.window.isVisible) {
-                [TranslateWindowController.shared showAtMouseLocation];
+            if (TranslateWindowController.shared.window.isVisible) {
+                [TranslateWindowController.shared close];
+            }else {
+                if (TranslateWindowController.shared.hadShow) {
+                    [[NSNotificationCenter defaultCenter] postNotificationName:@"translate" object:nil];
+                    [TranslateWindowController.shared showAtMouseLocation];
+                }else {
+                    [TranslateWindowController.shared showAtMouseLocation];
+                    [[NSNotificationCenter defaultCenter] postNotificationName:@"translate" object:nil];
+                }
             }
-            [[NSNotificationCenter defaultCenter] postNotificationName:@"translate" object:nil];
             break;
     }
     return noErr;
