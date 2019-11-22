@@ -379,7 +379,7 @@
     return [NSString stringWithFormat:@"%@/gettts?lan=%@&text=%@&spd=3&source=web", kRootPage, language, text.mm_urlencode];
 }
 
-- (void)ocr:(NSImage *)image from:(Language)from to:(Language)to completion:(void (^)(OCRResult * _Nullable, NSError * _Nullable))completion {
+- (void)ocr:(NSImage *)image type:(NSBitmapImageFileType)type from:(Language)from to:(Language)to completion:(void (^)(OCRResult * _Nullable, NSError * _Nullable))completion {
     if (!image) {
         completion(nil, kError(TranslateErrorTypeParamError, @"图片为空"));
         return;
@@ -387,7 +387,7 @@
     
     NSData *tiffData = [image TIFFRepresentation];
     NSBitmapImageRep *imageRep = [NSBitmapImageRep imageRepWithData:tiffData];
-    NSData *data = [imageRep representationUsingType:NSPNGFileType properties:@{}];
+    NSData *data = [imageRep representationUsingType:type properties:@{}];
     NSString *fromLang = BaiduLanguageStringFromEnum(from);
     NSString *toLang = BaiduLanguageStringFromEnum(to);
     
