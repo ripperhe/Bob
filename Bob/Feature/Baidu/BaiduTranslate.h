@@ -38,7 +38,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)audio:(NSString *)text from:(Language)from completion:(void (^)(NSString * _Nullable url, NSError * _Nullable error))completion;
 
 
-/// 图片识别文本
+/// 识别图片文本
 /// @param image image对象
 /// @param type 图片类型
 /// @param from 文本语言
