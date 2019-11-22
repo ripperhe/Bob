@@ -9,6 +9,8 @@
 #import "WordResultView.h"
 #import "ImageButton.h"
 
+#define kMargin 12.0
+
 @interface WordResultView ()
 
 @end
@@ -41,9 +43,9 @@
             textField.bordered = NO;
             textField.backgroundColor = NSColor.clearColor;
             [textField mas_makeConstraints:^(MASConstraintMaker *make) {
-                make.left.offset(16);
+                make.left.offset(kMargin);
                 if (idx == 0) {
-                    make.top.offset(12);
+                    make.top.offset(kMargin);
                 }else {
                     make.top.equalTo(lastView.mas_bottom);
                 }
@@ -100,7 +102,7 @@
                 textField.bordered = NO;
                 textField.backgroundColor = NSColor.clearColor;
                 [textField mas_makeConstraints:^(MASConstraintMaker *make) {
-                    make.left.offset(16);
+                    make.left.offset(kMargin);
                     if (lastView) {
                         if (idx == 0) {
                             make.top.equalTo(lastView.mas_bottom).offset(10);
@@ -125,7 +127,7 @@
                     make.left.equalTo(partTextFiled.mas_right).offset(8);
                     make.top.equalTo(partTextFiled);
                 }else {
-                    make.left.offset(16);
+                    make.left.offset(kMargin);
                     if (lastView) {
                         if (idx == 0) {
                             make.top.equalTo(lastView.mas_bottom).offset(10);
@@ -136,7 +138,7 @@
                         make.top.offset(12);
                     }
                 }
-                make.right.lessThanOrEqualTo(self).offset(-16);
+                make.right.lessThanOrEqualTo(self).offset(-kMargin);
             }];
         }];
         
@@ -153,7 +155,7 @@
             textField.bordered = NO;
             textField.backgroundColor = NSColor.clearColor;
             [textField mas_makeConstraints:^(MASConstraintMaker *make) {
-                make.left.offset(16);
+                make.left.offset(kMargin);
                 if (lastView) {
                     if (idx == 0) {
                         make.top.equalTo(lastView.mas_bottom).offset(10);
@@ -198,7 +200,7 @@
     }];
     
     [lastView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.bottom.inset(12);
+        make.bottom.inset(kMargin);
     }];
 }
 

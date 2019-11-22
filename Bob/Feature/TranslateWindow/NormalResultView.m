@@ -45,7 +45,7 @@ DefineMethodMMMake_m(NormalResultView)
             textView.textColor = [NSColor mm_colorWithHexString:@"#333333"];
 //            textView.alignment = NSTextAlignmentJustified;
             textView.alignment = NSTextAlignmentLeft;
-            textView.textContainerInset = CGSizeMake(16, 12);
+            textView.textContainerInset = CGSizeMake(12, 12);
             textView.backgroundColor = [NSColor mm_colorWithHexString:@"#EEEEEE"];
             [textView setAutoresizingMask:NSViewHeightSizable | NSViewWidthSizable];
         }];
@@ -108,7 +108,7 @@ DefineMethodMMMake_m(NormalResultView)
 
 - (void)refreshWithString:(NSString *)string {
     self.textView.string = string;
-    CGFloat width = self.frame.size.width - 16 * 2;
+    CGFloat width = TranslateWindowController.shared.window.frame.size.width - 12 * 2 - 12 * 2 - 15;
     if (width <= 0) {
         width = 100;
     }
@@ -118,7 +118,8 @@ DefineMethodMMMake_m(NormalResultView)
     }], NSParagraphStyleAttributeName, nil];
     NSAttributedString *attributedString = [[NSAttributedString alloc] initWithString:string attributes:attributes];
     CGFloat height = [attributedString boundingRectWithSize:CGSizeMake(width, 300) options:NSStringDrawingUsesLineFragmentOrigin].size.height;
-    height = height + 2 * 12 + 10;
+    height = height + 2 * 12;
+    height += 10;
     if (height < 100 - 26) {
         height = 100 - 26;
     }

@@ -174,7 +174,7 @@
         button.image = [NSImage imageNamed:@"transform"];
         [button mas_makeConstraints:^(MASConstraintMaker *make) {
             make.centerY.equalTo(self.fromLanguageButton);
-            make.left.equalTo(self.fromLanguageButton.mas_right).offset(30);
+            make.left.equalTo(self.fromLanguageButton.mas_right).offset(20);
             make.width.equalTo(@40);
             make.height.equalTo(@40);
         }];
@@ -193,7 +193,7 @@
     self.toLanguageButton = [PopUpButton mm_make:^(PopUpButton *  _Nonnull button) {
         [self.view addSubview:button];
         [button mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.equalTo(self.transformButton.mas_right).offset(30);
+            make.left.equalTo(self.transformButton.mas_right).offset(20);
             make.centerY.equalTo(self.transformButton);
             make.width.height.equalTo(self.fromLanguageButton);
             make.right.lessThanOrEqualTo(self.view.mas_right).offset(-kMargin);
@@ -398,8 +398,8 @@
             [self.resultView refreshWithResult:result];
         }
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(.01 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            self.queryHeightConstraint.greaterThanOrEqualTo(@(kQueryMinHeight));
             [self moveWindowToScreen];
+            self.queryHeightConstraint.greaterThanOrEqualTo(@(kQueryMinHeight));
         });
     }];
 }
