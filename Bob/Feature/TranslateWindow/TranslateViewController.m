@@ -372,15 +372,20 @@
 }
 
 - (void)moveWindowToScreen {
+    BOOL needMove = NO;
     NSRect windowFrame = TranslateWindowController.shared.window.frame;
     NSRect screenFrame = TranslateWindowController.shared.window.screen.frame;
     if (windowFrame.origin.y < 50) {
+        needMove = YES;
         windowFrame.origin.y = 50;
     }
     if (windowFrame.origin.x + windowFrame.size.width > (screenFrame.size.width - 50)) {
+        needMove = YES;
         windowFrame.origin.x = screenFrame.size.width - 50 - windowFrame.size.width;
     }
-    [TranslateWindowController.shared.window setFrame:windowFrame display:YES animate:YES];
+    if (needMove) {
+        [TranslateWindowController.shared.window setFrame:windowFrame display:YES animate:YES];
+    }
 }
 
 - (void)translate:(NSString *)text {
@@ -397,7 +402,9 @@
             self.currentResult = result;
             [self.resultView refreshWithResult:result];
         }
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(.01 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        mm_weakify(self)
+        dispatch_async(dispatch_get_main_queue(), ^{
+            mm_strongify(self);
             [self moveWindowToScreen];
             self.queryHeightConstraint.greaterThanOrEqualTo(@(kQueryMinHeight));
         });
