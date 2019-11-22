@@ -10,6 +10,7 @@
 #import "TranslateLanguage.h"
 #import "TranslateResult.h"
 #import "TranslateError.h"
+#import "OCRResult.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -35,6 +36,14 @@ NS_ASSUME_NONNULL_BEGIN
 /// @param from 文本语言
 /// @param completion 回调
 - (void)audio:(NSString *)text from:(Language)from completion:(void (^)(NSString * _Nullable url, NSError * _Nullable error))completion;
+
+
+/// 图片识别文本
+/// @param image image对象
+/// @param from 文本语言
+/// @param to 目标语言
+/// @param completion 回调
+- (void)ocr:(NSImage *)image from:(Language)from to:(Language)to completion:(void (^)(OCRResult * _Nullable result, NSError * _Nullable error))completion;
 
 @end
 

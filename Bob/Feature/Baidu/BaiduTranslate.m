@@ -379,4 +379,46 @@
     return [NSString stringWithFormat:@"%@/gettts?lan=%@&text=%@&spd=3&source=web", kRootPage, language, text.mm_urlencode];
 }
 
+- (void)ocr:(NSImage *)image from:(Language)from to:(Language)to completion:(void (^)(OCRResult * _Nullable, NSError * _Nullable))completion {
+    if (!image) {
+        completion(nil, kError(TranslateErrorTypeParamError, @"图片为空"));
+        return;
+    }
+    
+    NSData *tiffData = [image TIFFRepresentation];
+    NSBitmapImageRep *imageRep = [NSBitmapImageRep imageRepWithData:tiffData];
+    NSData *data = [imageRep representationUsingType:NSPNGFileType properties:@{}];
+    NSString *fromLang = BaiduLanguageStringFromEnum(from);
+    NSString *toLang = BaiduLanguageStringFromEnum(to);
+    
+    NSDictionary *para = @{
+        @"image": data,
+        @"from": fromLang,
+        @"to": toLang
+    };
+    
+    [self.jsonSession POST:@"https://fanyi.baidu.com/getocr" parameters:para constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
+        [formData appendPartWithFileData:data name:@"image" fileName:@"blob" mimeType:@"image/png"];
+    } progress:^(NSProgress * _Nonnull uploadProgress) {
+        // NSLog(@"%@", uploadProgress);
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        // NSLog(@"%@", responseObject);
+        if (responseObject && [responseObject isKindOfClass:[NSDictionary class]]) {
+            NSDictionary *jsonResult = responseObject;
+            NSDictionary *data = [jsonResult objectForKey:@"data"];
+            if (data && [data isKindOfClass:[NSDictionary class]]) {
+                OCRResult *result = [OCRResult mj_objectWithKeyValues:data];
+                if (result.src.count) {
+                    completion(result, nil);
+                    return;
+                }
+            }
+            completion(nil, kError(TranslateErrorTypeAPIError, @"图片文本识别失败"));
+        }
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        // NSLog(@"%@", error);
+        completion(nil, kError(TranslateErrorTypeNetworkError, @"图片文本识别失败"));
+    }];
+}
+
 @end
