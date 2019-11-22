@@ -39,7 +39,8 @@ static StatusItem *_instance;
         return;
     }
     
-    NSMenuItem *translateItem = [[NSMenuItem alloc] initWithTitle:@"翻译" action:@selector(translateAction:) keyEquivalent:@"t"];
+    NSMenuItem *translateItem = [[NSMenuItem alloc] initWithTitle:@"翻译" action:@selector(translateAction:) keyEquivalent:@"d"];
+    translateItem.keyEquivalentModifierMask = NSEventModifierFlagOption;
     translateItem.target = self;
     NSMenuItem *preferenceItem = [[NSMenuItem alloc] initWithTitle:@"偏好设置" action:@selector(preferenceAction:) keyEquivalent:@","];
     preferenceItem.target = self;
@@ -48,7 +49,7 @@ static StatusItem *_instance;
     
     NSMenu *menu = [NSMenu new];
     menu.delegate = self;
-    [menu setItemArray:@[translateItem, [NSMenuItem separatorItem], preferenceItem, [NSMenuItem separatorItem], quitItem]];
+    [menu setItemArray:@[translateItem, [NSMenuItem separatorItem], quitItem]];
 
     NSStatusItem *item = [[NSStatusBar systemStatusBar] statusItemWithLength:NSSquareStatusItemLength];
     [item.button setToolTip:@"Bob"];

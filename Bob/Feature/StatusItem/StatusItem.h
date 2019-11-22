@@ -12,7 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface StatusItem : NSObject
 
-@property (nonatomic, strong) NSStatusItem *statusItem;
+@property (nonatomic, strong, nullable) NSStatusItem *statusItem;
 
 + (instancetype)shared;
 
