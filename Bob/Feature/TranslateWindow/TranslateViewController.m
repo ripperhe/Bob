@@ -115,7 +115,6 @@
             mm_strongify(button)
             Configuration.shared.isFold = button.mm_isOn;
             [self updateFoldState:button.mm_isOn];
-            NSLog(@"点击按钮 %@", button.mm_isOn ? @"ON" : @"OFF");
             return RACSignal.empty;
         }]];
     }];
@@ -297,6 +296,7 @@
                 self.currentResult = nil;
                 self.queryView.textView.string = @"";
                 [self.resultView refreshWithStateString:@"没有获取到内容"];
+                [self moveWindowToScreen];
             }
         }];
     }];
@@ -308,7 +308,6 @@
         mm_strongify(self);
         if (!Configuration.shared.isPin) {
             // 关闭视图
-            NSLog(@"关闭视图");
             [TranslateWindowController.shared close];
             [self.monitor stop];
         }
@@ -372,6 +371,18 @@
 //    self.queryHeightConstraint.greaterThanOrEqualTo(@(kQueryMinHeight));
 }
 
+- (void)moveWindowToScreen {
+    NSRect windowFrame = TranslateWindowController.shared.window.frame;
+    NSRect screenFrame = TranslateWindowController.shared.window.screen.frame;
+    if (windowFrame.origin.y < 50) {
+        windowFrame.origin.y = 50;
+    }
+    if (windowFrame.origin.x + windowFrame.size.width > (screenFrame.size.width - 50)) {
+        windowFrame.origin.x = screenFrame.size.width - 50 - windowFrame.size.width;
+    }
+    [TranslateWindowController.shared.window setFrame:windowFrame display:YES animate:YES];
+}
+
 - (void)translate:(NSString *)text {
     self.currentResult = nil;
     self.queryView.textView.string = text;
@@ -388,6 +399,7 @@
         }
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(.01 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             self.queryHeightConstraint.greaterThanOrEqualTo(@(kQueryMinHeight));
+            [self moveWindowToScreen];
         });
     }];
 }

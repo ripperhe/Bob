@@ -47,7 +47,8 @@ DefineMethodMMMake_m(QueryView)
             }]];
             textView.font = [NSFont systemFontOfSize:14];
             textView.textColor = [NSColor mm_colorWithHexString:@"#333333"];
-            textView.alignment = NSTextAlignmentJustified;
+//            textView.alignment = NSTextAlignmentJustified;
+            textView.alignment = NSTextAlignmentLeft;
             textView.textContainerInset  = CGSizeMake(12, 12);
             textView.backgroundColor = NSColor.whiteColor;
             [textView setAutoresizingMask:NSViewHeightSizable | NSViewWidthSizable];

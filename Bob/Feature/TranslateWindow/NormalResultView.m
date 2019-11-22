@@ -43,7 +43,8 @@ DefineMethodMMMake_m(NormalResultView)
             textView.editable = NO;
             textView.font = [NSFont systemFontOfSize:14];
             textView.textColor = [NSColor mm_colorWithHexString:@"#333333"];
-            textView.alignment = NSTextAlignmentJustified;
+//            textView.alignment = NSTextAlignmentJustified;
+            textView.alignment = NSTextAlignmentLeft;
             textView.textContainerInset = CGSizeMake(16, 12);
             textView.backgroundColor = [NSColor mm_colorWithHexString:@"#EEEEEE"];
             [textView setAutoresizingMask:NSViewHeightSizable | NSViewWidthSizable];
@@ -105,20 +106,26 @@ DefineMethodMMMake_m(NormalResultView)
     [self addSubview:self.scrollView];
 }
 
-- (CGFloat)refreshWithString:(NSString *)string {
+- (void)refreshWithString:(NSString *)string {
     self.textView.string = string;
-    CGFloat width = TranslateWindowController.shared.window.frame.size.width - 12 * 2 - 16 * 2;
+    CGFloat width = self.frame.size.width - 16 * 2;
+    if (width <= 0) {
+        width = 100;
+    }
     NSDictionary *attributes = [NSDictionary dictionaryWithObjectsAndKeys:self.textView.font, NSFontAttributeName, [NSMutableParagraphStyle mm_make:^(NSMutableParagraphStyle *  _Nonnull style) {
         style.lineHeightMultiple = 1.2;
         style.paragraphSpacing = 5;
     }], NSParagraphStyleAttributeName, nil];
     NSAttributedString *attributedString = [[NSAttributedString alloc] initWithString:string attributes:attributes];
     CGFloat height = [attributedString boundingRectWithSize:CGSizeMake(width, 300) options:NSStringDrawingUsesLineFragmentOrigin].size.height;
+    height = height + 2 * 12 + 10;
+    if (height < 100 - 26) {
+        height = 100 - 26;
+    }
     [self.textView mas_remakeConstraints:^(MASConstraintMaker *make) {
         make.edges.inset(0);
-        make.height.equalTo(@(height + 2 * 12 + 10));
+        make.height.equalTo(@(height));
     }];
-    return height + 26 + 12 * 2;
 }
 
 @end
