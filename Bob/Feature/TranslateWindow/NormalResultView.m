@@ -30,8 +30,6 @@ DefineMethodMMMake_m(NormalResultView)
     
     self.scrollView = [NSScrollView mm_make:^(NSScrollView *  _Nonnull scrollView) {
         [self addSubview:scrollView];
-        scrollView.wantsLayer = YES;
-        scrollView.backgroundColor = NSColor.mm_randomColor;
         scrollView.hasVerticalScroller = YES;
         scrollView.hasHorizontalScroller = NO;
         scrollView.autohidesScrollers = YES;
@@ -106,20 +104,19 @@ DefineMethodMMMake_m(NormalResultView)
     [self addSubview:self.scrollView];
 }
 
-- (void)refreshWithString:(NSString *)string {
+- (void)refreshWithStrings:(NSArray<NSString *> *)strings {
+    NSString *string = [NSString mm_stringByCombineComponents:strings separatedString:@"\n"];
     self.textView.string = string;
-    CGFloat width = TranslateWindowController.shared.window.frame.size.width - 12 * 2 - 12 * 2 - 15;
+    // 迷之高度 后面再优化一下吧。。。
+    CGFloat width = TranslateWindowController.shared.window.frame.size.width - 12 * 2 - 12 * 2 - 17;
     if (width <= 0) {
         width = 100;
     }
-    NSDictionary *attributes = [NSDictionary dictionaryWithObjectsAndKeys:self.textView.font, NSFontAttributeName, [NSMutableParagraphStyle mm_make:^(NSMutableParagraphStyle *  _Nonnull style) {
-        style.lineHeightMultiple = 1.2;
-        style.paragraphSpacing = 5;
-    }], NSParagraphStyleAttributeName, nil];
+    NSDictionary *attributes = [NSDictionary dictionaryWithObjectsAndKeys:self.textView.font, NSFontAttributeName, self.textView.defaultParagraphStyle, NSParagraphStyleAttributeName, nil];
     NSAttributedString *attributedString = [[NSAttributedString alloc] initWithString:string attributes:attributes];
-    CGFloat height = [attributedString boundingRectWithSize:CGSizeMake(width, 300) options:NSStringDrawingUsesLineFragmentOrigin].size.height;
+    CGFloat height = [attributedString boundingRectWithSize:CGSizeMake(width, 500) options:NSStringDrawingUsesLineFragmentOrigin].size.height;
     height = height + 2 * 12;
-    height += 10;
+    height += strings.count > 1 ? strings.count * 5 : 10;
     if (height < 100 - 26) {
         height = 100 - 26;
     }

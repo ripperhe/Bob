@@ -12,7 +12,7 @@
 #import "BaiduTranslateResponse.h"
 
 #define kRootPage @"https://fanyi.baidu.com"
-#define kError(type) [TranslateError errorWithType:type message:nil]
+#define kError(type, msg) [TranslateError errorWithType:type message:msg]
 
 @interface BaiduTranslate ()
 
@@ -90,11 +90,7 @@
         NSString *string = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
         
         // token: '6d55d690ce5ade4a1fae243892f83ca6',
-        NSError *error;
-        NSRegularExpression *tokenRegex = [NSRegularExpression regularExpressionWithPattern:@"token: '[A-Za-z0-9]*'," options:NSRegularExpressionCaseInsensitive error:&error];
-        if (error) {
-            NSLog(@"%@", error);
-        }
+        NSRegularExpression *tokenRegex = [NSRegularExpression regularExpressionWithPattern:@"token: '[A-Za-z0-9]*'," options:NSRegularExpressionCaseInsensitive error:nil];
         [tokenRegex enumerateMatchesInString:string options:NSMatchingReportCompletion range:NSMakeRange(0, string.length) usingBlock:^(NSTextCheckingResult * _Nullable result, NSMatchingFlags flags, BOOL * _Nonnull stop) {
             if (result) {
                 NSString *token = [string substringWithRange:result.range];
@@ -102,17 +98,13 @@
                     token = [token substringWithRange:NSMakeRange(8, token.length - 10)];
                     tokenResult = token;
                 }
-//                NSLog(@"token 匹配结果: %@", token);
+                // NSLog(@"token 匹配结果: %@", token);
                 *stop = YES;
             }
         }];
         
         // window.gtk = '320305.131321201';
-        NSError *error2;
-        NSRegularExpression *gtkRegex = [NSRegularExpression regularExpressionWithPattern:@"window.gtk = '.*';" options:NSRegularExpressionCaseInsensitive error:&error];
-        if (error2) {
-            NSLog(@"%@", error2);
-        }
+        NSRegularExpression *gtkRegex = [NSRegularExpression regularExpressionWithPattern:@"window.gtk = '.*';" options:NSRegularExpressionCaseInsensitive error:nil];
         [gtkRegex enumerateMatchesInString:string options:NSMatchingReportCompletion range:NSMakeRange(0, string.length) usingBlock:^(NSTextCheckingResult * _Nullable result, NSMatchingFlags flags, BOOL * _Nonnull stop) {
             if (result) {
                 NSString *gtk = [string substringWithRange:result.range];
@@ -120,7 +112,7 @@
                     gtk = [gtk substringWithRange:NSMakeRange(14, gtk.length - 16)];
                     gtkResult = gtk;
                 }
-//                NSLog(@"gtk 匹配结果: %@", gtk);
+                // NSLog(@"gtk 匹配结果: %@", gtk);
                 *stop = YES;
             }
         }];
@@ -128,10 +120,10 @@
         if (tokenResult.length && gtkResult.length) {
             completion(tokenResult, gtkResult, nil);
         }else {
-            completion(nil, nil, kError(TranslateErrorTypeAPIError));
+            completion(nil, nil, kError(TranslateErrorTypeAPIError, @"获取 token 失败"));
         }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        completion(nil, nil, kError(TranslateErrorTypeNetworkError));
+        completion(nil, nil, kError(TranslateErrorTypeNetworkError, @"获取 token 失败"));
     } ];
 }
 
@@ -268,8 +260,8 @@
                     
                     if (result.wordResult || result.normalResults) {
                         completion(result, nil);
+                        return;
                     }
-                    return;
                 }else if (response.error == 997) {
                     // token 失效，重新获取
                     // 如果一直是 997 就会循环调用，后续优化一下
@@ -280,9 +272,9 @@
                 }
             }
         }
-        completion(nil, kError(TranslateErrorTypeAPIError));
+        completion(nil, kError(TranslateErrorTypeAPIError, @"翻译失败"));
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        completion(nil, kError(TranslateErrorTypeNetworkError));
+        completion(nil, kError(TranslateErrorTypeNetworkError, @"翻译失败"));
     }];
 }
 
@@ -290,34 +282,31 @@
 
 - (void)translate:(NSString *)text from:(Language)from to:(Language)to completion:(nonnull void (^)(TranslateResult * _Nullable, NSError * _Nullable))completion {
     if (!text.length) {
-        completion(nil, kError(TranslateErrorTypeParamError));
+        completion(nil, kError(TranslateErrorTypeParamError, @"翻译的文本为空"));
         return;
     }
     
     void(^request)(void) = ^(void) {
-        if (!from) {
-            mm_weakify(self)
+        
+        void(^translate)(Language f) = ^(Language f) {
+            Language toLang = to;
+            if (toLang == Language_auto) {
+                toLang = (f == Language_zh || f == Language_cht) ? Language_en : Language_zh;
+            }
+
+            [self sendTranslateRequest:text from:f to:toLang completion:completion];
+        };
+        
+        if (from == Language_auto) {
             [self detect:text completion:^(Language lang, NSError * _Nullable error) {
-                mm_strongify(self)
                 if (error) {
                     completion(nil, error);
                     return;
                 }
-                
-                Language toLang = to;
-                if (toLang == Language_auto) {
-                    toLang = (lang == Language_zh || lang == Language_cht) ? Language_en : Language_zh;
-                }
-
-                [self sendTranslateRequest:text from:lang to:toLang completion:completion];
+                translate(lang);
             }];
         }else {
-            Language toLang = to;
-            if (toLang == Language_auto) {
-                toLang = (from == Language_zh || from == Language_cht) ? Language_en : Language_zh;
-            }
-
-            [self sendTranslateRequest:text from:from to:toLang completion:completion];
+            translate(from);
         }
     };
     
@@ -342,7 +331,7 @@
 
 - (void)detect:(NSString *)text completion:(nonnull void (^)(Language, NSError * _Nullable))completion {
     if (!text.length) {
-        completion(Language_auto, kError(TranslateErrorTypeParamError));
+        completion(Language_auto, kError(TranslateErrorTypeParamError, @"判断语言的文本为空"));
         return;
     }
     
@@ -357,19 +346,19 @@
             if ([from isKindOfClass:NSString.class] && from.length) {
                 completion(BaiduLanguageEnumFromString(from), nil);
             }else {
-                completion(Language_auto, kError(TranslateErrorTypeUnsupportLanguage));
+                completion(Language_auto, kError(TranslateErrorTypeUnsupportLanguage, nil));
             }
             return;
         }
-        completion(Language_auto, kError(TranslateErrorTypeAPIError));
+        completion(Language_auto, kError(TranslateErrorTypeAPIError, @"判断语言失败"));
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        completion(Language_auto, kError(TranslateErrorTypeNetworkError));
+        completion(Language_auto, kError(TranslateErrorTypeNetworkError, @"判断语言失败"));
     }];
 }
 
 - (void)audio:(NSString *)text from:(Language)from completion:(void (^)(NSString * _Nullable, NSError * _Nullable))completion {
     if (!text.length) {
-        completion(nil, kError(TranslateErrorTypeParamError));
+        completion(nil, kError(TranslateErrorTypeParamError, @"获取音频的文本为空"));
         return;
     }
     

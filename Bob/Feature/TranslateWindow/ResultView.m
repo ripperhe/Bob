@@ -49,7 +49,7 @@
         self.wordResultView.hidden = YES;
         [self addSubview:self.normalResultView];
         self.normalResultView.hidden = NO;
-        [self.normalResultView refreshWithString:[NSString mm_stringByCombineComponents:result.normalResults separatedString:@"\n"]];
+        [self.normalResultView refreshWithStrings:result.normalResults];
         [self.normalResultView mas_remakeConstraints:^(MASConstraintMaker *make) {
             make.edges.inset(0);
         }];

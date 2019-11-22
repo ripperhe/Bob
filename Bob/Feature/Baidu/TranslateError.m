@@ -11,25 +11,32 @@
 @implementation TranslateError
 
 + (NSError *)errorWithType:(TranslateErrorType)type message:(NSString * _Nullable)message {
-    NSString *errorString = message;
-    if (!message.length) {
-        switch (type) {
-            case TranslateErrorTypeParamError:
-                errorString = @"参数异常";
-                break;
-            case TranslateErrorTypeNetworkError:
-                errorString = @"网络请求异常";
-                break;
-            case TranslateErrorTypeAPIError:
-                errorString = @"翻译接口异常";
-                break;
-            case TranslateErrorTypeUnsupportLanguage:
-                errorString = @"不支持的接口";
-                break;
-            default:
-                errorString = @"未知错误";
-                break;
+    NSString *errorString = nil;
+    switch (type) {
+        case TranslateErrorTypeParamError:
+            errorString = @"参数异常";
+            break;
+        case TranslateErrorTypeNetworkError:
+            errorString = @"网络请求异常";
+            break;
+        case TranslateErrorTypeAPIError:
+            errorString = @"翻译接口异常";
+            break;
+        case TranslateErrorTypeUnsupportLanguage:
+            errorString = @"不支持的语言";
+            break;
+        default:
+            break;
+    }
+    if (message.length) {
+        if (errorString.length) {
+            errorString = [NSString stringWithFormat:@"%@:\n%@", errorString, message];
+        }else {
+            errorString = message;
         }
+    }
+    if (!errorString.length) {
+        errorString = @"未知错误";
     }
     return [NSError errorWithDomain:@"com.ripperhe.Bob" code:type userInfo:@{NSLocalizedDescriptionKey:errorString}];
 }

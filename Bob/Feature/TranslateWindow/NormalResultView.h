@@ -22,7 +22,7 @@ DefineMethodMMMake_h(NormalResultView, button)
 @property (nonatomic, copy) void(^audioActionBlock)(NormalResultView *view);
 @property (nonatomic, copy) void(^copyActionBlock)(NormalResultView *view);
 
-- (void)refreshWithString:(NSString *)string;
+- (void)refreshWithStrings:(NSArray<NSString *> *)strings;
 
 @end
 
