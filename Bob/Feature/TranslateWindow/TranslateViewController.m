@@ -374,14 +374,14 @@
 - (void)moveWindowToScreen {
     BOOL needMove = NO;
     NSRect windowFrame = TranslateWindowController.shared.window.frame;
-    NSRect screenFrame = TranslateWindowController.shared.window.screen.frame;
-    if (windowFrame.origin.y < 50) {
+    NSRect visibleFrame = TranslateWindowController.shared.window.screen.visibleFrame;
+    if (windowFrame.origin.y < visibleFrame.origin.y + 10) {
         needMove = YES;
-        windowFrame.origin.y = 50;
+        windowFrame.origin.y = visibleFrame.origin.y + 10;
     }
-    if (windowFrame.origin.x + windowFrame.size.width > (screenFrame.size.width - 50)) {
+    if (windowFrame.origin.x > visibleFrame.origin.x + visibleFrame.size.width - windowFrame.size.width - 10) {
         needMove = YES;
-        windowFrame.origin.x = screenFrame.size.width - 50 - windowFrame.size.width;
+        windowFrame.origin.x = visibleFrame.origin.x + visibleFrame.size.width - windowFrame.size.width - 10;
     }
     if (needMove) {
         [TranslateWindowController.shared.window setFrame:windowFrame display:YES animate:YES];
