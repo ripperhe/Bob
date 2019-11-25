@@ -16,7 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy, nullable) NSString *part;
 /// 部分单词没有 part，只有 part_name，例如 “Referer”
 @property (nonatomic, copy, nullable) NSString *part_name;
-/// 此单词属性下单词的释义
+/// 此单词属性下单词的释义（可能不是 string 类型，需要手动过滤）
 @property (nonatomic, strong) NSArray<NSString *> *means;
 
 @end

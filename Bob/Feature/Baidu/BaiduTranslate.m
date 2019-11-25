@@ -180,10 +180,15 @@
                             // 解析词性词义
                             NSMutableArray *parts = [NSMutableArray array];
                             [symbol.parts enumerateObjectsUsingBlock:^(BaiduTranslateResponsePart * _Nonnull resultPart, NSUInteger idx, BOOL * _Nonnull stop) {
-                                [parts addObject:[TranslatePart mm_anyMake:^(TranslatePart *  _Nonnull obj) {
+                                TranslatePart *part = [TranslatePart mm_anyMake:^(TranslatePart *  _Nonnull obj) {
                                     obj.part = resultPart.part.length ? resultPart.part : nil;
-                                    obj.means = resultPart.means;
-                                }]];
+                                    obj.means = [resultPart.means mm_map:^id _Nullable(NSString * _Nonnull mean, NSUInteger idx, BOOL * _Nonnull stop) {
+                                        return [mean isKindOfClass:NSString.class] ? mean : nil;
+                                    }];
+                                }];
+                                if (part.means.count) {
+                                    [parts addObject:part];
+                                }
                             }];
                             wordResult.parts = parts.count ? parts.copy : nil;
                         }];

@@ -37,6 +37,7 @@
     }
     NSMutableString *string = [NSMutableString string];
     [components enumerateObjectsUsingBlock:^(NSString * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        NSAssert([obj isKindOfClass:NSString.class], @"参数必须为 NSString");
         [string appendString:obj];
         if (separatedString.length && idx != components.count - 1) {
             [string appendString:separatedString];
