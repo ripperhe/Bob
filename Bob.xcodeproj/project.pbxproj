@@ -39,6 +39,10 @@
 		C99EEBDC2385799D00FEE666 /* NSColor+MM.m in Sources */ = {isa = PBXBuildFile; fileRef = C99EEBBD2385799D00FEE666 /* NSColor+MM.m */; };
 		C99EEBDD2385799D00FEE666 /* NSMutableAttributedString+MM.m in Sources */ = {isa = PBXBuildFile; fileRef = C99EEBC22385799D00FEE666 /* NSMutableAttributedString+MM.m */; };
 		C99EEBDE2385799D00FEE666 /* NSArray+MM.m in Sources */ = {isa = PBXBuildFile; fileRef = C99EEBC32385799D00FEE666 /* NSArray+MM.m */; };
+		C9C3BDC7238E76B000D5F1C1 /* SnipWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9C3BDC6238E76B000D5F1C1 /* SnipWindowController.m */; };
+		C9C3BDCA238E76C800D5F1C1 /* SnipWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = C9C3BDC9238E76C800D5F1C1 /* SnipWindow.m */; };
+		C9C3BDCD238E78BA00D5F1C1 /* SnipViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9C3BDCC238E78BA00D5F1C1 /* SnipViewController.m */; };
+		C9C3BDD3238EA0EF00D5F1C1 /* Snip.m in Sources */ = {isa = PBXBuildFile; fileRef = C9C3BDD2238EA0EF00D5F1C1 /* Snip.m */; };
 		D2B213678C42C42C2AD2339C /* Pods_Bob.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F045DD4639F4F9836B1E8D6 /* Pods_Bob.framework */; };
 /* End PBXBuildFile section */
 
@@ -110,6 +114,14 @@
 		C99EEBC22385799D00FEE666 /* NSMutableAttributedString+MM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableAttributedString+MM.m"; sourceTree = "<group>"; };
 		C99EEBC32385799D00FEE666 /* NSArray+MM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+MM.m"; sourceTree = "<group>"; };
 		C99EEBDF238585E700FEE666 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		C9C3BDC5238E76B000D5F1C1 /* SnipWindowController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SnipWindowController.h; sourceTree = "<group>"; };
+		C9C3BDC6238E76B000D5F1C1 /* SnipWindowController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SnipWindowController.m; sourceTree = "<group>"; };
+		C9C3BDC8238E76C800D5F1C1 /* SnipWindow.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SnipWindow.h; sourceTree = "<group>"; };
+		C9C3BDC9238E76C800D5F1C1 /* SnipWindow.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SnipWindow.m; sourceTree = "<group>"; };
+		C9C3BDCB238E78BA00D5F1C1 /* SnipViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SnipViewController.h; sourceTree = "<group>"; };
+		C9C3BDCC238E78BA00D5F1C1 /* SnipViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SnipViewController.m; sourceTree = "<group>"; };
+		C9C3BDD1238EA0EF00D5F1C1 /* Snip.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Snip.h; sourceTree = "<group>"; };
+		C9C3BDD2238EA0EF00D5F1C1 /* Snip.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Snip.m; sourceTree = "<group>"; };
 		DA7129FC389066F3A2227458 /* Pods-Bob.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bob.debug.xcconfig"; path = "Target Support Files/Pods-Bob/Pods-Bob.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -181,6 +193,7 @@
 			children = (
 				C99EEBB02385799D00FEE666 /* Utility */,
 				C99EEBAD2385799D00FEE666 /* Selection */,
+				C9C3BDC4238E766B00D5F1C1 /* Snip */,
 				C99EEB8B2385799D00FEE666 /* Baidu */,
 				C99EEB882385799D00FEE666 /* Configuration */,
 				C99EEBAA2385799D00FEE666 /* StatusItem */,
@@ -285,6 +298,21 @@
 				C99EEBB12385799D00FEE666 /* MMEventMonitor.m */,
 			);
 			path = Utility;
+			sourceTree = "<group>";
+		};
+		C9C3BDC4238E766B00D5F1C1 /* Snip */ = {
+			isa = PBXGroup;
+			children = (
+				C9C3BDD1238EA0EF00D5F1C1 /* Snip.h */,
+				C9C3BDD2238EA0EF00D5F1C1 /* Snip.m */,
+				C9C3BDC5238E76B000D5F1C1 /* SnipWindowController.h */,
+				C9C3BDC6238E76B000D5F1C1 /* SnipWindowController.m */,
+				C9C3BDC8238E76C800D5F1C1 /* SnipWindow.h */,
+				C9C3BDC9238E76C800D5F1C1 /* SnipWindow.m */,
+				C9C3BDCB238E78BA00D5F1C1 /* SnipViewController.h */,
+				C9C3BDCC238E78BA00D5F1C1 /* SnipViewController.m */,
+			);
+			path = Snip;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -409,12 +437,16 @@
 				C99EEBCB2385799D00FEE666 /* ImageButton.m in Sources */,
 				C99EEBC72385799D00FEE666 /* TranslateResult.m in Sources */,
 				C99EEBCF2385799D00FEE666 /* TranslateWindow.m in Sources */,
+				C9C3BDD3238EA0EF00D5F1C1 /* Snip.m in Sources */,
+				C9C3BDCD238E78BA00D5F1C1 /* SnipViewController.m in Sources */,
 				C99EEB282385796900FEE666 /* main.m in Sources */,
 				C99EEBC42385799D00FEE666 /* Configuration.m in Sources */,
 				C99EEBC62385799D00FEE666 /* TranslateError.m in Sources */,
+				C9C3BDC7238E76B000D5F1C1 /* SnipWindowController.m in Sources */,
 				C99EEBD12385799D00FEE666 /* PopUpButton.m in Sources */,
 				C99EEBDD2385799D00FEE666 /* NSMutableAttributedString+MM.m in Sources */,
 				C99EEBCD2385799D00FEE666 /* QueryView.m in Sources */,
+				C9C3BDCA238E76C800D5F1C1 /* SnipWindow.m in Sources */,
 				C99EEBD52385799D00FEE666 /* Selection.m in Sources */,
 				C99EEBCE2385799D00FEE666 /* TranslateViewController.m in Sources */,
 				C99EEBC82385799D00FEE666 /* BaiduTranslateResponse.m in Sources */,

@@ -8,6 +8,7 @@
 
 #import "StatusItem.h"
 #import "TranslateWindowController.h"
+#import "Snip.h"
 
 @interface StatusItem ()<NSMenuDelegate>
 
@@ -42,6 +43,9 @@ static StatusItem *_instance;
     NSMenuItem *translateItem = [[NSMenuItem alloc] initWithTitle:@"翻译" action:@selector(translateAction:) keyEquivalent:@"d"];
     translateItem.keyEquivalentModifierMask = NSEventModifierFlagOption;
     translateItem.target = self;
+    NSMenuItem *snipItem = [[NSMenuItem alloc] initWithTitle:@"截图翻译" action:@selector(snipAction:) keyEquivalent:@"s"];
+    snipItem.keyEquivalentModifierMask = NSEventModifierFlagOption;
+    snipItem.target = self;
     NSMenuItem *preferenceItem = [[NSMenuItem alloc] initWithTitle:@"偏好设置" action:@selector(preferenceAction:) keyEquivalent:@","];
     preferenceItem.target = self;
     NSMenuItem *quitItem = [[NSMenuItem alloc] initWithTitle:@"退出" action:@selector(quitAction:) keyEquivalent:@"q"];
@@ -49,7 +53,7 @@ static StatusItem *_instance;
     
     NSMenu *menu = [NSMenu new];
     menu.delegate = self;
-    [menu setItemArray:@[translateItem, [NSMenuItem separatorItem], quitItem]];
+    [menu setItemArray:@[translateItem, snipItem, [NSMenuItem separatorItem], quitItem]];
 
     NSStatusItem *item = [[NSStatusBar systemStatusBar] statusItemWithLength:NSSquareStatusItemLength];
     [item.button setToolTip:@"Bob"];
@@ -71,6 +75,13 @@ static StatusItem *_instance;
 - (void)translateAction:(NSMenuItem *)sender {
     NSLog(@"翻译");
     [TranslateWindowController.shared showAtCenter];
+}
+
+- (void)snipAction:(NSMenuItem *)sender {
+    NSLog(@"截图翻译");
+    [Snip.shared startWithCompletion:^(NSImage * _Nullable image) {
+        
+    }];
 }
 
 - (void)preferenceAction:(NSMenuItem *)sender {
