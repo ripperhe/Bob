@@ -26,6 +26,10 @@ DefineMethodMMMake_m(SnipFocusView)
     self.layer.backgroundColor = [NSColor mm_colorWithHexString:@"#007AFF"].CGColor;
     self.layer.borderColor = [NSColor whiteColor].CGColor;
     self.layer.borderWidth = 1;
+    self.shadow = [NSShadow new];
+    self.layer.shadowColor = [NSColor blackColor].CGColor;
+    self.layer.shadowRadius = 4;
+    self.layer.shadowOpacity = 0.2;
     
     self.imageView = [NSImageView mm_make:^(NSImageView * _Nonnull imageView) {
         [self addSubview:imageView];
