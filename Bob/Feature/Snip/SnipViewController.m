@@ -7,11 +7,13 @@
 //
 
 #import "SnipViewController.h"
+#import "SnipFocusView.h"
 
 @interface SnipViewController ()
 
 @property (nonatomic, strong) NSImageView *imageView;
 @property (nonatomic, strong) NSView *rectView;
+@property (nonatomic, strong) SnipFocusView *focusView;
 
 @property (nonatomic, assign) BOOL isStart;
 @property (nonatomic, assign) CGPoint startPoint;
@@ -39,10 +41,17 @@
     self.rectView = [NSView mm_make:^(NSView * _Nonnull view) {
         [self.view addSubview:view];
         view.wantsLayer = YES;
-        view.layer.backgroundColor = [[NSColor blueColor] colorWithAlphaComponent:0.2].CGColor;
-        view.layer.borderColor = [NSColor blueColor].CGColor;
+        view.layer.backgroundColor = [[NSColor mm_colorWithHexString:@"#007AFF"] colorWithAlphaComponent:0.2].CGColor;
+        view.layer.borderColor = [NSColor mm_colorWithHexString:@"#007AFF"].CGColor;
         view.layer.borderWidth = 1;
     }];
+    
+    self.focusView = [SnipFocusView mm_make:^(SnipFocusView * _Nonnull view) {
+        [self.view addSubview:view];
+        view.frame = CGRectMake(0, 0, view.expectSize.width, view.expectSize.height);
+    }];
+    
+    [self updateFocusFrame];
 }
 
 - (void)viewDidLayout {
@@ -61,7 +70,67 @@
     self.rectView.frame = rect;
 }
 
+- (void)updateFocusFrame {
+    
+    NSRect windowFrame = self.window.frame;
+    NSPoint mouseLocation = [NSEvent mouseLocation];
+
+    if (mouseLocation.x < windowFrame.origin.x) {
+        mouseLocation.x = windowFrame.origin.x;
+    }
+    if (mouseLocation.x > windowFrame.origin.x + windowFrame.size.width) {
+        mouseLocation.x = windowFrame.origin.x + windowFrame.size.width;
+    }
+    if (mouseLocation.y < windowFrame.origin.y) {
+        mouseLocation.y = windowFrame.origin.y;
+    }
+    if (mouseLocation.y > windowFrame.origin.y + windowFrame.size.height) {
+        mouseLocation.y = windowFrame.origin.y + windowFrame.size.height;
+    }
+    mouseLocation = [self.window convertPointFromScreen:mouseLocation];
+    
+    NSPoint location = mouseLocation;
+    CGSize size = self.focusView.expectSize;
+    CGFloat offset = 17.5;
+    
+    location.x -= size.width;
+    location.y -= size.height;
+    
+    // 优先考虑鼠标左下角偏移
+    location.x -= offset;
+    location.y -= offset;
+    
+    // 底部过低，考虑右上角偏移
+    if (location.y < offset) {
+        location.y = mouseLocation.y + offset;
+        location.x = mouseLocation.x + offset;
+    }
+
+    // 太靠左，往右偏移
+    if (location.x < offset) {
+        location.x = mouseLocation.x + offset;
+    }
+    
+    // 太靠右，往左偏移
+    if (location.x > self.view.window.frame.size.width - size.width - offset) {
+        location.x = mouseLocation.x - offset - size.width;
+    }
+    
+    NSRect rect = NSMakeRect(location.x, location.y, size.width, size.height);
+    rect = NSIntegralRect(rect);
+    self.focusView.frame = rect;
+}
+
 #pragma mark -
+
+- (void)mouseEntered:(NSEvent *)event {
+    [self updateFocusFrame];
+}
+
+- (void)mouseMoved:(NSEvent *)event {
+    NSLog(@"鼠标移动");
+    [self updateFocusFrame];
+}
 
 - (void)mouseDown:(NSEvent *)event {
     NSLog(@"鼠标按下 %@", self.view.window);
@@ -84,6 +153,7 @@
     
     self.endPoint = [NSEvent mouseLocation];
     [self updateRectFrame];
+    [self updateFocusFrame];
 }
 
 - (void)mouseUp:(NSEvent *)event {

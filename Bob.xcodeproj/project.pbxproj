@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C90C77852391188400A65E42 /* SnipFocusView.m in Sources */ = {isa = PBXBuildFile; fileRef = C90C77842391188400A65E42 /* SnipFocusView.m */; };
 		C959D33A238809B800DD8808 /* OCRResult.m in Sources */ = {isa = PBXBuildFile; fileRef = C959D339238809B800DD8808 /* OCRResult.m */; };
 		C99142742390FCBD0025E75E /* NSImage+MM.m in Sources */ = {isa = PBXBuildFile; fileRef = C99142732390FCBD0025E75E /* NSImage+MM.m */; };
 		C99EEB1D2385796700FEE666 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C99EEB1C2385796700FEE666 /* AppDelegate.m */; };
@@ -50,6 +51,8 @@
 /* Begin PBXFileReference section */
 		3A08EDDF832035FD57B6A226 /* Pods-Bob.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bob.release.xcconfig"; path = "Target Support Files/Pods-Bob/Pods-Bob.release.xcconfig"; sourceTree = "<group>"; };
 		3F045DD4639F4F9836B1E8D6 /* Pods_Bob.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Bob.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C90C77832391188400A65E42 /* SnipFocusView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SnipFocusView.h; sourceTree = "<group>"; };
+		C90C77842391188400A65E42 /* SnipFocusView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SnipFocusView.m; sourceTree = "<group>"; };
 		C959D338238809B800DD8808 /* OCRResult.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OCRResult.h; sourceTree = "<group>"; };
 		C959D339238809B800DD8808 /* OCRResult.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OCRResult.m; sourceTree = "<group>"; };
 		C99142722390FCBD0025E75E /* NSImage+MM.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSImage+MM.h"; sourceTree = "<group>"; };
@@ -316,6 +319,8 @@
 				C9C3BDC9238E76C800D5F1C1 /* SnipWindow.m */,
 				C9C3BDCB238E78BA00D5F1C1 /* SnipViewController.h */,
 				C9C3BDCC238E78BA00D5F1C1 /* SnipViewController.m */,
+				C90C77832391188400A65E42 /* SnipFocusView.h */,
+				C90C77842391188400A65E42 /* SnipFocusView.m */,
 			);
 			path = Snip;
 			sourceTree = "<group>";
@@ -444,6 +449,7 @@
 				C99EEBCF2385799D00FEE666 /* TranslateWindow.m in Sources */,
 				C9C3BDD3238EA0EF00D5F1C1 /* Snip.m in Sources */,
 				C9C3BDCD238E78BA00D5F1C1 /* SnipViewController.m in Sources */,
+				C90C77852391188400A65E42 /* SnipFocusView.m in Sources */,
 				C99EEB282385796900FEE666 /* main.m in Sources */,
 				C99EEBC42385799D00FEE666 /* Configuration.m in Sources */,
 				C99EEBC62385799D00FEE666 /* TranslateError.m in Sources */,

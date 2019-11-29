@@ -73,8 +73,6 @@ static Snip *_instance;
         [windowController captureWithScreen:screen];
         [self.windowControllers addObject:windowController];
     }];
-    
-    [[NSCursor arrowCursor] set];
 }
 
 - (void)stop {

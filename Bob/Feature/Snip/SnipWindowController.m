@@ -36,6 +36,8 @@
     NSImage *image = [self screenshot:screen];
     self.window = [[SnipWindow alloc] initWithContentRect:screen.frame styleMask:NSWindowStyleMaskNonactivatingPanel backing:NSBackingStoreBuffered defer:NO screen:screen];
     self.window.contentViewController = [SnipViewController mm_make:^(SnipViewController*  _Nonnull obj) {
+        obj.screen = screen;
+        obj.window = self.window;
         obj.image = image;
         mm_weakify(self)
         [obj setStartBlock:^{

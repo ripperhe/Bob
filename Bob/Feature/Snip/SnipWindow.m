@@ -7,6 +7,8 @@
 //
 
 #import "SnipWindow.h"
+#import "Snip.h"
+#import <Carbon/Carbon.h>
 
 @implementation SnipWindow
 
@@ -24,10 +26,38 @@
         [self setRestorable:NO];
         [self disableSnapshotRestoration];
 //        [self setLevel:kCGMaximumWindowLevel];
+        // 用于debug
         [self setLevel:kCGDockWindowLevel];
         [self setMovable:NO];
     }
     return self;
+}
+
+- (BOOL)canBecomeKeyWindow {
+    return YES;
+}
+
+- (BOOL)canBecomeMainWindow {
+    return YES;
+}
+
+#pragma mark -
+
+- (void)mouseEntered:(NSEvent *)event {
+    [self.contentViewController mouseEntered:event];
+}
+
+- (void)mouseMoved:(NSEvent *)event {
+    NSLog(@"鼠标移动");
+    [self.contentViewController mouseMoved:event];
+}
+
+- (void)keyDown:(NSEvent *)event {
+    if ([event keyCode] == kVK_Escape) {
+        [Snip.shared stop];
+        return;
+    }
+    [super keyDown:event];
 }
 
 @end
