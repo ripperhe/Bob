@@ -23,7 +23,8 @@
         [self setHidesOnDeactivate:NO];
         [self setRestorable:NO];
         [self disableSnapshotRestoration];
-        [self setLevel:kCGMaximumWindowLevel];
+//        [self setLevel:kCGMaximumWindowLevel];
+        [self setLevel:kCGDockWindowLevel];
         [self setMovable:NO];
     }
     return self;

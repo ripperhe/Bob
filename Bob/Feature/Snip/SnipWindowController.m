@@ -25,7 +25,10 @@
     
     CGImageRef imageRef = CGWindowListCreateImageFromArray(rect, windowsRef, kCGWindowImageDefault);
     CFRelease(windowsRef);
-    NSImage *image = [[NSImage alloc] initWithCGImage:imageRef size:screen.frame.size];
+    // 获取屏幕实际像素
+    NSRect screenPixelRect = [screen convertRectToBacking:screen.frame];
+    NSImage *image = [[NSImage alloc] initWithCGImage:imageRef size:screenPixelRect.size];
+    CGImageRelease(imageRef);
     return image;
 }
 

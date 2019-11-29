@@ -65,7 +65,7 @@ static Snip *_instance;
         }];
         [windowController setEndBlock:^(SnipWindowController * _Nonnull windowController, NSImage * _Nullable image) {
             NSLog(@"截图结束：%@", image ? @"成功" : @"失败");
-            // [Snip.shared stop];
+             [Snip.shared stop];
             if (self.completion) {
                 self.completion(image);
             }
@@ -73,6 +73,8 @@ static Snip *_instance;
         [windowController captureWithScreen:screen];
         [self.windowControllers addObject:windowController];
     }];
+    
+    [[NSCursor arrowCursor] set];
 }
 
 - (void)stop {

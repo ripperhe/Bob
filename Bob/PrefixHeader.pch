@@ -20,3 +20,4 @@
 #import "NSUserDefaults+MM.h"
 #import "NSButton+MM.h"
 #import "MMEventMonitor.h"
+#import "NSImage+MM.h"

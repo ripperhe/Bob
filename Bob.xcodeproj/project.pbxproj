@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		C959D33A238809B800DD8808 /* OCRResult.m in Sources */ = {isa = PBXBuildFile; fileRef = C959D339238809B800DD8808 /* OCRResult.m */; };
+		C99142742390FCBD0025E75E /* NSImage+MM.m in Sources */ = {isa = PBXBuildFile; fileRef = C99142732390FCBD0025E75E /* NSImage+MM.m */; };
 		C99EEB1D2385796700FEE666 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C99EEB1C2385796700FEE666 /* AppDelegate.m */; };
 		C99EEB222385796900FEE666 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C99EEB212385796900FEE666 /* Assets.xcassets */; };
 		C99EEB252385796900FEE666 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C99EEB232385796900FEE666 /* Main.storyboard */; };
@@ -51,6 +52,8 @@
 		3F045DD4639F4F9836B1E8D6 /* Pods_Bob.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Bob.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C959D338238809B800DD8808 /* OCRResult.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OCRResult.h; sourceTree = "<group>"; };
 		C959D339238809B800DD8808 /* OCRResult.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OCRResult.m; sourceTree = "<group>"; };
+		C99142722390FCBD0025E75E /* NSImage+MM.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSImage+MM.h"; sourceTree = "<group>"; };
+		C99142732390FCBD0025E75E /* NSImage+MM.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSImage+MM.m"; sourceTree = "<group>"; };
 		C99EEB182385796700FEE666 /* Bob.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bob.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C99EEB1B2385796700FEE666 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		C99EEB1C2385796700FEE666 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -296,6 +299,8 @@
 				C99EEBB72385799D00FEE666 /* NSButton+MM.m */,
 				C99EEBBC2385799D00FEE666 /* MMEventMonitor.h */,
 				C99EEBB12385799D00FEE666 /* MMEventMonitor.m */,
+				C99142722390FCBD0025E75E /* NSImage+MM.h */,
+				C99142732390FCBD0025E75E /* NSImage+MM.m */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -461,6 +466,7 @@
 				C99EEBDB2385799D00FEE666 /* NSAttributedString+MM.m in Sources */,
 				C959D33A238809B800DD8808 /* OCRResult.m in Sources */,
 				C99EEBCC2385799D00FEE666 /* NormalResultView.m in Sources */,
+				C99142742390FCBD0025E75E /* NSImage+MM.m in Sources */,
 				C99EEBD62385799D00FEE666 /* MMEventMonitor.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
