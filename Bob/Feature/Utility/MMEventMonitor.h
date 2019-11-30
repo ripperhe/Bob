@@ -15,7 +15,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign) NSEventMask mask;
 @property (nonatomic, copy) void(^handler)(NSEvent *event);
 
-+ (instancetype)monitorWithEvent:(NSEventMask)mask handler:(void (^)(NSEvent *event))handler;
++ (instancetype)globalMonitorWithEvent:(NSEventMask)mask handler:(void (^)(NSEvent * _Nonnull event))handler;
+
++ (instancetype)localMonitorWithEvent:(NSEventMask)mask handler:(void (^)(NSEvent * _Nonnull event))handler;
 
 - (void)start;
 

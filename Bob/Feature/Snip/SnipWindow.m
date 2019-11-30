@@ -25,9 +25,9 @@
         [self setHidesOnDeactivate:NO];
         [self setRestorable:NO];
         [self disableSnapshotRestoration];
-//        [self setLevel:kCGMaximumWindowLevel];
+        [self setLevel:kCGMaximumWindowLevel];
         // 用于debug
-        [self setLevel:kCGDockWindowLevel];
+//        [self setLevel:kCGDockWindowLevel];
         [self setMovable:NO];
     }
     return self;
@@ -39,17 +39,6 @@
 
 - (BOOL)canBecomeMainWindow {
     return YES;
-}
-
-#pragma mark -
-
-- (void)mouseEntered:(NSEvent *)event {
-    [self.contentViewController mouseEntered:event];
-}
-
-- (void)mouseMoved:(NSEvent *)event {
-    NSLog(@"鼠标移动");
-    [self.contentViewController mouseMoved:event];
 }
 
 - (void)keyDown:(NSEvent *)event {

@@ -48,10 +48,9 @@
     
     self.focusView = [SnipFocusView mm_make:^(SnipFocusView * _Nonnull view) {
         [self.view addSubview:view];
+        view.hidden = YES;
         view.frame = CGRectMake(0, 0, view.expectSize.width, view.expectSize.height);
     }];
-    
-    [self updateFocusFrame];
 }
 
 - (void)viewDidLayout {
@@ -71,6 +70,9 @@
 }
 
 - (void)updateFocusFrame {
+    if (self.focusView.hidden == YES) {
+        return;
+    }
     
     NSRect windowFrame = self.window.frame;
     NSPoint mouseLocation = [NSEvent mouseLocation];
@@ -123,14 +125,16 @@
 
 #pragma mark -
 
-- (void)mouseEntered:(NSEvent *)event {
+- (void)showAndUpdateFocusView {
+    self.focusView.hidden = NO;
     [self updateFocusFrame];
 }
 
-- (void)mouseMoved:(NSEvent *)event {
-    NSLog(@"鼠标移动");
-    [self updateFocusFrame];
+- (void)hiddenFocusView {
+    self.focusView.hidden = YES;
 }
+
+#pragma mark -
 
 - (void)mouseDown:(NSEvent *)event {
     NSLog(@"鼠标按下 %@", self.view.window);
@@ -149,6 +153,7 @@
 }
 
 - (void)mouseDragged:(NSEvent *)event {
+    NSLog(@"鼠标拖拽 %@", self.view.window);
     if (!self.isStart) return;
     
     self.endPoint = [NSEvent mouseLocation];
@@ -181,10 +186,10 @@
 //            NSString *path = [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:@"snipImage.png"];
 //            [newImage mm_writeToFileAsPNG:path];
 //            NSLog(@"图片path:\n%@", path);
-            
-            if (self.endBlock) {
-                self.endBlock(newImage);
-            }
+//
+//            if (self.endBlock) {
+//                self.endBlock(newImage);
+//            }
         } @catch (NSException *exception) {
             NSLog(@"截取图片异常 %@", exception);
             if (self.endBlock) {

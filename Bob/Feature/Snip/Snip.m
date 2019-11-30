@@ -12,6 +12,9 @@
 
 @property (nonatomic, strong) NSMutableArray<SnipWindowController *> *windowControllers;
 @property (nonatomic, copy) void(^completion)(NSImage * _Nullable image);
+@property (nonatomic, strong) MMEventMonitor *localMouseMonitor;
+@property (nonatomic, strong) MMEventMonitor *globalMouseMonitor;
+@property (nonatomic, weak) SnipWindowController *currentMainWindowController;
 
 @end
 
@@ -41,6 +44,24 @@ static Snip *_instance;
         _windowControllers = [NSMutableArray array];
     }
     return _windowControllers;
+}
+
+- (MMEventMonitor *)localMouseMonitor {
+    if (!_localMouseMonitor) {
+        _localMouseMonitor = [MMEventMonitor localMonitorWithEvent:NSEventMaskMouseMoved handler:^(NSEvent * _Nonnull event) {
+            [self mouseMoved:event];
+        }];
+    }
+    return _localMouseMonitor;
+}
+
+- (MMEventMonitor *)globalMouseMonitor {
+    if (!_globalMouseMonitor) {
+        _globalMouseMonitor = [MMEventMonitor globalMonitorWithEvent:NSEventMaskMouseMoved handler:^(NSEvent * _Nonnull event) {
+            [self mouseMoved:event];
+        }];
+    }
+    return _globalMouseMonitor;
 }
 
 - (void)startWithCompletion:(void (^)(NSImage * _Nullable))completion {
@@ -73,6 +94,14 @@ static Snip *_instance;
         [windowController captureWithScreen:screen];
         [self.windowControllers addObject:windowController];
     }];
+    
+    [self.localMouseMonitor start];
+    [self.globalMouseMonitor start];
+    
+    [[[NSWorkspace sharedWorkspace] notificationCenter] addObserver:self selector:@selector(screenChanged:) name:NSWorkspaceActiveSpaceDidChangeNotification object:[NSWorkspace sharedWorkspace]];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(screenChanged:) name:NSApplicationDidChangeScreenParametersNotification object:nil];
+    
+    [self mouseMoved:nil];
 }
 
 - (void)stop {
@@ -86,6 +115,63 @@ static Snip *_instance;
         [obj close];
     }];
     [self.windowControllers removeAllObjects];
+    
+    [self.localMouseMonitor stop];
+    [self.globalMouseMonitor stop];
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [[[NSWorkspace sharedWorkspace] notificationCenter] removeObserver:self];
+}
+
+#pragma mark -
+
+- (void)mouseMoved:(NSEvent *)event {
+    NSPoint mouseLocation = [NSEvent mouseLocation];
+    if (!self.currentMainWindowController) {
+        [self.windowControllers enumerateObjectsUsingBlock:^(SnipWindowController * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            if (NSPointInRect(mouseLocation, obj.window.frame)) {
+                self.currentMainWindowController = obj;
+                [obj.window makeMainWindow];
+                [obj.window makeKeyWindow];
+                [obj.snipViewController showAndUpdateFocusView];
+            }
+        }];
+        return;
+    }
+    
+    if (NSPointInRect(mouseLocation, self.currentMainWindowController.window.frame)) {
+        // 在当前的 main window
+        [self.currentMainWindowController.snipViewController showAndUpdateFocusView];
+    }else {
+        // 不再当前 main window
+        if (self.currentMainWindowController.snipViewController.isStart) {
+            // 如果已经开始拖拽
+            [self.currentMainWindowController.snipViewController showAndUpdateFocusView];
+        }else {
+            // 切换 main window
+            __block SnipWindowController *newMain = nil;
+            [self.windowControllers enumerateObjectsUsingBlock:^(SnipWindowController * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                if (NSPointInRect(mouseLocation, obj.window.frame)) {
+                    newMain = obj;
+                    *stop = YES;
+                }
+            }];
+            if (newMain) {
+                [self.currentMainWindowController.snipViewController hiddenFocusView];
+                self.currentMainWindowController = newMain;
+                [newMain.window makeMainWindow];
+                [newMain.window makeKeyWindow];
+                [newMain.snipViewController showAndUpdateFocusView];
+            }else {
+                [self.currentMainWindowController.snipViewController showAndUpdateFocusView];
+            }
+        }
+    }
+}
+
+- (void)screenChanged:(NSNotification *)notification {
+    NSLog(@"%@", notification);
+    [self stop];
 }
 
 @end

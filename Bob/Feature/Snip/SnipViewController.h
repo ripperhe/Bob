@@ -19,6 +19,11 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy) void(^startBlock)(void);
 @property (nonatomic, copy) void(^endBlock)(NSImage * _Nullable image);
 
+@property (nonatomic, assign, readonly) BOOL isStart;
+
+- (void)showAndUpdateFocusView;
+- (void)hiddenFocusView;
+
 @end
 
 NS_ASSUME_NONNULL_END

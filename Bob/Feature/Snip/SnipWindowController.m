@@ -56,4 +56,8 @@
     [self showWindow:nil];
 }
 
+- (SnipViewController *)snipViewController {
+    return (SnipViewController *)self.contentViewController;
+}
+
 @end

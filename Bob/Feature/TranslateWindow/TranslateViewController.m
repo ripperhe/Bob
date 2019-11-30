@@ -304,7 +304,7 @@
 
 - (void)setupMonitor {
     mm_weakify(self)
-    self.monitor = [MMEventMonitor monitorWithEvent:NSEventMaskLeftMouseDown | NSEventMaskRightMouseDown handler:^(NSEvent * _Nonnull event) {
+    self.monitor = [MMEventMonitor globalMonitorWithEvent:NSEventMaskLeftMouseDown | NSEventMaskRightMouseDown handler:^(NSEvent * _Nonnull event) {
         mm_strongify(self);
         if (!Configuration.shared.isPin) {
             // 关闭视图
