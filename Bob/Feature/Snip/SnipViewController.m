@@ -132,15 +132,67 @@
     }
     
     // 图像
-    NSRect locationRect = NSMakeRect(mouseLocation.x - 10, mouseLocation.y - 10, 20, 20);
-    NSRect locationPixelRect = [self.view.window.screen convertRectToBacking:locationRect];
-    CGRect imageRect = NSRectToCGRect(locationPixelRect);
-    imageRect.origin.y = self.image.size.height - imageRect.origin.y - imageRect.size.height;
-    imageRect = NSIntegralRect(imageRect);
     CGImageRef imageRef = [self.image CGImageForProposedRect:nil context:nil hints:nil];
-    CGImageRef newImageRef = CGImageCreateWithImageInRect(imageRef, imageRect);
-    NSImage *newImage = [[NSImage alloc] initWithCGImage:newImageRef size:imageRect.size];
-    self.focusView.imageView.image = newImage;
+    NSRect locationRect = NSMakeRect(mouseLocation.x - 10, mouseLocation.y - 10, 20, 20);
+    NSRect locationPixelRect = [self.screen convertRectToBacking:locationRect];
+    NSRect screenPixelRect = [self.screen convertRectToBacking:windowFrame];
+    screenPixelRect = NSMakeRect(0, 0, screenPixelRect.size.width, screenPixelRect.size.height);
+
+    if (NSContainsRect(screenPixelRect, locationPixelRect)) {
+        // 不在边缘
+        CGRect imageRect = NSRectToCGRect(locationPixelRect);
+        imageRect.origin.y = CGImageGetHeight(imageRef) - imageRect.origin.y - imageRect.size.height;
+        imageRect = NSIntegralRect(imageRect);
+        CGImageRef newImageRef = CGImageCreateWithImageInRect(imageRef, imageRect);
+        NSImage *newImage = [[NSImage alloc] initWithCGImage:newImageRef size:imageRect.size];
+        CGImageRelease(newImageRef);
+        self.focusView.imageView.image = newImage;
+    }else {
+        // 在边缘
+        CGRect imageRect = NSRectToCGRect(locationPixelRect);
+        imageRect.origin.y = CGImageGetHeight(imageRef) - imageRect.origin.y - imageRect.size.height;
+        NSRect realRect = NSIntersectionRect(screenPixelRect, locationPixelRect);
+        CGRect contentRect = NSRectToCGRect(realRect);
+        contentRect.origin.y = CGImageGetHeight(imageRef) - contentRect.origin.y - contentRect.size.height;
+        
+        CGImageRef newImageRef = CGImageCreateWithImageInRect(imageRef, contentRect);
+        
+        NSBitmapImageRep *rep = [[NSBitmapImageRep alloc] initWithBitmapDataPlanes:NULL
+                                                                        pixelsWide:imageRect.size.width
+                                                                        pixelsHigh:imageRect.size.height
+                                                                     bitsPerSample:8
+                                                                   samplesPerPixel:4
+                                                                          hasAlpha:YES
+                                                                          isPlanar:NO
+                                                                    colorSpaceName:NSDeviceRGBColorSpace
+                                                                      bitmapFormat:NSAlphaFirstBitmapFormat
+                                                                       bytesPerRow:0
+                                                                      bitsPerPixel:0];
+
+        
+        NSGraphicsContext *g = [NSGraphicsContext graphicsContextWithBitmapImageRep:rep];
+        [NSGraphicsContext saveGraphicsState];
+        [NSGraphicsContext setCurrentContext:g];
+
+        CGContextRef contextRef = [g graphicsPort];
+        CGContextSetFillColorWithColor(contextRef, NSColor.blackColor.CGColor);
+        CGContextFillRect(contextRef, CGRectMake(0, 0, imageRect.size.width, imageRect.size.height));
+        
+        CGRect drawImageRect = CGRectMake(contentRect.origin.x - imageRect.origin.x,
+                                          contentRect.origin.y - imageRect.origin.y,
+                                          contentRect.size.width,
+                                          contentRect.size.height);
+        drawImageRect.origin.y = imageRect.size.height - drawImageRect.size.height - drawImageRect.origin.y;
+        CGContextDrawImage(contextRef, drawImageRect, newImageRef);
+        CGImageRelease(newImageRef);
+
+        [NSGraphicsContext restoreGraphicsState];
+
+        NSImage *newImage = [[NSImage alloc] initWithSize:imageRect.size];
+        [newImage addRepresentation:rep];
+        
+        self.focusView.imageView.image = newImage;
+    }
 }
 
 #pragma mark -
@@ -192,13 +244,12 @@
             self.endBlock(nil);
         }
     }else {
-        NSRect targetPixelRect = [self.view.window.screen convertRectToBacking:self.targetRect];
-        CGRect rect = NSRectToCGRect(targetPixelRect);
-        rect.origin.y = self.image.size.height - rect.origin.y - rect.size.height;
-        rect = NSIntegralRect(rect);
-        
         @try {
             CGImageRef imageRef = [self.image CGImageForProposedRect:nil context:nil hints:nil];
+            NSRect targetPixelRect = [self.screen convertRectToBacking:self.targetRect];
+            CGRect rect = NSRectToCGRect(targetPixelRect);
+            rect.origin.y = CGImageGetHeight(imageRef) - rect.origin.y - rect.size.height;
+            rect = NSIntegralRect(rect);
             CGImageRef newImageRef = CGImageCreateWithImageInRect(imageRef, rect);
             NSImage *newImage = [[NSImage alloc] initWithCGImage:newImageRef size:rect.size];
             CGImageRelease(newImageRef);
