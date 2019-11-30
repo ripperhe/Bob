@@ -226,7 +226,7 @@
 }
 
 - (void)mouseDragged:(NSEvent *)event {
-    NSLog(@"鼠标拖拽 %@", self.view.window);
+//    NSLog(@"鼠标拖拽 %@", self.view.window);
     if (!self.isStart) return;
     
     self.endPoint = [NSEvent mouseLocation];
@@ -259,10 +259,10 @@
 //            NSString *path = [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:@"snipImage.png"];
 //            [newImage mm_writeToFileAsPNG:path];
 //            NSLog(@"图片path:\n%@", path);
-//
-//            if (self.endBlock) {
-//                self.endBlock(newImage);
-//            }
+
+            if (self.endBlock) {
+                self.endBlock(newImage);
+            }
         } @catch (NSException *exception) {
             NSLog(@"截取图片异常 %@", exception);
             if (self.endBlock) {

@@ -300,6 +300,26 @@
             }
         }];
     }];
+    
+    [[NSNotificationCenter defaultCenter] addObserverForName:@"snip" object:nil queue:NSOperationQueue.mainQueue usingBlock:^(NSNotification * _Nonnull note) {
+        mm_strongify(self)
+        mm_weakify(self)
+        self.currentResult = nil;
+        self.queryView.textView.string = @"";
+        [self.resultView refreshWithStateString:@"文字识别中..."];
+        [self resetWindowSizeWithExpectHeight:0];
+        [self.baiduTranslate ocr:note.object type:NSBitmapImageFileTypePNG from:Configuration.shared.from to:Configuration.shared.to completion:^(OCRResult * _Nullable result, NSError * _Nullable error) {
+            mm_strongify(self)
+            if (result.src.firstObject.length) {
+                [self translate:result.src.firstObject];
+            }else {
+                self.currentResult = nil;
+                self.queryView.textView.string = @"";
+                [self.resultView refreshWithStateString:@"没有识别到文字"];
+                [self moveWindowToScreen];
+            }
+        }];
+    }];
 }
 
 - (void)setupMonitor {
