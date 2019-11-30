@@ -25,10 +25,12 @@
         [self setHidesOnDeactivate:NO];
         [self setRestorable:NO];
         [self disableSnapshotRestoration];
+        [self setMovable:NO];
         [self setLevel:kCGMaximumWindowLevel];
         // 用于debug
 //        [self setLevel:kCGDockWindowLevel];
-        [self setMovable:NO];
+        [self setReleasedWhenClosed:YES];
+        
     }
     return self;
 }

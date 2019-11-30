@@ -35,6 +35,7 @@ DefineMethodMMMake_m(SnipFocusView)
         [self addSubview:imageView];
         imageView.wantsLayer = YES;
         imageView.layer.backgroundColor = NSColor.whiteColor.CGColor;
+        imageView.imageScaling = NSImageScaleProportionallyUpOrDown;
         [imageView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.left.offset(0);
             make.width.height.equalTo(@100);
@@ -65,7 +66,7 @@ DefineMethodMMMake_m(SnipFocusView)
     
     self.locationTextField = [NSTextField mm_make:^(NSTextField * _Nonnull textField) {
         [self addSubview:textField];
-        textField.stringValue = @"坐标:（1024,1024)";
+        textField.stringValue = @"坐标: (0, 0)";
         textField.editable = NO;
         textField.bordered = NO;
         textField.backgroundColor = NSColor.clearColor;
@@ -79,7 +80,7 @@ DefineMethodMMMake_m(SnipFocusView)
     
     self.sizeTextFiled = [NSTextField mm_make:^(NSTextField * _Nonnull textField) {
         [self addSubview:textField];
-        textField.stringValue = @"尺寸:（1024,1024)";
+        textField.stringValue = @"尺寸: (0, 0)";
         textField.editable = NO;
         textField.bordered = NO;
         textField.backgroundColor = NSColor.clearColor;

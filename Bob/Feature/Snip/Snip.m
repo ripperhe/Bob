@@ -74,9 +74,7 @@ static Snip *_instance;
     self.isSnapshotting = YES;
     self.completion = completion;
     
-    [self.windowControllers enumerateObjectsUsingBlock:^(SnipWindowController * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        [obj close];
-    }];
+    [self.windowControllers makeObjectsPerformSelector:@selector(close)];
     [self.windowControllers removeAllObjects];
 
     [NSScreen.screens enumerateObjectsUsingBlock:^(NSScreen * _Nonnull screen, NSUInteger idx, BOOL * _Nonnull stop) {
@@ -111,21 +109,23 @@ static Snip *_instance;
     self.isSnapshotting = NO;
     self.completion = nil;
     
-    [self.windowControllers enumerateObjectsUsingBlock:^(SnipWindowController * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        [obj close];
-    }];
-    [self.windowControllers removeAllObjects];
-    
     [self.localMouseMonitor stop];
     [self.globalMouseMonitor stop];
     
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     [[[NSWorkspace sharedWorkspace] notificationCenter] removeObserver:self];
+
+    [self.windowControllers makeObjectsPerformSelector:@selector(close)];
+    [self.windowControllers removeAllObjects];
+    
+    self.currentMainWindowController = nil;
 }
 
 #pragma mark -
 
 - (void)mouseMoved:(NSEvent *)event {
+    NSLog(@"鼠标移动 %@", self.currentMainWindowController);
+    
     NSPoint mouseLocation = [NSEvent mouseLocation];
     if (!self.currentMainWindowController) {
         [self.windowControllers enumerateObjectsUsingBlock:^(SnipWindowController * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
@@ -134,6 +134,7 @@ static Snip *_instance;
                 [obj.window makeMainWindow];
                 [obj.window makeKeyWindow];
                 [obj.snipViewController showAndUpdateFocusView];
+                *stop = YES;
             }
         }];
         return;
@@ -170,7 +171,7 @@ static Snip *_instance;
 }
 
 - (void)screenChanged:(NSNotification *)notification {
-    NSLog(@"%@", notification);
+    NSLog(@"屏幕改变 %@", notification);
     [self stop];
 }
 

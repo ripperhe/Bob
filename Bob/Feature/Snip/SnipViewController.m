@@ -90,10 +90,11 @@
         mouseLocation.y = windowFrame.origin.y + windowFrame.size.height;
     }
     mouseLocation = [self.window convertPointFromScreen:mouseLocation];
+    mouseLocation = NSMakePoint(round(mouseLocation.x), round(mouseLocation.y));
     
     NSPoint location = mouseLocation;
     CGSize size = self.focusView.expectSize;
-    CGFloat offset = 17.5;
+    CGFloat offset = 17;
     
     location.x -= size.width;
     location.y -= size.height;
@@ -121,6 +122,25 @@
     NSRect rect = NSMakeRect(location.x, location.y, size.width, size.height);
     rect = NSIntegralRect(rect);
     self.focusView.frame = rect;
+    
+    // 坐标 尺寸
+    self.focusView.locationTextField.stringValue = [NSString stringWithFormat:@"坐标: (%.0f, %.0f)", mouseLocation.x, windowFrame.size.height - mouseLocation.y];
+    if (self.isStart) {
+        self.focusView.sizeTextFiled.stringValue = [NSString stringWithFormat:@"尺寸: (%.0f, %.0f)", self.targetRect.size.width, self.targetRect.size.height];
+    }else {
+        self.focusView.sizeTextFiled.stringValue = @"尺寸: (0, 0)";
+    }
+    
+    // 图像
+    NSRect locationRect = NSMakeRect(mouseLocation.x - 10, mouseLocation.y - 10, 20, 20);
+    NSRect locationPixelRect = [self.view.window.screen convertRectToBacking:locationRect];
+    CGRect imageRect = NSRectToCGRect(locationPixelRect);
+    imageRect.origin.y = self.image.size.height - imageRect.origin.y - imageRect.size.height;
+    imageRect = NSIntegralRect(imageRect);
+    CGImageRef imageRef = [self.image CGImageForProposedRect:nil context:nil hints:nil];
+    CGImageRef newImageRef = CGImageCreateWithImageInRect(imageRef, imageRect);
+    NSImage *newImage = [[NSImage alloc] initWithCGImage:newImageRef size:imageRect.size];
+    self.focusView.imageView.image = newImage;
 }
 
 #pragma mark -
@@ -147,6 +167,7 @@
     
     self.isStart = YES;
     self.startPoint = [NSEvent mouseLocation];
+    self.startPoint = NSMakePoint(round(self.startPoint.x), round(self.startPoint.y));
     if (self.startBlock) {
         self.startBlock();
     }
@@ -157,6 +178,7 @@
     if (!self.isStart) return;
     
     self.endPoint = [NSEvent mouseLocation];
+    self.endPoint = NSMakePoint(round(self.endPoint.x), round(self.endPoint.y));
     [self updateRectFrame];
     [self updateFocusFrame];
 }
