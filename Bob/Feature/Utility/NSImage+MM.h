@@ -12,6 +12,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface NSImage (MM)
 
++ (NSImage *)mm_imageWithSize:(CGSize)size graphicsContext:(void (^NS_NOESCAPE)(CGContextRef ctx))block;
+
 - (BOOL)mm_writeToFileAsPNG:(NSString *)path;
 
 @end

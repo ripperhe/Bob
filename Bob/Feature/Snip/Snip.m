@@ -108,7 +108,7 @@ static Snip *_instance;
         return;
     }
     self.isSnapshotting = NO;
-//    self.completion = nil;
+    // self.completion = nil;
     
     [self.localMouseMonitor stop];
     [self.globalMouseMonitor stop];
@@ -125,7 +125,7 @@ static Snip *_instance;
 #pragma mark -
 
 - (void)mouseMoved:(NSEvent *)event {
-    NSLog(@"鼠标移动 %@", self.currentMainWindowController);
+    // NSLog(@"鼠标移动 %@", self.currentMainWindowController);
     
     NSPoint mouseLocation = [NSEvent mouseLocation];
     if (!self.currentMainWindowController) {

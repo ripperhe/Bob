@@ -154,42 +154,21 @@
         NSRect realRect = NSIntersectionRect(screenPixelRect, locationPixelRect);
         CGRect contentRect = NSRectToCGRect(realRect);
         contentRect.origin.y = CGImageGetHeight(imageRef) - contentRect.origin.y - contentRect.size.height;
-        
-        CGImageRef newImageRef = CGImageCreateWithImageInRect(imageRef, contentRect);
-        
-        NSBitmapImageRep *rep = [[NSBitmapImageRep alloc] initWithBitmapDataPlanes:NULL
-                                                                        pixelsWide:imageRect.size.width
-                                                                        pixelsHigh:imageRect.size.height
-                                                                     bitsPerSample:8
-                                                                   samplesPerPixel:4
-                                                                          hasAlpha:YES
-                                                                          isPlanar:NO
-                                                                    colorSpaceName:NSDeviceRGBColorSpace
-                                                                      bitmapFormat:NSAlphaFirstBitmapFormat
-                                                                       bytesPerRow:0
-                                                                      bitsPerPixel:0];
-
-        
-        NSGraphicsContext *g = [NSGraphicsContext graphicsContextWithBitmapImageRep:rep];
-        [NSGraphicsContext saveGraphicsState];
-        [NSGraphicsContext setCurrentContext:g];
-
-        CGContextRef contextRef = [g graphicsPort];
-        CGContextSetFillColorWithColor(contextRef, NSColor.blackColor.CGColor);
-        CGContextFillRect(contextRef, CGRectMake(0, 0, imageRect.size.width, imageRect.size.height));
-        
-        CGRect drawImageRect = CGRectMake(contentRect.origin.x - imageRect.origin.x,
-                                          contentRect.origin.y - imageRect.origin.y,
-                                          contentRect.size.width,
-                                          contentRect.size.height);
-        drawImageRect.origin.y = imageRect.size.height - drawImageRect.size.height - drawImageRect.origin.y;
-        CGContextDrawImage(contextRef, drawImageRect, newImageRef);
-        CGImageRelease(newImageRef);
-
-        [NSGraphicsContext restoreGraphicsState];
-
-        NSImage *newImage = [[NSImage alloc] initWithSize:imageRect.size];
-        [newImage addRepresentation:rep];
+                
+        NSImage *newImage = [NSImage mm_imageWithSize:imageRect.size graphicsContext:^(CGContextRef  _Nonnull ctx) {
+            CGContextSetFillColorWithColor(ctx, NSColor.blackColor.CGColor);
+            CGContextFillRect(ctx, CGRectMake(0, 0, imageRect.size.width, imageRect.size.height));
+            
+            CGRect drawImageRect = CGRectMake(contentRect.origin.x - imageRect.origin.x,
+                                              contentRect.origin.y - imageRect.origin.y,
+                                              contentRect.size.width,
+                                              contentRect.size.height);
+            drawImageRect.origin.y = imageRect.size.height - drawImageRect.size.height - drawImageRect.origin.y;
+            
+            CGImageRef newImageRef = CGImageCreateWithImageInRect(imageRef, contentRect);
+            CGContextDrawImage(ctx, drawImageRect, newImageRef);
+            CGImageRelease(newImageRef);
+        }];
         
         self.focusView.imageView.image = newImage;
     }
@@ -210,13 +189,6 @@
 
 - (void)mouseDown:(NSEvent *)event {
     NSLog(@"鼠标按下 %@", self.view.window);
-
-    // 双击关闭 用于debug
-    if ([event clickCount] >= 2) {
-        [[NSApplication sharedApplication] terminate:nil];
-        return;
-    }
-    
     self.isStart = YES;
     self.startPoint = [NSEvent mouseLocation];
     self.startPoint = NSMakePoint(round(self.startPoint.x), round(self.startPoint.y));
@@ -226,7 +198,7 @@
 }
 
 - (void)mouseDragged:(NSEvent *)event {
-//    NSLog(@"鼠标拖拽 %@", self.view.window);
+    // NSLog(@"鼠标拖拽 %@", self.view.window);
     if (!self.isStart) return;
     
     self.endPoint = [NSEvent mouseLocation];
@@ -253,12 +225,6 @@
             CGImageRef newImageRef = CGImageCreateWithImageInRect(imageRef, rect);
             NSImage *newImage = [[NSImage alloc] initWithCGImage:newImageRef size:rect.size];
             CGImageRelease(newImageRef);
-            
-            // debug一下
-//            self.imageView.image = newImage;
-//            NSString *path = [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:@"snipImage.png"];
-//            [newImage mm_writeToFileAsPNG:path];
-//            NSLog(@"图片path:\n%@", path);
 
             if (self.endBlock) {
                 self.endBlock(newImage);
