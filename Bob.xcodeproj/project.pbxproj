@@ -10,6 +10,8 @@
 		C90C77852391188400A65E42 /* SnipFocusView.m in Sources */ = {isa = PBXBuildFile; fileRef = C90C77842391188400A65E42 /* SnipFocusView.m */; };
 		C959D33A238809B800DD8808 /* OCRResult.m in Sources */ = {isa = PBXBuildFile; fileRef = C959D339238809B800DD8808 /* OCRResult.m */; };
 		C99142742390FCBD0025E75E /* NSImage+MM.m in Sources */ = {isa = PBXBuildFile; fileRef = C99142732390FCBD0025E75E /* NSImage+MM.m */; };
+		C9986E1C2393B06C0016F569 /* NSView+MM.m in Sources */ = {isa = PBXBuildFile; fileRef = C9986E1B2393B06C0016F569 /* NSView+MM.m */; };
+		C9986E1F2393B09E0016F569 /* NSWindow+MM.m in Sources */ = {isa = PBXBuildFile; fileRef = C9986E1E2393B09E0016F569 /* NSWindow+MM.m */; };
 		C99EEB1D2385796700FEE666 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C99EEB1C2385796700FEE666 /* AppDelegate.m */; };
 		C99EEB222385796900FEE666 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C99EEB212385796900FEE666 /* Assets.xcassets */; };
 		C99EEB252385796900FEE666 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C99EEB232385796900FEE666 /* Main.storyboard */; };
@@ -57,6 +59,10 @@
 		C959D339238809B800DD8808 /* OCRResult.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OCRResult.m; sourceTree = "<group>"; };
 		C99142722390FCBD0025E75E /* NSImage+MM.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSImage+MM.h"; sourceTree = "<group>"; };
 		C99142732390FCBD0025E75E /* NSImage+MM.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSImage+MM.m"; sourceTree = "<group>"; };
+		C9986E1A2393B06C0016F569 /* NSView+MM.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSView+MM.h"; sourceTree = "<group>"; };
+		C9986E1B2393B06C0016F569 /* NSView+MM.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSView+MM.m"; sourceTree = "<group>"; };
+		C9986E1D2393B09E0016F569 /* NSWindow+MM.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSWindow+MM.h"; sourceTree = "<group>"; };
+		C9986E1E2393B09E0016F569 /* NSWindow+MM.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSWindow+MM.m"; sourceTree = "<group>"; };
 		C99EEB182385796700FEE666 /* Bob.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bob.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C99EEB1B2385796700FEE666 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		C99EEB1C2385796700FEE666 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -304,6 +310,10 @@
 				C99EEBB12385799D00FEE666 /* MMEventMonitor.m */,
 				C99142722390FCBD0025E75E /* NSImage+MM.h */,
 				C99142732390FCBD0025E75E /* NSImage+MM.m */,
+				C9986E1A2393B06C0016F569 /* NSView+MM.h */,
+				C9986E1B2393B06C0016F569 /* NSView+MM.m */,
+				C9986E1D2393B09E0016F569 /* NSWindow+MM.h */,
+				C9986E1E2393B09E0016F569 /* NSWindow+MM.m */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -454,6 +464,7 @@
 				C99EEBC42385799D00FEE666 /* Configuration.m in Sources */,
 				C99EEBC62385799D00FEE666 /* TranslateError.m in Sources */,
 				C9C3BDC7238E76B000D5F1C1 /* SnipWindowController.m in Sources */,
+				C9986E1C2393B06C0016F569 /* NSView+MM.m in Sources */,
 				C99EEBD12385799D00FEE666 /* PopUpButton.m in Sources */,
 				C99EEBDD2385799D00FEE666 /* NSMutableAttributedString+MM.m in Sources */,
 				C99EEBCD2385799D00FEE666 /* QueryView.m in Sources */,
@@ -474,6 +485,7 @@
 				C99EEBCC2385799D00FEE666 /* NormalResultView.m in Sources */,
 				C99142742390FCBD0025E75E /* NSImage+MM.m in Sources */,
 				C99EEBD62385799D00FEE666 /* MMEventMonitor.m in Sources */,
+				C9986E1F2393B09E0016F569 /* NSWindow+MM.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -606,6 +618,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Bob/Bob.entitlements;
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/Bob/PrefixHeader.pch";
@@ -626,6 +639,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Bob/Bob.entitlements;
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/Bob/PrefixHeader.pch";

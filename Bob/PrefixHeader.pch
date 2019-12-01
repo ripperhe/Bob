@@ -21,3 +21,5 @@
 #import "NSButton+MM.h"
 #import "MMEventMonitor.h"
 #import "NSImage+MM.h"
+#import "NSView+MM.h"
+#import "NSWindow+MM.h"

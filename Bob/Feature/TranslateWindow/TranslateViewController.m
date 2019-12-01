@@ -385,9 +385,11 @@
 
 - (void)resetWindowSizeWithExpectHeight:(CGFloat)expectHeight {
     // 保证size达到最紧致😍
+    NSPoint topLeft = TranslateWindowController.shared.window.topLeft;
     CGFloat height = expectHeight > 0 ? expectHeight : self.queryView.frame.size.height;
     self.queryHeightConstraint.greaterThanOrEqualTo(@(height > kQueryMinHeight ? height : kQueryMinHeight));
     [TranslateWindowController.shared.window setContentSize:CGSizeMake(TranslateWindowController.shared.window.frame.size.width, 0)];
+    [TranslateWindowController.shared.window setTopLeft:topLeft];
 //    self.queryHeightConstraint.greaterThanOrEqualTo(@(kQueryMinHeight));
 }
 
