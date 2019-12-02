@@ -36,9 +36,9 @@ OSStatus GlobalHotKeyHandler(EventHandlerCallRef nextHandler, EventRef theEvent,
 @implementation AppDelegate
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
+    [StatusItem.shared setup];
     [self addGlobalHotKey:kVK_ANSI_D];
     [self addGlobalHotKey:kVK_ANSI_S];
-    [StatusItem.shared setup];
 }
 
 

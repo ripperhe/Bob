@@ -40,7 +40,7 @@ static StatusItem *_instance;
         return;
     }
     
-    NSMenuItem *translateItem = [[NSMenuItem alloc] initWithTitle:@"翻译" action:@selector(translateAction:) keyEquivalent:@"d"];
+    NSMenuItem *translateItem = [[NSMenuItem alloc] initWithTitle:@"划词翻译" action:@selector(translateAction:) keyEquivalent:@"d"];
     translateItem.keyEquivalentModifierMask = NSEventModifierFlagOption;
     translateItem.target = self;
     NSMenuItem *snipItem = [[NSMenuItem alloc] initWithTitle:@"截图翻译" action:@selector(snipAction:) keyEquivalent:@"s"];
@@ -73,7 +73,7 @@ static StatusItem *_instance;
 
 #pragma mark -
 - (void)translateAction:(NSMenuItem *)sender {
-    NSLog(@"翻译");
+    NSLog(@"划词翻译");
     [TranslateWindowController.shared showAtCenter];
 }
 

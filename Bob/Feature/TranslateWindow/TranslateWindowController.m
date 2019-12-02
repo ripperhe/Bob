@@ -16,6 +16,7 @@
 @interface TranslateWindowController ()
 
 @property (nonatomic, weak) TranslateViewController *viewController;
+@property (nonatomic, assign) BOOL hadShow;
 
 @end
 
@@ -55,12 +56,14 @@ static TranslateWindowController *_instance;
 }
 
 - (void)showAtCenter {
+    self.hadShow = YES;
     [self.window orderFrontRegardless];
     [self.window makeMainWindow];
     [self.window center];
 }
 
 - (void)showAtMouseLocation {
+    self.hadShow = YES;
     NSPoint mouseLocation = [NSEvent mouseLocation];
     NSScreen *screen = [NSScreen.screens mm_find:^BOOL(NSScreen * _Nonnull obj, NSUInteger idx) {
         // 找到鼠标所在屏幕
@@ -93,6 +96,9 @@ static TranslateWindowController *_instance;
 
 - (void)selectionTranslate {
     [self.viewController resetWithState:@"正在取词..."];
+    if (!self.hadShow) {
+        [self showAtMouseLocation];
+    }
     if (!self.window.visible || !Configuration.shared.isPin) {
         [self showAtMouseLocation];
     }
@@ -110,6 +116,9 @@ static TranslateWindowController *_instance;
     [Snip.shared startWithCompletion:^(NSImage * _Nullable image) {
         NSLog(@"获取到图片 %@", image);
         if (image) {
+            if (!self.hadShow) {
+                [self showAtMouseLocation];
+            }
             if (!self.window.visible || !Configuration.shared.isPin) {
                 [self showAtMouseLocation];
             }
