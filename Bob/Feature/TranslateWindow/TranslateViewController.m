@@ -308,10 +308,11 @@
         self.queryView.textView.string = @"";
         [self.resultView refreshWithStateString:@"文字识别中..."];
         [self resetWindowSizeWithExpectHeight:0];
-        [self.baiduTranslate ocr:note.object type:NSBitmapImageFileTypePNG from:Configuration.shared.from to:Configuration.shared.to completion:^(OCRResult * _Nullable result, NSError * _Nullable error) {
+        [self.baiduTranslate ocr:note.object from:Configuration.shared.from to:Configuration.shared.to completion:^(OCRResult * _Nullable result, NSError * _Nullable error) {
             mm_strongify(self)
-            if (result.src.firstObject.length) {
-                [self translate:result.src.firstObject];
+            NSLog(@"识别到的文本:\n%@", result.texts);
+            if (result.texts.count) {
+                [self translate:[NSString mm_stringByCombineComponents:result.texts separatedString:@"\t"]];
             }else {
                 self.currentResult = nil;
                 self.queryView.textView.string = @"";

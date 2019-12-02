@@ -84,6 +84,12 @@ static Snip *_instance;
         }];
         [windowController setEndBlock:^(SnipWindowController * _Nonnull windowController, NSImage * _Nullable image) {
             NSLog(@"截图结束：%@", image ? @"成功" : @"失败");
+            NSString *path = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES).firstObject stringByAppendingPathComponent:@"snip_image.png"];
+            [[NSFileManager defaultManager] removeItemAtPath:path error:nil];
+            if (image) {
+                NSLog(@"已保存图片\n%@", path);
+                [image mm_writeToFileAsPNG:path];
+            }
             [Snip.shared stop];
             if (self.completion) {
                 self.completion(image);

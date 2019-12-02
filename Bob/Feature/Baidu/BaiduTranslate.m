@@ -384,7 +384,7 @@
     return [NSString stringWithFormat:@"%@/gettts?lan=%@&text=%@&spd=3&source=web", kRootPage, language, text.mm_urlencode];
 }
 
-- (void)ocr:(NSImage *)image type:(NSBitmapImageFileType)type from:(Language)from to:(Language)to completion:(void (^)(OCRResult * _Nullable, NSError * _Nullable))completion {
+- (void)ocr:(NSImage *)image from:(Language)from to:(Language)to completion:(void (^)(OCRResult * _Nullable, NSError * _Nullable))completion {
     if (!image) {
         completion(nil, kError(TranslateErrorTypeParamError, @"图片为空"));
         return;
@@ -392,9 +392,18 @@
     
     NSData *tiffData = [image TIFFRepresentation];
     NSBitmapImageRep *imageRep = [NSBitmapImageRep imageRepWithData:tiffData];
-    NSData *data = [imageRep representationUsingType:type properties:@{}];
-    NSString *fromLang = BaiduLanguageStringFromEnum(from);
-    NSString *toLang = BaiduLanguageStringFromEnum(to);
+    NSData *data = [imageRep representationUsingType:NSBitmapImageFileTypePNG properties:@{}];
+    NSString *fromLang = (from == Language_auto) ? BaiduLanguageStringFromEnum(Language_en) : BaiduLanguageStringFromEnum(from);
+    NSString *toLang = nil;
+    if (to == Language_auto) {
+        if (from == Language_zh) {
+            toLang = BaiduLanguageStringFromEnum(Language_en);
+        }else {
+            toLang = BaiduLanguageStringFromEnum(Language_zh);
+        }
+    }else {
+        toLang = BaiduLanguageStringFromEnum(to);
+    }
     
     NSDictionary *para = @{
         @"image": data,
@@ -412,17 +421,31 @@
             NSDictionary *jsonResult = responseObject;
             NSDictionary *data = [jsonResult objectForKey:@"data"];
             if (data && [data isKindOfClass:[NSDictionary class]]) {
-                OCRResult *result = [OCRResult mj_objectWithKeyValues:data];
-                if (result.src.count) {
+                OCRResult *result = [OCRResult new];
+                NSString *from = [data objectForKey:@"from"];
+                if (from && [from isKindOfClass:NSString.class]) {
+                    result.from = BaiduLanguageEnumFromString(from);
+                }
+                NSString *to = [data objectForKey:@"to"];
+                if (to && [to isKindOfClass:NSString.class]) {
+                    result.to = BaiduLanguageEnumFromString(to);
+                }
+                NSArray<NSString *> *src = [data objectForKey:@"src"];
+                if (src && src.count) {
+                    result.texts = [src mm_where:^BOOL(NSString * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                        return [obj isKindOfClass:NSString.class] && obj.length;
+                    }];
+                }
+                if (result.texts.count) {
                     completion(result, nil);
                     return;
                 }
             }
-            completion(nil, kError(TranslateErrorTypeAPIError, @"图片文本识别失败"));
+            completion(nil, kError(TranslateErrorTypeAPIError, @"识别图片文本失败"));
         }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         // NSLog(@"%@", error);
-        completion(nil, kError(TranslateErrorTypeNetworkError, @"图片文本识别失败"));
+        completion(nil, kError(TranslateErrorTypeNetworkError, @"识别图片文本失败"));
     }];
 }
 

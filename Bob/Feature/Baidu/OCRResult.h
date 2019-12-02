@@ -7,19 +7,18 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "TranslateLanguage.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface OCRResult : NSObject
 
-/// 图片方向
-@property (nonatomic, assign) NSInteger direction;
 /// 源语言
-@property (nonatomic, copy) NSString *from;
+@property (nonatomic, assign) Language from;
 /// 目标语言
-@property (nonatomic, copy) NSString *to;
+@property (nonatomic, assign) Language to;
 /// 翻译结果
-@property (nonatomic, strong) NSArray<NSString *> *src;
+@property (nonatomic, strong) NSArray<NSString *> *texts;
 
 @end
 
