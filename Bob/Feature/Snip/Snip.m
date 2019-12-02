@@ -64,6 +64,8 @@ static Snip *_instance;
     return _globalMouseMonitor;
 }
 
+#pragma mark -
+
 - (void)startWithCompletion:(void (^)(NSImage * _Nullable))completion {
     if (self.isSnapshotting) {
         if (completion) {
@@ -174,6 +176,13 @@ static Snip *_instance;
                 [self.currentMainWindowController.snipViewController showAndUpdateFocusView];
             }
         }
+    }
+    
+    if (!self.currentMainWindowController.window.isMainWindow ||
+        !self.currentMainWindowController.window.isKeyWindow) {
+        NSLog(@"设置 main window");
+        [self.currentMainWindowController.window makeMainWindow];
+        [self.currentMainWindowController.window makeKeyWindow];
     }
 }
 
