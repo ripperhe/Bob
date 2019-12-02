@@ -12,6 +12,7 @@
 #import "Selection.h"
 #import "Snip.h"
 #import "Configuration.h"
+#import <QuartzCore/QuartzCore.h>
 
 @interface TranslateWindowController ()
 
@@ -112,6 +113,13 @@ static TranslateWindowController *_instance;
 }
 
 - (void)snipTranslate {
+    if (Snip.shared.isSnapshotting) {
+        return;
+    }
+    if (!Configuration.shared.isPin && self.window.visible) {
+        [self close];
+        [CATransaction flush];
+    }
     [self.viewController resetWithState:@"正在截图..."];
     [Snip.shared startWithCompletion:^(NSImage * _Nullable image) {
         NSLog(@"获取到图片 %@", image);
