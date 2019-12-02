@@ -12,13 +12,15 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface TranslateWindowController : NSWindowController
 
-@property (nonatomic, assign) BOOL hadShow;
-
 + (instancetype)shared;
 
 - (void)showAtCenter;
 
 - (void)showAtMouseLocation;
+
+- (void)selectionTranslate;
+
+- (void)snipTranslate;
 
 @end
 

@@ -19,43 +19,10 @@ OSStatus GlobalHotKeyHandler(EventHandlerCallRef nextHandler, EventRef theEvent,
     uint32 hotKeyId = hotKeyCom.id;
     switch (hotKeyId) {
         case kVK_ANSI_D:
-            if (TranslateWindowController.shared.window.isVisible) {
-                if (Configuration.shared.isPin) {
-                    [[NSNotificationCenter defaultCenter] postNotificationName:@"translate" object:nil];
-                }else {
-                    [TranslateWindowController.shared close];
-                }
-            }else {
-                if (TranslateWindowController.shared.hadShow) {
-                    [[NSNotificationCenter defaultCenter] postNotificationName:@"translate" object:nil];
-                    [TranslateWindowController.shared showAtMouseLocation];
-                }else {
-                    [TranslateWindowController.shared showAtMouseLocation];
-                    [[NSNotificationCenter defaultCenter] postNotificationName:@"translate" object:nil];
-                }
-            }
+            [TranslateWindowController.shared selectionTranslate];
             break;
         case kVK_ANSI_S:
-            [Snip.shared startWithCompletion:^(NSImage * _Nullable image) {
-                NSLog(@"获取到图片 %@", image);
-                if (image) {
-                    if (TranslateWindowController.shared.window.isVisible) {
-                        if (Configuration.shared.isPin) {
-                            [[NSNotificationCenter defaultCenter] postNotificationName:@"snip" object:image];
-                        }else {
-                            [TranslateWindowController.shared close];
-                        }
-                    }else {
-                        if (TranslateWindowController.shared.hadShow) {
-                            [[NSNotificationCenter defaultCenter] postNotificationName:@"snip" object:image];
-                            [TranslateWindowController.shared showAtMouseLocation];
-                        }else {
-                            [TranslateWindowController.shared showAtMouseLocation];
-                            [[NSNotificationCenter defaultCenter] postNotificationName:@"snip" object:image];
-                        }
-                    }
-                }
-            }];
+            [TranslateWindowController.shared snipTranslate];
             break;
             
     }

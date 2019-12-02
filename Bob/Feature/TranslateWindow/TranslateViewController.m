@@ -138,7 +138,7 @@
         [view setEnterActionBlock:^(QueryView * _Nonnull view) {
             mm_strongify(self);
             if (view.textView.string.length) {
-                [self translate:view.textView.string];
+                [self translateText:view.textView.string];
             }
         }];
     }];
@@ -242,7 +242,7 @@
         }];
         [view.wordResultView setSelectWordBlock:^(WordResultView * _Nonnull view, NSString * _Nonnull word) {
             mm_strongify(self);
-            [self translate:word];
+            [self translateText:word];
         }];
     }];
     
@@ -283,44 +283,6 @@
         @(Language_vie),
     ];
     self.player = [[AVPlayer alloc] init];
-    
-    mm_weakify(self)
-    [[NSNotificationCenter defaultCenter] addObserverForName:@"translate" object:nil queue:NSOperationQueue.mainQueue usingBlock:^(NSNotification * _Nonnull note) {
-        mm_strongify(self)
-        mm_weakify(self)
-        [Selection getText:^(NSString * _Nullable text) {
-            mm_strongify(self)
-            if (text.length) {
-                [self translate:text];
-            }else {
-                self.currentResult = nil;
-                self.queryView.textView.string = @"";
-                [self.resultView refreshWithStateString:@"没有获取到内容"];
-                [self moveWindowToScreen];
-            }
-        }];
-    }];
-    
-    [[NSNotificationCenter defaultCenter] addObserverForName:@"snip" object:nil queue:NSOperationQueue.mainQueue usingBlock:^(NSNotification * _Nonnull note) {
-        mm_strongify(self)
-        mm_weakify(self)
-        self.currentResult = nil;
-        self.queryView.textView.string = @"";
-        [self.resultView refreshWithStateString:@"文字识别中..."];
-        [self resetWindowSizeWithExpectHeight:0];
-        [self.baiduTranslate ocr:note.object from:Configuration.shared.from to:Configuration.shared.to completion:^(OCRResult * _Nullable result, NSError * _Nullable error) {
-            mm_strongify(self)
-            NSLog(@"识别到的文本:\n%@", result.texts);
-            if (result.texts.count) {
-                [self translate:[NSString mm_stringByCombineComponents:result.texts separatedString:@"\t"]];
-            }else {
-                self.currentResult = nil;
-                self.queryView.textView.string = @"";
-                [self.resultView refreshWithStateString:@"没有识别到文字"];
-                [self moveWindowToScreen];
-            }
-        }];
-    }];
 }
 
 - (void)setupMonitor {
@@ -338,13 +300,9 @@
 #pragma mark -
 
 - (NSInteger)indexFromLangages:(Language)lang {
-    return [[self.languages mm_where:^BOOL(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        if ([obj integerValue] == lang) {
-            *stop = YES;
-            return YES;
-        }
-        return NO;
-    }].firstObject integerValue];
+    return [self.languages mm_find:^BOOL(NSNumber * _Nonnull obj, NSUInteger idx) {
+        return obj.integerValue == lang;
+    }].integerValue;
 }
 
 - (void)playAudioWithText:(NSString *)text lang:(Language)lang {
@@ -365,6 +323,60 @@
     [self.player play];
 }
 
+#pragma mark -
+
+- (void)resetWithState:(NSString *)stateString {
+    self.currentResult = nil;
+    self.queryView.textView.string = @"";
+    [self.resultView refreshWithStateString:stateString];
+    [self resizeWindowWithQueryViewExpectHeight:0];
+}
+
+- (void)translateText:(NSString *)text {
+    self.currentResult = nil;
+    self.queryView.textView.string = text;
+    [self.resultView refreshWithStateString:@"翻译中..."];
+    [self resizeWindowWithQueryViewExpectHeight:0];
+    mm_weakify(self)
+    [self.baiduTranslate translate:text
+                              from:Configuration.shared.from
+                                to:Configuration.shared.to
+                        completion:^(TranslateResult * _Nullable result, NSError * _Nullable error) {
+        mm_strongify(self);
+        if (error) {
+            [self.resultView refreshWithStateString:error.localizedDescription];
+        }else {
+            self.currentResult = result;
+            [self.resultView refreshWithResult:result];
+        }
+        mm_weakify(self)
+        dispatch_async(dispatch_get_main_queue(), ^{
+            mm_strongify(self);
+            [self moveWindowToScreen];
+            self.queryHeightConstraint.greaterThanOrEqualTo(@(kQueryMinHeight));
+        });
+    }];
+}
+
+- (void)translateImage:(NSImage *)image {
+    [self resetWithState:@"图片文本识别中..."];
+    mm_weakify(self)
+    [self.baiduTranslate ocr:image
+                        from:Configuration.shared.from
+                          to:Configuration.shared.to
+                  completion:^(OCRResult * _Nullable result, NSError * _Nullable error) {
+        mm_strongify(self)
+        NSLog(@"识别到的文本:\n%@", result.texts);
+        if (error) {
+            [self.resultView refreshWithStateString:error.localizedDescription];
+        }else {
+            [self translateText:[NSString mm_stringByCombineComponents:result.texts separatedString:@"\t"]];
+        }
+    }];
+}
+
+#pragma mark - window frame
+
 - (void)updateFoldState:(BOOL)isFold {
     if (isFold) {
         self.queryHeightWhenFold = self.queryView.frame.size.height;
@@ -381,57 +393,31 @@
             self.resultTopConstraint = make.top.equalTo(self.fromLanguageButton.mas_bottom).offset(12);
         }
     }];
-    [self resetWindowSizeWithExpectHeight:self.queryHeightWhenFold];
+    [self resizeWindowWithQueryViewExpectHeight:self.queryHeightWhenFold];
 }
 
-- (void)resetWindowSizeWithExpectHeight:(CGFloat)expectHeight {
-    // 保证size达到最紧致😍
-    NSPoint topLeft = TranslateWindowController.shared.window.topLeft;
+// 保证 result size 达到最小
+- (void)resizeWindowWithQueryViewExpectHeight:(CGFloat)expectHeight {
+    NSPoint topLeft = self.window.topLeft;
     CGFloat height = expectHeight > 0 ? expectHeight : self.queryView.frame.size.height;
     self.queryHeightConstraint.greaterThanOrEqualTo(@(height > kQueryMinHeight ? height : kQueryMinHeight));
-    [TranslateWindowController.shared.window setContentSize:CGSizeMake(TranslateWindowController.shared.window.frame.size.width, 0)];
-    [TranslateWindowController.shared.window setTopLeft:topLeft];
-//    self.queryHeightConstraint.greaterThanOrEqualTo(@(kQueryMinHeight));
+    [self.window setContentSize:CGSizeMake(self.window.frame.size.width, 0)];
+    [self.window setTopLeft:topLeft];
+    // self.queryHeightConstraint.greaterThanOrEqualTo(@(kQueryMinHeight));
 }
 
 - (void)moveWindowToScreen {
-    BOOL needMove = NO;
-    NSRect windowFrame = TranslateWindowController.shared.window.frame;
-    NSRect visibleFrame = TranslateWindowController.shared.window.screen.visibleFrame;
+    NSRect windowFrame = self.window.frame;
+    NSRect visibleFrame = self.window.screen.visibleFrame;
     if (windowFrame.origin.y < visibleFrame.origin.y + 10) {
-        needMove = YES;
         windowFrame.origin.y = visibleFrame.origin.y + 10;
     }
     if (windowFrame.origin.x > visibleFrame.origin.x + visibleFrame.size.width - windowFrame.size.width - 10) {
-        needMove = YES;
         windowFrame.origin.x = visibleFrame.origin.x + visibleFrame.size.width - windowFrame.size.width - 10;
     }
-    if (needMove) {
-        [TranslateWindowController.shared.window setFrame:windowFrame display:YES animate:YES];
+    if (!NSEqualRects(self.window.frame, windowFrame)) {
+        [self.window setFrame:windowFrame display:YES animate:YES];
     }
-}
-
-- (void)translate:(NSString *)text {
-    self.currentResult = nil;
-    self.queryView.textView.string = text;
-    [self.resultView refreshWithStateString:@"查询中..."];
-    [self resetWindowSizeWithExpectHeight:0];
-    mm_weakify(self)
-    [self.baiduTranslate translate:text from:Configuration.shared.from to:Configuration.shared.to completion:^(TranslateResult * _Nullable result, NSError * _Nullable error) {
-        mm_strongify(self);
-        if (error) {
-            [self.resultView refreshWithStateString:[error.userInfo objectForKey:NSLocalizedDescriptionKey]];
-        }else {
-            self.currentResult = result;
-            [self.resultView refreshWithResult:result];
-        }
-        mm_weakify(self)
-        dispatch_async(dispatch_get_main_queue(), ^{
-            mm_strongify(self);
-            [self moveWindowToScreen];
-            self.queryHeightConstraint.greaterThanOrEqualTo(@(kQueryMinHeight));
-        });
-    }];
 }
 
 @end

@@ -31,6 +31,17 @@
     return newArray.copy;
 }
 
+- (id)mm_find:(BOOL (^)(id _Nonnull, NSUInteger))block {
+    __block id target = nil;
+    [self enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        if (block(obj, idx)) {
+            target = obj;
+            *stop = YES;
+        }
+    }];
+    return target;
+}
+
 - (NSArray *)mm_combine:(NSArray * (^)(id obj, NSUInteger idx, BOOL *stop))block {
     __block NSMutableArray *newArray = [NSMutableArray array];
     [self enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {

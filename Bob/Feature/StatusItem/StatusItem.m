@@ -79,9 +79,7 @@ static StatusItem *_instance;
 
 - (void)snipAction:(NSMenuItem *)sender {
     NSLog(@"截图翻译");
-    [Snip.shared startWithCompletion:^(NSImage * _Nullable image) {
-        
-    }];
+    [TranslateWindowController.shared snipTranslate];
 }
 
 - (void)preferenceAction:(NSMenuItem *)sender {

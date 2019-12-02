@@ -9,8 +9,13 @@
 #import "TranslateWindowController.h"
 #import "TranslateViewController.h"
 #import "TranslateWindow.h"
+#import "Selection.h"
+#import "Snip.h"
+#import "Configuration.h"
 
 @interface TranslateWindowController ()
+
+@property (nonatomic, weak) TranslateViewController *viewController;
 
 @end
 
@@ -38,38 +43,30 @@ static TranslateWindowController *_instance;
 - (instancetype)init {
     if (self = [super init]) {
         NSWindow *window = [[TranslateWindow alloc] initWithContentRect:CGRectZero styleMask: NSWindowStyleMaskClosable | NSWindowStyleMaskResizable backing:NSBackingStoreBuffered defer:YES];
-        window.contentViewController = [TranslateViewController new];
+        TranslateViewController *viewController = [TranslateViewController new];
+        viewController.window = window;
+        window.contentViewController = viewController;
         window.movableByWindowBackground = YES;
         window.level = NSModalPanelWindowLevel;
         [self setWindow:window];
+        self.viewController = viewController;
     }
     return self;
 }
 
 - (void)showAtCenter {
-    self.hadShow = YES;
     [self.window orderFrontRegardless];
-//    [self.window makeKeyWindow];
     [self.window makeMainWindow];
-//    [self.window becomeFirstResponder];
     [self.window center];
 }
 
 - (void)showAtMouseLocation {
     NSPoint mouseLocation = [NSEvent mouseLocation];
-    __block NSScreen *screen = nil;
-    [[NSScreen screens] enumerateObjectsUsingBlock:^(NSScreen * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        if (NSPointInRect(mouseLocation, obj.frame)) {
-            // 找到屏幕
-            screen = obj;
-            *stop = YES;
-        }
+    NSScreen *screen = [NSScreen.screens mm_find:^BOOL(NSScreen * _Nonnull obj, NSUInteger idx) {
+        // 找到鼠标所在屏幕
+        return NSPointInRect(mouseLocation, obj.frame);
     }];
-    if (!screen) {
-        return;
-    }
-
-    self.hadShow = YES;
+    if (!screen) return;
     
     // 修正显示位置，用于保证window显示在鼠标所在的screen
     // 如果直接使用mouseLocation，可能会显示到其他screen（应该是由当前window在哪个屏幕的区域更多决定的）
@@ -92,6 +89,33 @@ static TranslateWindowController *_instance;
     [self.window orderFrontRegardless];
     [self.window makeMainWindow];
     [self.window setFrameTopLeftPoint:mouseLocation];
+}
+
+- (void)selectionTranslate {
+    [self.viewController resetWithState:@"正在取词..."];
+    if (!self.window.visible || !Configuration.shared.isPin) {
+        [self showAtMouseLocation];
+    }
+    [Selection getText:^(NSString * _Nullable text) {
+        if (text.length) {
+            [self.viewController translateText:text];
+        }else {
+            [self.viewController resetWithState:@"没有获取到文本"];
+        }
+    }];
+}
+
+- (void)snipTranslate {
+    [self.viewController resetWithState:@"正在截图..."];
+    [Snip.shared startWithCompletion:^(NSImage * _Nullable image) {
+        NSLog(@"获取到图片 %@", image);
+        if (image) {
+            if (!self.window.visible || !Configuration.shared.isPin) {
+                [self showAtMouseLocation];
+            }
+            [self.viewController translateImage:image];
+        }
+    }];
 }
 
 @end
