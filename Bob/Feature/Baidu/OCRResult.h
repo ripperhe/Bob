@@ -17,7 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign) Language from;
 /// 目标语言
 @property (nonatomic, assign) Language to;
-/// 翻译结果
+/// 文本识别结果
 @property (nonatomic, strong) NSArray<NSString *> *texts;
 
 @end
