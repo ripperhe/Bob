@@ -96,6 +96,9 @@ static TranslateWindowController *_instance;
 }
 
 - (void)selectionTranslate {
+    if (Snip.shared.isSnapshotting) {
+        return;
+    }
     [self.viewController resetWithState:@"正在取词..."];
     if (!self.hadShow) {
         [self showAtMouseLocation];
