@@ -60,6 +60,7 @@ static TranslateWindowController *_instance;
     self.hadShow = YES;
     [self.window orderFrontRegardless];
     [self.window makeMainWindow];
+    [self.window makeKeyWindow];
     [self.window center];
 }
 
@@ -92,6 +93,7 @@ static TranslateWindowController *_instance;
     
     [self.window orderFrontRegardless];
     [self.window makeMainWindow];
+    [self.window makeKeyWindow];
     [self.window setFrameTopLeftPoint:mouseLocation];
 }
 
