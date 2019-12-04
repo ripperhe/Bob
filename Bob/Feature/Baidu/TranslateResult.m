@@ -20,6 +20,10 @@
 
 @end
 
+@implementation TranslateSimpleWord
+
+@end
+
 @implementation TranslateWordResult
 
 @end

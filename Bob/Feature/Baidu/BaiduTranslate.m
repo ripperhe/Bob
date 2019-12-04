@@ -182,8 +182,9 @@
                             [symbol.parts enumerateObjectsUsingBlock:^(BaiduTranslateResponsePart * _Nonnull resultPart, NSUInteger idx, BOOL * _Nonnull stop) {
                                 TranslatePart *part = [TranslatePart mm_anyMake:^(TranslatePart *  _Nonnull obj) {
                                     obj.part = resultPart.part.length ? resultPart.part : nil;
-                                    obj.means = [resultPart.means mm_map:^id _Nullable(NSString * _Nonnull mean, NSUInteger idx, BOOL * _Nonnull stop) {
-                                        return [mean isKindOfClass:NSString.class] ? mean : nil;
+                                    obj.means = [resultPart.means mm_where:^BOOL (id mean, NSUInteger idx, BOOL * _Nonnull stop) {
+                                        // 如果中译英单词短语时，会是字典；这个API的设计，真的一言难尽
+                                        return [mean isKindOfClass:NSString.class];
                                     }];
                                 }];
                                 if (part.means.count) {
@@ -247,8 +248,51 @@
                             wordResult.exchanges = exchanges.count ? exchanges.copy : nil;
                         }];
                         
-                        // 至少要有词义才认为有单词翻译结果
-                        if (wordResult.parts) {
+                        // 解析中译英，单词短语
+                        if (simple_means.word_means.count) {
+                            // 这个时候去解析 simple_means["symbols"][0]["parts"][0]["means"]
+                            NSMutableArray<TranslateSimpleWord *> *words = [NSMutableArray array];
+                            NSArray<NSDictionary *> *means = simple_means.symbols.firstObject.parts.firstObject.means;
+                            [means enumerateObjectsUsingBlock:^(NSDictionary * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                                if ([obj isKindOfClass:NSDictionary.class]) {
+                                    /**
+                                     "text": "rejoice",
+                                     "part": "v.",
+                                     "word_mean": "rejoice",
+                                     "means": ["\u975e\u5e38\u9ad8\u5174", "\u6df1\u611f\u6b23\u559c"]
+                                     */
+                                    TranslateSimpleWord *simpleWord = [TranslateSimpleWord new];
+                                    simpleWord.word = [obj objectForKey:@"text"];
+                                    simpleWord.part = [obj objectForKey:@"part"];
+                                    if (!simpleWord.part.length) {
+                                        simpleWord.part = @"misc.";
+                                    }
+                                    NSArray *means = [obj objectForKey:@"means"];
+                                    if ([means isKindOfClass:NSArray.class]) {
+                                        simpleWord.means = [means mm_where:^BOOL(id  _Nonnull mean, NSUInteger idx, BOOL * _Nonnull stop) {
+                                            return [mean isKindOfClass:NSString.class];
+                                        }];
+                                    }
+                                    if (simpleWord.word.length) {
+                                        [words addObject:simpleWord];
+                                    }
+                                }
+                            }];
+                            if (words.count) {
+                                wordResult.simpleWords = [words sortedArrayUsingComparator:^NSComparisonResult(TranslateSimpleWord *  _Nonnull obj1, TranslateSimpleWord *  _Nonnull obj2) {
+                                    if ([obj2.part isEqualToString:@"misc."]) {
+                                        return NSOrderedAscending;
+                                    }else if ([obj1.part isEqualToString:@"misc."]) {
+                                        return NSOrderedDescending;
+                                    }else {
+                                        return [obj1.part compare:obj2.part];
+                                    }
+                                }];
+                            }
+                        }
+                        
+                        // 至少要有词义或单词组才认为有单词翻译结果
+                        if (wordResult.parts || wordResult.simpleWords) {
                             result.wordResult = wordResult;
                         }
                     }];

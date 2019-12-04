@@ -40,14 +40,27 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 
+@interface TranslateSimpleWord : NSObject
+
+/// 单词或短语
+@property (nonatomic, copy) NSString *word;
+/// 单词或短语属性
+@property (nonatomic, copy) NSString *part;
+/// 单词或短语意思
+@property (nonatomic, strong, nullable) NSArray<NSString *> *means;
+
+@end
+
 @interface TranslateWordResult : NSObject
 
 /// 音标
 @property (nonatomic, strong, nullable) NSArray<TranslatePhonetic *> *phonetics;
 /// 词性词义
-@property (nonatomic, strong) NSArray<TranslatePart *> *parts;
+@property (nonatomic, strong, nullable) NSArray<TranslatePart *> *parts;
 /// 其他形式
 @property (nonatomic, strong, nullable) NSArray<TranslateExchange *> *exchanges;
+/// 中译英，单词短语数组
+@property (nonatomic, strong, nullable) NSArray<TranslateSimpleWord *> *simpleWords;
 
 @end
 

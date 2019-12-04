@@ -30,7 +30,7 @@
     }
     if (message.length) {
         if (errorString.length) {
-            errorString = [NSString stringWithFormat:@"%@:\n%@", errorString, message];
+            errorString = [NSString stringWithFormat:@"%@: %@", errorString, message];
         }else {
             errorString = message;
         }

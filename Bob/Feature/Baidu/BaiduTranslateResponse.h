@@ -16,8 +16,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy, nullable) NSString *part;
 /// 部分单词没有 part，只有 part_name，例如 “Referer”
 @property (nonatomic, copy, nullable) NSString *part_name;
-/// 此单词属性下单词的释义（可能不是 string 类型，需要手动过滤）
-@property (nonatomic, strong) NSArray<NSString *> *means;
+/// 此单词属性下单词的释义（可能是 string 类型，也可能是 dictionary，需要手动判断）
+@property (nonatomic, strong) NSArray *means;
 
 @end
 
@@ -59,6 +59,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) NSArray<BaiduTranslateResponseSymbol *> *symbols;
 /// 单词的其他变形
 @property (nonatomic, strong) BaiduTranslateResponseExchange *exchange;
+/// 中译英单词时会有
+@property (nonatomic, strong) NSArray<NSString *> *word_means;
 
 @end
 
