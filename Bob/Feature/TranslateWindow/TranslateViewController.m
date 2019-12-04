@@ -243,6 +243,8 @@
         [view.wordResultView setSelectWordBlock:^(WordResultView * _Nonnull view, NSString * _Nonnull word) {
             mm_strongify(self);
             [self translateText:word];
+            [[NSPasteboard generalPasteboard] clearContents];
+            [[NSPasteboard generalPasteboard] setString:word forType:NSPasteboardTypeString];
         }];
     }];
     
