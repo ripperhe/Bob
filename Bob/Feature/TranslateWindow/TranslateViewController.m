@@ -370,7 +370,7 @@
         if (error) {
             [self.resultView refreshWithStateString:error.localizedDescription];
         }else {
-            [self translateText:[NSString mm_stringByCombineComponents:result.texts separatedString:@"\t"]];
+            [self translateText:[NSString mm_stringByCombineComponents:result.texts separatedString:@" "]];
         }
     }];
 }

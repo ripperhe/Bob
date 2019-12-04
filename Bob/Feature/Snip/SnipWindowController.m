@@ -20,6 +20,7 @@
             mainRect = subScreen.frame;
         }
     }
+    // https://isaacpg001.github.io/programming/2011/08/05/mac-multi-display-screen-crop/
     rect = NSMakeRect(rect.origin.x, (mainRect.size.height) - (rect.origin.y + rect.size.height), rect.size.width, rect.size.height);
     NSLog(@"screenshot: %@", NSStringFromRect(rect));
     
