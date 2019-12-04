@@ -51,6 +51,7 @@
                 }
             }];
         }];
+        
         NSTextField *valueTextField = [NSTextField mm_make:^(NSTextField * _Nonnull textField) {
             [self addSubview:textField];
             textField.stringValue = [NSString stringWithFormat:@"[%@]", obj.value];
@@ -64,6 +65,7 @@
                 make.centerY.equalTo(nameTextFiled);
             }];
         }];
+        
         NSButton *audioButton = [ImageButton mm_make:^(ImageButton * _Nonnull button) {
             [self addSubview:button];
             button.bordered = NO;
@@ -110,11 +112,12 @@
                             make.top.equalTo(lastView.mas_bottom);
                         }
                     }else {
-                        make.top.offset(12);
+                        make.top.offset(kMargin);
                     }
                 }];
             }];
         }
+        
         NSTextField *meanTextField = [[NSTextField wrappingLabelWithString:@""] mm_put:^(NSTextField * _Nonnull textField) {
             [self addSubview:textField];
             textField.stringValue = [NSString mm_stringByCombineComponents:obj.means separatedString:@"; "];
@@ -135,7 +138,7 @@
                             make.top.equalTo(lastView.mas_bottom);
                         }
                     }else {
-                        make.top.offset(12);
+                        make.top.offset(kMargin);
                     }
                 }
                 make.right.lessThanOrEqualTo(self).offset(-kMargin);
@@ -163,7 +166,7 @@
                         make.top.equalTo(lastView.mas_bottom);
                     }
                 }else {
-                    make.top.offset(12);
+                    make.top.offset(kMargin);
                 }
             }];
         }];
@@ -199,8 +202,83 @@
         }];
     }];
     
-    [lastView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.bottom.inset(kMargin);
+    __block NSString *lastSimpleWordPart = nil;
+    
+    [wordResult.simpleWords enumerateObjectsUsingBlock:^(TranslateSimpleWord * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        
+        NSTextField *partTextFiled = nil;
+        if (!lastSimpleWordPart || ![obj.part isEqualToString:lastSimpleWordPart]) {
+            // 添加 part label
+            partTextFiled = [NSTextField mm_make:^(NSTextField * _Nonnull textField) {
+                [self addSubview:textField];
+                textField.stringValue = obj.part;
+                textField.textColor = [NSColor mm_colorWithHexString:@"#999999"];
+                textField.font = [NSFont systemFontOfSize:13];
+                textField.editable = NO;
+                textField.bordered = NO;
+                textField.backgroundColor = NSColor.clearColor;
+                [textField mas_makeConstraints:^(MASConstraintMaker *make) {
+                    make.left.offset(kMargin);
+                    if (lastView) {
+                        make.top.equalTo(lastView.mas_bottom).offset(10);
+                    }else {
+                        make.top.offset(kMargin);
+                    }
+                }];
+            }];
+            
+            lastSimpleWordPart = obj.part;
+        }
+        
+        NSButton *wordButton = [NSButton mm_make:^(NSButton * _Nonnull button) {
+            [self addSubview:button];
+            button.bordered = NO;
+            button.imageScaling = NSImageScaleProportionallyDown;
+            button.bezelStyle = NSBezelStyleRegularSquare;
+            [button setButtonType:NSButtonTypeMomentaryChange];
+            button.attributedTitle = [NSAttributedString mm_attributedStringWithString:obj.word font:[NSFont systemFontOfSize:13] color:[NSColor mm_colorWithHexString:@"#007AFF"]];
+            [button sizeToFit];
+            [button mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.left.offset(kMargin);
+                if (partTextFiled) {
+                    make.top.equalTo(partTextFiled.mas_bottom).offset(5);
+                }else {
+                    make.top.equalTo(lastView.mas_bottom).offset(2);
+                }
+            }];
+            mm_weakify(self, obj)
+            [button setRac_command:[[RACCommand alloc] initWithSignalBlock:^RACSignal * _Nonnull(id  _Nullable input) {
+                mm_strongify(self, obj)
+                if (self.selectWordBlock) {
+                    self.selectWordBlock(self, obj.word);
+                }
+                return RACSignal.empty;
+            }]];
+        }];
+        
+        NSTextField *meanTextField = [[NSTextField wrappingLabelWithString:@""] mm_put:^(NSTextField * _Nonnull textField) {
+            [self addSubview:textField];
+            textField.stringValue = [NSString mm_stringByCombineComponents:obj.means separatedString:@"; "] ?: @"";
+            textField.textColor = [NSColor mm_colorWithHexString:@"#333333"];
+            textField.font = [NSFont systemFontOfSize:13];
+            textField.backgroundColor = NSColor.clearColor;
+            textField.alignment = NSTextAlignmentLeft;
+            [textField mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.left.equalTo(wordButton.mas_right).offset(8);
+                make.top.equalTo(wordButton);
+                make.right.lessThanOrEqualTo(self).offset(-kMargin);
+            }];
+        }];
+        
+        lastView = meanTextField;
+    }];
+    
+//    [lastView mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.bottom.inset(kMargin);
+//    }];
+    
+    [self mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.bottom.greaterThanOrEqualTo(lastView.mas_bottom).offset(kMargin);
     }];
 }
 

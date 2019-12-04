@@ -260,21 +260,24 @@
                                      "part": "v.",
                                      "word_mean": "rejoice",
                                      "means": ["\u975e\u5e38\u9ad8\u5174", "\u6df1\u611f\u6b23\u559c"]
+                                     "isSeeAlso": "1"
                                      */
-                                    TranslateSimpleWord *simpleWord = [TranslateSimpleWord new];
-                                    simpleWord.word = [obj objectForKey:@"text"];
-                                    simpleWord.part = [obj objectForKey:@"part"];
-                                    if (!simpleWord.part.length) {
-                                        simpleWord.part = @"misc.";
-                                    }
-                                    NSArray *means = [obj objectForKey:@"means"];
-                                    if ([means isKindOfClass:NSArray.class]) {
-                                        simpleWord.means = [means mm_where:^BOOL(id  _Nonnull mean, NSUInteger idx, BOOL * _Nonnull stop) {
-                                            return [mean isKindOfClass:NSString.class];
-                                        }];
-                                    }
-                                    if (simpleWord.word.length) {
-                                        [words addObject:simpleWord];
+                                    if (![obj objectForKey:@"isSeeAlso"]) {
+                                        TranslateSimpleWord *simpleWord = [TranslateSimpleWord new];
+                                        simpleWord.word = [obj objectForKey:@"text"];
+                                        simpleWord.part = [obj objectForKey:@"part"];
+                                        if (!simpleWord.part.length) {
+                                            simpleWord.part = @"misc.";
+                                        }
+                                        NSArray *means = [obj objectForKey:@"means"];
+                                        if ([means isKindOfClass:NSArray.class]) {
+                                            simpleWord.means = [means mm_where:^BOOL(id  _Nonnull mean, NSUInteger idx, BOOL * _Nonnull stop) {
+                                                return [mean isKindOfClass:NSString.class];
+                                            }];
+                                        }
+                                        if (simpleWord.word.length) {
+                                            [words addObject:simpleWord];
+                                        }
                                     }
                                 }
                             }];
