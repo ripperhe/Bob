@@ -65,6 +65,12 @@
     }
 }
 
+- (void)viewDidDisappear {
+    [super viewDidDisappear];
+    
+    [self.monitor stop];
+}
+
 - (void)setupViews {
     self.view.wantsLayer = YES;
     self.view.layer.backgroundColor = NSColor.whiteColor.CGColor;
@@ -355,7 +361,7 @@
         dispatch_async(dispatch_get_main_queue(), ^{
             mm_strongify(self);
             [self moveWindowToScreen];
-            self.queryHeightConstraint.greaterThanOrEqualTo(@(kQueryMinHeight));
+            [self resetQueryViewHeightConstraint];
         });
     }];
 }
@@ -379,6 +385,10 @@
 
 #pragma mark - window frame
 
+- (void)resetQueryViewHeightConstraint {
+    self.queryHeightConstraint.greaterThanOrEqualTo(@(kQueryMinHeight));
+}
+
 - (void)updateFoldState:(BOOL)isFold {
     if (isFold) {
         self.queryHeightWhenFold = self.queryView.frame.size.height;
@@ -396,6 +406,9 @@
         }
     }];
     [self resizeWindowWithQueryViewExpectHeight:self.queryHeightWhenFold];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self resetQueryViewHeightConstraint];
+    });
 }
 
 // 保证 result size 达到最小
@@ -405,7 +418,7 @@
     self.queryHeightConstraint.greaterThanOrEqualTo(@(height > kQueryMinHeight ? height : kQueryMinHeight));
     [self.window setContentSize:CGSizeMake(self.window.frame.size.width, 0)];
     [self.window setTopLeft:topLeft];
-    // self.queryHeightConstraint.greaterThanOrEqualTo(@(kQueryMinHeight));
+    // 等待合适的时机重置查询视图最小高度
 }
 
 - (void)moveWindowToScreen {

@@ -13,6 +13,7 @@
 #import "Snip.h"
 #import "Configuration.h"
 #import <QuartzCore/QuartzCore.h>
+#import <Carbon/Carbon.h>
 
 @interface TranslateWindowController ()
 
@@ -58,9 +59,9 @@ static TranslateWindowController *_instance;
 
 - (void)showAtCenter {
     self.hadShow = YES;
-    [self.window orderFrontRegardless];
+    [NSApp activateIgnoringOtherApps:YES];
+    [self.window makeKeyAndOrderFront:nil];
     [self.window makeMainWindow];
-    [self.window makeKeyWindow];
     [self.window center];
 }
 
@@ -91,9 +92,10 @@ static TranslateWindowController *_instance;
         mouseLocation.y = visibleFrame.origin.y + visibleFrame.size.height - 10;
     }
     
-    [self.window orderFrontRegardless];
+    // https://stackoverflow.com/questions/7460092/nswindow-makekeyandorderfront-makes-window-appear-but-not-key-or-front
+    [NSApp activateIgnoringOtherApps:YES];
+    [self.window makeKeyAndOrderFront:nil];
     [self.window makeMainWindow];
-    [self.window makeKeyWindow];
     [self.window setFrameTopLeftPoint:mouseLocation];
 }
 
@@ -102,17 +104,18 @@ static TranslateWindowController *_instance;
         return;
     }
     [self.viewController resetWithState:@"正在取词..."];
-    if (!self.hadShow) {
-        [self showAtMouseLocation];
-    }
-    if (!self.window.visible || !Configuration.shared.isPin) {
-        [self showAtMouseLocation];
-    }
     [Selection getText:^(NSString * _Nullable text) {
+        if (!self.hadShow) {
+            [self showAtMouseLocation];
+        }
+        if (!self.window.visible || !Configuration.shared.isPin) {
+            [self showAtMouseLocation];
+        }
         if (text.length) {
             [self.viewController translateText:text];
         }else {
             [self.viewController resetWithState:@"没有获取到文本"];
+            [self.viewController resetQueryViewHeightConstraint];
         }
     }];
 }
@@ -138,6 +141,19 @@ static TranslateWindowController *_instance;
             [self.viewController translateImage:image];
         }
     }];
+}
+
+#pragma mark -
+
+- (void)keyDown:(NSEvent *)event {
+    // ⌘ + W 关闭窗口
+    if (!Snip.shared.isSnapshotting &&
+        event.modifierFlags & NSEventModifierFlagCommand &&
+        event.keyCode == kVK_ANSI_W) {
+        [self close];
+        return;
+    }
+    [super keyDown:event];
 }
 
 @end

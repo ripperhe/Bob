@@ -15,6 +15,7 @@
 - (void)resetWithState:(NSString *)stateString;
 - (void)translateText:(NSString *)text;
 - (void)translateImage:(NSImage *)image;
+- (void)resetQueryViewHeightConstraint;
 
 @end
 
