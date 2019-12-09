@@ -9,10 +9,10 @@
 #import <Foundation/Foundation.h>
 #import <MASShortcut/Shortcut.h>
 
+NS_ASSUME_NONNULL_BEGIN
+
 static NSString *const SelectionShortcutKey = @"SelectionShortcutKey";
 static NSString *const SnipShortcutKey = @"SnipShortcutKey";
-
-NS_ASSUME_NONNULL_BEGIN
 
 @interface Shortcut : NSObject
 
