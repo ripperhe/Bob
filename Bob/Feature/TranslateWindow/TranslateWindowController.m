@@ -57,6 +57,8 @@ static TranslateWindowController *_instance;
     return self;
 }
 
+#pragma mark -
+
 - (void)showAtCenter {
     self.hadShow = YES;
     [NSApp activateIgnoringOtherApps:YES];

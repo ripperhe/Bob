@@ -1,4 +1,4 @@
-
+source 'https://github.com/CocoaPods/Specs.git'
 platform :osx, '10.12'
 
 target 'Bob' do
@@ -8,5 +8,7 @@ target 'Bob' do
   pod 'MJExtension', '~> 3.2.1'
   pod 'Masonry', '~> 1.1.0'
   pod 'ReactiveObjC', '~> 3.1.1'
+  pod 'MASShortcut', '~> 2.4.0'
+  pod 'MASPreferences', '~> 1.3'
   
 end

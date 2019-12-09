@@ -9,6 +9,12 @@
 /* Begin PBXBuildFile section */
 		C90C77852391188400A65E42 /* SnipFocusView.m in Sources */ = {isa = PBXBuildFile; fileRef = C90C77842391188400A65E42 /* SnipFocusView.m */; };
 		C959D33A238809B800DD8808 /* OCRResult.m in Sources */ = {isa = PBXBuildFile; fileRef = C959D339238809B800DD8808 /* OCRResult.m */; };
+		C98C17A1239E3F4A00BD02DB /* PreferencesWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = C98C17A0239E3F4A00BD02DB /* PreferencesWindowController.m */; };
+		C98C17A5239E40AC00BD02DB /* GeneralViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C98C17A3239E40AC00BD02DB /* GeneralViewController.m */; };
+		C98C17A6239E40AC00BD02DB /* GeneralViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C98C17A4239E40AC00BD02DB /* GeneralViewController.xib */; };
+		C98C17AA239E410300BD02DB /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C98C17A8239E410300BD02DB /* AboutViewController.m */; };
+		C98C17AB239E410300BD02DB /* AboutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C98C17A9239E410300BD02DB /* AboutViewController.xib */; };
+		C98C17B0239E516A00BD02DB /* Shortcut.m in Sources */ = {isa = PBXBuildFile; fileRef = C98C17AF239E516A00BD02DB /* Shortcut.m */; };
 		C99142742390FCBD0025E75E /* NSImage+MM.m in Sources */ = {isa = PBXBuildFile; fileRef = C99142732390FCBD0025E75E /* NSImage+MM.m */; };
 		C9986E1C2393B06C0016F569 /* NSView+MM.m in Sources */ = {isa = PBXBuildFile; fileRef = C9986E1B2393B06C0016F569 /* NSView+MM.m */; };
 		C9986E1F2393B09E0016F569 /* NSWindow+MM.m in Sources */ = {isa = PBXBuildFile; fileRef = C9986E1E2393B09E0016F569 /* NSWindow+MM.m */; };
@@ -57,6 +63,16 @@
 		C90C77842391188400A65E42 /* SnipFocusView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SnipFocusView.m; sourceTree = "<group>"; };
 		C959D338238809B800DD8808 /* OCRResult.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OCRResult.h; sourceTree = "<group>"; };
 		C959D339238809B800DD8808 /* OCRResult.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OCRResult.m; sourceTree = "<group>"; };
+		C98C179F239E3F4A00BD02DB /* PreferencesWindowController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PreferencesWindowController.h; sourceTree = "<group>"; };
+		C98C17A0239E3F4A00BD02DB /* PreferencesWindowController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PreferencesWindowController.m; sourceTree = "<group>"; };
+		C98C17A2239E40AC00BD02DB /* GeneralViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GeneralViewController.h; sourceTree = "<group>"; };
+		C98C17A3239E40AC00BD02DB /* GeneralViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GeneralViewController.m; sourceTree = "<group>"; };
+		C98C17A4239E40AC00BD02DB /* GeneralViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GeneralViewController.xib; sourceTree = "<group>"; };
+		C98C17A7239E410300BD02DB /* AboutViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AboutViewController.h; sourceTree = "<group>"; };
+		C98C17A8239E410300BD02DB /* AboutViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AboutViewController.m; sourceTree = "<group>"; };
+		C98C17A9239E410300BD02DB /* AboutViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AboutViewController.xib; sourceTree = "<group>"; };
+		C98C17AE239E516A00BD02DB /* Shortcut.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Shortcut.h; sourceTree = "<group>"; };
+		C98C17AF239E516A00BD02DB /* Shortcut.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Shortcut.m; sourceTree = "<group>"; };
 		C99142722390FCBD0025E75E /* NSImage+MM.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSImage+MM.h"; sourceTree = "<group>"; };
 		C99142732390FCBD0025E75E /* NSImage+MM.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSImage+MM.m"; sourceTree = "<group>"; };
 		C9986E1A2393B06C0016F569 /* NSView+MM.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSView+MM.h"; sourceTree = "<group>"; };
@@ -166,6 +182,30 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		C98C179A239E1B7400BD02DB /* PerferenceWindow */ = {
+			isa = PBXGroup;
+			children = (
+				C98C179F239E3F4A00BD02DB /* PreferencesWindowController.h */,
+				C98C17A0239E3F4A00BD02DB /* PreferencesWindowController.m */,
+				C98C17A2239E40AC00BD02DB /* GeneralViewController.h */,
+				C98C17A3239E40AC00BD02DB /* GeneralViewController.m */,
+				C98C17A4239E40AC00BD02DB /* GeneralViewController.xib */,
+				C98C17A7239E410300BD02DB /* AboutViewController.h */,
+				C98C17A8239E410300BD02DB /* AboutViewController.m */,
+				C98C17A9239E410300BD02DB /* AboutViewController.xib */,
+			);
+			path = PerferenceWindow;
+			sourceTree = "<group>";
+		};
+		C98C17AD239E511200BD02DB /* Shortcut */ = {
+			isa = PBXGroup;
+			children = (
+				C98C17AE239E516A00BD02DB /* Shortcut.h */,
+				C98C17AF239E516A00BD02DB /* Shortcut.m */,
+			);
+			path = Shortcut;
+			sourceTree = "<group>";
+		};
 		C99EEB0F2385796700FEE666 = {
 			isa = PBXGroup;
 			children = (
@@ -208,7 +248,9 @@
 				C9C3BDC4238E766B00D5F1C1 /* Snip */,
 				C99EEB8B2385799D00FEE666 /* Baidu */,
 				C99EEB882385799D00FEE666 /* Configuration */,
+				C98C17AD239E511200BD02DB /* Shortcut */,
 				C99EEBAA2385799D00FEE666 /* StatusItem */,
+				C98C179A239E1B7400BD02DB /* PerferenceWindow */,
 				C99EEB972385799D00FEE666 /* TranslateWindow */,
 			);
 			path = Feature;
@@ -397,6 +439,8 @@
 				C99EEB222385796900FEE666 /* Assets.xcassets in Resources */,
 				C99EEBC92385799D00FEE666 /* baidu-sign.js in Resources */,
 				C99EEB252385796900FEE666 /* Main.storyboard in Resources */,
+				C98C17A6239E40AC00BD02DB /* GeneralViewController.xib in Resources */,
+				C98C17AB239E410300BD02DB /* AboutViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -450,6 +494,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C99EEBD42385799D00FEE666 /* StatusItem.m in Sources */,
+				C98C17A5239E40AC00BD02DB /* GeneralViewController.m in Sources */,
 				C99EEBCA2385799D00FEE666 /* TranslateLanguage.m in Sources */,
 				C99EEBD32385799D00FEE666 /* WordResultView.m in Sources */,
 				C99EEBDE2385799D00FEE666 /* NSArray+MM.m in Sources */,
@@ -463,6 +508,7 @@
 				C99EEB282385796900FEE666 /* main.m in Sources */,
 				C99EEBC42385799D00FEE666 /* Configuration.m in Sources */,
 				C99EEBC62385799D00FEE666 /* TranslateError.m in Sources */,
+				C98C17A1239E3F4A00BD02DB /* PreferencesWindowController.m in Sources */,
 				C9C3BDC7238E76B000D5F1C1 /* SnipWindowController.m in Sources */,
 				C9986E1C2393B06C0016F569 /* NSView+MM.m in Sources */,
 				C99EEBD12385799D00FEE666 /* PopUpButton.m in Sources */,
@@ -473,6 +519,8 @@
 				C99EEBCE2385799D00FEE666 /* TranslateViewController.m in Sources */,
 				C99EEBC82385799D00FEE666 /* BaiduTranslateResponse.m in Sources */,
 				C99EEBDA2385799D00FEE666 /* NSButton+MM.m in Sources */,
+				C98C17B0239E516A00BD02DB /* Shortcut.m in Sources */,
+				C98C17AA239E410300BD02DB /* AboutViewController.m in Sources */,
 				C99EEBC52385799D00FEE666 /* BaiduTranslate.m in Sources */,
 				C99EEB1D2385796700FEE666 /* AppDelegate.m in Sources */,
 				C99EEBD72385799D00FEE666 /* MMMake.m in Sources */,
@@ -553,7 +601,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -605,7 +653,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = macosx;
