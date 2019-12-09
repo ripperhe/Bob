@@ -36,4 +36,22 @@
     [[MASShortcutValidator sharedValidator] setAllowAnyShortcutWithOptionModifier:YES];
 }
 
++ (void)readShortcutForKey:(NSString *)key completion:(void (^NS_NOESCAPE)(MASShortcut * _Nullable shorcut))completion {
+    NSData *data = [[NSUserDefaults standardUserDefaults] objectForKey:key];
+    if (data) {
+        MASShortcut *shortcut = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+        if (shortcut && [shortcut isKindOfClass:MASShortcut.class]) {
+            if (shortcut.keyCodeStringForKeyEquivalent.length || shortcut.modifierFlags) {
+                completion(shortcut);
+            }else {
+                completion(nil);
+            }
+        }else {
+            completion(nil);
+        }
+    }else {
+        completion(nil);
+    }
+}
+
 @end

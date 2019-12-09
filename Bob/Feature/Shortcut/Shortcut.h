@@ -18,6 +18,8 @@ static NSString *const SnipShortcutKey = @"SnipShortcutKey";
 
 + (void)setup;
 
++ (void)readShortcutForKey:(NSString *)key completion:(void (^NS_NOESCAPE)(MASShortcut * _Nullable shorcut))completion;
+
 @end
 
 NS_ASSUME_NONNULL_END
