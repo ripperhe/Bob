@@ -10,6 +10,9 @@
 
 @interface AboutViewController ()
 
+@property (weak) IBOutlet NSTextField *versionTextField;
+@property (weak) IBOutlet NSTextField *githubTextField;
+
 @end
 
 @implementation AboutViewController
@@ -20,8 +23,14 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do view setup here.
+    
+    self.versionTextField.stringValue = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
 }
+
+- (IBAction)githubTextFieldClicked:(NSClickGestureRecognizer *)sender {
+    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:self.githubTextField.stringValue]];
+}
+
 
 #pragma mark - MASPreferencesViewController
 

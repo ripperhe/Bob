@@ -1,0 +1,15 @@
+
+/* Class = "NSMenuItem"; title = "Bob"; ObjectID = "1Xt-HY-uBw"; */
+"1Xt-HY-uBw.title" = "Bob";
+
+/* Class = "NSMenuItem"; title = "Quit Bob"; ObjectID = "4sb-4s-VLi"; */
+"4sb-4s-VLi.title" = "Quit Bob";
+
+/* Class = "NSMenuItem"; title = "About Bob"; ObjectID = "5kV-Vb-QxS"; */
+"5kV-Vb-QxS.title" = "About Bob";
+
+/* Class = "NSMenu"; title = "Main Menu"; ObjectID = "AYu-sK-qS6"; */
+"AYu-sK-qS6.title" = "Main Menu";
+
+/* Class = "NSMenu"; title = "Bob"; ObjectID = "uQy-DD-JDr"; */
+"uQy-DD-JDr.title" = "Bob";
