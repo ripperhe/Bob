@@ -141,7 +141,9 @@
         [button setRac_command:[[RACCommand alloc] initWithSignalBlock:^RACSignal * _Nonnull(id  _Nullable input) {
             mm_strongify(self)
             [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:self.currentResult.link ?: self.baiduTranslate.link]];
-            [TranslateWindowController.shared close];
+            if (!Configuration.shared.isPin) {
+                [TranslateWindowController.shared close];
+            }
             return RACSignal.empty;
         }]];
     }];

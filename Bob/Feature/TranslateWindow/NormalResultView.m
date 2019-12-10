@@ -43,7 +43,7 @@ DefineMethodMMMake_m(NormalResultView)
             textView.textColor = [NSColor mm_colorWithHexString:@"#333333"];
 //            textView.alignment = NSTextAlignmentJustified;
             textView.alignment = NSTextAlignmentLeft;
-            textView.textContainerInset = CGSizeMake(12, 12);
+            textView.textContainerInset = CGSizeMake(8, 12);
             textView.backgroundColor = [NSColor mm_colorWithHexString:@"#EEEEEE"];
             [textView setAutoresizingMask:NSViewHeightSizable | NSViewWidthSizable];
         }];

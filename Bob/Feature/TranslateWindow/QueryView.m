@@ -49,7 +49,7 @@ DefineMethodMMMake_m(QueryView)
             textView.textColor = [NSColor mm_colorWithHexString:@"#333333"];
 //            textView.alignment = NSTextAlignmentJustified;
             textView.alignment = NSTextAlignmentLeft;
-            textView.textContainerInset  = CGSizeMake(12, 12);
+            textView.textContainerInset  = CGSizeMake(8, 12);
             textView.backgroundColor = NSColor.whiteColor;
             [textView setAutoresizingMask:NSViewHeightSizable | NSViewWidthSizable];
             textView.delegate = self;
