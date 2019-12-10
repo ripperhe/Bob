@@ -16,6 +16,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface BaiduTranslate : NSObject
 
+/// 百度翻译首页
+- (NSString *)link;
+
 /// 翻译
 /// @param text 查询文本
 /// @param from 文本语言

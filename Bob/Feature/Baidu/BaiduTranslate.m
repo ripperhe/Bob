@@ -332,6 +332,10 @@
 
 #pragma mark -
 
+- (NSString *)link {
+    return kRootPage;
+}
+
 - (void)translate:(NSString *)text from:(Language)from to:(Language)to completion:(nonnull void (^)(TranslateResult * _Nullable, NSError * _Nullable))completion {
     if (!text.length) {
         completion(nil, kError(TranslateErrorTypeParamError, @"翻译的文本为空"));

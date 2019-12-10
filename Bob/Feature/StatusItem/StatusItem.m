@@ -73,7 +73,7 @@ static StatusItem *_instance;
 
     NSStatusItem *item = [[NSStatusBar systemStatusBar] statusItemWithLength:NSSquareStatusItemLength];
     [item.button setToolTip:@"Bob"];
-    [item.button setImage:[NSImage imageNamed:@"icon_status"]];
+    [item.button setImage:[NSImage imageNamed:@"logo_status"]];
     [item.button setImageScaling:NSImageScaleProportionallyUpOrDown];
     [item setMenu:menu];
     

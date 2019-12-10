@@ -30,6 +30,7 @@
 
 @property (nonatomic, strong) NSButton *pinButton;
 @property (nonatomic, strong) NSButton *foldButton;
+@property (nonatomic, strong) NSButton *linkButton;
 @property (nonatomic, strong) QueryView *queryView;
 @property (nonatomic, strong) PopUpButton *fromLanguageButton;
 @property (nonatomic, strong) ImageButton *transformButton;
@@ -107,14 +108,14 @@
         button.imageScaling = NSImageScaleProportionallyDown;
         button.bezelStyle = NSBezelStyleRegularSquare;
         [button setButtonType:NSButtonTypeToggle];
-        button.attributedTitle = [NSAttributedString mm_attributedStringWithString:@"折叠" font:[NSFont systemFontOfSize:13] color:[NSColor mm_colorWithHexString:@"#007AFF"]];
-        button.attributedAlternateTitle = [NSAttributedString mm_attributedStringWithString:@"展开" font:[NSFont systemFontOfSize:13] color:[NSColor mm_colorWithHexString:@"#007AFF"]];
+        button.image = [NSImage imageNamed:@"fold_up"];
+        button.alternateImage = [NSImage imageNamed:@"fold_down"];
         button.mm_isOn = Configuration.shared.isFold;
         [button mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.offset(6);
-            make.right.inset(6);
-            make.height.mas_equalTo(32);
-            make.width.mas_equalTo(38);
+            make.top.offset(11);
+            make.right.inset(9);
+            make.height.mas_equalTo(22);
+            make.width.mas_equalTo(22);
         }];
         mm_weakify(button)
         [button setRac_command:[[RACCommand alloc] initWithSignalBlock:^RACSignal * _Nonnull(id  _Nullable input) {
@@ -125,6 +126,27 @@
         }]];
     }];
     
+    self.linkButton = [NSButton mm_make:^(NSButton * _Nonnull button) {
+        [self.view addSubview:button];
+        button.bordered = NO;
+        button.imageScaling = NSImageScaleProportionallyDown;
+        button.bezelStyle = NSBezelStyleRegularSquare;
+        [button setButtonType:NSButtonTypeToggle];
+        button.image = [NSImage imageNamed:@"link"];
+        [button mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(self.foldButton);
+            make.right.equalTo(self.foldButton.mas_left).inset(6);
+            make.height.equalTo(self.foldButton);
+        }];
+        mm_weakify(self)
+        [button setRac_command:[[RACCommand alloc] initWithSignalBlock:^RACSignal * _Nonnull(id  _Nullable input) {
+            mm_strongify(self)
+            [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:self.currentResult.link ?: self.baiduTranslate.link]];
+            [TranslateWindowController.shared close];
+            return RACSignal.empty;
+        }]];
+    }];
+
     self.queryView = [QueryView mm_make:^(QueryView * _Nonnull view) {
         [self.view addSubview:view];
         [view mas_makeConstraints:^(MASConstraintMaker *make) {
