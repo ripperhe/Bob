@@ -75,9 +75,9 @@
             button.image = [NSImage imageNamed:@"audio"];
             button.toolTip = @"播放音频";
             [button mas_makeConstraints:^(MASConstraintMaker *make) {
-                make.left.equalTo(valueTextField.mas_right).offset(11);
+                make.left.equalTo(valueTextField.mas_right).offset(7);
                 make.centerY.equalTo(valueTextField);
-                make.width.height.equalTo(@17);
+                make.width.height.equalTo(@26);
             }];
             mm_weakify(self, obj)
             [button setRac_command:[[RACCommand alloc] initWithSignalBlock:^RACSignal * _Nonnull(id  _Nullable input) {

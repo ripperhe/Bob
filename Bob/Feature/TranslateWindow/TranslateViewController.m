@@ -112,10 +112,9 @@
         button.alternateImage = [NSImage imageNamed:@"fold_down"];
         button.mm_isOn = Configuration.shared.isFold;
         [button mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.offset(11);
+            make.top.offset(9);
             make.right.inset(9);
-            make.height.mas_equalTo(22);
-            make.width.mas_equalTo(22);
+            make.width.height.mas_equalTo(26);
         }];
         mm_weakify(button)
         [button setRac_command:[[RACCommand alloc] initWithSignalBlock:^RACSignal * _Nonnull(id  _Nullable input) {
@@ -135,8 +134,8 @@
         button.image = [NSImage imageNamed:@"link"];
         [button mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.equalTo(self.foldButton);
-            make.right.equalTo(self.foldButton.mas_left).inset(6);
-            make.height.equalTo(self.foldButton);
+            make.right.equalTo(self.foldButton.mas_left).inset(8);
+            make.width.height.equalTo(self.foldButton);
         }];
         mm_weakify(self)
         [button setRac_command:[[RACCommand alloc] initWithSignalBlock:^RACSignal * _Nonnull(id  _Nullable input) {
