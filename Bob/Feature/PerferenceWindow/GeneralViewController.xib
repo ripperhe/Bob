@@ -8,6 +8,8 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="GeneralViewController">
             <connections>
+                <outlet property="launchAtStartup" destination="rdS-e7-tO0" id="JUL-Dw-2Ik"/>
+                <outlet property="launchAtStartupButton" destination="rdS-e7-tO0" id="R8S-B1-tU4"/>
                 <outlet property="selectionShortcutView" destination="eDQ-79-aWx" id="trP-og-aTc"/>
                 <outlet property="snipShortcutView" destination="4dL-3k-Qcg" id="jYb-Ti-BJr"/>
                 <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
@@ -45,6 +47,26 @@
                     <rect key="frame" x="170" y="157" width="184" height="25"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                 </customView>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="t4M-sZ-1bE">
+                    <rect key="frame" x="83" y="108" width="81" height="16"/>
+                    <autoresizingMask key="autoresizingMask"/>
+                    <textFieldCell key="cell" lineBreakMode="clipping" title="开机自启动：" id="wXZ-o7-CwY">
+                        <font key="font" size="13" name=".PingFangSC-Regular"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rdS-e7-tO0">
+                    <rect key="frame" x="168" y="109" width="22" height="18"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="0e5-PT-Ixx">
+                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="launchAtStartupButtonClicked:" target="-2" id="FKO-py-vG2"/>
+                    </connections>
+                </button>
             </subviews>
             <point key="canvasLocation" x="126" y="159"/>
         </customView>

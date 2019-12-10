@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C90BE30D239F38EB00ADE88B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C90BE30C239F38EB00ADE88B /* AppDelegate.m */; };
+		C90BE310239F38EB00ADE88B /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C90BE30F239F38EB00ADE88B /* ViewController.m */; };
+		C90BE312239F38EC00ADE88B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C90BE311239F38EC00ADE88B /* Assets.xcassets */; };
+		C90BE315239F38EC00ADE88B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C90BE313239F38EC00ADE88B /* Main.storyboard */; };
+		C90BE318239F38EC00ADE88B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C90BE317239F38EC00ADE88B /* main.m */; };
 		C90C77852391188400A65E42 /* SnipFocusView.m in Sources */ = {isa = PBXBuildFile; fileRef = C90C77842391188400A65E42 /* SnipFocusView.m */; };
 		C959D33A238809B800DD8808 /* OCRResult.m in Sources */ = {isa = PBXBuildFile; fileRef = C959D339238809B800DD8808 /* OCRResult.m */; };
 		C98C17A1239E3F4A00BD02DB /* PreferencesWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = C98C17A0239E3F4A00BD02DB /* PreferencesWindowController.m */; };
@@ -15,6 +20,7 @@
 		C98C17AA239E410300BD02DB /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C98C17A8239E410300BD02DB /* AboutViewController.m */; };
 		C98C17AB239E410300BD02DB /* AboutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C98C17A9239E410300BD02DB /* AboutViewController.xib */; };
 		C98C17B0239E516A00BD02DB /* Shortcut.m in Sources */ = {isa = PBXBuildFile; fileRef = C98C17AF239E516A00BD02DB /* Shortcut.m */; };
+		C98CAE75239F4619005F7DCA /* BobHelper.app in CopyFiles */ = {isa = PBXBuildFile; fileRef = C90BE309239F38EB00ADE88B /* BobHelper.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		C99142742390FCBD0025E75E /* NSImage+MM.m in Sources */ = {isa = PBXBuildFile; fileRef = C99142732390FCBD0025E75E /* NSImage+MM.m */; };
 		C9986E1C2393B06C0016F569 /* NSView+MM.m in Sources */ = {isa = PBXBuildFile; fileRef = C9986E1B2393B06C0016F569 /* NSView+MM.m */; };
 		C9986E1F2393B09E0016F569 /* NSWindow+MM.m in Sources */ = {isa = PBXBuildFile; fileRef = C9986E1E2393B09E0016F569 /* NSWindow+MM.m */; };
@@ -56,9 +62,32 @@
 		D2B213678C42C42C2AD2339C /* Pods_Bob.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F045DD4639F4F9836B1E8D6 /* Pods_Bob.framework */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		C98CAE74239F45DA005F7DCA /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = Contents/Library/LoginItems;
+			dstSubfolderSpec = 1;
+			files = (
+				C98CAE75239F4619005F7DCA /* BobHelper.app in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		3A08EDDF832035FD57B6A226 /* Pods-Bob.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bob.release.xcconfig"; path = "Target Support Files/Pods-Bob/Pods-Bob.release.xcconfig"; sourceTree = "<group>"; };
 		3F045DD4639F4F9836B1E8D6 /* Pods_Bob.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Bob.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C90BE309239F38EB00ADE88B /* BobHelper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BobHelper.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C90BE30B239F38EB00ADE88B /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		C90BE30C239F38EB00ADE88B /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		C90BE30E239F38EB00ADE88B /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		C90BE30F239F38EB00ADE88B /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		C90BE311239F38EC00ADE88B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		C90BE314239F38EC00ADE88B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		C90BE316239F38EC00ADE88B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C90BE317239F38EC00ADE88B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		C90BE319239F38EC00ADE88B /* BobHelper.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BobHelper.entitlements; sourceTree = "<group>"; };
 		C90C77832391188400A65E42 /* SnipFocusView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SnipFocusView.h; sourceTree = "<group>"; };
 		C90C77842391188400A65E42 /* SnipFocusView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SnipFocusView.m; sourceTree = "<group>"; };
 		C959D338238809B800DD8808 /* OCRResult.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OCRResult.h; sourceTree = "<group>"; };
@@ -154,6 +183,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		C90BE306239F38EB00ADE88B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C99EEB152385796700FEE666 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -180,6 +216,22 @@
 				3A08EDDF832035FD57B6A226 /* Pods-Bob.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		C90BE30A239F38EB00ADE88B /* BobHelper */ = {
+			isa = PBXGroup;
+			children = (
+				C90BE30B239F38EB00ADE88B /* AppDelegate.h */,
+				C90BE30C239F38EB00ADE88B /* AppDelegate.m */,
+				C90BE30E239F38EB00ADE88B /* ViewController.h */,
+				C90BE30F239F38EB00ADE88B /* ViewController.m */,
+				C90BE311239F38EC00ADE88B /* Assets.xcassets */,
+				C90BE313239F38EC00ADE88B /* Main.storyboard */,
+				C90BE316239F38EC00ADE88B /* Info.plist */,
+				C90BE317239F38EC00ADE88B /* main.m */,
+				C90BE319239F38EC00ADE88B /* BobHelper.entitlements */,
+			);
+			path = BobHelper;
 			sourceTree = "<group>";
 		};
 		C98C179A239E1B7400BD02DB /* PerferenceWindow */ = {
@@ -210,6 +262,7 @@
 			isa = PBXGroup;
 			children = (
 				C99EEB1A2385796700FEE666 /* Bob */,
+				C90BE30A239F38EB00ADE88B /* BobHelper */,
 				C99EEB192385796700FEE666 /* Products */,
 				9CB57B9B45EC322A11ED8865 /* Pods */,
 				713A345D86B5BC86D158B68F /* Frameworks */,
@@ -220,6 +273,7 @@
 			isa = PBXGroup;
 			children = (
 				C99EEB182385796700FEE666 /* Bob.app */,
+				C90BE309239F38EB00ADE88B /* BobHelper.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -380,6 +434,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		C90BE308239F38EB00ADE88B /* BobHelper */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C90BE31A239F38EC00ADE88B /* Build configuration list for PBXNativeTarget "BobHelper" */;
+			buildPhases = (
+				C90BE305239F38EB00ADE88B /* Sources */,
+				C90BE306239F38EB00ADE88B /* Frameworks */,
+				C90BE307239F38EB00ADE88B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = BobHelper;
+			productName = BobHelper;
+			productReference = C90BE309239F38EB00ADE88B /* BobHelper.app */;
+			productType = "com.apple.product-type.application";
+		};
 		C99EEB172385796700FEE666 /* Bob */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = C99EEB2C2385796900FEE666 /* Build configuration list for PBXNativeTarget "Bob" */;
@@ -389,6 +460,7 @@
 				C99EEB152385796700FEE666 /* Frameworks */,
 				C99EEB162385796700FEE666 /* Resources */,
 				124D690EE7236D6430CF945E /* [CP] Embed Pods Frameworks */,
+				C98CAE74239F45DA005F7DCA /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -408,6 +480,9 @@
 				LastUpgradeCheck = 1120;
 				ORGANIZATIONNAME = ripperhe;
 				TargetAttributes = {
+					C90BE308239F38EB00ADE88B = {
+						CreatedOnToolsVersion = 11.2.1;
+					};
 					C99EEB172385796700FEE666 = {
 						CreatedOnToolsVersion = 11.2.1;
 					};
@@ -427,11 +502,21 @@
 			projectRoot = "";
 			targets = (
 				C99EEB172385796700FEE666 /* Bob */,
+				C90BE308239F38EB00ADE88B /* BobHelper */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		C90BE307239F38EB00ADE88B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C90BE312239F38EC00ADE88B /* Assets.xcassets in Resources */,
+				C90BE315239F38EC00ADE88B /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C99EEB162385796700FEE666 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -489,6 +574,16 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		C90BE305239F38EB00ADE88B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C90BE310239F38EB00ADE88B /* ViewController.m in Sources */,
+				C90BE318239F38EC00ADE88B /* main.m in Sources */,
+				C90BE30D239F38EB00ADE88B /* AppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C99EEB142385796700FEE666 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -540,6 +635,14 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		C90BE313239F38EC00ADE88B /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C90BE314239F38EC00ADE88B /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
 		C99EEB232385796900FEE666 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -551,6 +654,44 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		C90BE31B239F38EC00ADE88B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = BobHelper/BobHelper.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = BobHelper/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ripperhe.BobHelper-debug";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		C90BE31C239F38EC00ADE88B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = BobHelper/BobHelper.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = BobHelper/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ripperhe.BobHelper;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
 		C99EEB2A2385796900FEE666 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -669,6 +810,7 @@
 				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = NO;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/Bob/PrefixHeader.pch";
 				INFOPLIST_FILE = Bob/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -690,6 +832,7 @@
 				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = NO;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/Bob/PrefixHeader.pch";
 				INFOPLIST_FILE = Bob/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -705,6 +848,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		C90BE31A239F38EC00ADE88B /* Build configuration list for PBXNativeTarget "BobHelper" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C90BE31B239F38EC00ADE88B /* Debug */,
+				C90BE31C239F38EC00ADE88B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		C99EEB132385796700FEE666 /* Build configuration list for PBXProject "Bob" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

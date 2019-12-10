@@ -8,11 +8,13 @@
 
 #import "GeneralViewController.h"
 #import "Shortcut.h"
+#import "Configuration.h"
 
 @interface GeneralViewController ()
 
 @property (weak) IBOutlet MASShortcutView *selectionShortcutView;
 @property (weak) IBOutlet MASShortcutView *snipShortcutView;
+@property (weak) IBOutlet NSButton *launchAtStartupButton;
 
 @end
 
@@ -30,6 +32,13 @@
     [self.selectionShortcutView setAssociatedUserDefaultsKey:SelectionShortcutKey];
     self.snipShortcutView.style = MASShortcutViewStyleTexturedRect;
     [self.snipShortcutView setAssociatedUserDefaultsKey:SnipShortcutKey];
+    self.launchAtStartupButton.mm_isOn = Configuration.shared.launchAtStartup;
+}
+
+#pragma mark - event
+
+- (IBAction)launchAtStartupButtonClicked:(NSButton *)sender {
+    Configuration.shared.launchAtStartup = sender.mm_isOn;
 }
 
 #pragma mark - MASPreferencesViewController

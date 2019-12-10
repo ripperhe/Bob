@@ -7,7 +7,9 @@
 //
 
 #import "Configuration.h"
+#import <ServiceManagement/ServiceManagement.h>
 
+#define kLaunchAtStartupKey @"configuration_launch_at_startup"
 #define kFromKey @"configuration_from"
 #define kToKey @"configuration_to"
 #define kPinKey @"configuration_pin"
@@ -65,6 +67,19 @@ static Configuration *_instance;
     self.isFold = [fold boolValue];
 }
 
+#pragma mark -
+
+- (BOOL)launchAtStartup {
+    BOOL launchAtStartup = [[NSUserDefaults mm_read:kLaunchAtStartupKey] boolValue];
+    [self updateLoginItemWithLaunchAtStartup:launchAtStartup];
+    return launchAtStartup;
+}
+
+- (void)setLaunchAtStartup:(BOOL)launchAtStartup {
+    [NSUserDefaults mm_write:@(launchAtStartup) forKey:kLaunchAtStartupKey];
+    [self updateLoginItemWithLaunchAtStartup:launchAtStartup];
+}
+
 - (void)setFrom:(Language)from {
     _from = from;
     [NSUserDefaults mm_write:@(from) forKey:kFromKey];
@@ -83,6 +98,19 @@ static Configuration *_instance;
 - (void)setIsFold:(BOOL)isFold {
     _isFold = isFold;
     [NSUserDefaults mm_write:@(isFold) forKey:kFoldKey];
+}
+
+#pragma mark -
+
+- (void)updateLoginItemWithLaunchAtStartup:(BOOL)launchAtStartup {
+    // 注册启动项
+    // https://nyrra33.com/2019/09/03/cocoa-launch-at-startup-best-practice/
+#if DEBUG
+    NSString *helper = [NSString stringWithFormat:@"com.ripperhe.BobHelper-debug"];
+#else
+    NSString *helper = [NSString stringWithFormat:@"com.ripperhe.BobHelper"];
+#endif
+    SMLoginItemSetEnabled((__bridge CFStringRef)helper, launchAtStartup);
 }
 
 @end

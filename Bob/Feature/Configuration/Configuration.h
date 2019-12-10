@@ -13,6 +13,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface Configuration : NSObject
 
+@property (nonatomic, assign) BOOL launchAtStartup;
+
 @property (nonatomic, assign) Language from;
 @property (nonatomic, assign) Language to;
 
