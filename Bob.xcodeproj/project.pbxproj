@@ -676,7 +676,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
-				PRODUCT_BUNDLE_IDENTIFIER = com.ripperhe.Bob;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ripperhe.Bob-debug";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
