@@ -25,6 +25,10 @@
 		C98CFA29239F8CDB00FB7EC4 /* MMFileLogFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = C98CFA22239F8CDB00FB7EC4 /* MMFileLogFormatter.m */; };
 		C98CFA2A239F8CDB00FB7EC4 /* MMConsoleLogFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = C98CFA24239F8CDB00FB7EC4 /* MMConsoleLogFormatter.m */; };
 		C98CFA2B239F8CDB00FB7EC4 /* MMLog.m in Sources */ = {isa = PBXBuildFile; fileRef = C98CFA26239F8CDB00FB7EC4 /* MMLog.m */; };
+		C98CFA33239FA6F400FB7EC4 /* MMCrashUncaughtExceptionHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = C98CFA2D239FA6F400FB7EC4 /* MMCrashUncaughtExceptionHandler.m */; };
+		C98CFA34239FA6F400FB7EC4 /* MMCrashSignalExceptionHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = C98CFA2F239FA6F400FB7EC4 /* MMCrashSignalExceptionHandler.m */; };
+		C98CFA35239FA6F400FB7EC4 /* MMCrashFileTool.m in Sources */ = {isa = PBXBuildFile; fileRef = C98CFA31239FA6F400FB7EC4 /* MMCrashFileTool.m */; };
+		C98CFA38239FA8E500FB7EC4 /* MMCrash.m in Sources */ = {isa = PBXBuildFile; fileRef = C98CFA37239FA8E500FB7EC4 /* MMCrash.m */; };
 		C99142742390FCBD0025E75E /* NSImage+MM.m in Sources */ = {isa = PBXBuildFile; fileRef = C99142732390FCBD0025E75E /* NSImage+MM.m */; };
 		C9986E1C2393B06C0016F569 /* NSView+MM.m in Sources */ = {isa = PBXBuildFile; fileRef = C9986E1B2393B06C0016F569 /* NSView+MM.m */; };
 		C9986E1F2393B09E0016F569 /* NSWindow+MM.m in Sources */ = {isa = PBXBuildFile; fileRef = C9986E1E2393B09E0016F569 /* NSWindow+MM.m */; };
@@ -116,6 +120,14 @@
 		C98CFA25239F8CDB00FB7EC4 /* MMFileLogFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMFileLogFormatter.h; sourceTree = "<group>"; };
 		C98CFA26239F8CDB00FB7EC4 /* MMLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMLog.m; sourceTree = "<group>"; };
 		C98CFA27239F8CDB00FB7EC4 /* MMConsoleLogFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMConsoleLogFormatter.h; sourceTree = "<group>"; };
+		C98CFA2D239FA6F400FB7EC4 /* MMCrashUncaughtExceptionHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMCrashUncaughtExceptionHandler.m; sourceTree = "<group>"; };
+		C98CFA2E239FA6F400FB7EC4 /* MMCrashFileTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMCrashFileTool.h; sourceTree = "<group>"; };
+		C98CFA2F239FA6F400FB7EC4 /* MMCrashSignalExceptionHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMCrashSignalExceptionHandler.m; sourceTree = "<group>"; };
+		C98CFA30239FA6F400FB7EC4 /* MMCrashSignalExceptionHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMCrashSignalExceptionHandler.h; sourceTree = "<group>"; };
+		C98CFA31239FA6F400FB7EC4 /* MMCrashFileTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMCrashFileTool.m; sourceTree = "<group>"; };
+		C98CFA32239FA6F400FB7EC4 /* MMCrashUncaughtExceptionHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMCrashUncaughtExceptionHandler.h; sourceTree = "<group>"; };
+		C98CFA36239FA8E500FB7EC4 /* MMCrash.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MMCrash.h; sourceTree = "<group>"; };
+		C98CFA37239FA8E500FB7EC4 /* MMCrash.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MMCrash.m; sourceTree = "<group>"; };
 		C99142722390FCBD0025E75E /* NSImage+MM.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSImage+MM.h"; sourceTree = "<group>"; };
 		C99142732390FCBD0025E75E /* NSImage+MM.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSImage+MM.m"; sourceTree = "<group>"; };
 		C9986E1A2393B06C0016F569 /* NSView+MM.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSView+MM.h"; sourceTree = "<group>"; };
@@ -277,6 +289,7 @@
 			children = (
 				C99EEBB02385799D00FEE666 /* Utility */,
 				C98CFA1F239F8C4E00FB7EC4 /* Log */,
+				C98CFA2C239FA6F400FB7EC4 /* Crash */,
 			);
 			path = MMKit;
 			sourceTree = "<group>";
@@ -293,6 +306,21 @@
 				C98CFA22239F8CDB00FB7EC4 /* MMFileLogFormatter.m */,
 			);
 			path = Log;
+			sourceTree = "<group>";
+		};
+		C98CFA2C239FA6F400FB7EC4 /* Crash */ = {
+			isa = PBXGroup;
+			children = (
+				C98CFA36239FA8E500FB7EC4 /* MMCrash.h */,
+				C98CFA37239FA8E500FB7EC4 /* MMCrash.m */,
+				C98CFA2E239FA6F400FB7EC4 /* MMCrashFileTool.h */,
+				C98CFA31239FA6F400FB7EC4 /* MMCrashFileTool.m */,
+				C98CFA2D239FA6F400FB7EC4 /* MMCrashUncaughtExceptionHandler.m */,
+				C98CFA32239FA6F400FB7EC4 /* MMCrashUncaughtExceptionHandler.h */,
+				C98CFA30239FA6F400FB7EC4 /* MMCrashSignalExceptionHandler.h */,
+				C98CFA2F239FA6F400FB7EC4 /* MMCrashSignalExceptionHandler.m */,
+			);
+			path = Crash;
 			sourceTree = "<group>";
 		};
 		C99EEB0F2385796700FEE666 = {
@@ -628,7 +656,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C98CFA33239FA6F400FB7EC4 /* MMCrashUncaughtExceptionHandler.m in Sources */,
 				C99EEBD42385799D00FEE666 /* StatusItem.m in Sources */,
+				C98CFA34239FA6F400FB7EC4 /* MMCrashSignalExceptionHandler.m in Sources */,
 				C98C17A5239E40AC00BD02DB /* GeneralViewController.m in Sources */,
 				C98CFA2A239F8CDB00FB7EC4 /* MMConsoleLogFormatter.m in Sources */,
 				C98CFA2B239F8CDB00FB7EC4 /* MMLog.m in Sources */,
@@ -649,6 +679,7 @@
 				C9C3BDC7238E76B000D5F1C1 /* SnipWindowController.m in Sources */,
 				C9986E1C2393B06C0016F569 /* NSView+MM.m in Sources */,
 				C99EEBD12385799D00FEE666 /* PopUpButton.m in Sources */,
+				C98CFA38239FA8E500FB7EC4 /* MMCrash.m in Sources */,
 				C99EEBDD2385799D00FEE666 /* NSMutableAttributedString+MM.m in Sources */,
 				C99EEBCD2385799D00FEE666 /* QueryView.m in Sources */,
 				C98CFA28239F8CDB00FB7EC4 /* MMLog.swift in Sources */,
@@ -660,6 +691,7 @@
 				C98CFA29239F8CDB00FB7EC4 /* MMFileLogFormatter.m in Sources */,
 				C98C17B0239E516A00BD02DB /* Shortcut.m in Sources */,
 				C98C17AA239E410300BD02DB /* AboutViewController.m in Sources */,
+				C98CFA35239FA6F400FB7EC4 /* MMCrashFileTool.m in Sources */,
 				C99EEBC52385799D00FEE666 /* BaiduTranslate.m in Sources */,
 				C99EEB1D2385796700FEE666 /* AppDelegate.m in Sources */,
 				C99EEBD72385799D00FEE666 /* MMMake.m in Sources */,

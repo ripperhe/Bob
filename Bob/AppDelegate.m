@@ -9,14 +9,15 @@
 #import "AppDelegate.h"
 #import "StatusItem.h"
 #import "Shortcut.h"
+#import "MMCrash.h"
 
 @implementation AppDelegate
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
+    [MMCrash registerHandler];
     [StatusItem.shared setup];
     [Shortcut setup];
 }
-
 
 - (void)applicationWillTerminate:(NSNotification *)aNotification {
     [StatusItem.shared remove];
