@@ -68,7 +68,9 @@ BOOL MMDefaultLogAsyncEnabled = YES;
     dispatch_once(&onceToken, ^{
         _sharedLog = [[DDLog alloc] init];
         [self configDDLog:_sharedLog name:kDefaultLogName];
-        MMDDLogInfo(_sharedLog, @"\n=========>\n🚀 启动 MMLog(Defalut)...\n\n日志文件夹:\n%@\n<=========", [self defaultLogDirectory]);
+        NSString *identifier = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleIdentifier"];
+        NSString *version = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
+        MMDDLogInfo(_sharedLog, @"\n=========>\n🚀 %@(%@) 启动 MMLog(Defalut)...\n\n日志文件夹:\n%@\n<=========", identifier, version, [self defaultLogDirectory]);
     });
     return _sharedLog;
 }
@@ -79,7 +81,9 @@ BOOL MMDefaultLogAsyncEnabled = YES;
     if ([name isEqualToString:kDefaultLogName]) return [self sharedDDLog];
     DDLog *log = [[DDLog alloc] init];
     [self configDDLog:log name:name];
-    MMDDLogInfo(log, @"\n=========>\n🚀 启动 MMLog(%@)...\n\n日志文件夹:\n%@\n<=========", name, [self logDirectoryWithName:name]);
+    NSString *identifier = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleIdentifier"];
+    NSString *version = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
+    MMDDLogInfo(log, @"\n=========>\n🚀 %@(%@) 启动 MMLog(%@)...\n\n日志文件夹:\n%@\n<=========", identifier, version, name, [self logDirectoryWithName:name]);
     return log;
 }
 
