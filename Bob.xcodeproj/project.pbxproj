@@ -21,6 +21,10 @@
 		C98C17AB239E410300BD02DB /* AboutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C98C17A9239E410300BD02DB /* AboutViewController.xib */; };
 		C98C17B0239E516A00BD02DB /* Shortcut.m in Sources */ = {isa = PBXBuildFile; fileRef = C98C17AF239E516A00BD02DB /* Shortcut.m */; };
 		C98CAE75239F4619005F7DCA /* BobHelper.app in CopyFiles */ = {isa = PBXBuildFile; fileRef = C90BE309239F38EB00ADE88B /* BobHelper.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		C98CFA28239F8CDB00FB7EC4 /* MMLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = C98CFA21239F8CDB00FB7EC4 /* MMLog.swift */; };
+		C98CFA29239F8CDB00FB7EC4 /* MMFileLogFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = C98CFA22239F8CDB00FB7EC4 /* MMFileLogFormatter.m */; };
+		C98CFA2A239F8CDB00FB7EC4 /* MMConsoleLogFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = C98CFA24239F8CDB00FB7EC4 /* MMConsoleLogFormatter.m */; };
+		C98CFA2B239F8CDB00FB7EC4 /* MMLog.m in Sources */ = {isa = PBXBuildFile; fileRef = C98CFA26239F8CDB00FB7EC4 /* MMLog.m */; };
 		C99142742390FCBD0025E75E /* NSImage+MM.m in Sources */ = {isa = PBXBuildFile; fileRef = C99142732390FCBD0025E75E /* NSImage+MM.m */; };
 		C9986E1C2393B06C0016F569 /* NSView+MM.m in Sources */ = {isa = PBXBuildFile; fileRef = C9986E1B2393B06C0016F569 /* NSView+MM.m */; };
 		C9986E1F2393B09E0016F569 /* NSWindow+MM.m in Sources */ = {isa = PBXBuildFile; fileRef = C9986E1E2393B09E0016F569 /* NSWindow+MM.m */; };
@@ -104,6 +108,14 @@
 		C98C17AF239E516A00BD02DB /* Shortcut.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Shortcut.m; sourceTree = "<group>"; };
 		C98CFA1C239F6F3400FB7EC4 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
 		C98CFA1D239F6F3400FB7EC4 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
+		C98CFA20239F8CDA00FB7EC4 /* Bob-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Bob-Bridging-Header.h"; sourceTree = "<group>"; };
+		C98CFA21239F8CDB00FB7EC4 /* MMLog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MMLog.swift; sourceTree = "<group>"; };
+		C98CFA22239F8CDB00FB7EC4 /* MMFileLogFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMFileLogFormatter.m; sourceTree = "<group>"; };
+		C98CFA23239F8CDB00FB7EC4 /* MMLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMLog.h; sourceTree = "<group>"; };
+		C98CFA24239F8CDB00FB7EC4 /* MMConsoleLogFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMConsoleLogFormatter.m; sourceTree = "<group>"; };
+		C98CFA25239F8CDB00FB7EC4 /* MMFileLogFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMFileLogFormatter.h; sourceTree = "<group>"; };
+		C98CFA26239F8CDB00FB7EC4 /* MMLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMLog.m; sourceTree = "<group>"; };
+		C98CFA27239F8CDB00FB7EC4 /* MMConsoleLogFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMConsoleLogFormatter.h; sourceTree = "<group>"; };
 		C99142722390FCBD0025E75E /* NSImage+MM.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSImage+MM.h"; sourceTree = "<group>"; };
 		C99142732390FCBD0025E75E /* NSImage+MM.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSImage+MM.m"; sourceTree = "<group>"; };
 		C9986E1A2393B06C0016F569 /* NSView+MM.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSView+MM.h"; sourceTree = "<group>"; };
@@ -260,6 +272,29 @@
 			path = Shortcut;
 			sourceTree = "<group>";
 		};
+		C98CFA1E239F8C4000FB7EC4 /* MMKit */ = {
+			isa = PBXGroup;
+			children = (
+				C99EEBB02385799D00FEE666 /* Utility */,
+				C98CFA1F239F8C4E00FB7EC4 /* Log */,
+			);
+			path = MMKit;
+			sourceTree = "<group>";
+		};
+		C98CFA1F239F8C4E00FB7EC4 /* Log */ = {
+			isa = PBXGroup;
+			children = (
+				C98CFA23239F8CDB00FB7EC4 /* MMLog.h */,
+				C98CFA26239F8CDB00FB7EC4 /* MMLog.m */,
+				C98CFA21239F8CDB00FB7EC4 /* MMLog.swift */,
+				C98CFA27239F8CDB00FB7EC4 /* MMConsoleLogFormatter.h */,
+				C98CFA24239F8CDB00FB7EC4 /* MMConsoleLogFormatter.m */,
+				C98CFA25239F8CDB00FB7EC4 /* MMFileLogFormatter.h */,
+				C98CFA22239F8CDB00FB7EC4 /* MMFileLogFormatter.m */,
+			);
+			path = Log;
+			sourceTree = "<group>";
+		};
 		C99EEB0F2385796700FEE666 = {
 			isa = PBXGroup;
 			children = (
@@ -287,6 +322,7 @@
 				C99EEB1B2385796700FEE666 /* AppDelegate.h */,
 				C99EEB1C2385796700FEE666 /* AppDelegate.m */,
 				C99EEBDF238585E700FEE666 /* PrefixHeader.pch */,
+				C98CFA20239F8CDA00FB7EC4 /* Bob-Bridging-Header.h */,
 				C99EEB212385796900FEE666 /* Assets.xcassets */,
 				C99EEB232385796900FEE666 /* Main.storyboard */,
 				C99EEB262385796900FEE666 /* Info.plist */,
@@ -299,7 +335,7 @@
 		C99EEB872385799D00FEE666 /* Feature */ = {
 			isa = PBXGroup;
 			children = (
-				C99EEBB02385799D00FEE666 /* Utility */,
+				C98CFA1E239F8C4000FB7EC4 /* MMKit */,
 				C99EEBAD2385799D00FEE666 /* Selection */,
 				C9C3BDC4238E766B00D5F1C1 /* Snip */,
 				C99EEB8B2385799D00FEE666 /* Baidu */,
@@ -487,6 +523,7 @@
 					};
 					C99EEB172385796700FEE666 = {
 						CreatedOnToolsVersion = 11.2.1;
+						LastSwiftMigration = 1120;
 					};
 				};
 			};
@@ -593,6 +630,8 @@
 			files = (
 				C99EEBD42385799D00FEE666 /* StatusItem.m in Sources */,
 				C98C17A5239E40AC00BD02DB /* GeneralViewController.m in Sources */,
+				C98CFA2A239F8CDB00FB7EC4 /* MMConsoleLogFormatter.m in Sources */,
+				C98CFA2B239F8CDB00FB7EC4 /* MMLog.m in Sources */,
 				C99EEBCA2385799D00FEE666 /* TranslateLanguage.m in Sources */,
 				C99EEBD32385799D00FEE666 /* WordResultView.m in Sources */,
 				C99EEBDE2385799D00FEE666 /* NSArray+MM.m in Sources */,
@@ -612,11 +651,13 @@
 				C99EEBD12385799D00FEE666 /* PopUpButton.m in Sources */,
 				C99EEBDD2385799D00FEE666 /* NSMutableAttributedString+MM.m in Sources */,
 				C99EEBCD2385799D00FEE666 /* QueryView.m in Sources */,
+				C98CFA28239F8CDB00FB7EC4 /* MMLog.swift in Sources */,
 				C9C3BDCA238E76C800D5F1C1 /* SnipWindow.m in Sources */,
 				C99EEBD52385799D00FEE666 /* Selection.m in Sources */,
 				C99EEBCE2385799D00FEE666 /* TranslateViewController.m in Sources */,
 				C99EEBC82385799D00FEE666 /* BaiduTranslateResponse.m in Sources */,
 				C99EEBDA2385799D00FEE666 /* NSButton+MM.m in Sources */,
+				C98CFA29239F8CDB00FB7EC4 /* MMFileLogFormatter.m in Sources */,
 				C98C17B0239E516A00BD02DB /* Shortcut.m in Sources */,
 				C98C17AA239E410300BD02DB /* AboutViewController.m in Sources */,
 				C99EEBC52385799D00FEE666 /* BaiduTranslate.m in Sources */,
@@ -815,6 +856,7 @@
 			baseConfigurationReference = DA7129FC389066F3A2227458 /* Pods-Bob.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Bob/Bob.entitlements;
 				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
@@ -830,6 +872,9 @@
 				MARKETING_VERSION = 0.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.ripperhe.Bob-debug";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Bob/Bob-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -838,6 +883,7 @@
 			baseConfigurationReference = 3A08EDDF832035FD57B6A226 /* Pods-Bob.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Bob/Bob.entitlements;
 				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
@@ -853,6 +899,8 @@
 				MARKETING_VERSION = 0.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ripperhe.Bob;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Bob/Bob-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};

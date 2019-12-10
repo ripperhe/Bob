@@ -12,6 +12,9 @@ PODS:
   - AFNetworking/Reachability (3.2.1)
   - AFNetworking/Security (3.2.1)
   - AFNetworking/Serialization (3.2.1)
+  - CocoaLumberjack/Core (3.6.0)
+  - CocoaLumberjack/Swift (3.6.0):
+    - CocoaLumberjack/Core
   - Masonry (1.1.0)
   - MASPreferences (1.3)
   - MASShortcut (2.4.0)
@@ -20,6 +23,7 @@ PODS:
 
 DEPENDENCIES:
   - AFNetworking (~> 3.2.1)
+  - CocoaLumberjack/Swift (~> 3.6.0)
   - Masonry (~> 1.1.0)
   - MASPreferences (~> 1.3)
   - MASShortcut (~> 2.4.0)
@@ -29,6 +33,7 @@ DEPENDENCIES:
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
     - AFNetworking
+    - CocoaLumberjack
     - Masonry
     - MASPreferences
     - MASShortcut
@@ -37,12 +42,13 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
+  CocoaLumberjack: 78b0c238666f4f58db069738ec176f4519557516
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   MASPreferences: c08b8622dd17b47da87669e741efd7c92e970e8c
   MASShortcut: d9e4909e878661cc42877cc9d6efbe638273ab57
   MJExtension: 635f2c663dcb1bf76fa4b715b2570a5710aec545
   ReactiveObjC: 011caa393aa0383245f2dcf9bf02e86b80b36040
 
-PODFILE CHECKSUM: 0a98e1be953de76ba2030c9f0b938082e9ffd4f4
+PODFILE CHECKSUM: 92946df3770e245524337214877cd8003539e508
 
 COCOAPODS: 1.8.4
