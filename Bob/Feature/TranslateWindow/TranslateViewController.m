@@ -156,8 +156,7 @@
             self.queryHeightConstraint = make.height.greaterThanOrEqualTo(@(kQueryMinHeight));
         }];
         [view setCopyActionBlock:^(QueryView * _Nonnull view) {
-            [[NSPasteboard generalPasteboard] clearContents];
-            [[NSPasteboard generalPasteboard] setString:view.textView.string forType:NSPasteboardTypeString];
+            [NSPasteboard mm_generalPasteboardSetString:view.textView.string];
         }];
         mm_weakify(self)
         [view setAudioActionBlock:^(QueryView * _Nonnull view) {
@@ -262,8 +261,7 @@
         [view.normalResultView setCopyActionBlock:^(NormalResultView * _Nonnull view) {
             mm_strongify(self);
             if (!self.currentResult) return;
-            [[NSPasteboard generalPasteboard] clearContents];
-            [[NSPasteboard generalPasteboard] setString:view.textView.string forType:NSPasteboardTypeString];
+            [NSPasteboard mm_generalPasteboardSetString:view.textView.string];
         }];
         [view.wordResultView setPlayAudioBlock:^(WordResultView * _Nonnull view, NSString * _Nonnull url) {
             mm_strongify(self);
@@ -272,8 +270,7 @@
         [view.wordResultView setSelectWordBlock:^(WordResultView * _Nonnull view, NSString * _Nonnull word) {
             mm_strongify(self);
             [self translateText:word];
-            [[NSPasteboard generalPasteboard] clearContents];
-            [[NSPasteboard generalPasteboard] setString:word forType:NSPasteboardTypeString];
+            [NSPasteboard mm_generalPasteboardSetString:word];
         }];
     }];
     

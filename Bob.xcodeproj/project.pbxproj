@@ -14,6 +14,7 @@
 		C90BE318239F38EC00ADE88B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C90BE317239F38EC00ADE88B /* main.m */; };
 		C90C77852391188400A65E42 /* SnipFocusView.m in Sources */ = {isa = PBXBuildFile; fileRef = C90C77842391188400A65E42 /* SnipFocusView.m */; };
 		C959D33A238809B800DD8808 /* OCRResult.m in Sources */ = {isa = PBXBuildFile; fileRef = C959D339238809B800DD8808 /* OCRResult.m */; };
+		C9676F2B23A0908F007DD023 /* NSPasteboard+MM.m in Sources */ = {isa = PBXBuildFile; fileRef = C9676F2A23A0908F007DD023 /* NSPasteboard+MM.m */; };
 		C98C17A1239E3F4A00BD02DB /* PreferencesWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = C98C17A0239E3F4A00BD02DB /* PreferencesWindowController.m */; };
 		C98C17A5239E40AC00BD02DB /* GeneralViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C98C17A3239E40AC00BD02DB /* GeneralViewController.m */; };
 		C98C17A6239E40AC00BD02DB /* GeneralViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C98C17A4239E40AC00BD02DB /* GeneralViewController.xib */; };
@@ -100,6 +101,8 @@
 		C90C77842391188400A65E42 /* SnipFocusView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SnipFocusView.m; sourceTree = "<group>"; };
 		C959D338238809B800DD8808 /* OCRResult.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OCRResult.h; sourceTree = "<group>"; };
 		C959D339238809B800DD8808 /* OCRResult.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OCRResult.m; sourceTree = "<group>"; };
+		C9676F2923A0908F007DD023 /* NSPasteboard+MM.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSPasteboard+MM.h"; sourceTree = "<group>"; };
+		C9676F2A23A0908F007DD023 /* NSPasteboard+MM.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSPasteboard+MM.m"; sourceTree = "<group>"; };
 		C98C179F239E3F4A00BD02DB /* PreferencesWindowController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PreferencesWindowController.h; sourceTree = "<group>"; };
 		C98C17A0239E3F4A00BD02DB /* PreferencesWindowController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PreferencesWindowController.m; sourceTree = "<group>"; };
 		C98C17A2239E40AC00BD02DB /* GeneralViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GeneralViewController.h; sourceTree = "<group>"; };
@@ -476,6 +479,8 @@
 				C9986E1B2393B06C0016F569 /* NSView+MM.m */,
 				C9986E1D2393B09E0016F569 /* NSWindow+MM.h */,
 				C9986E1E2393B09E0016F569 /* NSWindow+MM.m */,
+				C9676F2923A0908F007DD023 /* NSPasteboard+MM.h */,
+				C9676F2A23A0908F007DD023 /* NSPasteboard+MM.m */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -665,6 +670,7 @@
 				C99EEBCA2385799D00FEE666 /* TranslateLanguage.m in Sources */,
 				C99EEBD32385799D00FEE666 /* WordResultView.m in Sources */,
 				C99EEBDE2385799D00FEE666 /* NSArray+MM.m in Sources */,
+				C9676F2B23A0908F007DD023 /* NSPasteboard+MM.m in Sources */,
 				C99EEBD92385799D00FEE666 /* NSUserDefaults+MM.m in Sources */,
 				C99EEBCB2385799D00FEE666 /* ImageButton.m in Sources */,
 				C99EEBC72385799D00FEE666 /* TranslateResult.m in Sources */,
