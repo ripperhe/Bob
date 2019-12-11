@@ -40,14 +40,14 @@ static Configuration *_instance;
 - (void)setup {
     NSNumber *from = [NSUserDefaults mm_read:kFromKey];
     if (![from isKindOfClass:[NSNumber class]]) {
-        from = @(Language_en);
+        from = @(Language_auto);
         [NSUserDefaults mm_write:from forKey:kFromKey];
     }
     self.from = [from integerValue];
     
     NSNumber *to = [NSUserDefaults mm_read:kToKey];
     if (![to isKindOfClass:[NSNumber class]]) {
-        to = @(Language_zh);
+        to = @(Language_auto);
         [NSUserDefaults mm_write:to forKey:kToKey];
     }
     self.to = [to integerValue];
