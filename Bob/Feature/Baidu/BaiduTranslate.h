@@ -12,6 +12,11 @@
 #import "TranslateError.h"
 #import "OCRResult.h"
 
+/**
+ * 百度翻译参考链接
+ * http://api.fanyi.baidu.com/api/trans/product/apidoc#languageList
+ */
+
 NS_ASSUME_NONNULL_BEGIN
 
 @interface BaiduTranslate : NSObject
@@ -24,7 +29,6 @@ NS_ASSUME_NONNULL_BEGIN
 /// @param from 文本语言
 /// @param to 目标语言
 /// @param completion 回调
-/// http://api.fanyi.baidu.com/api/trans/product/apidoc#languageList
 - (void)translate:(NSString *)text from:(Language)from to:(Language)to completion:(void (^)(TranslateResult * _Nullable result, NSError * _Nullable error))completion;
 
 
