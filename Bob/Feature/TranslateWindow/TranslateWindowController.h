@@ -14,10 +14,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (instancetype)shared;
 
-- (void)showAtCenter;
-
-- (void)showAtMouseLocation;
-
 - (void)selectionTranslate;
 
 - (void)snipTranslate;

@@ -145,17 +145,4 @@ static TranslateWindowController *_instance;
     }];
 }
 
-#pragma mark -
-
-- (void)keyDown:(NSEvent *)event {
-    // ⌘ + W 关闭窗口
-    if (!Snip.shared.isSnapshotting &&
-        event.modifierFlags & NSEventModifierFlagCommand &&
-        event.keyCode == kVK_ANSI_W) {
-        [self close];
-        return;
-    }
-    [super keyDown:event];
-}
-
 @end

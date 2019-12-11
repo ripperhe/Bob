@@ -11,6 +11,7 @@
 #import "TranslateWindowController.h"
 #import "Snip.h"
 #import "Shortcut.h"
+#import "Configuration.h"
 
 @interface StatusItem ()<NSMenuDelegate>
 
@@ -98,14 +99,29 @@ static StatusItem *_instance;
     [TranslateWindowController.shared snipTranslate];
 }
 
-- (void)preferenceAction:(NSMenuItem *)sender {
+- (IBAction)preferenceAction:(NSMenuItem *)sender {
     NSLog(@"偏好设置");
+    if (Snip.shared.isSnapshotting) {
+        [Snip.shared stop];
+    }
+    if (!Configuration.shared.isPin) {
+        [TranslateWindowController.shared close];
+    }
     [PreferencesWindowController.shared showWindow:nil];
 }
 
-- (void)quitAction:(NSMenuItem *)sender {
+- (IBAction)quitAction:(NSMenuItem *)sender {
     NSLog(@"退出应用");
     [NSApplication.sharedApplication terminate:nil];
+}
+
+- (IBAction)closeWindowAction:(NSMenuItem *)sender {
+    NSLog(@"关闭 Window");
+    if (Snip.shared.isSnapshotting) {
+        [Snip.shared stop];
+    }else {
+        [[[NSApplication sharedApplication] keyWindow] close];
+    }
 }
 
 #pragma mark -

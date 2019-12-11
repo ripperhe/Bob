@@ -92,11 +92,7 @@ static Snip *_instance;
                 NSLog(@"已保存图片\n%@", path);
                 [image mm_writeToFileAsPNG:path];
             }
-            [Snip.shared stop];
-            if (self.completion) {
-                self.completion(image);
-            }
-            self.completion = nil;
+            [self stopWithImage:image];
         }];
         [windowController captureWithScreen:screen];
         [self.windowControllers addObject:windowController];
@@ -111,12 +107,8 @@ static Snip *_instance;
     [self mouseMoved:nil];
 }
 
-- (void)stop {
-    if (!self.isSnapshotting) {
-        return;
-    }
+- (void)stopWithImage:(NSImage *)image {
     self.isSnapshotting = NO;
-    // self.completion = nil;
     
     [self.localMouseMonitor stop];
     [self.globalMouseMonitor stop];
@@ -128,6 +120,19 @@ static Snip *_instance;
     [self.windowControllers removeAllObjects];
     
     self.currentMainWindowController = nil;
+    
+    // 回调，中断也要回调
+    if (self.completion) {
+        self.completion(image);
+    }
+    self.completion = nil;
+}
+
+- (void)stop {
+    if (!self.isSnapshotting) {
+        return;
+    }
+    [self stopWithImage:nil];
 }
 
 #pragma mark -
