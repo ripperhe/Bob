@@ -113,8 +113,6 @@
 		C98C17A9239E410300BD02DB /* AboutViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AboutViewController.xib; sourceTree = "<group>"; };
 		C98C17AE239E516A00BD02DB /* Shortcut.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Shortcut.h; sourceTree = "<group>"; };
 		C98C17AF239E516A00BD02DB /* Shortcut.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Shortcut.m; sourceTree = "<group>"; };
-		C98CFA1C239F6F3400FB7EC4 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
-		C98CFA1D239F6F3400FB7EC4 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
 		C98CFA20239F8CDA00FB7EC4 /* Bob-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Bob-Bridging-Header.h"; sourceTree = "<group>"; };
 		C98CFA21239F8CDB00FB7EC4 /* MMLog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MMLog.swift; sourceTree = "<group>"; };
 		C98CFA22239F8CDB00FB7EC4 /* MMFileLogFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMFileLogFormatter.m; sourceTree = "<group>"; };
@@ -131,6 +129,8 @@
 		C98CFA32239FA6F400FB7EC4 /* MMCrashUncaughtExceptionHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMCrashUncaughtExceptionHandler.h; sourceTree = "<group>"; };
 		C98CFA36239FA8E500FB7EC4 /* MMCrash.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MMCrash.h; sourceTree = "<group>"; };
 		C98CFA37239FA8E500FB7EC4 /* MMCrash.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MMCrash.m; sourceTree = "<group>"; };
+		C99031D123A09E4300E904D4 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
+		C99031D223A09E4300E904D4 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
 		C99142722390FCBD0025E75E /* NSImage+MM.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSImage+MM.h"; sourceTree = "<group>"; };
 		C99142732390FCBD0025E75E /* NSImage+MM.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSImage+MM.m"; sourceTree = "<group>"; };
 		C9986E1A2393B06C0016F569 /* NSView+MM.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSView+MM.h"; sourceTree = "<group>"; };
@@ -721,7 +721,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				C90BE314239F38EC00ADE88B /* Base */,
-				C98CFA1D239F6F3400FB7EC4 /* zh-Hans */,
+				C99031D223A09E4300E904D4 /* zh-Hans */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -730,7 +730,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				C99EEB242385796900FEE666 /* Base */,
-				C98CFA1C239F6F3400FB7EC4 /* zh-Hans */,
+				C99031D123A09E4300E904D4 /* zh-Hans */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
