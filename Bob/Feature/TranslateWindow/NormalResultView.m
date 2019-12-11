@@ -133,6 +133,8 @@ DefineMethodMMMake_m(NormalResultView)
 }
 
 - (CGFloat)heightForString:(NSAttributedString *)string width:(CGFloat)width {
+    // https://stackoverflow.com/questions/2654580/how-to-resize-nstextview-according-to-its-content
+    // https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/TextLayout/Tasks/StringHeight.html
     NSTextStorage *textStorage = [[NSTextStorage alloc] initWithAttributedString:string];
     NSTextContainer *textContainer = [[NSTextContainer alloc] initWithContainerSize:NSMakeSize(width, CGFLOAT_MAX)];
     NSLayoutManager *layoutManager = [[NSLayoutManager alloc] init];
