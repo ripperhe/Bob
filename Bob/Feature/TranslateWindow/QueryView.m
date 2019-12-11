@@ -8,6 +8,7 @@
 
 #import "QueryView.h"
 #import "ImageButton.h"
+#import "TextView.h"
 
 @interface QueryView ()<NSTextViewDelegate>
 
@@ -38,18 +39,7 @@ DefineMethodMMMake_m(QueryView)
         scrollView.hasVerticalScroller = YES;
         scrollView.hasHorizontalScroller = NO;
         scrollView.autohidesScrollers = YES;
-        self.textView = [NSTextView mm_make:^(NSTextView * _Nonnull textView) {
-            // https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/Rulers/Concepts/AboutParaStyles.html#//apple_ref/doc/uid/20000879-CJBBEHJA
-            [textView setDefaultParagraphStyle:[NSMutableParagraphStyle mm_make:^(NSMutableParagraphStyle *  _Nonnull style) {
-                //                    style.lineSpacing = 3;
-                style.lineHeightMultiple = 1.2;
-                style.paragraphSpacing = 5;
-            }]];
-            textView.font = [NSFont systemFontOfSize:14];
-            textView.textColor = [NSColor mm_colorWithHexString:@"#333333"];
-//            textView.alignment = NSTextAlignmentJustified;
-            textView.alignment = NSTextAlignmentLeft;
-            textView.textContainerInset  = CGSizeMake(8, 12);
+        self.textView = [TextView mm_make:^(TextView * _Nonnull textView) {
             textView.backgroundColor = NSColor.whiteColor;
             [textView setAutoresizingMask:NSViewHeightSizable | NSViewWidthSizable];
             textView.delegate = self;

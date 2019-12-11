@@ -9,6 +9,7 @@
 #import "NormalResultView.h"
 #import "ImageButton.h"
 #import "TranslateWindowController.h"
+#import "TextView.h"
 
 @implementation NormalResultView
 
@@ -30,20 +31,11 @@ DefineMethodMMMake_m(NormalResultView)
     
     self.scrollView = [NSScrollView mm_make:^(NSScrollView *  _Nonnull scrollView) {
         [self addSubview:scrollView];
-        scrollView.hasVerticalScroller = YES;
         scrollView.hasHorizontalScroller = NO;
+        scrollView.hasVerticalScroller = NO;
         scrollView.autohidesScrollers = YES;
-        self.textView = [NSTextView mm_make:^(NSTextView * _Nonnull textView) {
-            [textView setDefaultParagraphStyle:[NSMutableParagraphStyle mm_make:^(NSMutableParagraphStyle *  _Nonnull style) {
-                style.lineHeightMultiple = 1.2;
-                style.paragraphSpacing = 5;
-            }]];
+        self.textView = [TextView mm_make:^(TextView * _Nonnull textView) {
             textView.editable = NO;
-            textView.font = [NSFont systemFontOfSize:14];
-            textView.textColor = [NSColor mm_colorWithHexString:@"#333333"];
-//            textView.alignment = NSTextAlignmentJustified;
-            textView.alignment = NSTextAlignmentLeft;
-            textView.textContainerInset = CGSizeMake(8, 12);
             textView.backgroundColor = [NSColor mm_colorWithHexString:@"#EEEEEE"];
             [textView setAutoresizingMask:NSViewHeightSizable | NSViewWidthSizable];
         }];
@@ -107,23 +99,47 @@ DefineMethodMMMake_m(NormalResultView)
 - (void)refreshWithStrings:(NSArray<NSString *> *)strings {
     NSString *string = [NSString mm_stringByCombineComponents:strings separatedString:@"\n"];
     self.textView.string = string;
-    // 迷之高度 后面再优化一下吧。。。
-    CGFloat width = TranslateWindowController.shared.window.frame.size.width - 12 * 2 - 12 * 2 - 17;
-    if (width <= 0) {
-        width = 100;
+    
+    CGFloat textViewWidth = 0;
+    if (self.textView.width > 10) {
+        textViewWidth = self.textView.width - 2 * self.textView.textContainerInset.width * 2;
+    }else {
+        CGFloat windowWidth = TranslateWindowController.shared.window.width;
+        if (windowWidth <= 0) {
+            // 目前 window 的宽度
+            windowWidth = 304;
+        }
+        // 视图间距 + textContainerInset （纵向滚动条宽度15暂时不需要考虑）
+        textViewWidth = TranslateWindowController.shared.window.width - 12 * 2 - self.textView.textContainerInset.width * 2;
     }
-    NSDictionary *attributes = [NSDictionary dictionaryWithObjectsAndKeys:self.textView.font, NSFontAttributeName, self.textView.defaultParagraphStyle, NSParagraphStyleAttributeName, nil];
-    NSAttributedString *attributedString = [[NSAttributedString alloc] initWithString:string attributes:attributes];
-    CGFloat height = [attributedString boundingRectWithSize:CGSizeMake(width, 500) options:NSStringDrawingUsesLineFragmentOrigin].size.height;
-    height = height + 2 * 12;
-    height += strings.count > 1 ? strings.count * 5 : 10;
+        
+    CGFloat height = [self heightForString:self.textView.attributedString width:textViewWidth];
+    height += self.textView.textContainerInset.height * 2;
+    
     if (height < 100 - 26) {
         height = 100 - 26;
+        self.scrollView.hasVerticalScroller = NO;
+    }else if (height > 500) {
+        height = 500;
+        self.scrollView.hasVerticalScroller = YES;
+    }else {
+        self.scrollView.hasVerticalScroller = NO;
     }
+    
     [self.textView mas_remakeConstraints:^(MASConstraintMaker *make) {
         make.edges.inset(0);
         make.height.equalTo(@(height));
     }];
+}
+
+- (CGFloat)heightForString:(NSAttributedString *)string width:(CGFloat)width {
+    NSTextStorage *textStorage = [[NSTextStorage alloc] initWithAttributedString:string];
+    NSTextContainer *textContainer = [[NSTextContainer alloc] initWithContainerSize:NSMakeSize(width, CGFLOAT_MAX)];
+    NSLayoutManager *layoutManager = [[NSLayoutManager alloc] init];
+    [layoutManager addTextContainer:textContainer];
+    [textStorage addLayoutManager:layoutManager];
+    [layoutManager glyphRangeForTextContainer:textContainer];
+    return [layoutManager usedRectForTextContainer:textContainer].size.height;
 }
 
 @end

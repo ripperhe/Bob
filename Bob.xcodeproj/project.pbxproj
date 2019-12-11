@@ -64,6 +64,7 @@
 		C99EEBDC2385799D00FEE666 /* NSColor+MM.m in Sources */ = {isa = PBXBuildFile; fileRef = C99EEBBD2385799D00FEE666 /* NSColor+MM.m */; };
 		C99EEBDD2385799D00FEE666 /* NSMutableAttributedString+MM.m in Sources */ = {isa = PBXBuildFile; fileRef = C99EEBC22385799D00FEE666 /* NSMutableAttributedString+MM.m */; };
 		C99EEBDE2385799D00FEE666 /* NSArray+MM.m in Sources */ = {isa = PBXBuildFile; fileRef = C99EEBC32385799D00FEE666 /* NSArray+MM.m */; };
+		C9AEF96B23A0D57A003BE95C /* TextView.m in Sources */ = {isa = PBXBuildFile; fileRef = C9AEF96A23A0D57A003BE95C /* TextView.m */; };
 		C9C3BDC7238E76B000D5F1C1 /* SnipWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9C3BDC6238E76B000D5F1C1 /* SnipWindowController.m */; };
 		C9C3BDCA238E76C800D5F1C1 /* SnipWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = C9C3BDC9238E76C800D5F1C1 /* SnipWindow.m */; };
 		C9C3BDCD238E78BA00D5F1C1 /* SnipViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9C3BDCC238E78BA00D5F1C1 /* SnipViewController.m */; };
@@ -200,6 +201,8 @@
 		C99EEBC22385799D00FEE666 /* NSMutableAttributedString+MM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableAttributedString+MM.m"; sourceTree = "<group>"; };
 		C99EEBC32385799D00FEE666 /* NSArray+MM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+MM.m"; sourceTree = "<group>"; };
 		C99EEBDF238585E700FEE666 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		C9AEF96923A0D57A003BE95C /* TextView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TextView.h; sourceTree = "<group>"; };
+		C9AEF96A23A0D57A003BE95C /* TextView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TextView.m; sourceTree = "<group>"; };
 		C9C3BDC5238E76B000D5F1C1 /* SnipWindowController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SnipWindowController.h; sourceTree = "<group>"; };
 		C9C3BDC6238E76B000D5F1C1 /* SnipWindowController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SnipWindowController.m; sourceTree = "<group>"; };
 		C9C3BDC8238E76C800D5F1C1 /* SnipWindow.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SnipWindow.h; sourceTree = "<group>"; };
@@ -421,6 +424,8 @@
 				C99EEBA62385799D00FEE666 /* PopUpButton.m */,
 				C99EEBA32385799D00FEE666 /* ImageButton.h */,
 				C99EEB9C2385799D00FEE666 /* ImageButton.m */,
+				C9AEF96923A0D57A003BE95C /* TextView.h */,
+				C9AEF96A23A0D57A003BE95C /* TextView.m */,
 				C99EEB992385799D00FEE666 /* QueryView.h */,
 				C99EEBA12385799D00FEE666 /* QueryView.m */,
 				C99EEB9E2385799D00FEE666 /* ResultView.h */,
@@ -664,6 +669,7 @@
 				C98CFA33239FA6F400FB7EC4 /* MMCrashUncaughtExceptionHandler.m in Sources */,
 				C99EEBD42385799D00FEE666 /* StatusItem.m in Sources */,
 				C98CFA34239FA6F400FB7EC4 /* MMCrashSignalExceptionHandler.m in Sources */,
+				C9AEF96B23A0D57A003BE95C /* TextView.m in Sources */,
 				C98C17A5239E40AC00BD02DB /* GeneralViewController.m in Sources */,
 				C98CFA2A239F8CDB00FB7EC4 /* MMConsoleLogFormatter.m in Sources */,
 				C98CFA2B239F8CDB00FB7EC4 /* MMLog.m in Sources */,
