@@ -19,6 +19,12 @@
 
 #define kMargin 12.0
 #define kQueryMinHeight 120.0
+#define increaseSeed NSInteger seed = ++self.seed;
+#define checkSeed \
+if (seed != self.seed) { \
+    NSLog(@"过滤失效的回调 %zd", seed); \
+    return; \
+}
 
 @interface TranslateViewController ()
 
@@ -27,6 +33,7 @@
 @property (nonatomic, strong) AVPlayer *player;
 @property (nonatomic, strong) TranslateResult *currentResult;
 @property (nonatomic, strong) MMEventMonitor *monitor;
+@property (nonatomic, assign) NSInteger seed;
 
 @property (nonatomic, strong) NSButton *pinButton;
 @property (nonatomic, strong) NSButton *foldButton;
@@ -365,12 +372,14 @@
     self.queryView.textView.string = text;
     [self.resultView refreshWithStateString:@"翻译中..."];
     [self resizeWindowWithQueryViewExpectHeight:0];
+    increaseSeed
     mm_weakify(self)
     [self.baiduTranslate translate:text
                               from:Configuration.shared.from
                                 to:Configuration.shared.to
                         completion:^(TranslateResult * _Nullable result, NSError * _Nullable error) {
         mm_strongify(self);
+        checkSeed
         if (error) {
             [self.resultView refreshWithStateString:error.localizedDescription];
         }else {
@@ -388,12 +397,14 @@
 
 - (void)translateImage:(NSImage *)image {
     [self resetWithState:@"图片文本识别中..."];
+    increaseSeed
     mm_weakify(self)
     [self.baiduTranslate ocr:image
                         from:Configuration.shared.from
                           to:Configuration.shared.to
                   completion:^(OCRResult * _Nullable result, NSError * _Nullable error) {
         mm_strongify(self)
+        checkSeed
         NSLog(@"识别到的文本:\n%@", result.texts);
         if (error) {
             [self.resultView refreshWithStateString:error.localizedDescription];
