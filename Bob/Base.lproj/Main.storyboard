@@ -666,7 +666,88 @@
                 <customObject id="Voe-Tx-rLC" customClass="AppDelegate"/>
                 <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
                 <customObject id="Ady-hI-5gd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
-                <customObject id="qM9-fT-Fym" customClass="StatusItem"/>
+                <customObject id="qM9-fT-Fym" customClass="StatusItem">
+                    <connections>
+                        <outlet property="menu" destination="A3F-ys-zOg" id="n6f-3z-A90"/>
+                        <outlet property="selectionItem" destination="lUI-Zn-Bwr" id="WVP-FO-jlf"/>
+                        <outlet property="snipItem" destination="2TG-8C-8RM" id="NNT-OJ-7eY"/>
+                    </connections>
+                </customObject>
+                <menu autoenablesItems="NO" identifier="status.item.menu" id="A3F-ys-zOg" userLabel="Status Item Menu">
+                    <items>
+                        <menuItem title="划词翻译" enabled="NO" id="lUI-Zn-Bwr">
+                            <modifierMask key="keyEquivalentModifierMask"/>
+                        </menuItem>
+                        <menuItem title="截图翻译" id="2TG-8C-8RM">
+                            <modifierMask key="keyEquivalentModifierMask"/>
+                            <connections>
+                                <action selector="snipAction:" target="qM9-fT-Fym" id="Vkh-bk-b8F"/>
+                            </connections>
+                        </menuItem>
+                        <menuItem isSeparatorItem="YES" id="ch8-gu-f7X"/>
+                        <menuItem title="翻译网站" id="tmm-RJ-RnR">
+                            <modifierMask key="keyEquivalentModifierMask"/>
+                            <menu key="submenu" title="翻译网站" id="Qci-sE-4Vz">
+                                <items>
+                                    <menuItem title="百度翻译" id="7uW-Ry-t7W">
+                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                        <connections>
+                                            <action selector="baiduTranslationWebsite:" target="qM9-fT-Fym" id="vB7-dY-d79"/>
+                                        </connections>
+                                    </menuItem>
+                                    <menuItem title="有道翻译" id="vJb-9C-vdH">
+                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                        <connections>
+                                            <action selector="youdaoTranslationWebsite:" target="qM9-fT-Fym" id="zhe-cB-kNK"/>
+                                        </connections>
+                                    </menuItem>
+                                    <menuItem title="谷歌翻译(国内)" id="Le2-9U-JAY">
+                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                        <connections>
+                                            <action selector="googleCNTranslationWebsite:" target="qM9-fT-Fym" id="gZJ-bc-3as"/>
+                                        </connections>
+                                    </menuItem>
+                                    <menuItem title="谷歌翻译" id="QbW-ly-Zlf">
+                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                        <connections>
+                                            <action selector="googleTranslationWebsite:" target="qM9-fT-Fym" id="xdr-OR-n7V"/>
+                                        </connections>
+                                    </menuItem>
+                                </items>
+                            </menu>
+                        </menuItem>
+                        <menuItem isSeparatorItem="YES" id="WTI-QT-Hy9"/>
+                        <menuItem title="偏好设置" keyEquivalent="," id="Fzj-Rh-cL0">
+                            <connections>
+                                <action selector="preferenceAction:" target="qM9-fT-Fym" id="Emg-Mm-dS5"/>
+                            </connections>
+                        </menuItem>
+                        <menuItem title="使用教程" id="yWr-rH-hQa">
+                            <modifierMask key="keyEquivalentModifierMask"/>
+                            <connections>
+                                <action selector="documentationAction:" target="qM9-fT-Fym" id="OoC-My-foN"/>
+                            </connections>
+                        </menuItem>
+                        <menuItem title="导出日志" id="XpX-Ud-znp">
+                            <modifierMask key="keyEquivalentModifierMask"/>
+                            <connections>
+                                <action selector="exportLogAction:" target="qM9-fT-Fym" id="bm3-88-xNM"/>
+                            </connections>
+                        </menuItem>
+                        <menuItem title="检查更新" id="GQ2-WA-9QB">
+                            <modifierMask key="keyEquivalentModifierMask"/>
+                        </menuItem>
+                        <menuItem isSeparatorItem="YES" id="Fwt-JX-loz"/>
+                        <menuItem title="退出" keyEquivalent="q" id="JZ0-yT-1tw">
+                            <connections>
+                                <action selector="quitAction:" target="qM9-fT-Fym" id="hxh-3E-Vl7"/>
+                            </connections>
+                        </menuItem>
+                    </items>
+                    <connections>
+                        <outlet property="delegate" destination="qM9-fT-Fym" id="Vj4-5G-Qs7"/>
+                    </connections>
+                </menu>
             </objects>
             <point key="canvasLocation" x="75" y="0.0"/>
         </scene>
