@@ -347,7 +347,7 @@
         void(^translate)(Language f) = ^(Language f) {
             Language toLang = to;
             if (toLang == Language_auto) {
-                toLang = (f == Language_zh || f == Language_cht) ? Language_en : Language_zh;
+                toLang = (f == Language_zh_Hans || f == Language_zh_Hant) ? Language_en : Language_zh_Hans;
             }
 
             [self sendTranslateRequest:text from:f to:toLang completion:completion];
@@ -447,11 +447,7 @@
     NSString *fromLang = (from == Language_auto) ? BaiduLanguageStringFromEnum(Language_en) : BaiduLanguageStringFromEnum(from);
     NSString *toLang = nil;
     if (to == Language_auto) {
-        if (from == Language_zh) {
-            toLang = BaiduLanguageStringFromEnum(Language_en);
-        }else {
-            toLang = BaiduLanguageStringFromEnum(Language_zh);
-        }
+        toLang = (from == Language_zh_Hans || from == Language_zh_Hant) ? BaiduLanguageStringFromEnum(Language_en) : BaiduLanguageStringFromEnum(Language_zh_Hans);
     }else {
         toLang = BaiduLanguageStringFromEnum(to);
     }

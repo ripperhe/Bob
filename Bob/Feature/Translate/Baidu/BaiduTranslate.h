@@ -14,6 +14,7 @@
 
 /**
  * 百度翻译参考链接
+ * https://fanyi.baidu.com/
  * http://api.fanyi.baidu.com/api/trans/product/apidoc#languageList
  */
 
