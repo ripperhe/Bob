@@ -59,7 +59,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong, nullable) NSArray<TranslatePart *> *parts;
 /// 其他形式
 @property (nonatomic, strong, nullable) NSArray<TranslateExchange *> *exchanges;
-/// 中译英，单词短语数组
+/// 中文查词时会有，单词短语数组
 @property (nonatomic, strong, nullable) NSArray<TranslateSimpleWord *> *simpleWords;
 
 @end
@@ -74,7 +74,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign) Language from;
 /// 由翻译接口提供的目标语种，注意可能会与查询对象的 to 不同
 @property (nonatomic, assign) Language to;
-/// 如果查询的是英文单词(或某些固定词组)，翻译接口会返回这个单词的详细释义
+/// 中文查词或英文查词的情况下，翻译接口会返回这个单词（词组）的详细释义
 @property (nonatomic, strong, nullable) TranslateWordResult *wordResult;
 /// 普通翻译结果，可以有多条（一个段落对应一个翻译结果）
 @property (nonatomic, strong, nullable) NSArray<NSString *> *normalResults;

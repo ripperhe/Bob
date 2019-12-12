@@ -59,7 +59,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) NSArray<BaiduTranslateResponseSymbol *> *symbols;
 /// 单词的其他变形
 @property (nonatomic, strong) BaiduTranslateResponseExchange *exchange;
-/// 中译英单词时会有
+/// 中文查词时会有
 @property (nonatomic, strong) NSArray<NSString *> *word_means;
 
 @end

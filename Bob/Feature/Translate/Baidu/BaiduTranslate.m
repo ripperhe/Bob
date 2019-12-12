@@ -183,7 +183,7 @@
                                 TranslatePart *part = [TranslatePart mm_anyMake:^(TranslatePart *  _Nonnull obj) {
                                     obj.part = resultPart.part.length ? resultPart.part : nil;
                                     obj.means = [resultPart.means mm_where:^BOOL (id mean, NSUInteger idx, BOOL * _Nonnull stop) {
-                                        // 如果中译英单词短语时，会是字典；这个API的设计，真的一言难尽
+                                        // 如果中文查词时，会是字典；这个API的设计，真的一言难尽
                                         return [mean isKindOfClass:NSString.class];
                                     }];
                                 }];
@@ -248,7 +248,7 @@
                             wordResult.exchanges = exchanges.count ? exchanges.copy : nil;
                         }];
                         
-                        // 解析中译英，单词短语
+                        // 解析中文查词
                         if (simple_means.word_means.count) {
                             // 这个时候去解析 simple_means["symbols"][0]["parts"][0]["means"]
                             NSMutableArray<TranslateSimpleWord *> *words = [NSMutableArray array];
