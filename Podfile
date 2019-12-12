@@ -11,5 +11,6 @@ target 'Bob' do
   pod 'MASShortcut', '~> 2.4.0'
   pod 'MASPreferences', '~> 1.3'
   pod 'CocoaLumberjack/Swift', '~> 3.6.0'
+  pod 'SSZipArchive', '~> 2.2.2'
   
 end

@@ -12,6 +12,7 @@
 #import "Snip.h"
 #import "Shortcut.h"
 #import "Configuration.h"
+#import <SSZipArchive/SSZipArchive.h>
 
 @interface StatusItem ()<NSMenuDelegate>
 
@@ -105,6 +106,18 @@ static StatusItem *_instance;
 
 - (IBAction)exportLogAction:(id)sender {
     NSLog(@"导出日志");
+    NSString *logPath = [MMManagerForLog rootLogDirectory];
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd HH-mm-ss-SSS"];
+    NSString *dataString = [dateFormatter stringFromDate:[NSDate date]];
+    NSString *downloadDirectory = NSSearchPathForDirectoriesInDomains(NSDownloadsDirectory, NSUserDomainMask, YES).firstObject;
+    NSString *zipPath = [downloadDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"Bob log %@.zip", dataString]];
+    BOOL result = [SSZipArchive createZipFileAtPath:zipPath withContentsOfDirectory:logPath keepParentDirectory:NO];
+    if (result) {
+        [[NSWorkspace sharedWorkspace] selectFile:zipPath inFileViewerRootedAtPath:@""];
+    }else {
+        MMLogInfo(@"导出日志失败");
+    }
 }
 
 - (IBAction)quitAction:(NSMenuItem *)sender {

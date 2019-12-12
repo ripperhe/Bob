@@ -27,7 +27,7 @@ BOOL MMDefaultLogAsyncEnabled = YES;
     dispatch_once(&onceToken, ^{
         // 系统日志、控制台 格式设置
         MMConsoleLogFormatter *consoleFormatter = [MMConsoleLogFormatter new];
-        if (@available(iOS 10.0, *)) {
+        if (@available(macOS 10.12, *)) {
             [DDOSLogger sharedInstance].logFormatter = consoleFormatter;
         }else{
 #pragma clang diagnostic push

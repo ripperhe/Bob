@@ -677,6 +677,9 @@
                     <items>
                         <menuItem title="划词翻译" enabled="NO" id="lUI-Zn-Bwr">
                             <modifierMask key="keyEquivalentModifierMask"/>
+                            <connections>
+                                <action selector="translateAction:" target="qM9-fT-Fym" id="d5U-cW-GgJ"/>
+                            </connections>
                         </menuItem>
                         <menuItem title="截图翻译" id="2TG-8C-8RM">
                             <modifierMask key="keyEquivalentModifierMask"/>

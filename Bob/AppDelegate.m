@@ -14,6 +14,7 @@
 @implementation AppDelegate
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
+    MMLogInfo(@"程序启动");
     [MMCrash registerHandler];
     [StatusItem.shared setup];
     [Shortcut setup];
