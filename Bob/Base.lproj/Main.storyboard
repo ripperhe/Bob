@@ -725,6 +725,7 @@
                                 <action selector="preferenceAction:" target="qM9-fT-Fym" id="Emg-Mm-dS5"/>
                             </connections>
                         </menuItem>
+                        <menuItem isSeparatorItem="YES" id="xcA-Vz-R94"/>
                         <menuItem title="使用教程" id="yWr-rH-hQa">
                             <modifierMask key="keyEquivalentModifierMask"/>
                             <connections>
