@@ -726,7 +726,7 @@
                             </connections>
                         </menuItem>
                         <menuItem isSeparatorItem="YES" id="xcA-Vz-R94"/>
-                        <menuItem title="使用教程" id="yWr-rH-hQa">
+                        <menuItem title="使用教程(开发中)" id="yWr-rH-hQa">
                             <modifierMask key="keyEquivalentModifierMask"/>
                             <connections>
                                 <action selector="documentationAction:" target="qM9-fT-Fym" id="OoC-My-foN"/>
@@ -738,7 +738,7 @@
                                 <action selector="exportLogAction:" target="qM9-fT-Fym" id="bm3-88-xNM"/>
                             </connections>
                         </menuItem>
-                        <menuItem title="检查更新" id="GQ2-WA-9QB">
+                        <menuItem title="检查更新(开发中)" id="GQ2-WA-9QB">
                             <modifierMask key="keyEquivalentModifierMask"/>
                         </menuItem>
                         <menuItem isSeparatorItem="YES" id="Fwt-JX-loz"/>

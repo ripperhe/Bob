@@ -29,7 +29,6 @@ if (seed != self.seed) { \
 @interface TranslateViewController ()
 
 @property (nonatomic, strong) BaiduTranslate *baiduTranslate;
-@property (nonatomic, strong) NSArray<NSNumber *> *languages;
 @property (nonatomic, strong) AVPlayer *player;
 @property (nonatomic, strong) TranslateResult *currentResult;
 @property (nonatomic, strong) MMEventMonitor *monitor;
@@ -186,7 +185,7 @@ if (seed != self.seed) { \
             make.width.mas_equalTo(100);
             make.height.mas_equalTo(25);
         }];
-        [button updateMenuWithTitleArray:[self.languages mm_map:^id _Nullable(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        [button updateMenuWithTitleArray:[self.baiduTranslate.languages mm_map:^id _Nullable(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
             if ([obj integerValue] == Language_auto) {
                 return @"自动检测";
             }
@@ -196,7 +195,7 @@ if (seed != self.seed) { \
         mm_weakify(self);
         [button setMenuItemSeletedBlock:^(NSInteger index, NSString *title) {
             mm_strongify(self);
-            Configuration.shared.from = [[self.languages objectAtIndex:index] integerValue];
+            Configuration.shared.from = [[self.baiduTranslate.languages objectAtIndex:index] integerValue];
         }];
     }];
     
@@ -233,7 +232,7 @@ if (seed != self.seed) { \
             make.width.height.equalTo(self.fromLanguageButton);
             make.right.lessThanOrEqualTo(self.view.mas_right).offset(-kMargin);
         }];
-        [button updateMenuWithTitleArray:[self.languages mm_map:^id _Nullable(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        [button updateMenuWithTitleArray:[self.baiduTranslate.languages mm_map:^id _Nullable(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
             if ([obj integerValue] == Language_auto) {
                 return @"自动选择";
             }
@@ -243,7 +242,7 @@ if (seed != self.seed) { \
         mm_weakify(self);
         [button setMenuItemSeletedBlock:^(NSInteger index, NSString *title) {
             mm_strongify(self);
-            Configuration.shared.to = [[self.languages objectAtIndex:index] integerValue];
+            Configuration.shared.to = [[self.baiduTranslate.languages objectAtIndex:index] integerValue];
         }];
     }];
     
@@ -286,37 +285,6 @@ if (seed != self.seed) { \
 
 - (void)setupTranslate {
     self.baiduTranslate = [BaiduTranslate new];
-    self.languages = @[
-        @(Language_auto),
-        @(Language_zh_Hans),
-        @(Language_zh_Hant),
-        @(Language_en),
-        @(Language_yue),
-        @(Language_wyw),
-        @(Language_ja),
-        @(Language_ko),
-        @(Language_fr),
-        @(Language_es),
-        @(Language_th),
-        @(Language_ar),
-        @(Language_ru),
-        @(Language_pt),
-        @(Language_de),
-        @(Language_it),
-        @(Language_el),
-        @(Language_nl),
-        @(Language_pl),
-        @(Language_bg),
-        @(Language_et),
-        @(Language_da),
-        @(Language_fi),
-        @(Language_cs),
-        @(Language_ro),
-        @(Language_sl),
-        @(Language_sv),
-        @(Language_hu),
-        @(Language_vi),
-    ];
     self.player = [[AVPlayer alloc] init];
 }
 
@@ -335,7 +303,7 @@ if (seed != self.seed) { \
 #pragma mark -
 
 - (NSInteger)indexFromLangages:(Language)lang {
-    return [self.languages mm_find:^BOOL(NSNumber * _Nonnull obj, NSUInteger idx) {
+    return [self.baiduTranslate.languages mm_find:^BOOL(NSNumber * _Nonnull obj, NSUInteger idx) {
         return obj.integerValue == lang;
     }].integerValue;
 }

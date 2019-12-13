@@ -24,6 +24,8 @@
 #import "NSView+MM.h"
 #import "NSWindow+MM.h"
 #import "NSPasteboard+MM.h"
+#import "NSDictionary+MM.h"
+#import "MMOrderedDictionary.h"
 
 #import "MMLog.h"
 #define NSLog(frmt, ...) MMLogVerbose(frmt, ##__VA_ARGS__)

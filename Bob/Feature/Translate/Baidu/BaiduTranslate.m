@@ -11,10 +11,72 @@
 #import <AFNetworking/AFNetworking.h>
 #import "BaiduTranslateResponse.h"
 
-#define kRootPage @"https://fanyi.baidu.com"
+#define kBaiduRootPage @"https://fanyi.baidu.com"
 #define kError(type, msg) [TranslateError errorWithType:type message:msg]
 
+/// 支持的语言
+MMOrderedDictionary * BaiduSupportLanguageDict() {
+    static MMOrderedDictionary *_langDict = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        _langDict = [[MMOrderedDictionary alloc] initWithKeysAndObjects:
+                     @(Language_auto), @"auto",
+                     @(Language_zh_Hans), @"zh",
+                     @(Language_zh_Hant), @"cht",
+                     @(Language_en), @"en",
+                     @(Language_yue), @"yue",
+                     @(Language_wyw), @"wyw",
+                     @(Language_ja), @"jp",
+                     @(Language_ko), @"kor",
+                     @(Language_fr), @"fra",
+                     @(Language_es), @"spa",
+                     @(Language_th), @"th",
+                     @(Language_ar), @"ara",
+                     @(Language_ru), @"ru",
+                     @(Language_pt), @"pt",
+                     @(Language_de), @"de",
+                     @(Language_it), @"it",
+                     @(Language_el), @"el",
+                     @(Language_nl), @"nl",
+                     @(Language_pl), @"pl",
+                     @(Language_bg), @"bul",
+                     @(Language_et), @"est",
+                     @(Language_da), @"dan",
+                     @(Language_fi), @"fin",
+                     @(Language_cs), @"cs",
+                     @(Language_ro), @"rom",
+                     @(Language_sl), @"slo",
+                     @(Language_sv), @"swe",
+                     @(Language_hu), @"hu",
+                     @(Language_vi), @"vie",
+                     nil];
+    });
+    return _langDict;
+}
+
+/// 根据枚举获取百度翻译字符串
+NSString * _Nullable BaiduLanguageStringFromEnum(Language lang) {
+    static NSDictionary *_stringFromEnumDict = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        _stringFromEnumDict = [BaiduSupportLanguageDict() keysAndObjects];
+    });
+    return [_stringFromEnumDict objectForKey:@(lang)];
+}
+
+/// 根据百度翻译字符串获取枚举
+Language BaiduLanguageEnumFromString(NSString *lang) {
+    static NSDictionary *_enumFromStringDict = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        _enumFromStringDict = [[BaiduSupportLanguageDict() keysAndObjects] mm_reverseKeysAndObjectsDictionary];
+    });
+    return [[_enumFromStringDict objectForKey:lang] integerValue];
+}
+
 @interface BaiduTranslate ()
+
+@property (nonatomic, strong) NSArray<NSNumber *> *languages;
 
 @property (nonatomic, strong) JSContext *jsContext;
 @property (nonatomic, strong) JSValue *jsFunction;
@@ -84,7 +146,7 @@
 #pragma mark -
 
 - (void)sendGetTokenAndGtkRequestWithCompletion:(void (^)(NSString *token, NSString *gtk, NSError *error))completion {
-    [self.htmlSession GET:kRootPage parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    [self.htmlSession GET:kBaiduRootPage parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         __block NSString *tokenResult = nil;
         __block NSString *gtkResult = nil;
         NSString *string = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
@@ -142,7 +204,7 @@
     };
     
     mm_weakify(self)
-    [self.jsonSession POST:[kRootPage stringByAppendingString:@"/v2transapi"] parameters:params progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    [self.jsonSession POST:[kBaiduRootPage stringByAppendingString:@"/v2transapi"] parameters:params progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         mm_strongify(self)
         if (responseObject) {
             BaiduTranslateResponse *response = [BaiduTranslateResponse mj_objectWithKeyValues:responseObject];
@@ -150,7 +212,7 @@
                 if (response.error == 0) {
                     TranslateResult *result = [TranslateResult new];
                     result.text = text;
-                    result.link = [NSString stringWithFormat:@"%@/#%@/%@/%@", kRootPage, response.trans_result.from, response.trans_result.to, text.mm_urlencode];
+                    result.link = [NSString stringWithFormat:@"%@/#%@/%@/%@", kBaiduRootPage, response.trans_result.from, response.trans_result.to, text.mm_urlencode];
                     result.from = BaiduLanguageEnumFromString(response.trans_result.from);
                     result.to = BaiduLanguageEnumFromString(response.trans_result.to);
                     
@@ -333,7 +395,14 @@
 #pragma mark -
 
 - (NSString *)link {
-    return kRootPage;
+    return kBaiduRootPage;
+}
+
+- (NSArray<NSNumber *> *)languages {
+    if (!_languages) {
+        _languages = [BaiduSupportLanguageDict() sortedKeys];
+    }
+    return _languages;
 }
 
 - (void)translate:(NSString *)text from:(Language)from to:(Language)to completion:(nonnull void (^)(TranslateResult * _Nullable, NSError * _Nullable))completion {
@@ -395,7 +464,7 @@
     if (queryString.length >= 73) {
         queryString = [queryString substringToIndex:73];
     }
-    [self.jsonSession POST:[kRootPage stringByAppendingString:@"/langdetect"] parameters:@{@"query":queryString} progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    [self.jsonSession POST:[kBaiduRootPage stringByAppendingString:@"/langdetect"] parameters:@{@"query":queryString} progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         if (responseObject && [responseObject isKindOfClass:[NSDictionary class]]) {
             NSDictionary *jsonResult = responseObject;
             NSString *from = [jsonResult objectForKey:@"lan"];
@@ -432,7 +501,7 @@
 }
 
 - (NSString *)getAudioURLWithText:(NSString *)text language:(NSString *)language {
-    return [NSString stringWithFormat:@"%@/gettts?lan=%@&text=%@&spd=3&source=web", kRootPage, language, text.mm_urlencode];
+    return [NSString stringWithFormat:@"%@/gettts?lan=%@&text=%@&spd=3&source=web", kBaiduRootPage, language, text.mm_urlencode];
 }
 
 - (void)ocr:(NSImage *)image from:(Language)from to:(Language)to completion:(void (^)(OCRResult * _Nullable, NSError * _Nullable))completion {

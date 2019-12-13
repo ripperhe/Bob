@@ -25,6 +25,9 @@ NS_ASSUME_NONNULL_BEGIN
 /// 百度翻译首页
 - (NSString *)link;
 
+/// 支持的语言
+- (NSArray<NSNumber *> *)languages;
+
 /// 翻译
 /// @param text 查询文本
 /// @param from 文本语言

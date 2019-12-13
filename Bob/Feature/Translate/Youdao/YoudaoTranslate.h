@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "TranslateLanguage.h"
 
 /**
  * 有道翻译参考链接
