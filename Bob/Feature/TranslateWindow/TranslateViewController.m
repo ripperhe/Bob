@@ -29,7 +29,7 @@ if (seed != self.seed) { \
 
 @interface TranslateViewController ()
 
-@property (nonatomic, strong) YoudaoTranslate *translate;
+@property (nonatomic, strong) Translate *translate;
 @property (nonatomic, strong) AVPlayer *player;
 @property (nonatomic, strong) TranslateResult *currentResult;
 @property (nonatomic, strong) MMEventMonitor *monitor;
@@ -287,7 +287,7 @@ if (seed != self.seed) { \
 }
 
 - (void)setupTranslate {
-    self.translate = [YoudaoTranslate new];
+    self.translate = [BaiduTranslate new];
     self.player = [[AVPlayer alloc] init];
 }
 

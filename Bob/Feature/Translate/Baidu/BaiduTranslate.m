@@ -13,69 +13,7 @@
 #define kBaiduRootPage @"https://fanyi.baidu.com"
 #define kError(type, msg) [TranslateError errorWithType:type message:msg]
 
-/// 支持的语言
-MMOrderedDictionary * BaiduSupportLanguageDict() {
-    static MMOrderedDictionary *_langDict = nil;
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        _langDict = [[MMOrderedDictionary alloc] initWithKeysAndObjects:
-                     @(Language_auto), @"auto",
-                     @(Language_zh_Hans), @"zh",
-                     @(Language_zh_Hant), @"cht",
-                     @(Language_en), @"en",
-                     @(Language_yue), @"yue",
-                     @(Language_wyw), @"wyw",
-                     @(Language_ja), @"jp",
-                     @(Language_ko), @"kor",
-                     @(Language_fr), @"fra",
-                     @(Language_es), @"spa",
-                     @(Language_th), @"th",
-                     @(Language_ar), @"ara",
-                     @(Language_ru), @"ru",
-                     @(Language_pt), @"pt",
-                     @(Language_de), @"de",
-                     @(Language_it), @"it",
-                     @(Language_el), @"el",
-                     @(Language_nl), @"nl",
-                     @(Language_pl), @"pl",
-                     @(Language_bg), @"bul",
-                     @(Language_et), @"est",
-                     @(Language_da), @"dan",
-                     @(Language_fi), @"fin",
-                     @(Language_cs), @"cs",
-                     @(Language_ro), @"rom",
-                     @(Language_sl), @"slo",
-                     @(Language_sv), @"swe",
-                     @(Language_hu), @"hu",
-                     @(Language_vi), @"vie",
-                     nil];
-    });
-    return _langDict;
-}
-
-/// 根据枚举获取百度翻译字符串
-NSString * _Nullable BaiduLanguageStringFromEnum(Language lang) {
-    static NSDictionary *_stringFromEnumDict = nil;
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        _stringFromEnumDict = [BaiduSupportLanguageDict() keysAndObjects];
-    });
-    return [_stringFromEnumDict objectForKey:@(lang)];
-}
-
-/// 根据百度翻译字符串获取枚举
-Language BaiduLanguageEnumFromString(NSString *lang) {
-    static NSDictionary *_enumFromStringDict = nil;
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        _enumFromStringDict = [[BaiduSupportLanguageDict() keysAndObjects] mm_reverseKeysAndObjectsDictionary];
-    });
-    return [[_enumFromStringDict objectForKey:lang] integerValue];
-}
-
 @interface BaiduTranslate ()
-
-@property (nonatomic, strong) NSArray<NSNumber *> *languages;
 
 @property (nonatomic, strong) JSContext *jsContext;
 @property (nonatomic, strong) JSValue *jsFunction;
@@ -194,8 +132,8 @@ Language BaiduLanguageEnumFromString(NSString *lang) {
     NSString *sign = [value toString];
 
     NSDictionary *params = @{
-        @"from": BaiduLanguageStringFromEnum(from),
-        @"to": BaiduLanguageStringFromEnum(to),
+        @"from": [self languageStringFromEnum:from],
+        @"to": [self languageStringFromEnum:to],
         @"query": text,
         @"simple_means_flag": @3,
         @"sign": sign,
@@ -212,8 +150,8 @@ Language BaiduLanguageEnumFromString(NSString *lang) {
                     TranslateResult *result = [TranslateResult new];
                     result.text = text;
                     result.link = [NSString stringWithFormat:@"%@/#%@/%@/%@", kBaiduRootPage, response.trans_result.from, response.trans_result.to, text.mm_urlencode];
-                    result.from = BaiduLanguageEnumFromString(response.trans_result.from);
-                    result.to = BaiduLanguageEnumFromString(response.trans_result.to);
+                    result.from = [self languageEnumFromString:response.trans_result.from];
+                    result.to = [self languageEnumFromString:response.trans_result.to];
                     
                     // 解析单词释义
                     [response.dict_result.simple_means mm_anyPut:^(BaiduTranslateResponseSimpleMean *  _Nonnull simple_means) {
@@ -391,17 +329,44 @@ Language BaiduLanguageEnumFromString(NSString *lang) {
     }];
 }
 
-#pragma mark -
+#pragma mark - 重写父类方法
+
+- (MMOrderedDictionary *)supportLanguagesDictionary {
+    return [[MMOrderedDictionary alloc] initWithKeysAndObjects:
+            @(Language_auto), @"auto",
+            @(Language_zh_Hans), @"zh",
+            @(Language_zh_Hant), @"cht",
+            @(Language_en), @"en",
+            @(Language_yue), @"yue",
+            @(Language_wyw), @"wyw",
+            @(Language_ja), @"jp",
+            @(Language_ko), @"kor",
+            @(Language_fr), @"fra",
+            @(Language_es), @"spa",
+            @(Language_th), @"th",
+            @(Language_ar), @"ara",
+            @(Language_ru), @"ru",
+            @(Language_pt), @"pt",
+            @(Language_de), @"de",
+            @(Language_it), @"it",
+            @(Language_el), @"el",
+            @(Language_nl), @"nl",
+            @(Language_pl), @"pl",
+            @(Language_bg), @"bul",
+            @(Language_et), @"est",
+            @(Language_da), @"dan",
+            @(Language_fi), @"fin",
+            @(Language_cs), @"cs",
+            @(Language_ro), @"rom",
+            @(Language_sl), @"slo",
+            @(Language_sv), @"swe",
+            @(Language_hu), @"hu",
+            @(Language_vi), @"vie",
+            nil];
+}
 
 - (NSString *)link {
     return kBaiduRootPage;
-}
-
-- (NSArray<NSNumber *> *)languages {
-    if (!_languages) {
-        _languages = [BaiduSupportLanguageDict() sortedKeys];
-    }
-    return _languages;
 }
 
 - (void)translate:(NSString *)text from:(Language)from to:(Language)to completion:(nonnull void (^)(TranslateResult * _Nullable, NSError * _Nullable))completion {
@@ -463,12 +428,14 @@ Language BaiduLanguageEnumFromString(NSString *lang) {
     if (queryString.length >= 73) {
         queryString = [queryString substringToIndex:73];
     }
+    mm_weakify(self);
     [self.jsonSession POST:[kBaiduRootPage stringByAppendingString:@"/langdetect"] parameters:@{@"query":queryString} progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        mm_strongify(self);
         if (responseObject && [responseObject isKindOfClass:[NSDictionary class]]) {
             NSDictionary *jsonResult = responseObject;
             NSString *from = [jsonResult objectForKey:@"lan"];
             if ([from isKindOfClass:NSString.class] && from.length) {
-                completion(BaiduLanguageEnumFromString(from), nil);
+                completion([self languageEnumFromString:from], nil);
             }else {
                 completion(Language_auto, kError(TranslateErrorTypeUnsupportLanguage, nil));
             }
@@ -489,13 +456,13 @@ Language BaiduLanguageEnumFromString(NSString *lang) {
     if (from == Language_auto) {
         [self detect:text completion:^(Language lang, NSError * _Nullable error) {
             if (!error) {
-                completion([self getAudioURLWithText:text language:BaiduLanguageStringFromEnum(lang)], nil);
+                completion([self getAudioURLWithText:text language:[self languageStringFromEnum:lang]], nil);
             }else {
                 completion(nil, error);
             }
         }];
     }else {
-        completion([self getAudioURLWithText:text language:BaiduLanguageStringFromEnum(from)], nil);
+        completion([self getAudioURLWithText:text language:[self languageStringFromEnum:from]], nil);
     }
 }
 
@@ -512,12 +479,12 @@ Language BaiduLanguageEnumFromString(NSString *lang) {
     NSData *tiffData = [image TIFFRepresentation];
     NSBitmapImageRep *imageRep = [NSBitmapImageRep imageRepWithData:tiffData];
     NSData *data = [imageRep representationUsingType:NSBitmapImageFileTypePNG properties:@{}];
-    NSString *fromLang = (from == Language_auto) ? BaiduLanguageStringFromEnum(Language_en) : BaiduLanguageStringFromEnum(from);
+    NSString *fromLang = (from == Language_auto) ? [self languageStringFromEnum:Language_en] : [self languageStringFromEnum:from];
     NSString *toLang = nil;
     if (to == Language_auto) {
-        toLang = (from == Language_zh_Hans || from == Language_zh_Hant) ? BaiduLanguageStringFromEnum(Language_en) : BaiduLanguageStringFromEnum(Language_zh_Hans);
+        toLang = (from == Language_zh_Hans || from == Language_zh_Hant) ? [self languageStringFromEnum:Language_en] : [self languageStringFromEnum:Language_zh_Hans];
     }else {
-        toLang = BaiduLanguageStringFromEnum(to);
+        toLang = [self languageStringFromEnum:to];
     }
     
     NSDictionary *para = @{
@@ -526,12 +493,14 @@ Language BaiduLanguageEnumFromString(NSString *lang) {
         @"to": toLang
     };
     
+    mm_weakify(self);
     [self.jsonSession POST:@"https://fanyi.baidu.com/getocr" parameters:para constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
         [formData appendPartWithFileData:data name:@"image" fileName:@"blob" mimeType:@"image/png"];
     } progress:^(NSProgress * _Nonnull uploadProgress) {
         // NSLog(@"%@", uploadProgress);
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         // NSLog(@"%@", responseObject);
+        mm_strongify(self);
         if (responseObject && [responseObject isKindOfClass:[NSDictionary class]]) {
             NSDictionary *jsonResult = responseObject;
             NSDictionary *data = [jsonResult objectForKey:@"data"];
@@ -539,11 +508,11 @@ Language BaiduLanguageEnumFromString(NSString *lang) {
                 OCRResult *result = [OCRResult new];
                 NSString *from = [data objectForKey:@"from"];
                 if (from && [from isKindOfClass:NSString.class]) {
-                    result.from = BaiduLanguageEnumFromString(from);
+                    result.from = [self languageEnumFromString:from];
                 }
                 NSString *to = [data objectForKey:@"to"];
                 if (to && [to isKindOfClass:NSString.class]) {
-                    result.to = BaiduLanguageEnumFromString(to);
+                    result.to = [self languageEnumFromString:to];
                 }
                 NSArray<NSString *> *src = [data objectForKey:@"src"];
                 if (src && src.count) {

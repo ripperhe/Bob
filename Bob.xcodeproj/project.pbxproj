@@ -13,6 +13,7 @@
 		C90BE315239F38EC00ADE88B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C90BE313239F38EC00ADE88B /* Main.storyboard */; };
 		C90BE318239F38EC00ADE88B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C90BE317239F38EC00ADE88B /* main.m */; };
 		C90C77852391188400A65E42 /* SnipFocusView.m in Sources */ = {isa = PBXBuildFile; fileRef = C90C77842391188400A65E42 /* SnipFocusView.m */; };
+		C910457023A3AF44001D5211 /* Translate.m in Sources */ = {isa = PBXBuildFile; fileRef = C910456F23A3AF44001D5211 /* Translate.m */; };
 		C91DF6B023A35E07009CB158 /* MMOrderedDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = C91DF6AE23A35E07009CB158 /* MMOrderedDictionary.m */; };
 		C91DF6B323A375E5009CB158 /* YoudaoTranslateResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = C91DF6B223A375E5009CB158 /* YoudaoTranslateResponse.m */; };
 		C91DF6B723A390A7009CB158 /* YoudaoOCRResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = C91DF6B623A390A7009CB158 /* YoudaoOCRResponse.m */; };
@@ -105,6 +106,8 @@
 		C90BE319239F38EC00ADE88B /* BobHelper.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BobHelper.entitlements; sourceTree = "<group>"; };
 		C90C77832391188400A65E42 /* SnipFocusView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SnipFocusView.h; sourceTree = "<group>"; };
 		C90C77842391188400A65E42 /* SnipFocusView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SnipFocusView.m; sourceTree = "<group>"; };
+		C910456E23A3AF44001D5211 /* Translate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Translate.h; sourceTree = "<group>"; };
+		C910456F23A3AF44001D5211 /* Translate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Translate.m; sourceTree = "<group>"; };
 		C91DF6AE23A35E07009CB158 /* MMOrderedDictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMOrderedDictionary.m; sourceTree = "<group>"; };
 		C91DF6AF23A35E07009CB158 /* MMOrderedDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMOrderedDictionary.h; sourceTree = "<group>"; };
 		C91DF6B123A375E5009CB158 /* YoudaoTranslateResponse.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YoudaoTranslateResponse.h; sourceTree = "<group>"; };
@@ -539,6 +542,8 @@
 				C99EEB932385799D00FEE666 /* TranslateResult.m */,
 				C959D338238809B800DD8808 /* OCRResult.h */,
 				C959D339238809B800DD8808 /* OCRResult.m */,
+				C910456E23A3AF44001D5211 /* Translate.h */,
+				C910456F23A3AF44001D5211 /* Translate.m */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -602,7 +607,7 @@
 		C99EEB102385796700FEE666 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 1120;
+				LastUpgradeCheck = 1130;
 				ORGANIZATIONNAME = ripperhe;
 				TargetAttributes = {
 					C90BE308239F38EB00ADE88B = {
@@ -745,6 +750,7 @@
 				C99EEBDD2385799D00FEE666 /* NSMutableAttributedString+MM.m in Sources */,
 				C99EEBCD2385799D00FEE666 /* QueryView.m in Sources */,
 				C98CFA28239F8CDB00FB7EC4 /* MMLog.swift in Sources */,
+				C910457023A3AF44001D5211 /* Translate.m in Sources */,
 				C9C3BDCA238E76C800D5F1C1 /* SnipWindow.m in Sources */,
 				C99EEBD52385799D00FEE666 /* Selection.m in Sources */,
 				C99EEBCE2385799D00FEE666 /* TranslateViewController.m in Sources */,
@@ -803,6 +809,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = BobHelper/BobHelper.entitlements;
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = BobHelper/Info.plist;
@@ -823,6 +830,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = BobHelper/BobHelper.entitlements;
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = BobHelper/Info.plist;
@@ -946,6 +954,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
 			};
 			name = Release;
 		};

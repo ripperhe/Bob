@@ -12,152 +12,11 @@
 
 #define kError(type, msg) [TranslateError errorWithType:type message:msg]
 
-MMOrderedDictionary * YoudaoSupportLanguageDict() {
-    static MMOrderedDictionary *_langDict = nil;
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        _langDict = [[MMOrderedDictionary alloc] initWithKeysAndObjects:
-                     @(Language_auto), @"auto",
-                     @(Language_zh_Hans), @"zh-CHS",
-                     @(Language_en), @"en",
-                     @(Language_yue), @"yue",
-                     @(Language_ja), @"ja",
-                     @(Language_ko), @"ko",
-                     @(Language_fr), @"fr",
-                     @(Language_es), @"es",
-                     @(Language_pt), @"pt",
-                     @(Language_it), @"it",
-                     @(Language_ru), @"ru",
-                     @(Language_vi), @"vi",
-                     @(Language_de), @"de",
-                     @(Language_ar), @"ar",
-                     @(Language_id), @"id",
-                     @(Language_af), @"af",
-                     @(Language_bs), @"bs",
-                     @(Language_bg), @"bg",
-                     @(Language_ca), @"ca",
-                     @(Language_hr), @"hr",
-                     @(Language_cs), @"cs",
-                     @(Language_da), @"da",
-                     @(Language_nl), @"nl",
-                     @(Language_et), @"et",
-                     @(Language_fj), @"fj",
-                     @(Language_fi), @"fi",
-                     @(Language_el), @"el",
-                     @(Language_ht), @"ht",
-                     @(Language_he), @"he",
-                     @(Language_hi), @"hi",
-                     @(Language_mww), @"mww",
-                     @(Language_hu), @"hu",
-                     @(Language_sw), @"sw",
-                     @(Language_tlh), @"tlh",
-                     @(Language_lv), @"lv",
-                     @(Language_lt), @"lt",
-                     @(Language_ms), @"ms",
-                     @(Language_mt), @"mt",
-                     @(Language_no), @"no",
-                     @(Language_fa), @"fa",
-                     @(Language_pl), @"pl",
-                     @(Language_otq), @"otq",
-                     @(Language_ro), @"ro",
-                     @(Language_sr_Cyrl), @"sr-Cyrl",
-                     @(Language_sr_Latn), @"sr-Latn",
-                     @(Language_sk), @"sk",
-                     @(Language_sv), @"sv",
-                     @(Language_ty), @"ty",
-                     @(Language_th), @"th",
-                     @(Language_to), @"to",
-                     @(Language_tr), @"tr",
-                     @(Language_uk), @"uk",
-                     @(Language_ur), @"ur",
-                     @(Language_cy), @"cy",
-                     @(Language_yua), @"yua",
-                     @(Language_sq), @"sq",
-                     @(Language_am), @"am",
-                     @(Language_hy), @"hy",
-                     @(Language_az), @"az",
-                     @(Language_bn), @"bn",
-                     @(Language_eu), @"eu",
-                     @(Language_be), @"be",
-                     @(Language_ceb), @"ceb",
-                     @(Language_co), @"co",
-                     @(Language_eo), @"eo",
-                     @(Language_tl), @"tl",
-                     @(Language_fy), @"fy",
-                     @(Language_gl), @"gl",
-                     @(Language_ka), @"ka",
-                     @(Language_gu), @"gu",
-                     @(Language_ha), @"ha",
-                     @(Language_haw), @"haw",
-                     @(Language_is), @"is",
-                     @(Language_ig), @"ig",
-                     @(Language_ga), @"ga",
-                     @(Language_jw), @"jw",
-                     @(Language_kn), @"kn",
-                     @(Language_kk), @"kk",
-                     @(Language_km), @"km",
-                     @(Language_ku), @"ku",
-                     @(Language_ky), @"ky",
-                     @(Language_lo), @"lo",
-                     @(Language_la), @"la",
-                     @(Language_lb), @"lb",
-                     @(Language_mk), @"mk",
-                     @(Language_mg), @"mg",
-                     @(Language_mi), @"mi",
-                     @(Language_ml), @"ml",
-                     @(Language_mr), @"mr",
-                     @(Language_mn), @"mn",
-                     @(Language_my), @"my",
-                     @(Language_ne), @"ne",
-                     @(Language_ny), @"ny",
-                     @(Language_ps), @"ps",
-                     @(Language_pa), @"pa",
-                     @(Language_sm), @"sm",
-                     @(Language_gd), @"gd",
-                     @(Language_st), @"st",
-                     @(Language_sn), @"sn",
-                     @(Language_sd), @"sd",
-                     @(Language_si), @"si",
-                     @(Language_so), @"so",
-                     @(Language_su), @"su",
-                     @(Language_tg), @"tg",
-                     @(Language_ta), @"ta",
-                     @(Language_te), @"te",
-                     @(Language_uz), @"uz",
-                     @(Language_xh), @"xh",
-                     @(Language_yi), @"yi",
-                     @(Language_yo), @"yo",
-                     @(Language_zu), @"zu",
-                     nil];
-    });
-    return _langDict;
-}
-
-NSString * _Nullable YoudaoLanguageStringFromEnum(Language lang) {
-    static NSDictionary *_stringFromEnumDict = nil;
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        _stringFromEnumDict = [YoudaoSupportLanguageDict() keysAndObjects];
-    });
-    return [_stringFromEnumDict objectForKey:@(lang)];
-}
-
-Language YoudaoLanguageEnumFromString(NSString *lang) {
-    static NSDictionary *_enumFromStringDict = nil;
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        _enumFromStringDict = [[YoudaoSupportLanguageDict() keysAndObjects] mm_reverseKeysAndObjectsDictionary];
-    });
-    return [[_enumFromStringDict objectForKey:lang] integerValue];
-}
-
-
 @interface YoudaoTranslate ()
 
 @property (nonatomic, strong) AFHTTPSessionManager *jsonSession;
 
 @end
-
 
 @implementation YoudaoTranslate
 
@@ -179,29 +38,139 @@ Language YoudaoLanguageEnumFromString(NSString *lang) {
     return self;
 }
 
-#pragma mark -
+#pragma mark - 重写父类方法
+
+- (MMOrderedDictionary *)supportLanguagesDictionary {
+    return [[MMOrderedDictionary alloc] initWithKeysAndObjects:
+                 @(Language_auto), @"auto",
+                 @(Language_zh_Hans), @"zh-CHS",
+                 @(Language_en), @"en",
+                 @(Language_yue), @"yue",
+                 @(Language_ja), @"ja",
+                 @(Language_ko), @"ko",
+                 @(Language_fr), @"fr",
+                 @(Language_es), @"es",
+                 @(Language_pt), @"pt",
+                 @(Language_it), @"it",
+                 @(Language_ru), @"ru",
+                 @(Language_vi), @"vi",
+                 @(Language_de), @"de",
+                 @(Language_ar), @"ar",
+                 @(Language_id), @"id",
+                 @(Language_af), @"af",
+                 @(Language_bs), @"bs",
+                 @(Language_bg), @"bg",
+                 @(Language_ca), @"ca",
+                 @(Language_hr), @"hr",
+                 @(Language_cs), @"cs",
+                 @(Language_da), @"da",
+                 @(Language_nl), @"nl",
+                 @(Language_et), @"et",
+                 @(Language_fj), @"fj",
+                 @(Language_fi), @"fi",
+                 @(Language_el), @"el",
+                 @(Language_ht), @"ht",
+                 @(Language_he), @"he",
+                 @(Language_hi), @"hi",
+                 @(Language_mww), @"mww",
+                 @(Language_hu), @"hu",
+                 @(Language_sw), @"sw",
+                 @(Language_tlh), @"tlh",
+                 @(Language_lv), @"lv",
+                 @(Language_lt), @"lt",
+                 @(Language_ms), @"ms",
+                 @(Language_mt), @"mt",
+                 @(Language_no), @"no",
+                 @(Language_fa), @"fa",
+                 @(Language_pl), @"pl",
+                 @(Language_otq), @"otq",
+                 @(Language_ro), @"ro",
+                 @(Language_sr_Cyrl), @"sr-Cyrl",
+                 @(Language_sr_Latn), @"sr-Latn",
+                 @(Language_sk), @"sk",
+                 @(Language_sv), @"sv",
+                 @(Language_ty), @"ty",
+                 @(Language_th), @"th",
+                 @(Language_to), @"to",
+                 @(Language_tr), @"tr",
+                 @(Language_uk), @"uk",
+                 @(Language_ur), @"ur",
+                 @(Language_cy), @"cy",
+                 @(Language_yua), @"yua",
+                 @(Language_sq), @"sq",
+                 @(Language_am), @"am",
+                 @(Language_hy), @"hy",
+                 @(Language_az), @"az",
+                 @(Language_bn), @"bn",
+                 @(Language_eu), @"eu",
+                 @(Language_be), @"be",
+                 @(Language_ceb), @"ceb",
+                 @(Language_co), @"co",
+                 @(Language_eo), @"eo",
+                 @(Language_tl), @"tl",
+                 @(Language_fy), @"fy",
+                 @(Language_gl), @"gl",
+                 @(Language_ka), @"ka",
+                 @(Language_gu), @"gu",
+                 @(Language_ha), @"ha",
+                 @(Language_haw), @"haw",
+                 @(Language_is), @"is",
+                 @(Language_ig), @"ig",
+                 @(Language_ga), @"ga",
+                 @(Language_jw), @"jw",
+                 @(Language_kn), @"kn",
+                 @(Language_kk), @"kk",
+                 @(Language_km), @"km",
+                 @(Language_ku), @"ku",
+                 @(Language_ky), @"ky",
+                 @(Language_lo), @"lo",
+                 @(Language_la), @"la",
+                 @(Language_lb), @"lb",
+                 @(Language_mk), @"mk",
+                 @(Language_mg), @"mg",
+                 @(Language_mi), @"mi",
+                 @(Language_ml), @"ml",
+                 @(Language_mr), @"mr",
+                 @(Language_mn), @"mn",
+                 @(Language_my), @"my",
+                 @(Language_ne), @"ne",
+                 @(Language_ny), @"ny",
+                 @(Language_ps), @"ps",
+                 @(Language_pa), @"pa",
+                 @(Language_sm), @"sm",
+                 @(Language_gd), @"gd",
+                 @(Language_st), @"st",
+                 @(Language_sn), @"sn",
+                 @(Language_sd), @"sd",
+                 @(Language_si), @"si",
+                 @(Language_so), @"so",
+                 @(Language_su), @"su",
+                 @(Language_tg), @"tg",
+                 @(Language_ta), @"ta",
+                 @(Language_te), @"te",
+                 @(Language_uz), @"uz",
+                 @(Language_xh), @"xh",
+                 @(Language_yi), @"yi",
+                 @(Language_yo), @"yo",
+                 @(Language_zu), @"zu",
+                 nil];
+}
 
 - (NSString *)link {
     return @"http://fanyi.youdao.com";
 }
 
-- (NSArray<NSNumber *> *)languages {
-    static NSArray *_array = nil;
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        _array = [YoudaoSupportLanguageDict() sortedKeys].copy;
-    });
-    return _array;
-}
-
 - (void)translate:(NSString *)text from:(Language)from to:(Language)to completion:(void (^)(TranslateResult * _Nullable result, NSError * _Nullable error))completion {
+    
     NSString *url = @"https://aidemo.youdao.com/trans";
     NSDictionary *params = @{
-        @"from": YoudaoLanguageStringFromEnum(from),
-        @"to": YoudaoLanguageStringFromEnum(to),
+        @"from": [self languageStringFromEnum:from],
+        @"to": [self languageStringFromEnum:to],
         @"q": text,
     };
+    mm_weakify(self);
     [self.jsonSession POST:url parameters:params progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        mm_strongify(self);
         if (responseObject) {
             YoudaoTranslateResponse *response = [YoudaoTranslateResponse mj_objectWithKeyValues:responseObject];
             if (response && response.errorCode.integerValue == 0) {
@@ -213,8 +182,8 @@ Language YoudaoLanguageEnumFromString(NSString *lang) {
                 // 解析语言
                 NSArray *languageComponents = [response.l componentsSeparatedByString:@"2"];
                 if (languageComponents.count == 2) {
-                    result.from = YoudaoLanguageEnumFromString(languageComponents.firstObject);
-                    result.to = YoudaoLanguageEnumFromString(languageComponents.lastObject);
+                    result.from = [self languageEnumFromString:languageComponents.firstObject];
+                    result.to = [self languageEnumFromString:languageComponents.lastObject];
                 }
                 
                 [response.basic mm_anyPut:^(YoudaoTranslateResponseBasic *  _Nonnull basic) {
@@ -308,6 +277,14 @@ Language YoudaoLanguageEnumFromString(NSString *lang) {
     }];
 }
 
+- (void)detect:(NSString *)text completion:(void (^)(Language, NSError * _Nullable))completion {
+    
+}
+
+- (void)audio:(NSString *)text from:(Language)from completion:(void (^)(NSString * _Nullable, NSError * _Nullable))completion {
+    
+}
+
 - (void)ocr:(NSImage *)image from:(Language)from to:(Language)to completion:(void (^)(OCRResult * _Nullable result, NSError * _Nullable error))completion {
     
     NSData *tiffData = [image TIFFRepresentation];
@@ -321,14 +298,15 @@ Language YoudaoLanguageEnumFromString(NSString *lang) {
     NSDictionary *params = @{
         @"imgBase": encodedImageStr,
     };
+    mm_weakify(self);
     [self.jsonSession POST:url parameters:params progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        NSLog(@"成功 %@", responseObject);
+        mm_strongify(self);
         if (responseObject) {
             YoudaoOCRResponse *response = [YoudaoOCRResponse mj_objectWithKeyValues:responseObject];
             if (response) {
                 OCRResult *result = [OCRResult new];
-                result.from = YoudaoLanguageEnumFromString(response.lanFrom);
-                result.to = YoudaoLanguageEnumFromString(response.lanTo);
+                result.from = [self languageEnumFromString:response.lanFrom];
+                result.to = [self languageEnumFromString:response.lanTo];
                 result.texts = [response.lines mm_map:^id _Nullable(YoudaoOCRResponseLine * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
                     OCRText *text = [OCRText new];
                     text.text = obj.context;
@@ -343,7 +321,6 @@ Language YoudaoLanguageEnumFromString(NSString *lang) {
         }
         completion(nil, kError(TranslateErrorTypeAPIError, @"图片翻译失败"));
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        NSLog(@"失败 %@", error);
         completion(nil, kError(TranslateErrorTypeNetworkError, @"图片翻译失败"));
     }];
 }
