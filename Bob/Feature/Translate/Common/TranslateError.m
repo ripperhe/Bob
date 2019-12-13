@@ -17,10 +17,10 @@
             errorString = @"参数异常";
             break;
         case TranslateErrorTypeNetworkError:
-            errorString = @"网络请求异常";
+            errorString = @"请求异常";
             break;
         case TranslateErrorTypeAPIError:
-            errorString = @"翻译接口异常";
+            errorString = @"接口异常";
             break;
         case TranslateErrorTypeUnsupportLanguage:
             errorString = @"不支持的语言";

@@ -8,6 +8,10 @@
 
 #import "OCRResult.h"
 
+@implementation OCRText
+
+@end
+
 @implementation OCRResult
 
 @end

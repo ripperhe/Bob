@@ -8,7 +8,6 @@
 
 #import "BaiduTranslate.h"
 #import <JavaScriptCore/JavaScriptCore.h>
-#import <AFNetworking/AFNetworking.h>
 #import "BaiduTranslateResponse.h"
 
 #define kBaiduRootPage @"https://fanyi.baidu.com"
@@ -227,14 +226,14 @@ Language BaiduLanguageEnumFromString(NSString *lang) {
                                 [phonetics addObject:[TranslatePhonetic mm_anyMake:^(TranslatePhonetic *  _Nonnull obj) {
                                     obj.name = @"美";
                                     obj.value = symbol.ph_am;
-                                    obj.ttsURI = [self getAudioURLWithText:result.text language:@"en"];
+                                    obj.speakURL = [self getAudioURLWithText:result.text language:@"en"];
                                 }]];
                             }
                             if (symbol.ph_en.length) {
                                 [phonetics addObject:[TranslatePhonetic mm_anyMake:^(TranslatePhonetic *  _Nonnull obj) {
                                     obj.name = @"英";
                                     obj.value = symbol.ph_en;
-                                    obj.ttsURI = [self getAudioURLWithText:result.text language:@"uk"];
+                                    obj.speakURL = [self getAudioURLWithText:result.text language:@"uk"];
                                 }]];
                             }
                             wordResult.phonetics = phonetics.count ? phonetics.copy : nil;
@@ -548,8 +547,13 @@ Language BaiduLanguageEnumFromString(NSString *lang) {
                 }
                 NSArray<NSString *> *src = [data objectForKey:@"src"];
                 if (src && src.count) {
-                    result.texts = [src mm_where:^BOOL(NSString * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-                        return [obj isKindOfClass:NSString.class] && obj.length;
+                    result.texts = [src mm_map:^id _Nullable(NSString * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                        if ([obj isKindOfClass:NSString.class] && obj.length) {
+                            OCRText *text = [OCRText new];
+                            text.text = obj;
+                            return text;
+                        }
+                        return nil;
                     }];
                 }
                 if (result.texts.count) {

@@ -14,6 +14,8 @@
 		C90BE318239F38EC00ADE88B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C90BE317239F38EC00ADE88B /* main.m */; };
 		C90C77852391188400A65E42 /* SnipFocusView.m in Sources */ = {isa = PBXBuildFile; fileRef = C90C77842391188400A65E42 /* SnipFocusView.m */; };
 		C91DF6B023A35E07009CB158 /* MMOrderedDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = C91DF6AE23A35E07009CB158 /* MMOrderedDictionary.m */; };
+		C91DF6B323A375E5009CB158 /* YoudaoTranslateResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = C91DF6B223A375E5009CB158 /* YoudaoTranslateResponse.m */; };
+		C91DF6B723A390A7009CB158 /* YoudaoOCRResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = C91DF6B623A390A7009CB158 /* YoudaoOCRResponse.m */; };
 		C959D33A238809B800DD8808 /* OCRResult.m in Sources */ = {isa = PBXBuildFile; fileRef = C959D339238809B800DD8808 /* OCRResult.m */; };
 		C9676F2B23A0908F007DD023 /* NSPasteboard+MM.m in Sources */ = {isa = PBXBuildFile; fileRef = C9676F2A23A0908F007DD023 /* NSPasteboard+MM.m */; };
 		C98C17A1239E3F4A00BD02DB /* PreferencesWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = C98C17A0239E3F4A00BD02DB /* PreferencesWindowController.m */; };
@@ -105,6 +107,10 @@
 		C90C77842391188400A65E42 /* SnipFocusView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SnipFocusView.m; sourceTree = "<group>"; };
 		C91DF6AE23A35E07009CB158 /* MMOrderedDictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMOrderedDictionary.m; sourceTree = "<group>"; };
 		C91DF6AF23A35E07009CB158 /* MMOrderedDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMOrderedDictionary.h; sourceTree = "<group>"; };
+		C91DF6B123A375E5009CB158 /* YoudaoTranslateResponse.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YoudaoTranslateResponse.h; sourceTree = "<group>"; };
+		C91DF6B223A375E5009CB158 /* YoudaoTranslateResponse.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YoudaoTranslateResponse.m; sourceTree = "<group>"; };
+		C91DF6B523A390A7009CB158 /* YoudaoOCRResponse.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YoudaoOCRResponse.h; sourceTree = "<group>"; };
+		C91DF6B623A390A7009CB158 /* YoudaoOCRResponse.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YoudaoOCRResponse.m; sourceTree = "<group>"; };
 		C959D338238809B800DD8808 /* OCRResult.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OCRResult.h; sourceTree = "<group>"; };
 		C959D339238809B800DD8808 /* OCRResult.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OCRResult.m; sourceTree = "<group>"; };
 		C9676F2923A0908F007DD023 /* NSPasteboard+MM.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSPasteboard+MM.h"; sourceTree = "<group>"; };
@@ -542,6 +548,10 @@
 			children = (
 				C9F7E87A23A2165F0025ADF6 /* YoudaoTranslate.h */,
 				C9F7E87B23A2165F0025ADF6 /* YoudaoTranslate.m */,
+				C91DF6B123A375E5009CB158 /* YoudaoTranslateResponse.h */,
+				C91DF6B223A375E5009CB158 /* YoudaoTranslateResponse.m */,
+				C91DF6B523A390A7009CB158 /* YoudaoOCRResponse.h */,
+				C91DF6B623A390A7009CB158 /* YoudaoOCRResponse.m */,
 			);
 			path = Youdao;
 			sourceTree = "<group>";
@@ -748,12 +758,14 @@
 				C99EEB1D2385796700FEE666 /* AppDelegate.m in Sources */,
 				C99EEBD72385799D00FEE666 /* MMMake.m in Sources */,
 				C9D679CC23A3403F0073957C /* NSDictionary+MM.m in Sources */,
+				C91DF6B323A375E5009CB158 /* YoudaoTranslateResponse.m in Sources */,
 				C99EEBD22385799D00FEE666 /* ResultView.m in Sources */,
 				C99EEBDC2385799D00FEE666 /* NSColor+MM.m in Sources */,
 				C99EEBD02385799D00FEE666 /* TranslateWindowController.m in Sources */,
 				C99EEBD82385799D00FEE666 /* NSString+MM.m in Sources */,
 				C99EEBDB2385799D00FEE666 /* NSAttributedString+MM.m in Sources */,
 				C959D33A238809B800DD8808 /* OCRResult.m in Sources */,
+				C91DF6B723A390A7009CB158 /* YoudaoOCRResponse.m in Sources */,
 				C9F7E87C23A2165F0025ADF6 /* YoudaoTranslate.m in Sources */,
 				C99EEBCC2385799D00FEE666 /* NormalResultView.m in Sources */,
 				C99142742390FCBD0025E75E /* NSImage+MM.m in Sources */,

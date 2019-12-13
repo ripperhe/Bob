@@ -15,10 +15,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// 语种的中文名称
 @property (nonatomic, copy) NSString *name;
-/// 此音标对应的语音地址
-@property (nonatomic, copy) NSString *ttsURI;
 /// 此语种对应的音标值
 @property (nonatomic, copy) NSString *value;
+/// 此音标对应的语音地址
+@property (nonatomic, copy) NSString *speakURL;
 
 @end
 
@@ -78,6 +78,10 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong, nullable) TranslateWordResult *wordResult;
 /// 普通翻译结果，可以有多条（一个段落对应一个翻译结果）
 @property (nonatomic, strong, nullable) NSArray<NSString *> *normalResults;
+/// 查询文本的发音地址
+@property (nonatomic, copy, nullable) NSString *fromSpeakURL;
+/// 翻译后的发音地址
+@property (nonatomic, copy, nullable) NSString *toSpeakURL;
 /// 翻译接口提供的原始的、未经转换的查询结果
 @property (nonatomic, strong) id raw;
 

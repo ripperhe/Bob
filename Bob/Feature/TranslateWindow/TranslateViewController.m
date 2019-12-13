@@ -8,6 +8,7 @@
 
 #import "TranslateViewController.h"
 #import "BaiduTranslate.h"
+#import "YoudaoTranslate.h"
 #import "Selection.h"
 #import "PopUpButton.h"
 #import "QueryView.h"
@@ -28,7 +29,7 @@ if (seed != self.seed) { \
 
 @interface TranslateViewController ()
 
-@property (nonatomic, strong) BaiduTranslate *baiduTranslate;
+@property (nonatomic, strong) YoudaoTranslate *translate;
 @property (nonatomic, strong) AVPlayer *player;
 @property (nonatomic, strong) TranslateResult *currentResult;
 @property (nonatomic, strong) MMEventMonitor *monitor;
@@ -146,7 +147,7 @@ if (seed != self.seed) { \
         mm_weakify(self)
         [button setRac_command:[[RACCommand alloc] initWithSignalBlock:^RACSignal * _Nonnull(id  _Nullable input) {
             mm_strongify(self)
-            [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:self.currentResult.link ?: self.baiduTranslate.link]];
+            [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:self.currentResult.link ?: self.translate.link]];
             if (!Configuration.shared.isPin) {
                 [TranslateWindowController.shared close];
             }
@@ -185,7 +186,7 @@ if (seed != self.seed) { \
             make.width.mas_equalTo(100);
             make.height.mas_equalTo(25);
         }];
-        [button updateMenuWithTitleArray:[self.baiduTranslate.languages mm_map:^id _Nullable(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        [button updateMenuWithTitleArray:[self.translate.languages mm_map:^id _Nullable(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
             if ([obj integerValue] == Language_auto) {
                 return @"自动检测";
             }
@@ -195,7 +196,7 @@ if (seed != self.seed) { \
         mm_weakify(self);
         [button setMenuItemSeletedBlock:^(NSInteger index, NSString *title) {
             mm_strongify(self);
-            Configuration.shared.from = [[self.baiduTranslate.languages objectAtIndex:index] integerValue];
+            Configuration.shared.from = [[self.translate.languages objectAtIndex:index] integerValue];
         }];
     }];
     
@@ -232,17 +233,19 @@ if (seed != self.seed) { \
             make.width.height.equalTo(self.fromLanguageButton);
             make.right.lessThanOrEqualTo(self.view.mas_right).offset(-kMargin);
         }];
-        [button updateMenuWithTitleArray:[self.baiduTranslate.languages mm_map:^id _Nullable(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        [button updateMenuWithTitleArray:[self.translate.languages mm_map:^id _Nullable(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
             if ([obj integerValue] == Language_auto) {
                 return @"自动选择";
             }
             return LanguageDescFromEnum([obj integerValue]);
         }]];
+        NSLog(@"初始化语言 %zd %@", Configuration.shared.to, LanguageDescFromEnum(Configuration.shared.to));
         [button updateWithIndex:[self indexFromLangages:Configuration.shared.to]];
         mm_weakify(self);
         [button setMenuItemSeletedBlock:^(NSInteger index, NSString *title) {
             mm_strongify(self);
-            Configuration.shared.to = [[self.baiduTranslate.languages objectAtIndex:index] integerValue];
+            Configuration.shared.to = [[self.translate.languages objectAtIndex:index] integerValue];
+            NSLog(@"选中语言 %zd %@", Configuration.shared.to, LanguageDescFromEnum(Configuration.shared.to));
         }];
     }];
     
@@ -284,7 +287,7 @@ if (seed != self.seed) { \
 }
 
 - (void)setupTranslate {
-    self.baiduTranslate = [BaiduTranslate new];
+    self.translate = [YoudaoTranslate new];
     self.player = [[AVPlayer alloc] init];
 }
 
@@ -303,15 +306,20 @@ if (seed != self.seed) { \
 #pragma mark -
 
 - (NSInteger)indexFromLangages:(Language)lang {
-    return [self.baiduTranslate.languages mm_find:^BOOL(NSNumber * _Nonnull obj, NSUInteger idx) {
-        return obj.integerValue == lang;
-    }].integerValue;
+    __block NSInteger index = 0;
+    [self.translate.languages enumerateObjectsUsingBlock:^(NSNumber * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        if (obj.integerValue == lang) {
+            index = idx;
+            *stop = YES;
+        }
+    }];
+    return index;
 }
 
 - (void)playAudioWithText:(NSString *)text lang:(Language)lang {
     if (text.length) {
         mm_weakify(self)
-        [self.baiduTranslate audio:text from:lang completion:^(NSString * _Nullable url, NSError * _Nullable error) {
+        [self.translate audio:text from:lang completion:^(NSString * _Nullable url, NSError * _Nullable error) {
             mm_strongify(self);
             if (!error) {
                 [self playAudioWithURL:url];
@@ -342,10 +350,10 @@ if (seed != self.seed) { \
     [self resizeWindowWithQueryViewExpectHeight:0];
     increaseSeed
     mm_weakify(self)
-    [self.baiduTranslate translate:text
-                              from:Configuration.shared.from
-                                to:Configuration.shared.to
-                        completion:^(TranslateResult * _Nullable result, NSError * _Nullable error) {
+    [self.translate translate:text
+                         from:Configuration.shared.from
+                           to:Configuration.shared.to
+                   completion:^(TranslateResult * _Nullable result, NSError * _Nullable error) {
         mm_strongify(self);
         checkSeed
         if (error) {
@@ -367,17 +375,20 @@ if (seed != self.seed) { \
     [self resetWithState:@"图片文本识别中..."];
     increaseSeed
     mm_weakify(self)
-    [self.baiduTranslate ocr:image
-                        from:Configuration.shared.from
-                          to:Configuration.shared.to
-                  completion:^(OCRResult * _Nullable result, NSError * _Nullable error) {
+    [self.translate ocr:image
+                   from:Configuration.shared.from
+                     to:Configuration.shared.to
+             completion:^(OCRResult * _Nullable result, NSError * _Nullable error) {
         mm_strongify(self)
         checkSeed
         NSLog(@"识别到的文本:\n%@", result.texts);
         if (error) {
             [self.resultView refreshWithStateString:error.localizedDescription];
         }else {
-            [self translateText:[NSString mm_stringByCombineComponents:result.texts separatedString:@" "]];
+            [self translateText:[NSString mm_stringByCombineComponents:[result.texts mm_map:^id _Nullable(OCRText * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                return obj.text;
+                // 百度用空格，有道用\n
+            }] separatedString:@" "]];
         }
     }];
 }

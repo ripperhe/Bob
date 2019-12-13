@@ -9,6 +9,7 @@
 #import <Masonry/Masonry.h>
 #import <MJExtension/MJExtension.h>
 #import <ReactiveObjC/ReactiveObjC.h>
+#import <AFNetworking/AFNetworking.h>
 
 #import "MMMake.h"
 #import "MMMacro.h"

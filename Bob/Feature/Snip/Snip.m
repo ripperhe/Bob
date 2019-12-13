@@ -121,6 +121,8 @@ static Snip *_instance;
     
     self.currentMainWindowController = nil;
     
+    [CATransaction flush];
+    
     // 回调，中断也要回调
     if (self.completion) {
         self.completion(image);

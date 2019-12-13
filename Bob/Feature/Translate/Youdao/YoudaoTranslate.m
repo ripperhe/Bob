@@ -7,6 +7,10 @@
 //
 
 #import "YoudaoTranslate.h"
+#import "YoudaoTranslateResponse.h"
+#import "YoudaoOCRResponse.h"
+
+#define kError(type, msg) [TranslateError errorWithType:type message:msg]
 
 MMOrderedDictionary * YoudaoSupportLanguageDict() {
     static MMOrderedDictionary *_langDict = nil;
@@ -15,8 +19,8 @@ MMOrderedDictionary * YoudaoSupportLanguageDict() {
         _langDict = [[MMOrderedDictionary alloc] initWithKeysAndObjects:
                      @(Language_auto), @"auto",
                      @(Language_zh_Hans), @"zh-CHS",
-                     @(Language_yue), @"yue",
                      @(Language_en), @"en",
+                     @(Language_yue), @"yue",
                      @(Language_ja), @"ja",
                      @(Language_ko), @"ko",
                      @(Language_fr), @"fr",
@@ -129,6 +133,219 @@ MMOrderedDictionary * YoudaoSupportLanguageDict() {
     return _langDict;
 }
 
+NSString * _Nullable YoudaoLanguageStringFromEnum(Language lang) {
+    static NSDictionary *_stringFromEnumDict = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        _stringFromEnumDict = [YoudaoSupportLanguageDict() keysAndObjects];
+    });
+    return [_stringFromEnumDict objectForKey:@(lang)];
+}
+
+Language YoudaoLanguageEnumFromString(NSString *lang) {
+    static NSDictionary *_enumFromStringDict = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        _enumFromStringDict = [[YoudaoSupportLanguageDict() keysAndObjects] mm_reverseKeysAndObjectsDictionary];
+    });
+    return [[_enumFromStringDict objectForKey:lang] integerValue];
+}
+
+
+@interface YoudaoTranslate ()
+
+@property (nonatomic, strong) AFHTTPSessionManager *jsonSession;
+
+@end
+
+
 @implementation YoudaoTranslate
+
+- (instancetype)init {
+    self = [super init];
+    if (self) {
+        AFHTTPSessionManager *jsonSession = [AFHTTPSessionManager manager];
+
+        AFHTTPRequestSerializer *requestSerializer = [AFHTTPRequestSerializer serializer];
+        [requestSerializer setValue:@"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.120 Safari/537.36" forHTTPHeaderField:@"User-Agent"];
+        jsonSession.requestSerializer = requestSerializer;
+        
+        AFJSONResponseSerializer *responseSerializer = [AFJSONResponseSerializer serializer];
+        responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/plain", nil];
+        jsonSession.responseSerializer = responseSerializer;
+        
+        self.jsonSession = jsonSession;
+    }
+    return self;
+}
+
+#pragma mark -
+
+- (NSString *)link {
+    return @"http://fanyi.youdao.com";
+}
+
+- (NSArray<NSNumber *> *)languages {
+    static NSArray *_array = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        _array = [YoudaoSupportLanguageDict() sortedKeys].copy;
+    });
+    return _array;
+}
+
+- (void)translate:(NSString *)text from:(Language)from to:(Language)to completion:(void (^)(TranslateResult * _Nullable result, NSError * _Nullable error))completion {
+    NSString *url = @"https://aidemo.youdao.com/trans";
+    NSDictionary *params = @{
+        @"from": YoudaoLanguageStringFromEnum(from),
+        @"to": YoudaoLanguageStringFromEnum(to),
+        @"q": text,
+    };
+    [self.jsonSession POST:url parameters:params progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        if (responseObject) {
+            YoudaoTranslateResponse *response = [YoudaoTranslateResponse mj_objectWithKeyValues:responseObject];
+            if (response && response.errorCode.integerValue == 0) {
+                TranslateResult *result = [TranslateResult new];
+                result.text = text;
+                result.fromSpeakURL = response.speakUrl;
+                result.toSpeakURL = response.tSpeakUrl;
+                
+                // 解析语言
+                NSArray *languageComponents = [response.l componentsSeparatedByString:@"2"];
+                if (languageComponents.count == 2) {
+                    result.from = YoudaoLanguageEnumFromString(languageComponents.firstObject);
+                    result.to = YoudaoLanguageEnumFromString(languageComponents.lastObject);
+                }
+                
+                [response.basic mm_anyPut:^(YoudaoTranslateResponseBasic *  _Nonnull basic) {
+                    TranslateWordResult *wordResult = [TranslateWordResult new];
+
+                    if (result.from == Language_en && result.to == Language_zh_Hans) {
+                        // 英文查词
+                        
+                        // 解析音频
+                        NSMutableArray *phoneticArray = [NSMutableArray array];
+                        if (basic.us_phonetic && basic.us_speech) {
+                            TranslatePhonetic *phonetic = [TranslatePhonetic new];
+                            phonetic.name = @"美";
+                            phonetic.value = basic.us_phonetic;
+                            phonetic.speakURL = basic.us_speech;
+                            [phoneticArray addObject:phonetic];
+                        }
+                        if (basic.uk_phonetic && basic.uk_speech) {
+                            TranslatePhonetic *phonetic = [TranslatePhonetic new];
+                            phonetic.name = @"英";
+                            phonetic.value = basic.uk_phonetic;
+                            phonetic.speakURL = basic.uk_speech;
+                            [phoneticArray addObject:phonetic];
+                        }
+                        if (phoneticArray.count) {
+                            wordResult.phonetics = phoneticArray.copy;
+                        }
+                        
+                        // 解析词性词义
+                        NSMutableArray *partArray = [NSMutableArray array];
+                        [basic.explains enumerateObjectsUsingBlock:^(NSString * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                            TranslatePart *part = [TranslatePart new];
+                            part.means = @[obj];
+                            [partArray addObject:part];
+                        }];
+                        if (partArray.count) {
+                            wordResult.parts = partArray.copy;
+                        }
+                    }else if (result.from == Language_zh_Hans && result.to == Language_en) {
+                        // 中文查词
+                        
+                        NSMutableArray *simpleWordArray = [NSMutableArray array];
+                        [basic.explains enumerateObjectsUsingBlock:^(NSString * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                            TranslateSimpleWord *word = [TranslateSimpleWord new];
+                            word.word = obj;
+                            // 这个没法获取到词性
+                            word.part = @"misc.";
+                            [simpleWordArray addObject:word];
+                        }];
+                        if (simpleWordArray.count) {
+                            wordResult.simpleWords = simpleWordArray;
+                        }
+                    }
+                    
+                    // 至少要有词义或单词组才认为有单词翻译结果
+                    if (wordResult.parts || wordResult.simpleWords) {
+                        result.wordResult = wordResult;
+                    }
+                }];
+                
+                // 解析普通释义
+                NSMutableArray *normalResults = [NSMutableArray array];
+                [response.translation enumerateObjectsUsingBlock:^(NSString * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                    [normalResults addObject:obj];
+                }];
+                result.normalResults = normalResults.count ? normalResults.copy : nil;
+                
+                // 生成网页链接
+                if (result.wordResult) {
+                    result.link = [NSString stringWithFormat:@"https://dict.youdao.com/search?q=%@&keyfrom=fanyi.smartResult", text.mm_urlencode];
+                }else {
+                    result.link = [NSString stringWithFormat:@"http://fanyi.youdao.com/translate?i=%@", text.mm_urlencode];
+                }
+
+                // 原始数据
+                result.raw = responseObject;
+                
+                if (result.wordResult || result.normalResults) {
+                    completion(result, nil);
+                    return;
+                }
+            }else {
+                NSString *string = [NSString stringWithFormat:@"翻译失败，错误码 %@", response.errorCode];
+                completion(nil, kError(TranslateErrorTypeAPIError, string));
+                return;
+            }
+        }
+        completion(nil, kError(TranslateErrorTypeAPIError, @"翻译失败"));
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        completion(nil, kError(TranslateErrorTypeNetworkError, @"翻译失败"));
+    }];
+}
+
+- (void)ocr:(NSImage *)image from:(Language)from to:(Language)to completion:(void (^)(OCRResult * _Nullable result, NSError * _Nullable error))completion {
+    
+    NSData *tiffData = [image TIFFRepresentation];
+    NSBitmapImageRep *imageRep = [NSBitmapImageRep imageRepWithData:tiffData];
+    NSData *data = [imageRep representationUsingType:NSBitmapImageFileTypePNG properties:@{}];
+    NSString *encodedImageStr = [data base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
+    encodedImageStr = [NSString stringWithFormat:@"data:image/png;base64,%@", encodedImageStr];
+    
+    // 目前没有指定图片翻译的目标语言
+    NSString *url = @"https://aidemo.youdao.com/ocrtransapi1";
+    NSDictionary *params = @{
+        @"imgBase": encodedImageStr,
+    };
+    [self.jsonSession POST:url parameters:params progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        NSLog(@"成功 %@", responseObject);
+        if (responseObject) {
+            YoudaoOCRResponse *response = [YoudaoOCRResponse mj_objectWithKeyValues:responseObject];
+            if (response) {
+                OCRResult *result = [OCRResult new];
+                result.from = YoudaoLanguageEnumFromString(response.lanFrom);
+                result.to = YoudaoLanguageEnumFromString(response.lanTo);
+                result.texts = [response.lines mm_map:^id _Nullable(YoudaoOCRResponseLine * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                    OCRText *text = [OCRText new];
+                    text.text = obj.context;
+                    text.translatedText = obj.tranContent;
+                    return text;
+                }];
+                if (result.texts.count) {
+                    completion(result, nil);
+                    return;
+                }
+            }
+        }
+        completion(nil, kError(TranslateErrorTypeAPIError, @"图片翻译失败"));
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        NSLog(@"失败 %@", error);
+        completion(nil, kError(TranslateErrorTypeNetworkError, @"图片翻译失败"));
+    }];
+}
 
 @end

@@ -11,6 +11,15 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@interface OCRText : NSObject
+
+/// 识别的文本
+@property (nonatomic, copy) NSString *text;
+/// 翻译过后的文本
+@property (nonatomic, copy, nullable) NSString *translatedText;
+
+@end
+
 @interface OCRResult : NSObject
 
 /// 源语言
@@ -18,7 +27,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// 目标语言
 @property (nonatomic, assign) Language to;
 /// 文本识别结果
-@property (nonatomic, strong) NSArray<NSString *> *texts;
+@property (nonatomic, strong) NSArray<OCRText *> *texts;
 
 @end
 

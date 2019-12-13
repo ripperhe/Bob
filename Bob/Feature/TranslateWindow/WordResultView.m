@@ -83,7 +83,7 @@
             [button setRac_command:[[RACCommand alloc] initWithSignalBlock:^RACSignal * _Nonnull(id  _Nullable input) {
                 mm_strongify(self, obj)
                 if (self.playAudioBlock) {
-                    self.playAudioBlock(self, obj.ttsURI);
+                    self.playAudioBlock(self, obj.speakURL);
                 }
                 return RACSignal.empty;
             }]];
