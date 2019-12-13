@@ -75,4 +75,8 @@ userInfo:nil]
     MethodNotImplemented();
 }
 
+- (void)translateImage:(NSImage *)image from:(Language)from to:(Language)to ocrSuccess:(void (^)(OCRResult * _Nonnull, BOOL))ocrSuccess completion:(void (^)(OCRResult * _Nullable, TranslateResult * _Nullable, NSError * _Nullable))completion {
+    MethodNotImplemented();
+}
+
 @end

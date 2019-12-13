@@ -525,7 +525,12 @@
                         return nil;
                     }];
                 }
+                result.raw = responseObject;
                 if (result.texts.count) {
+                    // 百度翻译按图片中的行进行分割，可能是一句话，所以用空格拼接
+                    result.mergedText = [NSString mm_stringByCombineComponents:[result.texts mm_map:^id _Nullable(OCRText * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                        return obj.text;
+                    }] separatedString:@" "];
                     completion(result, nil);
                     return;
                 }
@@ -535,6 +540,21 @@
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         // NSLog(@"%@", error);
         completion(nil, kError(TranslateErrorTypeNetworkError, @"识别图片文本失败"));
+    }];
+}
+
+- (void)translateImage:(NSImage *)image from:(Language)from to:(Language)to ocrSuccess:(void (^)(OCRResult * _Nonnull, BOOL))ocrSuccess completion:(void (^)(OCRResult * _Nullable, TranslateResult * _Nullable, NSError * _Nullable))completion {
+    mm_weakify(self);
+    [self ocr:image from:from to:to completion:^(OCRResult * _Nullable ocrResult, NSError * _Nullable error) {
+        mm_strongify(self);
+        if (ocrResult) {
+            ocrSuccess(ocrResult, YES);
+            [self translate:ocrResult.mergedText from:from to:to completion:^(TranslateResult * _Nullable result, NSError * _Nullable error) {
+                completion(ocrResult, result, error);
+            }];
+        }else {
+            completion(nil, nil, error);
+        }
     }];
 }
 

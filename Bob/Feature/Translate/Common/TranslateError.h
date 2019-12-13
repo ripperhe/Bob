@@ -13,7 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 typedef NS_ENUM(NSUInteger, TranslateErrorType) {
     /// 参数异常
     TranslateErrorTypeParamError,
-    /// 网络请求异常
+    /// 请求异常
     TranslateErrorTypeNetworkError,
     /// 接口异常
     TranslateErrorTypeAPIError,

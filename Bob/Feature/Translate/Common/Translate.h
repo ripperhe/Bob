@@ -61,6 +61,18 @@ NS_ASSUME_NONNULL_BEGIN
 /// @param completion 回调
 - (void)ocr:(NSImage *)image from:(Language)from to:(Language)to completion:(void (^)(OCRResult * _Nullable result, NSError * _Nullable error))completion;
 
+/// 图片翻译，识图+翻译
+/// @param image image对象
+/// @param from 文本语言
+/// @param to 目标语言
+/// @param ocrSuccess 只有OCR识别成功才回调，willInvokeTranslateAPI代表是否会发送翻译请求（有的OCR接口自带翻译功能）
+/// @param completion 回调
+- (void)translateImage:(NSImage *)image
+                  from:(Language)from
+                    to:(Language)to
+            ocrSuccess:(void (^)(OCRResult * result, BOOL willInvokeTranslateAPI))ocrSuccess
+            completion:(void (^)(OCRResult * _Nullable ocrResult, TranslateResult * _Nullable result, NSError * _Nullable error))completion;
+
 @end
 
 NS_ASSUME_NONNULL_END

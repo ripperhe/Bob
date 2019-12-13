@@ -313,7 +313,12 @@
                     text.translatedText = obj.tranContent;
                     return text;
                 }];
+                result.raw = responseObject;
                 if (result.texts.count) {
+                    // 有道翻译自动分段，会将分布在几行的句子合并，故用换行分割
+                    result.mergedText = [NSString mm_stringByCombineComponents:[result.texts mm_map:^id _Nullable(OCRText * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                        return obj.text;
+                    }] separatedString:@"\n"];
                     completion(result, nil);
                     return;
                 }
@@ -322,6 +327,41 @@
         completion(nil, kError(TranslateErrorTypeAPIError, @"图片翻译失败"));
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         completion(nil, kError(TranslateErrorTypeNetworkError, @"图片翻译失败"));
+    }];
+}
+
+- (void)translateImage:(NSImage *)image from:(Language)from to:(Language)to ocrSuccess:(void (^)(OCRResult * _Nonnull, BOOL))ocrSuccess completion:(void (^)(OCRResult * _Nullable, TranslateResult * _Nullable, NSError * _Nullable))completion {
+    mm_weakify(self);
+    [self ocr:image from:from to:to completion:^(OCRResult * _Nullable ocrResult, NSError * _Nullable error) {
+        mm_strongify(self);
+        if (ocrResult) {
+            // 如果翻译结果的语种匹配，不是中文查词或者英文查词时，不调用翻译接口
+            if (to == Language_auto || to == ocrResult.to) {
+                if (!((ocrResult.to == Language_zh_Hans ||  ocrResult.to == Language_en) &&
+                ![ocrResult.mergedText containsString:@" "])) {
+                    // 直接回调翻译结果
+                    NSLog(@"直接输出翻译结果");
+                    ocrSuccess(ocrResult, NO);
+                    TranslateResult *result = [TranslateResult new];
+                    result.text = ocrResult.mergedText;
+                    result.link = [NSString stringWithFormat:@"http://fanyi.youdao.com/translate?i=%@", ocrResult.mergedText.mm_urlencode];
+                    result.from = ocrResult.from;
+                    result.to = ocrResult.to;
+                    result.normalResults = [ocrResult.texts mm_map:^id _Nullable(OCRText * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                        return obj.translatedText;
+                    }];
+                    result.raw = ocrResult.raw;
+                    completion(ocrResult, result, nil);
+                    return;
+                }
+            }
+            ocrSuccess(ocrResult, YES);
+            [self translate:ocrResult.mergedText from:from to:to completion:^(TranslateResult * _Nullable result, NSError * _Nullable error) {
+                completion(ocrResult, result, error);
+            }];
+        }else {
+            completion(nil, nil, error);
+        }
     }];
 }
 

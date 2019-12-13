@@ -287,7 +287,7 @@ if (seed != self.seed) { \
 }
 
 - (void)setupTranslate {
-    self.translate = [BaiduTranslate new];
+    self.translate = [YoudaoTranslate new];
     self.player = [[AVPlayer alloc] init];
 }
 
@@ -375,21 +375,31 @@ if (seed != self.seed) { \
     [self resetWithState:@"图片文本识别中..."];
     increaseSeed
     mm_weakify(self)
-    [self.translate ocr:image
-                   from:Configuration.shared.from
-                     to:Configuration.shared.to
-             completion:^(OCRResult * _Nullable result, NSError * _Nullable error) {
+    [self.translate translateImage:image
+                              from:Configuration.shared.from
+                                to:Configuration.shared.to
+                        ocrSuccess:^(OCRResult * _Nonnull result, BOOL willInvokeTranslateAPI) {
         mm_strongify(self)
+        if (!willInvokeTranslateAPI) {
+            self.queryView.textView.string = result.mergedText;
+            [self.resultView refreshWithStateString:@"翻译中..."];
+        }
+    } completion:^(OCRResult * _Nullable ocrResult, TranslateResult * _Nullable result, NSError * _Nullable error) {
         checkSeed
-        NSLog(@"识别到的文本:\n%@", result.texts);
+        NSLog(@"识别到的文本:\n%@", ocrResult.texts);
+        mm_strongify(self);
         if (error) {
             [self.resultView refreshWithStateString:error.localizedDescription];
         }else {
-            [self translateText:[NSString mm_stringByCombineComponents:[result.texts mm_map:^id _Nullable(OCRText * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-                return obj.text;
-                // 百度用空格，有道用\n
-            }] separatedString:@" "]];
+            self.currentResult = result;
+            [self.resultView refreshWithResult:result];
         }
+        mm_weakify(self)
+        dispatch_async(dispatch_get_main_queue(), ^{
+            mm_strongify(self);
+            [self moveWindowToScreen];
+            [self resetQueryViewHeightConstraint];
+        });
     }];
 }
 
