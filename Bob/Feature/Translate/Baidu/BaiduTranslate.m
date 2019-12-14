@@ -90,30 +90,26 @@
         
         // token: '6d55d690ce5ade4a1fae243892f83ca6',
         NSRegularExpression *tokenRegex = [NSRegularExpression regularExpressionWithPattern:@"token: '[A-Za-z0-9]*'," options:NSRegularExpressionCaseInsensitive error:nil];
-        [tokenRegex enumerateMatchesInString:string options:NSMatchingReportCompletion range:NSMakeRange(0, string.length) usingBlock:^(NSTextCheckingResult * _Nullable result, NSMatchingFlags flags, BOOL * _Nonnull stop) {
-            if (result) {
-                NSString *token = [string substringWithRange:result.range];
-                if (token.length > 10) {
-                    token = [token substringWithRange:NSMakeRange(8, token.length - 10)];
-                    tokenResult = token;
-                }
-                // NSLog(@"token 匹配结果: %@", token);
-                *stop = YES;
+        NSArray<NSTextCheckingResult *> *tokenMatchResults = [tokenRegex matchesInString:string options:NSMatchingReportCompletion range:NSMakeRange(0, string.length)];
+        [tokenMatchResults enumerateObjectsUsingBlock:^(NSTextCheckingResult * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            NSString *token = [string substringWithRange:obj.range];
+            if (token.length > 10) {
+                token = [token substringWithRange:NSMakeRange(8, token.length - 10)];
+                tokenResult = token;
             }
+            *stop = YES;
         }];
         
         // window.gtk = '320305.131321201';
         NSRegularExpression *gtkRegex = [NSRegularExpression regularExpressionWithPattern:@"window.gtk = '.*';" options:NSRegularExpressionCaseInsensitive error:nil];
-        [gtkRegex enumerateMatchesInString:string options:NSMatchingReportCompletion range:NSMakeRange(0, string.length) usingBlock:^(NSTextCheckingResult * _Nullable result, NSMatchingFlags flags, BOOL * _Nonnull stop) {
-            if (result) {
-                NSString *gtk = [string substringWithRange:result.range];
-                if (gtk.length > 16) {
-                    gtk = [gtk substringWithRange:NSMakeRange(14, gtk.length - 16)];
-                    gtkResult = gtk;
-                }
-                // NSLog(@"gtk 匹配结果: %@", gtk);
-                *stop = YES;
+        NSArray<NSTextCheckingResult *> *gtkMatchResults = [gtkRegex matchesInString:string options:NSMatchingReportCompletion range:NSMakeRange(0, string.length)];
+        [gtkMatchResults enumerateObjectsUsingBlock:^(NSTextCheckingResult * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            NSString *gtk = [string substringWithRange:obj.range];
+            if (gtk.length > 16) {
+                gtk = [gtk substringWithRange:NSMakeRange(14, gtk.length - 16)];
+                gtkResult = gtk;
             }
+            *stop = YES;
         }];
         
         if (tokenResult.length && gtkResult.length) {
