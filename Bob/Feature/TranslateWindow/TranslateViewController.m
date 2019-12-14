@@ -147,7 +147,12 @@ return; \
         mm_weakify(self)
         [button setRac_command:[[RACCommand alloc] initWithSignalBlock:^RACSignal * _Nonnull(id  _Nullable input) {
             mm_strongify(self)
-            [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:self.currentResult.link ?: self.translate.link]];
+            NSString *link = self.translate.link;
+            if (self.currentResult.link && [self.queryView.textView.string isEqualToString:self.currentResult.text]) {
+                link = self.currentResult.link;
+            }
+            NSLog(@"%@", link);
+            [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:link]];
             if (!Configuration.shared.isPin) {
                 [TranslateWindowController.shared close];
             }

@@ -6,13 +6,13 @@
 //  Copyright © 2019 ripperhe. All rights reserved.
 //
 
-#import "Translate.h"
-
 /**
- * 百度翻译参考链接
- * https://fanyi.baidu.com/
- * http://api.fanyi.baidu.com/api/trans/product/apidoc#languageList
- */
+* 百度翻译参考链接
+* https://fanyi.baidu.com/
+* http://api.fanyi.baidu.com/api/trans/product/apidoc#languageList
+*/
+
+#import "Translate.h"
 
 NS_ASSUME_NONNULL_BEGIN
 

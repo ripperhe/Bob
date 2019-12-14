@@ -258,6 +258,7 @@
                 if (result.wordResult) {
                     result.link = [NSString stringWithFormat:@"https://dict.youdao.com/search?q=%@&keyfrom=fanyi.smartResult", text.mm_urlencode];
                 }else {
+                    // TODO: 句子翻译跳转貌似不行了
                     result.link = [NSString stringWithFormat:@"http://fanyi.youdao.com/translate?i=%@", text.mm_urlencode];
                 }
 
