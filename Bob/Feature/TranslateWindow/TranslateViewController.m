@@ -23,8 +23,8 @@
 #define increaseSeed NSInteger seed = ++self.seed;
 #define checkSeed \
 if (seed != self.seed) { \
-    NSLog(@"过滤失效的回调 %zd", seed); \
-    return; \
+NSLog(@"过滤失效的回调 %zd", seed); \
+return; \
 }
 
 @interface TranslateViewController ()
@@ -154,7 +154,7 @@ if (seed != self.seed) { \
             return RACSignal.empty;
         }]];
     }];
-
+    
     self.queryView = [QueryView mm_make:^(QueryView * _Nonnull view) {
         [self.view addSubview:view];
         [view mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -168,7 +168,11 @@ if (seed != self.seed) { \
         mm_weakify(self)
         [view setAudioActionBlock:^(QueryView * _Nonnull view) {
             mm_strongify(self);
-            [self playAudioWithText:view.textView.string lang:Configuration.shared.from];
+            if (self.currentResult.fromSpeakURL && [self.currentResult.text isEqualToString:view.textView.string]) {
+                [self playAudioWithURL:self.currentResult.fromSpeakURL];
+            }else {
+                [self playAudioWithText:view.textView.string lang:Configuration.shared.from];
+            }
         }];
         [view setEnterActionBlock:^(QueryView * _Nonnull view) {
             mm_strongify(self);
@@ -265,7 +269,11 @@ if (seed != self.seed) { \
         [view.normalResultView setAudioActionBlock:^(NormalResultView * _Nonnull view) {
             mm_strongify(self);
             if (!self.currentResult) return;
-            [self playAudioWithText:view.textView.string lang:self.currentResult.to];
+            if (self.currentResult.toSpeakURL) {
+                [self playAudioWithURL:self.currentResult.toSpeakURL];
+            }else {
+                [self playAudioWithText:view.textView.string lang:self.currentResult.to];
+            }
         }];
         [view.normalResultView setCopyActionBlock:^(NormalResultView * _Nonnull view) {
             mm_strongify(self);
@@ -325,18 +333,34 @@ if (seed != self.seed) { \
 
 #pragma mark -
 
-- (void)resetWithState:(NSString *)stateString {
+- (void)resetWithState:(NSString *)stateString query:(NSString *)query {
     self.currentResult = nil;
-    self.queryView.textView.string = @"";
+    self.queryView.textView.string = query ?: @"";
     [self.resultView refreshWithStateString:stateString];
     [self resizeWindowWithQueryViewExpectHeight:0];
 }
 
+- (void)resetWithState:(NSString *)stateString {
+    [self resetWithState:stateString query:nil];
+}
+
+- (void)refreshWithTranslateResult:(TranslateResult *)result error:(NSError *)error {
+    if (error) {
+        [self.resultView refreshWithStateString:error.localizedDescription];
+    }else {
+        self.currentResult = result;
+        [self.resultView refreshWithResult:result];
+    }
+    mm_weakify(self)
+    dispatch_async(dispatch_get_main_queue(), ^{
+        mm_strongify(self);
+        [self moveWindowToScreen];
+        [self resetQueryViewHeightConstraint];
+    });
+}
+
 - (void)translateText:(NSString *)text {
-    self.currentResult = nil;
-    self.queryView.textView.string = text;
-    [self.resultView refreshWithStateString:@"翻译中..."];
-    [self resizeWindowWithQueryViewExpectHeight:0];
+    [self resetWithState:@"翻译中..." query:text];
     increaseSeed
     mm_weakify(self)
     [self.translate translate:text
@@ -345,18 +369,7 @@ if (seed != self.seed) { \
                    completion:^(TranslateResult * _Nullable result, NSError * _Nullable error) {
         mm_strongify(self);
         checkSeed
-        if (error) {
-            [self.resultView refreshWithStateString:error.localizedDescription];
-        }else {
-            self.currentResult = result;
-            [self.resultView refreshWithResult:result];
-        }
-        mm_weakify(self)
-        dispatch_async(dispatch_get_main_queue(), ^{
-            mm_strongify(self);
-            [self moveWindowToScreen];
-            [self resetQueryViewHeightConstraint];
-        });
+        [self refreshWithTranslateResult:result error:error];
     }];
 }
 
@@ -369,26 +382,17 @@ if (seed != self.seed) { \
                                 to:Configuration.shared.to
                         ocrSuccess:^(OCRResult * _Nonnull result, BOOL willInvokeTranslateAPI) {
         mm_strongify(self)
+        checkSeed
         if (!willInvokeTranslateAPI) {
             self.queryView.textView.string = result.mergedText;
             [self.resultView refreshWithStateString:@"翻译中..."];
         }
-    } completion:^(OCRResult * _Nullable ocrResult, TranslateResult * _Nullable result, NSError * _Nullable error) {
+    }
+                        completion:^(OCRResult * _Nullable ocrResult, TranslateResult * _Nullable result, NSError * _Nullable error) {
+        mm_strongify(self)
         checkSeed
         NSLog(@"识别到的文本:\n%@", ocrResult.texts);
-        mm_strongify(self);
-        if (error) {
-            [self.resultView refreshWithStateString:error.localizedDescription];
-        }else {
-            self.currentResult = result;
-            [self.resultView refreshWithResult:result];
-        }
-        mm_weakify(self)
-        dispatch_async(dispatch_get_main_queue(), ^{
-            mm_strongify(self);
-            [self moveWindowToScreen];
-            [self resetQueryViewHeightConstraint];
-        });
+        [self refreshWithTranslateResult:result error:error];
     }];
 }
 

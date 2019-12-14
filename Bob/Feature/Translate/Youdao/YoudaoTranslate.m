@@ -160,6 +160,10 @@
 }
 
 - (void)translate:(NSString *)text from:(Language)from to:(Language)to completion:(void (^)(TranslateResult * _Nullable result, NSError * _Nullable error))completion {
+    if (!text.length) {
+        completion(nil, kError(TranslateErrorTypeParamError, @"翻译的文本为空"));
+        return;
+    }
     
     NSString *url = @"https://aidemo.youdao.com/trans";
     NSDictionary *params = @{
@@ -277,15 +281,46 @@
 }
 
 - (void)detect:(NSString *)text completion:(void (^)(Language, NSError * _Nullable))completion {
+    if (!text.length) {
+        completion(Language_auto, kError(TranslateErrorTypeParamError, @"识别语言的文本为空"));
+        return;
+    }
     
+    NSString *queryString = text;
+    if (queryString.length >= 73) {
+        queryString = [queryString substringToIndex:73];
+    }
+
+    [self translate:queryString from:Language_auto to:Language_auto completion:^(TranslateResult * _Nullable result, NSError * _Nullable error) {
+        if (result) {
+            completion(result.from, nil);
+        }else {
+            completion(Language_auto, error);
+        }
+    }];
 }
 
 - (void)audio:(NSString *)text from:(Language)from completion:(void (^)(NSString * _Nullable, NSError * _Nullable))completion {
-    
+    if (!text.length) {
+        completion(nil, kError(TranslateErrorTypeParamError, @"获取音频的文本为空"));
+        return;
+    }
+
+    [self translate:text from:from to:Language_auto completion:^(TranslateResult * _Nullable result, NSError * _Nullable error) {
+        if (result) {
+            completion(result.fromSpeakURL, nil);
+        }else {
+            completion(nil, error);
+        }
+    }];
 }
 
 - (void)ocr:(NSImage *)image from:(Language)from to:(Language)to completion:(void (^)(OCRResult * _Nullable result, NSError * _Nullable error))completion {
-    
+    if (!image) {
+        completion(nil, kError(TranslateErrorTypeParamError, @"图片为空"));
+        return;
+    }
+
     NSData *tiffData = [image TIFFRepresentation];
     NSBitmapImageRep *imageRep = [NSBitmapImageRep imageRepWithData:tiffData];
     NSData *data = [imageRep representationUsingType:NSBitmapImageFileTypePNG properties:@{}];
@@ -330,6 +365,11 @@
 }
 
 - (void)translateImage:(NSImage *)image from:(Language)from to:(Language)to ocrSuccess:(void (^)(OCRResult * _Nonnull, BOOL))ocrSuccess completion:(void (^)(OCRResult * _Nullable, TranslateResult * _Nullable, NSError * _Nullable))completion {
+    if (!image) {
+        completion(nil, nil, kError(TranslateErrorTypeParamError, @"图片为空"));
+        return;
+    }
+
     mm_weakify(self);
     [self ocr:image from:from to:to completion:^(OCRResult * _Nullable ocrResult, NSError * _Nullable error) {
         mm_strongify(self);

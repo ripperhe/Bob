@@ -420,7 +420,7 @@
 
 - (void)detect:(NSString *)text completion:(nonnull void (^)(Language, NSError * _Nullable))completion {
     if (!text.length) {
-        completion(Language_auto, kError(TranslateErrorTypeParamError, @"判断语言的文本为空"));
+        completion(Language_auto, kError(TranslateErrorTypeParamError, @"识别语言的文本为空"));
         return;
     }
     
@@ -544,6 +544,11 @@
 }
 
 - (void)translateImage:(NSImage *)image from:(Language)from to:(Language)to ocrSuccess:(void (^)(OCRResult * _Nonnull, BOOL))ocrSuccess completion:(void (^)(OCRResult * _Nullable, TranslateResult * _Nullable, NSError * _Nullable))completion {
+    if (!image) {
+        completion(nil, nil, kError(TranslateErrorTypeParamError, @"图片为空"));
+        return;
+    }
+
     mm_weakify(self);
     [self ocr:image from:from to:to completion:^(OCRResult * _Nullable ocrResult, NSError * _Nullable error) {
         mm_strongify(self);
