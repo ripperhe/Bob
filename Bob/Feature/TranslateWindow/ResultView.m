@@ -41,7 +41,7 @@
         [self.wordResultView mas_remakeConstraints:^(MASConstraintMaker *make) {
             make.edges.inset(0);
         }];
-        [self.wordResultView refreshWithWordResult:result.wordResult];
+        [self.wordResultView refreshWithResult:result];
     }else {
         // 显示普通的
         self.stateTextField.hidden = YES;

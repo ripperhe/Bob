@@ -39,6 +39,10 @@
 
 #pragma mark - 重写父类方法
 
+- (NSString *)name {
+    return @"有道翻译";
+}
+
 - (MMOrderedDictionary *)supportLanguagesDictionary {
     return [[MMOrderedDictionary alloc] initWithKeysAndObjects:
                  @(Language_auto), @"auto",
@@ -187,33 +191,38 @@
                 if (languageComponents.count == 2) {
                     result.from = [self languageEnumFromString:languageComponents.firstObject];
                     result.to = [self languageEnumFromString:languageComponents.lastObject];
+                }else {
+                    MMAssert(0, @"有道翻译语种解析失败 %@", responseObject);
                 }
                 
-                [response.basic mm_anyPut:^(YoudaoTranslateResponseBasic *  _Nonnull basic) {
+                // 中文查词 英文查词
+                YoudaoTranslateResponseBasic * basic = response.basic;
+                if (basic) {
                     TranslateWordResult *wordResult = [TranslateWordResult new];
+                    
+                    // 解析音频
+                    NSMutableArray *phoneticArray = [NSMutableArray array];
+                    if (basic.us_phonetic && basic.us_speech) {
+                        TranslatePhonetic *phonetic = [TranslatePhonetic new];
+                        phonetic.name = @"美";
+                        phonetic.value = basic.us_phonetic;
+                        phonetic.speakURL = basic.us_speech;
+                        [phoneticArray addObject:phonetic];
+                    }
+                    if (basic.uk_phonetic && basic.uk_speech) {
+                        TranslatePhonetic *phonetic = [TranslatePhonetic new];
+                        phonetic.name = @"英";
+                        phonetic.value = basic.uk_phonetic;
+                        phonetic.speakURL = basic.uk_speech;
+                        [phoneticArray addObject:phonetic];
+                    }
+                    if (phoneticArray.count) {
+                        wordResult.phonetics = phoneticArray.copy;
+                    }
+                    
 
-                    if (result.from == Language_en && result.to == Language_zh_Hans) {
+                    if (wordResult.phonetics) {
                         // 英文查词
-                        
-                        // 解析音频
-                        NSMutableArray *phoneticArray = [NSMutableArray array];
-                        if (basic.us_phonetic && basic.us_speech) {
-                            TranslatePhonetic *phonetic = [TranslatePhonetic new];
-                            phonetic.name = @"美";
-                            phonetic.value = basic.us_phonetic;
-                            phonetic.speakURL = basic.us_speech;
-                            [phoneticArray addObject:phonetic];
-                        }
-                        if (basic.uk_phonetic && basic.uk_speech) {
-                            TranslatePhonetic *phonetic = [TranslatePhonetic new];
-                            phonetic.name = @"英";
-                            phonetic.value = basic.uk_phonetic;
-                            phonetic.speakURL = basic.uk_speech;
-                            [phoneticArray addObject:phonetic];
-                        }
-                        if (phoneticArray.count) {
-                            wordResult.phonetics = phoneticArray.copy;
-                        }
                         
                         // 解析词性词义
                         NSMutableArray *partArray = [NSMutableArray array];
@@ -230,11 +239,24 @@
                         
                         NSMutableArray *simpleWordArray = [NSMutableArray array];
                         [basic.explains enumerateObjectsUsingBlock:^(NSString * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-                            TranslateSimpleWord *word = [TranslateSimpleWord new];
-                            word.word = obj;
-                            // 这个没法获取到词性
-                            word.part = @"misc.";
-                            [simpleWordArray addObject:word];
+                            if ([obj containsString:@";"]) {
+                                // 拆分成多个 测试中
+                                MMLogInfo(@"有道翻译手动拆词 %@", obj);
+                                NSArray<NSString *> *words = [obj componentsSeparatedByString:@";"];
+                                [words enumerateObjectsUsingBlock:^(NSString * _Nonnull subObj, NSUInteger idx, BOOL * _Nonnull stop) {
+                                    TranslateSimpleWord *word = [TranslateSimpleWord new];
+                                    word.word = subObj;
+                                    // 有道没法获取到单词词性
+                                    // word.part = @"misc.";
+                                    [simpleWordArray addObject:word];
+                                }];
+                            }else {
+                                TranslateSimpleWord *word = [TranslateSimpleWord new];
+                                word.word = obj;
+                                // TODO: 有道没法获取到单词词性
+                                // word.part = @"misc.";
+                                [simpleWordArray addObject:word];
+                            }
                         }];
                         if (simpleWordArray.count) {
                             wordResult.simpleWords = simpleWordArray;
@@ -251,7 +273,7 @@
                             result.fromSpeakURL = wordResult.phonetics.firstObject.speakURL;
                         }
                     }
-                }];
+                }
                 
                 // 解析普通释义
                 NSMutableArray *normalResults = [NSMutableArray array];

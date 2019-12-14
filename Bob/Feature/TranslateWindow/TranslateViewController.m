@@ -29,6 +29,7 @@ return; \
 
 @interface TranslateViewController ()
 
+@property (nonatomic, strong) NSArray<Translate *> *translateArray;
 @property (nonatomic, strong) Translate *translate;
 @property (nonatomic, strong) AVPlayer *player;
 @property (nonatomic, strong) TranslateResult *currentResult;
@@ -39,6 +40,7 @@ return; \
 @property (nonatomic, strong) NSButton *foldButton;
 @property (nonatomic, strong) NSButton *linkButton;
 @property (nonatomic, strong) QueryView *queryView;
+@property (nonatomic, strong) PopUpButton *translateButton;
 @property (nonatomic, strong) PopUpButton *fromLanguageButton;
 @property (nonatomic, strong) ImageButton *transformButton;
 @property (nonatomic, strong) PopUpButton *toLanguageButton;
@@ -187,10 +189,33 @@ return; \
         }];
     }];
     
-    self.fromLanguageButton = [PopUpButton mm_make:^(PopUpButton *  _Nonnull button) {
+    self.translateButton = [PopUpButton mm_make:^(PopUpButton *  _Nonnull button) {
         [self.view addSubview:button];
         [button mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.equalTo(self.queryView.mas_bottom).offset(12);
+            make.left.offset(kMargin);
+            make.width.mas_equalTo(100);
+            make.height.mas_equalTo(25);
+        }];
+        [button updateMenuWithTitleArray:[self.translateArray mm_map:^id _Nullable(Translate * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            return obj.name;
+        }]];
+        [button updateWithIndex:0];
+        mm_weakify(self);
+        [button setMenuItemSeletedBlock:^(NSInteger index, NSString *title) {
+            mm_strongify(self);
+            Translate *l = [self.translateArray objectAtIndex:index];
+            if (l != self.translate) {
+                self.translate = l;
+                [self refreshForSwitchTranslate];
+            }
+        }];
+    }];
+    
+    self.fromLanguageButton = [PopUpButton mm_make:^(PopUpButton *  _Nonnull button) {
+        [self.view addSubview:button];
+        [button mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(self.translateButton.mas_bottom).offset(12);
             make.left.offset(kMargin);
             make.width.mas_equalTo(100);
             make.height.mas_equalTo(25);
@@ -205,7 +230,12 @@ return; \
         mm_weakify(self);
         [button setMenuItemSeletedBlock:^(NSInteger index, NSString *title) {
             mm_strongify(self);
-            Configuration.shared.from = [[self.translate.languages objectAtIndex:index] integerValue];
+            NSInteger from = [[self.translate.languages objectAtIndex:index] integerValue];
+            NSLog(@"from 选中语言 %zd %@", from, LanguageDescFromEnum(from));
+            if (from != Configuration.shared.from) {
+                Configuration.shared.from = from;
+                [self retry];
+            }
         }];
     }];
     
@@ -230,6 +260,7 @@ return; \
             Configuration.shared.to = from;
             [self.fromLanguageButton updateWithIndex:[self.translate indexForLanguage:Configuration.shared.from]];
             [self.toLanguageButton updateWithIndex:[self.translate indexForLanguage:Configuration.shared.to]];
+            [self retry];
             return RACSignal.empty;
         }]];
     }];
@@ -248,13 +279,16 @@ return; \
             }
             return LanguageDescFromEnum([obj integerValue]);
         }]];
-        NSLog(@"初始化语言 %zd %@", Configuration.shared.to, LanguageDescFromEnum(Configuration.shared.to));
         [button updateWithIndex:[self.translate indexForLanguage:Configuration.shared.to]];
         mm_weakify(self);
         [button setMenuItemSeletedBlock:^(NSInteger index, NSString *title) {
             mm_strongify(self);
-            Configuration.shared.to = [[self.translate.languages objectAtIndex:index] integerValue];
-            NSLog(@"选中语言 %zd %@", Configuration.shared.to, LanguageDescFromEnum(Configuration.shared.to));
+            NSInteger to = [[self.translate.languages objectAtIndex:index] integerValue];
+            NSLog(@"to 选中语言 %zd %@", to, LanguageDescFromEnum(to));
+            if (to != Configuration.shared.to) {
+                Configuration.shared.to = to;
+                [self retry];
+            }
         }];
     }];
     
@@ -300,7 +334,11 @@ return; \
 }
 
 - (void)setupTranslate {
-    self.translate = [YoudaoTranslate new];
+    self.translateArray = @[
+        [BaiduTranslate new],
+        [YoudaoTranslate new],
+    ];
+    self.translate = self.translateArray.firstObject;
     self.player = [[AVPlayer alloc] init];
 }
 
@@ -401,6 +439,38 @@ return; \
     }];
 }
 
+- (void)retry {
+    if (self.currentResult) {
+        [self translateText:self.currentResult.text];
+    }else if (self.queryView.textView.string.length) {
+        [self translateText:self.queryView.textView.string];
+    }
+}
+
+- (void)refreshForSwitchTranslate {
+    [self.fromLanguageButton updateMenuWithTitleArray:[self.translate.languages mm_map:^id _Nullable(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        if ([obj integerValue] == Language_auto) {
+            return @"自动检测";
+        }
+        return LanguageDescFromEnum([obj integerValue]);
+    }]];
+    NSInteger fromIndex = [self.translate indexForLanguage:Configuration.shared.from];
+    Configuration.shared.from = [[self.translate.languages objectAtIndex:fromIndex] integerValue];
+    [self.fromLanguageButton updateWithIndex:fromIndex];
+    
+    [self.toLanguageButton updateMenuWithTitleArray:[self.translate.languages mm_map:^id _Nullable(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        if ([obj integerValue] == Language_auto) {
+            return @"自动选择";
+        }
+        return LanguageDescFromEnum([obj integerValue]);
+    }]];
+    NSInteger toIndex = [self.translate indexForLanguage:Configuration.shared.to];
+    Configuration.shared.to = [[self.translate.languages objectAtIndex:toIndex] integerValue];
+    [self.toLanguageButton updateWithIndex:toIndex];
+    
+    [self retry];
+}
+
 #pragma mark - window frame
 
 - (void)resetQueryViewHeightConstraint {
@@ -412,6 +482,7 @@ return; \
         self.queryHeightWhenFold = self.queryView.frame.size.height;
     }
     self.queryView.hidden = isFold;
+    self.translateButton.hidden = isFold;
     self.fromLanguageButton.hidden = isFold;
     self.transformButton.hidden = isFold;
     self.toLanguageButton.hidden = isFold;

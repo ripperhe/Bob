@@ -56,6 +56,11 @@ userInfo:nil]
 
 #pragma mark - 子类重写
 
+- (NSString *)name {
+    MethodNotImplemented();
+    return nil;
+}
+
 - (MMOrderedDictionary *)supportLanguagesDictionary {
     MethodNotImplemented();
 }

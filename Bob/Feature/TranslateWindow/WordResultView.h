@@ -13,11 +13,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface WordResultView : NSView
 
-@property (nonatomic, strong) TranslateWordResult *wordResult;
+@property (nonatomic, strong) TranslateResult *result;
 @property (nonatomic, copy) void(^playAudioBlock)(WordResultView *view, NSString *url);
 @property (nonatomic, copy) void(^selectWordBlock)(WordResultView *view, NSString *word);
 
-- (void)refreshWithWordResult:(TranslateWordResult *)wordResult;
+- (void)refreshWithResult:(TranslateResult *)result;
 
 @end
 

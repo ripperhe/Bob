@@ -176,7 +176,7 @@
                             NSMutableArray *parts = [NSMutableArray array];
                             [symbol.parts enumerateObjectsUsingBlock:^(BaiduTranslateResponsePart * _Nonnull resultPart, NSUInteger idx, BOOL * _Nonnull stop) {
                                 TranslatePart *part = [TranslatePart mm_anyMake:^(TranslatePart *  _Nonnull obj) {
-                                    obj.part = resultPart.part.length ? resultPart.part : nil;
+                                    obj.part = resultPart.part.length ? resultPart.part : (resultPart.part_name.length ? resultPart.part_name : nil);
                                     obj.means = [resultPart.means mm_where:^BOOL (id mean, NSUInteger idx, BOOL * _Nonnull stop) {
                                         // 如果中文查词时，会是字典；这个API的设计，真的一言难尽
                                         return [mean isKindOfClass:NSString.class];
@@ -326,6 +326,10 @@
 }
 
 #pragma mark - 重写父类方法
+
+- (NSString *)name {
+    return @"百度翻译";
+}
 
 - (MMOrderedDictionary *)supportLanguagesDictionary {
     return [[MMOrderedDictionary alloc] initWithKeysAndObjects:

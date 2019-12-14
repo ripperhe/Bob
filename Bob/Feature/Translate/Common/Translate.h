@@ -33,6 +33,9 @@ NS_ASSUME_NONNULL_BEGIN
 /// 以下方法供子类重写，且必须重写
 @interface Translate ()
 
+/// 翻译的名字
+- (NSString *)name;
+
 /// 支持的语言字典
 - (MMOrderedDictionary *)supportLanguagesDictionary;
 

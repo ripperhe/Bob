@@ -26,8 +26,9 @@
     return self;
 }
 
-- (void)refreshWithWordResult:(TranslateWordResult *)wordResult {
-    self.wordResult = wordResult;
+- (void)refreshWithResult:(TranslateResult *)result {
+    self.result = result;
+    TranslateWordResult *wordResult = result.wordResult;
     
     [self.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
     
@@ -207,7 +208,7 @@
     [wordResult.simpleWords enumerateObjectsUsingBlock:^(TranslateSimpleWord * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         
         NSTextField *partTextFiled = nil;
-        if (!lastSimpleWordPart || ![obj.part isEqualToString:lastSimpleWordPart]) {
+        if (obj.part.length && (!lastSimpleWordPart || ![obj.part isEqualToString:lastSimpleWordPart])) {
             // 添加 part label
             partTextFiled = [NSTextField mm_make:^(NSTextField * _Nonnull textField) {
                 [self addSubview:textField];
@@ -243,7 +244,11 @@
                 if (partTextFiled) {
                     make.top.equalTo(partTextFiled.mas_bottom).offset(5);
                 }else {
-                    make.top.equalTo(lastView.mas_bottom).offset(2);
+                    if (lastView) {
+                        make.top.equalTo(lastView.mas_bottom).offset(2);
+                    }else {
+                        make.top.offset(kMargin);
+                    }
                 }
             }];
             mm_weakify(self, obj)
@@ -272,6 +277,28 @@
         
         lastView = meanTextField;
     }];
+    
+    if (result.normalResults.count) {
+        NSTextField *meanTextField = [[NSTextField wrappingLabelWithString:@""] mm_put:^(NSTextField * _Nonnull textField) {
+            [self addSubview:textField];
+            textField.stringValue = [NSString mm_stringByCombineComponents:result.normalResults separatedString:@"\n"] ?: @"";
+            textField.textColor = [NSColor mm_colorWithHexString:@"#333333"];
+            textField.font = [NSFont systemFontOfSize:13];
+            textField.backgroundColor = NSColor.clearColor;
+            textField.alignment = NSTextAlignmentLeft;
+            [textField mas_makeConstraints:^(MASConstraintMaker *make) {
+                if (lastView) {
+                    make.top.equalTo(lastView.mas_bottom).offset(10);
+                }else {
+                    make.top.offset(kMargin);
+                }
+                make.left.offset(kMargin);
+                make.right.lessThanOrEqualTo(self).offset(-kMargin);
+            }];
+        }];
+        
+        lastView = meanTextField;
+    }
     
 //    [lastView mas_makeConstraints:^(MASConstraintMaker *make) {
 //        make.bottom.inset(kMargin);
