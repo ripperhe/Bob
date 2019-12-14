@@ -73,6 +73,11 @@ static StatusItem *_instance;
     [TranslateWindowController.shared snipTranslate];
 }
 
+- (IBAction)inputTranslate:(NSMenuItem *)sender {
+    NSLog(@"输入翻译");
+    [TranslateWindowController.shared inputTranslate];
+}
+
 - (IBAction)baiduTranslationWebsite:(id)sender {
     [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"https://fanyi.baidu.com/"]];
 }
@@ -123,6 +128,13 @@ static StatusItem *_instance;
 - (IBAction)quitAction:(NSMenuItem *)sender {
     NSLog(@"退出应用");
     [NSApplication.sharedApplication terminate:nil];
+}
+
+#pragma mark -
+
+- (IBAction)translateRetryAction:(NSMenuItem *)sender {
+    NSLog(@"翻译重试");
+    [TranslateWindowController.shared rerty];
 }
 
 - (IBAction)closeWindowAction:(NSMenuItem *)sender {

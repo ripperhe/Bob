@@ -101,18 +101,22 @@ static TranslateWindowController *_instance;
     [self.window setFrameTopLeftPoint:mouseLocation];
 }
 
+- (void)ensureShowAtMouseLocation {
+    if (!self.hadShow) {
+        [self showAtMouseLocation];
+    }
+    if (!self.window.visible || !Configuration.shared.isPin) {
+        [self showAtMouseLocation];
+    }
+}
+
 - (void)selectionTranslate {
     if (Snip.shared.isSnapshotting) {
         return;
     }
     [self.viewController resetWithState:@"正在取词..."];
     [Selection getText:^(NSString * _Nullable text) {
-        if (!self.hadShow) {
-            [self showAtMouseLocation];
-        }
-        if (!self.window.visible || !Configuration.shared.isPin) {
-            [self showAtMouseLocation];
-        }
+        [self ensureShowAtMouseLocation];
         if (text.length) {
             [self.viewController translateText:text];
         }else {
@@ -134,15 +138,30 @@ static TranslateWindowController *_instance;
     [Snip.shared startWithCompletion:^(NSImage * _Nullable image) {
         NSLog(@"获取到图片 %@", image);
         if (image) {
-            if (!self.hadShow) {
-                [self showAtMouseLocation];
-            }
-            if (!self.window.visible || !Configuration.shared.isPin) {
-                [self showAtMouseLocation];
-            }
+            [self ensureShowAtMouseLocation];
             [self.viewController translateImage:image];
         }
     }];
+}
+
+- (void)inputTranslate {
+    if (Snip.shared.isSnapshotting) {
+        return;
+    }
+    Configuration.shared.isFold = NO;
+    [self.viewController updateFoldState:NO];
+    [self.viewController resetWithState:@"Enter 翻译\nShift + Enter 换行\n⌘ + R 重试\n⌘ + W 关闭"];
+    [self ensureShowAtMouseLocation];
+}
+
+- (void)rerty {
+    if (Snip.shared.isSnapshotting) {
+        return;
+    }
+    if ([[NSApplication sharedApplication] keyWindow] == TranslateWindowController.shared.window) {
+        // 执行重试
+        [self.viewController retry];
+    }
 }
 
 @end

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15702"/>
     </dependencies>
     <scenes>
         <!--Application-->
@@ -54,6 +54,12 @@
                                         <menuItem title="Quit Bob" keyEquivalent="q" id="BRC-If-Fmo">
                                             <connections>
                                                 <action selector="quitAction:" target="qM9-fT-Fym" id="eRH-Ea-yXh"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem isSeparatorItem="YES" id="06i-m8-sie"/>
+                                        <menuItem title="Translate Retry" keyEquivalent="r" id="1PR-FX-lvy">
+                                            <connections>
+                                                <action selector="translateRetryAction:" target="qM9-fT-Fym" id="ny5-3O-eeN"/>
                                             </connections>
                                         </menuItem>
                                         <menuItem title="Close Window" keyEquivalent="w" id="Mvw-R3-uLG">
@@ -685,6 +691,12 @@
                             <modifierMask key="keyEquivalentModifierMask"/>
                             <connections>
                                 <action selector="snipAction:" target="qM9-fT-Fym" id="Vkh-bk-b8F"/>
+                            </connections>
+                        </menuItem>
+                        <menuItem title="输入翻译" id="AWf-Ci-7QE">
+                            <modifierMask key="keyEquivalentModifierMask"/>
+                            <connections>
+                                <action selector="inputTranslate:" target="qM9-fT-Fym" id="o4F-Fg-ALf"/>
                             </connections>
                         </menuItem>
                         <menuItem isSeparatorItem="YES" id="ch8-gu-f7X"/>

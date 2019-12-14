@@ -18,6 +18,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)snipTranslate;
 
+- (void)inputTranslate;
+
+- (void)rerty;
+
 @end
 
 NS_ASSUME_NONNULL_END

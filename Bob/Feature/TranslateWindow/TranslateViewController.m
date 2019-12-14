@@ -31,6 +31,7 @@ return; \
 
 @property (nonatomic, strong) NSArray<Translate *> *translateArray;
 @property (nonatomic, strong) Translate *translate;
+@property (nonatomic, assign) BOOL isTranslating;
 @property (nonatomic, strong) AVPlayer *player;
 @property (nonatomic, strong) TranslateResult *currentResult;
 @property (nonatomic, strong) MMEventMonitor *monitor;
@@ -403,6 +404,7 @@ return; \
 }
 
 - (void)translateText:(NSString *)text {
+    self.isTranslating = YES;
     [self resetWithState:@"翻译中..." query:text];
     increaseSeed
     mm_weakify(self)
@@ -412,11 +414,13 @@ return; \
                    completion:^(TranslateResult * _Nullable result, NSError * _Nullable error) {
         mm_strongify(self);
         checkSeed
+        self.isTranslating = NO;
         [self refreshWithTranslateResult:result error:error];
     }];
 }
 
 - (void)translateImage:(NSImage *)image {
+    self.isTranslating = YES;
     [self resetWithState:@"图片文本识别中..."];
     increaseSeed
     mm_weakify(self)
@@ -434,12 +438,16 @@ return; \
                         completion:^(OCRResult * _Nullable ocrResult, TranslateResult * _Nullable result, NSError * _Nullable error) {
         mm_strongify(self)
         checkSeed
+        self.isTranslating = NO;
         NSLog(@"识别到的文本:\n%@", ocrResult.texts);
         [self refreshWithTranslateResult:result error:error];
     }];
 }
 
 - (void)retry {
+    if (self.isTranslating) {
+        return;
+    }
     if (self.currentResult) {
         [self translateText:self.currentResult.text];
     }else if (self.queryView.textView.string.length) {
@@ -468,6 +476,8 @@ return; \
     Configuration.shared.to = [[self.translate.languages objectAtIndex:toIndex] integerValue];
     [self.toLanguageButton updateWithIndex:toIndex];
     
+    // 强制重刷
+    self.isTranslating = NO;
     [self retry];
 }
 
