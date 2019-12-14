@@ -20,9 +20,8 @@
 
 @implementation YoudaoTranslate
 
-- (instancetype)init {
-    self = [super init];
-    if (self) {
+- (AFHTTPSessionManager *)jsonSession {
+    if (!_jsonSession) {
         AFHTTPSessionManager *jsonSession = [AFHTTPSessionManager manager];
 
         AFHTTPRequestSerializer *requestSerializer = [AFHTTPRequestSerializer serializer];
@@ -33,9 +32,9 @@
         responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/plain", nil];
         jsonSession.responseSerializer = responseSerializer;
         
-        self.jsonSession = jsonSession;
+        _jsonSession = jsonSession;
     }
-    return self;
+    return _jsonSession;
 }
 
 #pragma mark - 重写父类方法

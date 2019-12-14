@@ -25,6 +25,9 @@ NS_ASSUME_NONNULL_BEGIN
 /// 语言字符串转枚举，不支持则返回Auto
 - (Language)languageEnumFromString:(NSString *)langString;
 
+/// 语言在支持的语言数组中的位置，不包含则返回0
+- (NSInteger)indexForLanguage:(Language)lang;
+
 @end
 
 /// 以下方法供子类重写，且必须重写

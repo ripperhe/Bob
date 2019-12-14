@@ -18,6 +18,7 @@ userInfo:nil]
 @property (nonatomic, strong) NSArray *languages;
 @property (nonatomic, strong) NSDictionary<NSNumber *, NSString *> *langStringFromEnumDict;
 @property (nonatomic, strong) NSDictionary<NSString *, NSNumber *> *langEnumFromStringDict;
+@property (nonatomic, strong) NSDictionary<NSNumber *, NSNumber *> *langIndexDict;
 
 @end
 
@@ -30,6 +31,7 @@ userInfo:nil]
         self.languages = [langDict sortedKeys];
         self.langStringFromEnumDict = [langDict keysAndObjects];
         self.langEnumFromStringDict = [[langDict keysAndObjects] mm_reverseKeysAndObjectsDictionary];
+        self.langIndexDict = [self.languages mm_objectToIndexDictionary];
     }
     return self;
 }
@@ -46,6 +48,10 @@ userInfo:nil]
 
 - (Language)languageEnumFromString:(NSString *)langString {
     return [[_langEnumFromStringDict objectForKey:langString] integerValue];
+}
+
+- (NSInteger)indexForLanguage:(Language)lang {
+    return [[self.langIndexDict objectForKey:@(lang)] integerValue];
 }
 
 #pragma mark - 子类重写

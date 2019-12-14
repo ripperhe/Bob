@@ -24,6 +24,9 @@ NS_ASSUME_NONNULL_BEGIN
 /// 遍历处理元素并将返回的数组组成一个大数组
 - (NSArray *)mm_combine:(NSArray * _Nullable (^)(ObjectType obj, NSUInteger idx, BOOL *stop))block;
 
+/// 生成一个从元素获取 index 的字典，元素必须唯一
+- (NSDictionary<ObjectType, NSNumber *> *)mm_objectToIndexDictionary;
+
 @end
 
 NS_ASSUME_NONNULL_END

@@ -192,7 +192,7 @@ if (seed != self.seed) { \
             }
             return LanguageDescFromEnum([obj integerValue]);
         }]];
-        [button updateWithIndex:[self indexFromLangages:Configuration.shared.from]];
+        [button updateWithIndex:[self.translate indexForLanguage:Configuration.shared.from]];
         mm_weakify(self);
         [button setMenuItemSeletedBlock:^(NSInteger index, NSString *title) {
             mm_strongify(self);
@@ -219,8 +219,8 @@ if (seed != self.seed) { \
             Language from = Configuration.shared.from;
             Configuration.shared.from = Configuration.shared.to;
             Configuration.shared.to = from;
-            [self.fromLanguageButton updateWithIndex:[self indexFromLangages:Configuration.shared.from]];
-            [self.toLanguageButton updateWithIndex:[self indexFromLangages:Configuration.shared.to]];
+            [self.fromLanguageButton updateWithIndex:[self.translate indexForLanguage:Configuration.shared.from]];
+            [self.toLanguageButton updateWithIndex:[self.translate indexForLanguage:Configuration.shared.to]];
             return RACSignal.empty;
         }]];
     }];
@@ -240,7 +240,7 @@ if (seed != self.seed) { \
             return LanguageDescFromEnum([obj integerValue]);
         }]];
         NSLog(@"初始化语言 %zd %@", Configuration.shared.to, LanguageDescFromEnum(Configuration.shared.to));
-        [button updateWithIndex:[self indexFromLangages:Configuration.shared.to]];
+        [button updateWithIndex:[self.translate indexForLanguage:Configuration.shared.to]];
         mm_weakify(self);
         [button setMenuItemSeletedBlock:^(NSInteger index, NSString *title) {
             mm_strongify(self);
@@ -304,17 +304,6 @@ if (seed != self.seed) { \
 }
 
 #pragma mark -
-
-- (NSInteger)indexFromLangages:(Language)lang {
-    __block NSInteger index = 0;
-    [self.translate.languages enumerateObjectsUsingBlock:^(NSNumber * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        if (obj.integerValue == lang) {
-            index = idx;
-            *stop = YES;
-        }
-    }];
-    return index;
-}
 
 - (void)playAudioWithText:(NSString *)text lang:(Language)lang {
     if (text.length) {

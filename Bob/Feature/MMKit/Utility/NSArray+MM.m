@@ -53,4 +53,13 @@
     return newArray.copy;
 }
 
+- (NSDictionary *)mm_objectToIndexDictionary {
+    __block NSMutableDictionary *newDict = [NSMutableDictionary dictionary];
+    [self enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        MMAssert(![newDict objectForKey:obj], @"数组不能包含相同元素");
+        [newDict setObject:@(idx) forKey:obj];
+    }];
+    return newDict.copy;
+}
+
 @end
