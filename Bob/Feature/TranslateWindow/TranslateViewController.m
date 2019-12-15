@@ -442,8 +442,8 @@ return; \
                          ocrSuccess:^(OCRResult * _Nonnull result, BOOL willInvokeTranslateAPI) {
         mm_strongify(self)
         checkSeed
+        self.queryView.textView.string = result.mergedText;
         if (!willInvokeTranslateAPI) {
-            self.queryView.textView.string = result.mergedText;
             [self.resultView refreshWithStateString:@"翻译中..."];
         }
     }
