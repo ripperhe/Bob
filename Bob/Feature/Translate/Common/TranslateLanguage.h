@@ -115,9 +115,9 @@ typedef NS_ENUM(NSUInteger, Language) {
     Language_fa,
     /// 克雷塔罗奥托米语
     Language_otq,
-    /// 塞尔维亚语(西里尔文)
+    /// 塞尔维亚语-西里尔文
     Language_sr_Cyrl,
-    /// 塞尔维亚语(拉丁文)
+    /// 塞尔维亚语-拉丁文
     Language_sr_Latn,
     /// 斯洛伐克语
     Language_sk,

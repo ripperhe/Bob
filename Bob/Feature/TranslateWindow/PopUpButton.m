@@ -51,6 +51,8 @@ DefineMethodMMMake_m(PopUpButton)
         [self addSubview:titleContainerView];
         [titleContainerView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.center.offset(0);
+            make.left.greaterThanOrEqualTo(self).offset(5);
+            make.right.lessThanOrEqualTo(self).inset(5);
         }];
         
         self.textField = [NSTextField mm_make:^(NSTextField * _Nonnull textField) {
@@ -61,6 +63,8 @@ DefineMethodMMMake_m(PopUpButton)
             textField.backgroundColor = NSColor.clearColor;
             textField.font = [NSFont systemFontOfSize:12];
             textField.textColor = [NSColor mm_colorWithHexString:@"#333333"];
+            textField.maximumNumberOfLines = 1;
+            textField.lineBreakMode = NSLineBreakByTruncatingTail;
             [textField mas_makeConstraints:^(MASConstraintMaker *make) {
                 make.top.left.bottom.equalTo(titleContainerView);
             }];
@@ -73,6 +77,7 @@ DefineMethodMMMake_m(PopUpButton)
                 make.left.equalTo(self.textField.mas_right).offset(3);
                 make.centerY.equalTo(self.textField);
                 make.right.equalTo(titleContainerView);
+                make.width.height.equalTo(@8);
             }];
         }];
     }];
