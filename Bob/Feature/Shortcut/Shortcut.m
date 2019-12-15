@@ -33,6 +33,10 @@
         [TranslateWindowController.shared snipTranslate];
     }];
     
+    [[MASShortcutBinder sharedBinder] bindShortcutWithDefaultsKey:InputShortcutKey toAction:^{
+        [TranslateWindowController.shared inputTranslate];
+    }];
+
     [[MASShortcutValidator sharedValidator] setAllowAnyShortcutWithOptionModifier:YES];
 }
 

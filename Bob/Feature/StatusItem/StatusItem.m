@@ -19,6 +19,7 @@
 @property (weak) IBOutlet NSMenu *menu;
 @property (nonatomic, weak) IBOutlet NSMenuItem *selectionItem;
 @property (nonatomic, weak) IBOutlet NSMenuItem *snipItem;
+@property (weak) IBOutlet NSMenuItem *inputItem;
 
 @end
 
@@ -149,32 +150,26 @@ static StatusItem *_instance;
 #pragma mark -
 
 - (void)menuWillOpen:(NSMenu *)menu {
-    void(^resetItemShortcut)(NSMenuItem *item) = ^(NSMenuItem *item) {
-        item.keyEquivalent = @"";
-        item.keyEquivalentModifierMask = 0;
+    void(^configItemShortcut)(NSMenuItem *item, NSString *key) = ^(NSMenuItem *item, NSString *key) {
+        @try {
+            [Shortcut readShortcutForKey:key completion:^(MASShortcut * _Nullable shorcut) {
+                if (shorcut) {
+                    item.keyEquivalent = shorcut.keyCodeStringForKeyEquivalent;
+                    item.keyEquivalentModifierMask = shorcut.modifierFlags;
+                }else {
+                    item.keyEquivalent = @"";
+                    item.keyEquivalentModifierMask = 0;
+                }
+            }];
+        } @catch (NSException *exception) {
+            item.keyEquivalent = @"";
+            item.keyEquivalentModifierMask = 0;
+        }
     };
     
-    @try {
-        [Shortcut readShortcutForKey:SelectionShortcutKey completion:^(MASShortcut * _Nullable shorcut) {
-            if (shorcut) {
-                self.selectionItem.keyEquivalent = shorcut.keyCodeStringForKeyEquivalent;
-                self.selectionItem.keyEquivalentModifierMask = shorcut.modifierFlags;
-            }else {
-                resetItemShortcut(self.selectionItem);
-            }
-        }];
-        [Shortcut readShortcutForKey:SnipShortcutKey completion:^(MASShortcut * _Nullable shorcut) {
-            if (shorcut) {
-                self.snipItem.keyEquivalent = shorcut.keyCodeStringForKeyEquivalent;
-                self.snipItem.keyEquivalentModifierMask = shorcut.modifierFlags;
-            }else {
-                resetItemShortcut(self.snipItem);
-            }
-        }];
-    } @catch (NSException *exception) {
-        resetItemShortcut(self.selectionItem);
-        resetItemShortcut(self.snipItem);
-    }
+    configItemShortcut(self.selectionItem, SelectionShortcutKey);
+    configItemShortcut(self.snipItem, SnipShortcutKey);
+    configItemShortcut(self.inputItem, InputShortcutKey);
 }
 
 @end

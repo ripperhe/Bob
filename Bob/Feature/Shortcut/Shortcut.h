@@ -13,6 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 static NSString *const SelectionShortcutKey = @"SelectionShortcutKey";
 static NSString *const SnipShortcutKey = @"SnipShortcutKey";
+static NSString *const InputShortcutKey = @"InputShortcutKey";
 
 @interface Shortcut : NSObject
 

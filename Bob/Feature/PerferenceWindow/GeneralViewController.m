@@ -14,6 +14,7 @@
 
 @property (weak) IBOutlet MASShortcutView *selectionShortcutView;
 @property (weak) IBOutlet MASShortcutView *snipShortcutView;
+@property (weak) IBOutlet MASShortcutView *inputShortcutView;
 @property (weak) IBOutlet NSButton *launchAtStartupButton;
 
 @end
@@ -30,8 +31,13 @@
     
     self.selectionShortcutView.style = MASShortcutViewStyleTexturedRect;
     [self.selectionShortcutView setAssociatedUserDefaultsKey:SelectionShortcutKey];
+    
     self.snipShortcutView.style = MASShortcutViewStyleTexturedRect;
     [self.snipShortcutView setAssociatedUserDefaultsKey:SnipShortcutKey];
+    
+    self.inputShortcutView.style = MASShortcutViewStyleTexturedRect;
+    [self.inputShortcutView setAssociatedUserDefaultsKey:InputShortcutKey];
+
     self.launchAtStartupButton.mm_isOn = Configuration.shared.launchAtStartup;
 }
 
