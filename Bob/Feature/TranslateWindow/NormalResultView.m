@@ -38,7 +38,7 @@ DefineMethodMMMake_m(NormalResultView)
     self.scrollView = [NSScrollView mm_make:^(NSScrollView *  _Nonnull scrollView) {
         [self addSubview:scrollView];
         scrollView.hasHorizontalScroller = NO;
-        scrollView.hasVerticalScroller = NO;
+        scrollView.hasVerticalScroller = YES;
         scrollView.autohidesScrollers = YES;
         self.textView = [TextView mm_make:^(TextView * _Nonnull textView) {
             textView.editable = NO;
@@ -122,15 +122,17 @@ DefineMethodMMMake_m(NormalResultView)
         
     CGFloat height = [self heightForString:self.textView.attributedString width:textViewWidth];
     height += self.textView.textContainerInset.height * 2;
+    // TODO: 有时候高度计算会显示出滚动条，没解决之前先加个10吧
+    height += 10;
     
     if (height < 100 - 26) {
         height = 100 - 26;
-        self.scrollView.hasVerticalScroller = NO;
+        // self.scrollView.hasVerticalScroller = NO;
     }else if (height > 500) {
         height = 500;
-        self.scrollView.hasVerticalScroller = YES;
+        // self.scrollView.hasVerticalScroller = YES;
     }else {
-        self.scrollView.hasVerticalScroller = NO;
+        // self.scrollView.hasVerticalScroller = NO;
     }
         
     self.scrollViewHeightConstraint.equalTo(@(height));
