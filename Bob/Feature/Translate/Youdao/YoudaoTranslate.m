@@ -43,6 +43,10 @@
     return @"有道翻译";
 }
 
+- (NSString *)link {
+    return @"http://fanyi.youdao.com";
+}
+
 - (MMOrderedDictionary *)supportLanguagesDictionary {
     return [[MMOrderedDictionary alloc] initWithKeysAndObjects:
                  @(Language_auto), @"auto",
@@ -159,10 +163,6 @@
                  nil];
 }
 
-- (NSString *)link {
-    return @"http://fanyi.youdao.com";
-}
-
 - (void)translate:(NSString *)text from:(Language)from to:(Language)to completion:(void (^)(TranslateResult * _Nullable result, NSError * _Nullable error))completion {
     if (!text.length) {
         completion(nil, kError(TranslateErrorTypeParamError, @"翻译的文本为空"));
@@ -253,7 +253,7 @@
                             }else {
                                 TranslateSimpleWord *word = [TranslateSimpleWord new];
                                 word.word = obj;
-                                // TODO: 有道没法获取到单词词性
+                                // 有道没法获取到单词词性
                                 // word.part = @"misc.";
                                 [simpleWordArray addObject:word];
                             }
@@ -315,6 +315,7 @@
         return;
     }
     
+    // 字符串太长浪费时间，截取了前面一部分。为什么是73？百度取的73，这里抄了一下...
     NSString *queryString = text;
     if (queryString.length >= 73) {
         queryString = [queryString substringToIndex:73];
@@ -350,13 +351,11 @@
         return;
     }
 
-    NSData *tiffData = [image TIFFRepresentation];
-    NSBitmapImageRep *imageRep = [NSBitmapImageRep imageRepWithData:tiffData];
-    NSData *data = [imageRep representationUsingType:NSBitmapImageFileTypePNG properties:@{}];
+    NSData *data = [image mm_PNGData];
     NSString *encodedImageStr = [data base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
     encodedImageStr = [NSString stringWithFormat:@"data:image/png;base64,%@", encodedImageStr];
     
-    // 目前没有指定图片翻译的目标语言
+    // 目前没法指定图片翻译的目标语言
     NSString *url = @"https://aidemo.youdao.com/ocrtransapi1";
     NSDictionary *params = @{
         @"imgBase": encodedImageStr,

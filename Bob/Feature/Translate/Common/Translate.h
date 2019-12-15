@@ -36,11 +36,11 @@ NS_ASSUME_NONNULL_BEGIN
 /// 翻译的名字
 - (NSString *)name;
 
-/// 支持的语言字典
-- (MMOrderedDictionary *)supportLanguagesDictionary;
-
 /// 翻译网站首页
 - (NSString *)link;
+
+/// 支持的语言字典
+- (MMOrderedDictionary *)supportLanguagesDictionary;
 
 /// 文本翻译
 /// @param text 查询文本

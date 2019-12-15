@@ -14,7 +14,13 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (NSImage *)mm_imageWithSize:(CGSize)size graphicsContext:(void (^NS_NOESCAPE)(CGContextRef ctx))block;
 
+- (NSData *)mm_PNGData;
+
+- (NSData *)mm_JPEGData;
+
 - (BOOL)mm_writeToFileAsPNG:(NSString *)path;
+
+- (BOOL)mm_writeToFileAsJPEG:(NSString *)path;
 
 @end
 

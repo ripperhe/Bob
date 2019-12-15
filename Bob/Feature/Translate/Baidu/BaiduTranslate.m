@@ -311,10 +311,14 @@
                     }
                 }else if (response.error == 997) {
                     // token 失效，重新获取
-                    // 如果一直是 997 就会循环调用，后续优化一下
+                    // TODO: 如果一直是 997 就会循环调用，后续优化一下
                     self.token = nil;
                     self.gtk = nil;
                     [self translate:text from:from to:to completion:completion];
+                    return;
+                }else {
+                    NSString *string = [NSString stringWithFormat:@"翻译失败，错误码 %zd", response.error];
+                    completion(nil, kError(TranslateErrorTypeAPIError, string));
                     return;
                 }
             }
@@ -329,6 +333,10 @@
 
 - (NSString *)name {
     return @"百度翻译";
+}
+
+- (NSString *)link {
+    return kBaiduRootPage;
 }
 
 - (MMOrderedDictionary *)supportLanguagesDictionary {
@@ -363,10 +371,6 @@
             @(Language_hu), @"hu",
             @(Language_vi), @"vie",
             nil];
-}
-
-- (NSString *)link {
-    return kBaiduRootPage;
 }
 
 - (void)translate:(NSString *)text from:(Language)from to:(Language)to completion:(nonnull void (^)(TranslateResult * _Nullable, NSError * _Nullable))completion {
@@ -424,10 +428,12 @@
         return;
     }
     
+    // 字符串太长会导致获取语言的接口报错
     NSString *queryString = text;
     if (queryString.length >= 73) {
         queryString = [queryString substringToIndex:73];
     }
+    
     mm_weakify(self);
     [self.jsonSession POST:[kBaiduRootPage stringByAppendingString:@"/langdetect"] parameters:@{@"query":queryString} progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         mm_strongify(self);
@@ -476,9 +482,7 @@
         return;
     }
     
-    NSData *tiffData = [image TIFFRepresentation];
-    NSBitmapImageRep *imageRep = [NSBitmapImageRep imageRepWithData:tiffData];
-    NSData *data = [imageRep representationUsingType:NSBitmapImageFileTypePNG properties:@{}];
+    NSData *data = [image mm_PNGData];
     NSString *fromLang = (from == Language_auto) ? [self languageStringFromEnum:Language_en] : [self languageStringFromEnum:from];
     NSString *toLang = nil;
     if (to == Language_auto) {
@@ -497,9 +501,7 @@
     [self.jsonSession POST:@"https://fanyi.baidu.com/getocr" parameters:para constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
         [formData appendPartWithFileData:data name:@"image" fileName:@"blob" mimeType:@"image/png"];
     } progress:^(NSProgress * _Nonnull uploadProgress) {
-        // NSLog(@"%@", uploadProgress);
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        // NSLog(@"%@", responseObject);
         mm_strongify(self);
         if (responseObject && [responseObject isKindOfClass:[NSDictionary class]]) {
             NSDictionary *jsonResult = responseObject;
@@ -538,7 +540,6 @@
             completion(nil, kError(TranslateErrorTypeAPIError, @"识别图片文本失败"));
         }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        // NSLog(@"%@", error);
         completion(nil, kError(TranslateErrorTypeNetworkError, @"识别图片文本失败"));
     }];
 }

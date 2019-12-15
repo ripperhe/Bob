@@ -8,6 +8,8 @@
 
 #import "ResultView.h"
 
+#define kMargin 12.0
+
 @implementation ResultView
 
 - (instancetype)initWithFrame:(NSRect)frame {
@@ -22,8 +24,10 @@
             textField.font = [NSFont systemFontOfSize:14];
             textField.textColor = [NSColor mm_colorWithHexString:@"#333333"];
             [textField mas_makeConstraints:^(MASConstraintMaker *make) {
-                make.top.offset(12);
-                make.left.offset(16);
+                make.top.offset(kMargin);
+                make.left.offset(kMargin);
+                make.right.lessThanOrEqualTo(self).offset(-kMargin);
+                make.bottom.lessThanOrEqualTo(self).offset(-kMargin);
             }];
         }];
     }

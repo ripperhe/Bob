@@ -61,13 +61,13 @@ userInfo:nil]
     return nil;
 }
 
-- (MMOrderedDictionary *)supportLanguagesDictionary {
-    MethodNotImplemented();
-}
-
 - (NSString *)link {
     MethodNotImplemented();
     return nil;
+}
+
+- (MMOrderedDictionary *)supportLanguagesDictionary {
+    MethodNotImplemented();
 }
 
 - (void)translate:(NSString *)text from:(Language)from to:(Language)to completion:(void (^)(TranslateResult * _Nullable, NSError * _Nullable))completion {

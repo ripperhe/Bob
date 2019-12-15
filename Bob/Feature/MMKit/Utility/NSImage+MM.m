@@ -10,6 +10,7 @@
 
 @implementation NSImage (MM)
 
+/// https://stackoverflow.com/questions/10627557/mac-os-x-drawing-into-an-offscreen-nsgraphicscontext-using-cgcontextref-c-funct
 + (NSImage *)mm_imageWithSize:(CGSize)size graphicsContext:(void (^NS_NOESCAPE)(CGContextRef ctx))block {
     NSBitmapImageRep *rep = [[NSBitmapImageRep alloc] initWithBitmapDataPlanes:NULL
                                                                     pixelsWide:size.width
@@ -41,11 +42,33 @@
     return newImage;
 }
 
+/// https://stackoverflow.com/questions/3038820/how-to-save-a-nsimage-as-a-new-file
+- (NSData *)mm_PNGData {
+    NSData *tiffData = [self TIFFRepresentation];
+    NSBitmapImageRep *imageRep = [NSBitmapImageRep imageRepWithData:tiffData];
+    NSData *data = [imageRep representationUsingType:NSBitmapImageFileTypePNG properties:@{}];
+    return data;
+}
+
+- (NSData *)mm_JPEGData {
+    NSData *tiffData = [self TIFFRepresentation];
+    NSBitmapImageRep *imageRep = [NSBitmapImageRep imageRepWithData:tiffData];
+    NSData *data = [imageRep representationUsingType:NSBitmapImageFileTypeJPEG
+                                          properties:@{NSImageCompressionFactor: @1.0}];
+    return data;
+}
+
 - (BOOL)mm_writeToFileAsPNG:(NSString *)path {
-    NSBitmapImageRep *imgRep = [NSBitmapImageRep imageRepWithData:self.TIFFRepresentation];
-    NSData *data = [imgRep representationUsingType:NSPNGFileType properties:@{}];
+    NSData *data = [self mm_PNGData];
     BOOL result = [data writeToFile:path atomically:NO];
     return result;
 }
+
+- (BOOL)mm_writeToFileAsJPEG:(NSString *)path {
+    NSData *data = [self mm_JPEGData];
+    BOOL result = [data writeToFile:path atomically:NO];
+    return result;
+}
+
 
 @end
