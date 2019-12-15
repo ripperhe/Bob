@@ -87,6 +87,10 @@ static StatusItem *_instance;
     [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"http://fanyi.youdao.com/"]];
 }
 
+- (IBAction)youdaoDictWebsite:(id)sender {
+    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"http://dict.youdao.com/"]];
+}
+
 - (IBAction)googleCNTranslationWebsite:(id)sender {
     [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"https://translate.google.cn/"]];
 }

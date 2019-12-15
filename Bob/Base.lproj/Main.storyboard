@@ -717,6 +717,12 @@
                                             <action selector="youdaoTranslationWebsite:" target="qM9-fT-Fym" id="zhe-cB-kNK"/>
                                         </connections>
                                     </menuItem>
+                                    <menuItem title="有道词典" id="8fJ-rL-1Bl">
+                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                        <connections>
+                                            <action selector="youdaoDictWebsite:" target="qM9-fT-Fym" id="GTC-vS-bn0"/>
+                                        </connections>
+                                    </menuItem>
                                     <menuItem title="谷歌翻译(国内)" id="Le2-9U-JAY">
                                         <modifierMask key="keyEquivalentModifierMask"/>
                                         <connections>

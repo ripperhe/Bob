@@ -331,6 +331,10 @@
 
 #pragma mark - 重写父类方法
 
+- (NSString *)identifier {
+    return @"baidu";
+}
+
 - (NSString *)name {
     return @"百度翻译";
 }
@@ -544,7 +548,7 @@
     }];
 }
 
-- (void)translateImage:(NSImage *)image from:(Language)from to:(Language)to ocrSuccess:(void (^)(OCRResult * _Nonnull, BOOL))ocrSuccess completion:(void (^)(OCRResult * _Nullable, TranslateResult * _Nullable, NSError * _Nullable))completion {
+- (void)ocrAndTranslate:(NSImage *)image from:(Language)from to:(Language)to ocrSuccess:(void (^)(OCRResult * _Nonnull, BOOL))ocrSuccess completion:(void (^)(OCRResult * _Nullable, TranslateResult * _Nullable, NSError * _Nullable))completion {
     if (!image) {
         completion(nil, nil, kError(TranslateErrorTypeParamError, @"图片为空"));
         return;

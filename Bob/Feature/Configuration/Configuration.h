@@ -15,6 +15,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, assign) BOOL launchAtStartup;
 
+@property (nonatomic, copy) NSString *translateIdentifier;
+
 @property (nonatomic, assign) Language from;
 @property (nonatomic, assign) Language to;
 

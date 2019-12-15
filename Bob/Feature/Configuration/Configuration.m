@@ -10,6 +10,7 @@
 #import <ServiceManagement/ServiceManagement.h>
 
 #define kLaunchAtStartupKey @"configuration_launch_at_startup"
+#define kTranslateIdentifierKey @"configuration_translate_identifier"
 #define kFromKey @"configuration_from"
 #define kToKey @"configuration_to"
 #define kPinKey @"configuration_pin"
@@ -38,6 +39,13 @@ static Configuration *_instance;
 }
 
 - (void)setup {
+    NSString *translateIdentifier = [NSUserDefaults mm_read:kTranslateIdentifierKey];
+    if (![translateIdentifier isKindOfClass:NSString.class]) {
+        translateIdentifier = nil;
+        [NSUserDefaults mm_write:nil forKey:kTranslateIdentifierKey];
+    }
+    self.translateIdentifier = translateIdentifier;
+    
     NSNumber *from = [NSUserDefaults mm_read:kFromKey];
     if (![from isKindOfClass:[NSNumber class]]) {
         from = @(Language_auto);
@@ -78,6 +86,11 @@ static Configuration *_instance;
 - (void)setLaunchAtStartup:(BOOL)launchAtStartup {
     [NSUserDefaults mm_write:@(launchAtStartup) forKey:kLaunchAtStartupKey];
     [self updateLoginItemWithLaunchAtStartup:launchAtStartup];
+}
+
+- (void)setTranslateIdentifier:(NSString *)translateIdentifier {
+    _translateIdentifier = translateIdentifier;
+    [NSUserDefaults mm_write:translateIdentifier forKey:kTranslateIdentifierKey];
 }
 
 - (void)setFrom:(Language)from {

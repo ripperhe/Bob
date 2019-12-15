@@ -56,6 +56,11 @@ userInfo:nil]
 
 #pragma mark - 子类重写
 
+- (NSString *)identifier {
+    MethodNotImplemented();
+    return nil;
+}
+
 - (NSString *)name {
     MethodNotImplemented();
     return nil;
@@ -86,7 +91,7 @@ userInfo:nil]
     MethodNotImplemented();
 }
 
-- (void)translateImage:(NSImage *)image from:(Language)from to:(Language)to ocrSuccess:(void (^)(OCRResult * _Nonnull, BOOL))ocrSuccess completion:(void (^)(OCRResult * _Nullable, TranslateResult * _Nullable, NSError * _Nullable))completion {
+- (void)ocrAndTranslate:(NSImage *)image from:(Language)from to:(Language)to ocrSuccess:(void (^)(OCRResult * _Nonnull, BOOL))ocrSuccess completion:(void (^)(OCRResult * _Nullable, TranslateResult * _Nullable, NSError * _Nullable))completion {
     MethodNotImplemented();
 }
 

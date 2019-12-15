@@ -31,6 +31,7 @@ return; \
 
 @property (nonatomic, strong) NSArray<Translate *> *translateArray;
 @property (nonatomic, strong) Translate *translate;
+@property (nonatomic, assign) NSInteger translateIdx;
 @property (nonatomic, assign) BOOL isTranslating;
 @property (nonatomic, strong) AVPlayer *player;
 @property (nonatomic, strong) TranslateResult *currentResult;
@@ -201,13 +202,15 @@ return; \
         [button updateMenuWithTitleArray:[self.translateArray mm_map:^id _Nullable(Translate * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
             return obj.name;
         }]];
-        [button updateWithIndex:0];
+        [button updateWithIndex:self.translateIdx];
         mm_weakify(self);
         [button setMenuItemSeletedBlock:^(NSInteger index, NSString *title) {
             mm_strongify(self);
-            Translate *l = [self.translateArray objectAtIndex:index];
-            if (l != self.translate) {
-                self.translate = l;
+            self.translateIdx = index;
+            Translate *t = [self.translateArray objectAtIndex:index];
+            if (t != self.translate) {
+                Configuration.shared.translateIdentifier = t.identifier;
+                self.translate = t;
                 [self refreshForSwitchTranslate];
             }
         }];
@@ -339,7 +342,16 @@ return; \
         [BaiduTranslate new],
         [YoudaoTranslate new],
     ];
-    self.translate = self.translateArray.firstObject;
+    self.translate = [self.translateArray mm_find:^BOOL(Translate * _Nonnull obj, NSUInteger idx) {
+        if ([obj.identifier isEqualToString:Configuration.shared.translateIdentifier]) {
+            self.translateIdx = idx;
+            return YES;
+        }
+        return NO;
+    }];
+    if (!self.translate) {
+        self.translate = self.translateArray.firstObject;
+    }
     self.player = [[AVPlayer alloc] init];
 }
 
@@ -424,10 +436,10 @@ return; \
     [self resetWithState:@"图片文本识别中..."];
     increaseSeed
     mm_weakify(self)
-    [self.translate translateImage:image
-                              from:Configuration.shared.from
-                                to:Configuration.shared.to
-                        ocrSuccess:^(OCRResult * _Nonnull result, BOOL willInvokeTranslateAPI) {
+    [self.translate ocrAndTranslate:image
+                               from:Configuration.shared.from
+                                 to:Configuration.shared.to
+                         ocrSuccess:^(OCRResult * _Nonnull result, BOOL willInvokeTranslateAPI) {
         mm_strongify(self)
         checkSeed
         if (!willInvokeTranslateAPI) {
@@ -435,7 +447,7 @@ return; \
             [self.resultView refreshWithStateString:@"翻译中..."];
         }
     }
-                        completion:^(OCRResult * _Nullable ocrResult, TranslateResult * _Nullable result, NSError * _Nullable error) {
+                         completion:^(OCRResult * _Nullable ocrResult, TranslateResult * _Nullable result, NSError * _Nullable error) {
         mm_strongify(self)
         checkSeed
         self.isTranslating = NO;
