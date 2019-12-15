@@ -460,8 +460,8 @@
 		C99EEBAD2385799D00FEE666 /* Selection */ = {
 			isa = PBXGroup;
 			children = (
-				C99EEBAE2385799D00FEE666 /* Selection.m */,
 				C99EEBAF2385799D00FEE666 /* Selection.h */,
+				C99EEBAE2385799D00FEE666 /* Selection.m */,
 			);
 			path = Selection;
 			sourceTree = "<group>";
