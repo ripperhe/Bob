@@ -674,6 +674,7 @@
                 <customObject id="Ady-hI-5gd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
                 <customObject id="qM9-fT-Fym" customClass="StatusItem">
                     <connections>
+                        <outlet property="bobItem" destination="PkP-25-JBw" id="beL-5f-TOn"/>
                         <outlet property="inputItem" destination="AWf-Ci-7QE" id="Isp-ch-8Q6"/>
                         <outlet property="menu" destination="A3F-ys-zOg" id="n6f-3z-A90"/>
                         <outlet property="selectionItem" destination="lUI-Zn-Bwr" id="WVP-FO-jlf"/>
@@ -682,6 +683,10 @@
                 </customObject>
                 <menu autoenablesItems="NO" identifier="status.item.menu" id="A3F-ys-zOg" userLabel="Status Item Menu">
                     <items>
+                        <menuItem title="Bob" enabled="NO" id="PkP-25-JBw">
+                            <modifierMask key="keyEquivalentModifierMask"/>
+                        </menuItem>
+                        <menuItem isSeparatorItem="YES" id="jsC-rB-zr4"/>
                         <menuItem title="划词翻译" enabled="NO" id="lUI-Zn-Bwr">
                             <modifierMask key="keyEquivalentModifierMask"/>
                             <connections>

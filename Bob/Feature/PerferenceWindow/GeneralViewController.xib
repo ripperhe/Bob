@@ -78,7 +78,7 @@
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="E7D-SM-ttH">
                     <rect key="frame" x="81" y="106" width="68" height="16"/>
                     <textFieldCell key="cell" lineBreakMode="clipping" title="输入翻译：" id="uWf-a6-Vf9">
-                        <font key="font" size="13" name=".PingFangSC-Regular"/>
+                        <font key="font" metaFont="system"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>

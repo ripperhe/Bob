@@ -17,6 +17,7 @@
 @interface StatusItem ()<NSMenuDelegate>
 
 @property (weak) IBOutlet NSMenu *menu;
+@property (weak) IBOutlet NSMenuItem *bobItem;
 @property (nonatomic, weak) IBOutlet NSMenuItem *selectionItem;
 @property (nonatomic, weak) IBOutlet NSMenuItem *snipItem;
 @property (weak) IBOutlet NSMenuItem *inputItem;
@@ -52,8 +53,10 @@ static StatusItem *_instance;
     [item.button setImage:[NSImage imageNamed:@"logo_status"]];
     [item.button setImageScaling:NSImageScaleProportionallyUpOrDown];
     [item setMenu:self.menu];
-    
     self.statusItem = item;
+    
+    NSString *version = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
+    self.bobItem.title = [NSString stringWithFormat:@"Bob %@", version];
 }
 
 - (void)remove {
