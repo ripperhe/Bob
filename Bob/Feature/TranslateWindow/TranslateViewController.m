@@ -330,7 +330,6 @@ return; \
         [view.wordResultView setSelectWordBlock:^(WordResultView * _Nonnull view, NSString * _Nonnull word) {
             mm_strongify(self);
             [self translateText:word];
-            [NSPasteboard mm_generalPasteboardSetString:word];
         }];
     }];
     
@@ -417,6 +416,7 @@ return; \
 
 - (void)translateText:(NSString *)text {
     self.isTranslating = YES;
+    [NSPasteboard mm_generalPasteboardSetString:text];
     [self resetWithState:@"翻译中..." query:text];
     increaseSeed
     mm_weakify(self)
@@ -442,6 +442,7 @@ return; \
                          ocrSuccess:^(OCRResult * _Nonnull result, BOOL willInvokeTranslateAPI) {
         mm_strongify(self)
         checkSeed
+        [NSPasteboard mm_generalPasteboardSetString:result.mergedText];
         self.queryView.textView.string = result.mergedText;
         if (!willInvokeTranslateAPI) {
             [self.resultView refreshWithStateString:@"翻译中..."];
