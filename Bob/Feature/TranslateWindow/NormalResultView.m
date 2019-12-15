@@ -11,6 +11,12 @@
 #import "TranslateWindowController.h"
 #import "TextView.h"
 
+@interface NormalResultView ()
+
+@property (nonatomic, strong) MASConstraint *scrollViewHeightConstraint;
+
+@end
+
 @implementation NormalResultView
 
 DefineMethodMMMake_m(NormalResultView)
@@ -43,6 +49,7 @@ DefineMethodMMMake_m(NormalResultView)
         [scrollView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.left.right.inset(0);
             make.bottom.inset(26);
+            self.scrollViewHeightConstraint = make.height.equalTo(@(100 - 26));
         }];
     }];
     
@@ -125,11 +132,8 @@ DefineMethodMMMake_m(NormalResultView)
     }else {
         self.scrollView.hasVerticalScroller = NO;
     }
-    
-    [self.textView mas_remakeConstraints:^(MASConstraintMaker *make) {
-        make.edges.inset(0);
-        make.height.equalTo(@(height));
-    }];
+        
+    self.scrollViewHeightConstraint.equalTo(@(height));
 }
 
 - (CGFloat)heightForString:(NSAttributedString *)string width:(CGFloat)width {
