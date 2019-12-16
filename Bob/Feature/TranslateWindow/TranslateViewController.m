@@ -501,6 +501,7 @@ return; \
 }
 
 - (void)updateFoldState:(BOOL)isFold {
+    self.foldButton.mm_isOn = isFold;
     if (isFold) {
         self.queryHeightWhenFold = self.queryView.frame.size.height;
     }
