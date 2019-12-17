@@ -19,6 +19,7 @@
 
 @property (nonatomic, weak) TranslateViewController *viewController;
 @property (nonatomic, assign) BOOL hadShow;
+@property (nonatomic, strong) NSRunningApplication *lastFrontmostApplication;
 
 @end
 
@@ -110,7 +111,20 @@ static TranslateWindowController *_instance;
     }
 }
 
+- (void)saveFrontmostApplication {
+    NSString *identifier = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleIdentifier"];
+    NSRunningApplication *frontmostApplication = [[NSWorkspace sharedWorkspace] frontmostApplication];
+    if ([frontmostApplication.bundleIdentifier isEqualToString:identifier]) {
+        return;
+    }
+    
+    self.lastFrontmostApplication = frontmostApplication;
+}
+
+#pragma mark -
+
 - (void)selectionTranslate {
+    [self saveFrontmostApplication];
     if (Snip.shared.isSnapshotting) {
         return;
     }
@@ -127,6 +141,7 @@ static TranslateWindowController *_instance;
 }
 
 - (void)snipTranslate {
+    [self saveFrontmostApplication];
     if (Snip.shared.isSnapshotting) {
         return;
     }
@@ -145,6 +160,7 @@ static TranslateWindowController *_instance;
 }
 
 - (void)inputTranslate {
+    [self saveFrontmostApplication];
     if (Snip.shared.isSnapshotting) {
         return;
     }
@@ -152,6 +168,7 @@ static TranslateWindowController *_instance;
     [self.viewController updateFoldState:NO];
     [self.viewController resetWithState:@"Enter 翻译\nShift + Enter 换行\n⌘ + R 重试\n⌘ + W 关闭"];
     [self ensureShowAtMouseLocation];
+    [NSApp activateIgnoringOtherApps:YES];
 }
 
 - (void)rerty {
@@ -162,6 +179,13 @@ static TranslateWindowController *_instance;
         // 执行重试
         [self.viewController retry];
     }
+}
+
+- (void)activeLastFrontmostApplication {
+    if (!self.lastFrontmostApplication.terminated) {
+        [self.lastFrontmostApplication activateWithOptions:NSApplicationActivateAllWindows];
+    }
+    self.lastFrontmostApplication = nil;
 }
 
 @end

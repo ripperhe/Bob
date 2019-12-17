@@ -22,6 +22,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)rerty;
 
+- (void)activeLastFrontmostApplication;
+
 @end
 
 NS_ASSUME_NONNULL_END

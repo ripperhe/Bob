@@ -153,6 +153,7 @@ static StatusItem *_instance;
         [Snip.shared stop];
     }else {
         [[[NSApplication sharedApplication] keyWindow] close];
+        [TranslateWindowController.shared activeLastFrontmostApplication];
     }
 }
 

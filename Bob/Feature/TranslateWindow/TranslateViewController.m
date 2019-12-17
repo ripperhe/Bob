@@ -83,6 +83,8 @@ return; \
     [self.monitor stop];
 }
 
+#pragma mark -
+
 - (void)setupViews {
     self.view.wantsLayer = YES;
     self.view.layer.backgroundColor = NSColor.whiteColor.CGColor;
@@ -368,26 +370,6 @@ return; \
 
 #pragma mark -
 
-- (void)playAudioWithText:(NSString *)text lang:(Language)lang {
-    if (text.length) {
-        mm_weakify(self)
-        [self.translate audio:text from:lang completion:^(NSString * _Nullable url, NSError * _Nullable error) {
-            mm_strongify(self);
-            if (!error) {
-                [self playAudioWithURL:url];
-            }
-        }];
-    }
-}
-
-- (void)playAudioWithURL:(NSString *)url {
-    [self.player pause];
-    [self.player replaceCurrentItemWithPlayerItem:[AVPlayerItem playerItemWithURL:[NSURL URLWithString:url]]];
-    [self.player play];
-}
-
-#pragma mark -
-
 - (void)resetWithState:(NSString *)stateString query:(NSString *)query {
     self.currentResult = nil;
     self.queryView.textView.string = query ?: @"";
@@ -492,6 +474,24 @@ return; \
     // 强制重刷
     self.isTranslating = NO;
     [self retry];
+}
+
+- (void)playAudioWithText:(NSString *)text lang:(Language)lang {
+    if (text.length) {
+        mm_weakify(self)
+        [self.translate audio:text from:lang completion:^(NSString * _Nullable url, NSError * _Nullable error) {
+            mm_strongify(self);
+            if (!error) {
+                [self playAudioWithURL:url];
+            }
+        }];
+    }
+}
+
+- (void)playAudioWithURL:(NSString *)url {
+    [self.player pause];
+    [self.player replaceCurrentItemWithPlayerItem:[AVPlayerItem playerItemWithURL:[NSURL URLWithString:url]]];
+    [self.player play];
 }
 
 #pragma mark - window frame
