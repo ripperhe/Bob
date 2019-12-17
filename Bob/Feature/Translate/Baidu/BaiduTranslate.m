@@ -11,7 +11,6 @@
 #import "BaiduTranslateResponse.h"
 
 #define kBaiduRootPage @"https://fanyi.baidu.com"
-#define kError(type, msg) [TranslateError errorWithType:type message:msg]
 
 @interface BaiduTranslate ()
 
@@ -22,6 +21,7 @@
 
 @property (nonatomic, copy) NSString *token;
 @property (nonatomic, copy) NSString *gtk;
+@property (nonatomic, assign) NSInteger error997Count;
 
 @end
 
@@ -30,7 +30,7 @@
 - (JSContext *)jsContext {
     if (!_jsContext) {
         JSContext *jsContext = [JSContext new];
-        NSString *jsPath = [[NSBundle mainBundle] pathForResource:@"baidu-sign" ofType:@"js"];
+        NSString *jsPath = [[NSBundle mainBundle] pathForResource:@"baidu-translate-sign" ofType:@"js"];
         NSString *jsString = [NSString stringWithContentsOfFile:jsPath encoding:NSUTF8StringEncoding error:nil];
         // 加载方法
         [jsContext evaluateScript:jsString];
@@ -115,10 +115,10 @@
         if (tokenResult.length && gtkResult.length) {
             completion(tokenResult, gtkResult, nil);
         }else {
-            completion(nil, nil, kError(TranslateErrorTypeAPIError, @"获取 token 失败"));
+            completion(nil, nil, TranslateError(TranslateErrorTypeAPI, @"获取 token 失败", nil));
         }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        completion(nil, nil, kError(TranslateErrorTypeNetworkError, @"获取 token 失败"));
+        completion(nil, nil, TranslateError(TranslateErrorTypeNetwork, @"获取 token 失败", nil));
     } ];
 }
 
@@ -143,6 +143,8 @@
             BaiduTranslateResponse *response = [BaiduTranslateResponse mj_objectWithKeyValues:responseObject];
             if (response) {
                 if (response.error == 0) {
+                    self.error997Count = 0;
+                    
                     TranslateResult *result = [TranslateResult new];
                     result.text = text;
                     result.link = [NSString stringWithFormat:@"%@/#%@/%@/%@", kBaiduRootPage, response.trans_result.from, response.trans_result.to, text.mm_urlencode];
@@ -311,21 +313,26 @@
                     }
                 }else if (response.error == 997) {
                     // token 失效，重新获取
-                    // TODO: 如果一直是 997 就会循环调用，后续优化一下
-                    self.token = nil;
-                    self.gtk = nil;
-                    [self translate:text from:from to:to completion:completion];
+                    self.error997Count++;
+                    // 记录连续失败，避免无限循环
+                    if (self.error997Count < 3) {
+                        self.token = nil;
+                        self.gtk = nil;
+                        [self translate:text from:from to:to completion:completion];
+                    }else {
+                        completion(nil, TranslateError(TranslateErrorTypeAPI, @"百度翻译获取 token 失败", nil));
+                    }
                     return;
                 }else {
                     NSString *string = [NSString stringWithFormat:@"翻译失败，错误码 %zd", response.error];
-                    completion(nil, kError(TranslateErrorTypeAPIError, string));
+                    completion(nil, TranslateError(TranslateErrorTypeAPI, string, nil));
                     return;
                 }
             }
         }
-        completion(nil, kError(TranslateErrorTypeAPIError, @"翻译失败"));
+        completion(nil, TranslateError(TranslateErrorTypeAPI, @"翻译失败", nil));
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        completion(nil, kError(TranslateErrorTypeNetworkError, @"翻译失败"));
+        completion(nil, TranslateError(TranslateErrorTypeNetwork, @"翻译失败", nil));
     }];
 }
 
@@ -379,7 +386,7 @@
 
 - (void)translate:(NSString *)text from:(Language)from to:(Language)to completion:(nonnull void (^)(TranslateResult * _Nullable, NSError * _Nullable))completion {
     if (!text.length) {
-        completion(nil, kError(TranslateErrorTypeParamError, @"翻译的文本为空"));
+        completion(nil, TranslateError(TranslateErrorTypeParam, @"翻译的文本为空", nil));
         return;
     }
     
@@ -428,7 +435,7 @@
 
 - (void)detect:(NSString *)text completion:(nonnull void (^)(Language, NSError * _Nullable))completion {
     if (!text.length) {
-        completion(Language_auto, kError(TranslateErrorTypeParamError, @"识别语言的文本为空"));
+        completion(Language_auto, TranslateError(TranslateErrorTypeParam, @"识别语言的文本为空", nil));
         return;
     }
     
@@ -447,19 +454,19 @@
             if ([from isKindOfClass:NSString.class] && from.length) {
                 completion([self languageEnumFromString:from], nil);
             }else {
-                completion(Language_auto, kError(TranslateErrorTypeUnsupportLanguage, nil));
+                completion(Language_auto, TranslateError(TranslateErrorTypeUnsupportLanguage, nil, nil));
             }
             return;
         }
-        completion(Language_auto, kError(TranslateErrorTypeAPIError, @"判断语言失败"));
+        completion(Language_auto, TranslateError(TranslateErrorTypeAPI, @"判断语言失败", nil));
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        completion(Language_auto, kError(TranslateErrorTypeNetworkError, @"判断语言失败"));
+        completion(Language_auto, TranslateError(TranslateErrorTypeNetwork, @"判断语言失败", nil));
     }];
 }
 
 - (void)audio:(NSString *)text from:(Language)from completion:(void (^)(NSString * _Nullable, NSError * _Nullable))completion {
     if (!text.length) {
-        completion(nil, kError(TranslateErrorTypeParamError, @"获取音频的文本为空"));
+        completion(nil, TranslateError(TranslateErrorTypeParam, @"获取音频的文本为空", nil));
         return;
     }
     
@@ -482,7 +489,7 @@
 
 - (void)ocr:(NSImage *)image from:(Language)from to:(Language)to completion:(void (^)(OCRResult * _Nullable, NSError * _Nullable))completion {
     if (!image) {
-        completion(nil, kError(TranslateErrorTypeParamError, @"图片为空"));
+        completion(nil, TranslateError(TranslateErrorTypeParam, @"图片为空", nil));
         return;
     }
     
@@ -541,16 +548,16 @@
                     return;
                 }
             }
-            completion(nil, kError(TranslateErrorTypeAPIError, @"识别图片文本失败"));
+            completion(nil, TranslateError(TranslateErrorTypeAPI, @"识别图片文本失败", nil));
         }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        completion(nil, kError(TranslateErrorTypeNetworkError, @"识别图片文本失败"));
+        completion(nil, TranslateError(TranslateErrorTypeNetwork, @"识别图片文本失败", nil));
     }];
 }
 
 - (void)ocrAndTranslate:(NSImage *)image from:(Language)from to:(Language)to ocrSuccess:(void (^)(OCRResult * _Nonnull, BOOL))ocrSuccess completion:(void (^)(OCRResult * _Nullable, TranslateResult * _Nullable, NSError * _Nullable))completion {
     if (!image) {
-        completion(nil, nil, kError(TranslateErrorTypeParamError, @"图片为空"));
+        completion(nil, nil, TranslateError(TranslateErrorTypeParam, @"图片为空", nil));
         return;
     }
 

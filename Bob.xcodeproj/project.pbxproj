@@ -46,7 +46,7 @@
 		C99EEBC62385799D00FEE666 /* TranslateError.m in Sources */ = {isa = PBXBuildFile; fileRef = C99EEB922385799D00FEE666 /* TranslateError.m */; };
 		C99EEBC72385799D00FEE666 /* TranslateResult.m in Sources */ = {isa = PBXBuildFile; fileRef = C99EEB932385799D00FEE666 /* TranslateResult.m */; };
 		C99EEBC82385799D00FEE666 /* BaiduTranslateResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = C99EEB942385799D00FEE666 /* BaiduTranslateResponse.m */; };
-		C99EEBC92385799D00FEE666 /* baidu-sign.js in Resources */ = {isa = PBXBuildFile; fileRef = C99EEB952385799D00FEE666 /* baidu-sign.js */; };
+		C99EEBC92385799D00FEE666 /* baidu-translate-sign.js in Resources */ = {isa = PBXBuildFile; fileRef = C99EEB952385799D00FEE666 /* baidu-translate-sign.js */; };
 		C99EEBCA2385799D00FEE666 /* TranslateLanguage.m in Sources */ = {isa = PBXBuildFile; fileRef = C99EEB962385799D00FEE666 /* TranslateLanguage.m */; };
 		C99EEBCB2385799D00FEE666 /* ImageButton.m in Sources */ = {isa = PBXBuildFile; fileRef = C99EEB9C2385799D00FEE666 /* ImageButton.m */; };
 		C99EEBCC2385799D00FEE666 /* NormalResultView.m in Sources */ = {isa = PBXBuildFile; fileRef = C99EEB9D2385799D00FEE666 /* NormalResultView.m */; };
@@ -171,7 +171,7 @@
 		C99EEB922385799D00FEE666 /* TranslateError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TranslateError.m; sourceTree = "<group>"; };
 		C99EEB932385799D00FEE666 /* TranslateResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TranslateResult.m; sourceTree = "<group>"; };
 		C99EEB942385799D00FEE666 /* BaiduTranslateResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaiduTranslateResponse.m; sourceTree = "<group>"; };
-		C99EEB952385799D00FEE666 /* baidu-sign.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = "baidu-sign.js"; sourceTree = "<group>"; };
+		C99EEB952385799D00FEE666 /* baidu-translate-sign.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = "baidu-translate-sign.js"; sourceTree = "<group>"; };
 		C99EEB962385799D00FEE666 /* TranslateLanguage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TranslateLanguage.m; sourceTree = "<group>"; };
 		C99EEB982385799D00FEE666 /* TranslateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TranslateViewController.h; sourceTree = "<group>"; };
 		C99EEB992385799D00FEE666 /* QueryView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QueryView.h; sourceTree = "<group>"; };
@@ -412,11 +412,11 @@
 		C99EEB8B2385799D00FEE666 /* Baidu */ = {
 			isa = PBXGroup;
 			children = (
-				C99EEB952385799D00FEE666 /* baidu-sign.js */,
 				C99EEB8D2385799D00FEE666 /* BaiduTranslate.h */,
 				C99EEB912385799D00FEE666 /* BaiduTranslate.m */,
 				C99EEB8E2385799D00FEE666 /* BaiduTranslateResponse.h */,
 				C99EEB942385799D00FEE666 /* BaiduTranslateResponse.m */,
+				C99EEB952385799D00FEE666 /* baidu-translate-sign.js */,
 			);
 			path = Baidu;
 			sourceTree = "<group>";
@@ -654,7 +654,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C99EEB222385796900FEE666 /* Assets.xcassets in Resources */,
-				C99EEBC92385799D00FEE666 /* baidu-sign.js in Resources */,
+				C99EEBC92385799D00FEE666 /* baidu-translate-sign.js in Resources */,
 				C99EEB252385796900FEE666 /* Main.storyboard in Resources */,
 				C98C17A6239E40AC00BD02DB /* GeneralViewController.xib in Resources */,
 				C98C17AB239E410300BD02DB /* AboutViewController.xib in Resources */,

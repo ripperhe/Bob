@@ -10,8 +10,6 @@
 #import "YoudaoTranslateResponse.h"
 #import "YoudaoOCRResponse.h"
 
-#define kError(type, msg) [TranslateError errorWithType:type message:msg]
-
 @interface YoudaoTranslate ()
 
 @property (nonatomic, strong) AFHTTPSessionManager *jsonSession;
@@ -169,7 +167,7 @@
 
 - (void)translate:(NSString *)text from:(Language)from to:(Language)to completion:(void (^)(TranslateResult * _Nullable result, NSError * _Nullable error))completion {
     if (!text.length) {
-        completion(nil, kError(TranslateErrorTypeParamError, @"翻译的文本为空"));
+        completion(nil, TranslateError(TranslateErrorTypeParam, @"翻译的文本为空", nil));
         return;
     }
     
@@ -303,19 +301,19 @@
                 }
             }else {
                 NSString *string = [NSString stringWithFormat:@"翻译失败，错误码 %@", response.errorCode];
-                completion(nil, kError(TranslateErrorTypeAPIError, string));
+                completion(nil, TranslateError(TranslateErrorTypeAPI, string, nil));
                 return;
             }
         }
-        completion(nil, kError(TranslateErrorTypeAPIError, @"翻译失败"));
+        completion(nil, TranslateError(TranslateErrorTypeAPI, @"翻译失败", nil));
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        completion(nil, kError(TranslateErrorTypeNetworkError, @"翻译失败"));
+        completion(nil, TranslateError(TranslateErrorTypeNetwork, @"翻译失败", nil));
     }];
 }
 
 - (void)detect:(NSString *)text completion:(void (^)(Language, NSError * _Nullable))completion {
     if (!text.length) {
-        completion(Language_auto, kError(TranslateErrorTypeParamError, @"识别语言的文本为空"));
+        completion(Language_auto, TranslateError(TranslateErrorTypeParam, @"识别语言的文本为空", nil));
         return;
     }
     
@@ -336,7 +334,7 @@
 
 - (void)audio:(NSString *)text from:(Language)from completion:(void (^)(NSString * _Nullable, NSError * _Nullable))completion {
     if (!text.length) {
-        completion(nil, kError(TranslateErrorTypeParamError, @"获取音频的文本为空"));
+        completion(nil, TranslateError(TranslateErrorTypeParam, @"获取音频的文本为空", nil));
         return;
     }
 
@@ -351,7 +349,7 @@
 
 - (void)ocr:(NSImage *)image from:(Language)from to:(Language)to completion:(void (^)(OCRResult * _Nullable result, NSError * _Nullable error))completion {
     if (!image) {
-        completion(nil, kError(TranslateErrorTypeParamError, @"图片为空"));
+        completion(nil, TranslateError(TranslateErrorTypeParam, @"图片为空", nil));
         return;
     }
 
@@ -390,15 +388,15 @@
                 }
             }
         }
-        completion(nil, kError(TranslateErrorTypeAPIError, @"图片翻译失败"));
+        completion(nil, TranslateError(TranslateErrorTypeAPI, @"图片翻译失败", nil));
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        completion(nil, kError(TranslateErrorTypeNetworkError, @"图片翻译失败"));
+        completion(nil, TranslateError(TranslateErrorTypeNetwork, @"图片翻译失败", nil));
     }];
 }
 
 - (void)ocrAndTranslate:(NSImage *)image from:(Language)from to:(Language)to ocrSuccess:(void (^)(OCRResult * _Nonnull, BOOL))ocrSuccess completion:(void (^)(OCRResult * _Nullable, TranslateResult * _Nullable, NSError * _Nullable))completion {
     if (!image) {
-        completion(nil, nil, kError(TranslateErrorTypeParamError, @"图片为空"));
+        completion(nil, nil, TranslateError(TranslateErrorTypeParam, @"图片为空", nil));
         return;
     }
 

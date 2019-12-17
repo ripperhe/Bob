@@ -10,20 +10,27 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+#define TranslateError(type, msg, req) [TranslateError errorWithType:type message:msg request:req]
+
+/// 报错时的请求信息
+extern NSString * const TranslateErrorRequestKey;
+
 typedef NS_ENUM(NSUInteger, TranslateErrorType) {
     /// 参数异常
-    TranslateErrorTypeParamError,
+    TranslateErrorTypeParam,
     /// 请求异常
-    TranslateErrorTypeNetworkError,
+    TranslateErrorTypeNetwork,
     /// 接口异常
-    TranslateErrorTypeAPIError,
+    TranslateErrorTypeAPI,
     /// 不支持的语言
     TranslateErrorTypeUnsupportLanguage,
 };
 
 @interface TranslateError : NSObject
 
-+ (NSError *)errorWithType:(TranslateErrorType)type message:(NSString * _Nullable)message;
++ (NSError *)errorWithType:(TranslateErrorType)type
+                   message:(NSString * _Nullable)message
+                   request:(id _Nullable)request;
 
 @end
 

@@ -8,18 +8,22 @@
 
 #import "TranslateError.h"
 
+NSString * const TranslateErrorRequestKey = @"TranslateErrorRequestKey";
+
 @implementation TranslateError
 
-+ (NSError *)errorWithType:(TranslateErrorType)type message:(NSString * _Nullable)message {
++ (NSError *)errorWithType:(TranslateErrorType)type
+                   message:(NSString * _Nullable)message
+                   request:(id _Nullable)request {
     NSString *errorString = nil;
     switch (type) {
-        case TranslateErrorTypeParamError:
+        case TranslateErrorTypeParam:
             errorString = @"参数异常";
             break;
-        case TranslateErrorTypeNetworkError:
+        case TranslateErrorTypeNetwork:
             errorString = @"请求异常";
             break;
-        case TranslateErrorTypeAPIError:
+        case TranslateErrorTypeAPI:
             errorString = @"接口异常";
             break;
         case TranslateErrorTypeUnsupportLanguage:
@@ -38,7 +42,12 @@
     if (!errorString.length) {
         errorString = @"未知错误";
     }
-    return [NSError errorWithDomain:@"com.ripperhe.Bob" code:type userInfo:@{NSLocalizedDescriptionKey:errorString}];
+    NSMutableDictionary *userInfo = [NSMutableDictionary dictionary];
+    [userInfo setObject:errorString forKey:NSLocalizedDescriptionKey];
+    if (request) {
+        [userInfo setObject:request forKey:TranslateErrorRequestKey];
+    }
+    return [NSError errorWithDomain:@"com.ripperhe.Bob" code:type userInfo:userInfo.copy];
 }
 
 @end
