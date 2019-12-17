@@ -360,6 +360,11 @@ return; \
     mm_weakify(self)
     self.monitor = [MMEventMonitor globalMonitorWithEvent:NSEventMaskLeftMouseDown | NSEventMaskRightMouseDown handler:^(NSEvent * _Nonnull event) {
         mm_strongify(self);
+        if (NSPointInRect([NSEvent mouseLocation], TranslateWindowController.shared.window.frame)) {
+            // TODO: 这个问题偶然出现，原因暂未找到
+            MMLogVerbose(@"❌ 鼠标在翻译 window 内部点击依旧触发了全局事件");
+            return;
+        }
         if (!Configuration.shared.isPin) {
             // 关闭视图
             [TranslateWindowController.shared close];
