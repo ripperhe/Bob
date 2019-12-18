@@ -52,6 +52,7 @@
 
         AFHTTPRequestSerializer *requestSerializer = [AFHTTPRequestSerializer serializer];
         [requestSerializer setValue:@"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.120 Safari/537.36" forHTTPHeaderField:@"User-Agent"];
+        [requestSerializer setValue:@"BAIDUID=0F8E1A72A51EE47B7CA0A81711749C00:FG=1;" forHTTPHeaderField:@"Cookie"];
         htmlSession.requestSerializer = requestSerializer;
         
         AFHTTPResponseSerializer *responseSerializer = [AFHTTPResponseSerializer serializer];
@@ -69,6 +70,7 @@
 
         AFHTTPRequestSerializer *requestSerializer = [AFHTTPRequestSerializer serializer];
         [requestSerializer setValue:@"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.120 Safari/537.36" forHTTPHeaderField:@"User-Agent"];
+        [requestSerializer setValue:@"BAIDUID=0F8E1A72A51EE47B7CA0A81711749C00:FG=1;" forHTTPHeaderField:@"Cookie"];
         jsonSession.requestSerializer = requestSerializer;
         
         AFJSONResponseSerializer *responseSerializer = [AFJSONResponseSerializer serializer];
