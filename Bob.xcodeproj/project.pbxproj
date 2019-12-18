@@ -19,6 +19,8 @@
 		C91DF6B723A390A7009CB158 /* YoudaoOCRResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = C91DF6B623A390A7009CB158 /* YoudaoOCRResponse.m */; };
 		C959D33A238809B800DD8808 /* OCRResult.m in Sources */ = {isa = PBXBuildFile; fileRef = C959D339238809B800DD8808 /* OCRResult.m */; };
 		C9676F2B23A0908F007DD023 /* NSPasteboard+MM.m in Sources */ = {isa = PBXBuildFile; fileRef = C9676F2A23A0908F007DD023 /* NSPasteboard+MM.m */; };
+		C9889F6123AA0FDA00C2D127 /* GoogleTranslate.m in Sources */ = {isa = PBXBuildFile; fileRef = C9889F6023AA0FDA00C2D127 /* GoogleTranslate.m */; };
+		C9889F6423AA25C800C2D127 /* google-translate-sign.js in Resources */ = {isa = PBXBuildFile; fileRef = C9889F6323AA25C800C2D127 /* google-translate-sign.js */; };
 		C98C17A1239E3F4A00BD02DB /* PreferencesWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = C98C17A0239E3F4A00BD02DB /* PreferencesWindowController.m */; };
 		C98C17A5239E40AC00BD02DB /* GeneralViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C98C17A3239E40AC00BD02DB /* GeneralViewController.m */; };
 		C98C17A6239E40AC00BD02DB /* GeneralViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C98C17A4239E40AC00BD02DB /* GeneralViewController.xib */; };
@@ -118,6 +120,9 @@
 		C959D339238809B800DD8808 /* OCRResult.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OCRResult.m; sourceTree = "<group>"; };
 		C9676F2923A0908F007DD023 /* NSPasteboard+MM.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSPasteboard+MM.h"; sourceTree = "<group>"; };
 		C9676F2A23A0908F007DD023 /* NSPasteboard+MM.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSPasteboard+MM.m"; sourceTree = "<group>"; };
+		C9889F5F23AA0FDA00C2D127 /* GoogleTranslate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GoogleTranslate.h; sourceTree = "<group>"; };
+		C9889F6023AA0FDA00C2D127 /* GoogleTranslate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GoogleTranslate.m; sourceTree = "<group>"; };
+		C9889F6323AA25C800C2D127 /* google-translate-sign.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = "google-translate-sign.js"; sourceTree = "<group>"; };
 		C98C179F239E3F4A00BD02DB /* PreferencesWindowController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PreferencesWindowController.h; sourceTree = "<group>"; };
 		C98C17A0239E3F4A00BD02DB /* PreferencesWindowController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PreferencesWindowController.m; sourceTree = "<group>"; };
 		C98C17A2239E40AC00BD02DB /* GeneralViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GeneralViewController.h; sourceTree = "<group>"; };
@@ -282,6 +287,16 @@
 				C90BE319239F38EC00ADE88B /* BobHelper.entitlements */,
 			);
 			path = BobHelper;
+			sourceTree = "<group>";
+		};
+		C9889F5E23AA0FC700C2D127 /* Google */ = {
+			isa = PBXGroup;
+			children = (
+				C9889F5F23AA0FDA00C2D127 /* GoogleTranslate.h */,
+				C9889F6023AA0FDA00C2D127 /* GoogleTranslate.m */,
+				C9889F6323AA25C800C2D127 /* google-translate-sign.js */,
+			);
+			path = Google;
 			sourceTree = "<group>";
 		};
 		C98C179A239E1B7400BD02DB /* PerferenceWindow */ = {
@@ -527,6 +542,7 @@
 				C9F7E87723A212050025ADF6 /* Common */,
 				C99EEB8B2385799D00FEE666 /* Baidu */,
 				C9F7E87823A215270025ADF6 /* Youdao */,
+				C9889F5E23AA0FC700C2D127 /* Google */,
 			);
 			path = Translate;
 			sourceTree = "<group>";
@@ -658,6 +674,7 @@
 				C99EEB252385796900FEE666 /* Main.storyboard in Resources */,
 				C98C17A6239E40AC00BD02DB /* GeneralViewController.xib in Resources */,
 				C98C17AB239E410300BD02DB /* AboutViewController.xib in Resources */,
+				C9889F6423AA25C800C2D127 /* google-translate-sign.js in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -765,6 +782,7 @@
 				C99EEBD72385799D00FEE666 /* MMMake.m in Sources */,
 				C9D679CC23A3403F0073957C /* NSDictionary+MM.m in Sources */,
 				C91DF6B323A375E5009CB158 /* YoudaoTranslateResponse.m in Sources */,
+				C9889F6123AA0FDA00C2D127 /* GoogleTranslate.m in Sources */,
 				C99EEBD22385799D00FEE666 /* ResultView.m in Sources */,
 				C99EEBDC2385799D00FEE666 /* NSColor+MM.m in Sources */,
 				C99EEBD02385799D00FEE666 /* TranslateWindowController.m in Sources */,

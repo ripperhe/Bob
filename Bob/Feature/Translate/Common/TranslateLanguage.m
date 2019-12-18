@@ -127,6 +127,8 @@ NSString * _Nullable LanguageDescFromEnum(Language lang) {
             @(Language_yi): @"意第绪语",
             @(Language_yo): @"约鲁巴语",
             @(Language_zu): @"祖鲁语",
+            @(Language_hmn): @"苗语",
+            @(Language_sr): @"塞尔维亚语",
         };
     });
     return [_descDict objectForKey:@(lang)];

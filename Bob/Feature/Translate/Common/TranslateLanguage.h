@@ -11,6 +11,8 @@
 /**
  * 语言代码
  * https://zh.wikipedia.org/wiki/ISO_639-1
+ * https://zh.wikipedia.org/wiki/ISO_639-2
+ * https://zh.wikipedia.org/wiki/ISO_639-3
  * http://www.lingoes.cn/zh/translator/langcode.htm
  * https://www.iana.org/assignments/language-tags/language-tags.xhtml
  */
@@ -247,6 +249,10 @@ typedef NS_ENUM(NSUInteger, Language) {
     Language_yo,
     /// 祖鲁语
     Language_zu,
+    /// 苗语
+    Language_hmn,
+    /// 塞尔维亚语
+    Language_sr,
 };
 
 /// 根据枚举获取语言描述
