@@ -83,7 +83,10 @@
 #pragma mark -
 
 - (void)sendGetTokenAndGtkRequestWithCompletion:(void (^)(NSString *token, NSString *gtk, NSError *error))completion {
-    [self.htmlSession GET:kBaiduRootPage parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    NSString *url = kBaiduRootPage;
+    NSMutableDictionary *reqDict = [NSMutableDictionary dictionaryWithObject:url forKey:TranslateErrorRequestURLKey];
+    
+    [self.htmlSession GET:url parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         __block NSString *tokenResult = nil;
         __block NSString *gtkResult = nil;
         NSString *string = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
@@ -115,10 +118,12 @@
         if (tokenResult.length && gtkResult.length) {
             completion(tokenResult, gtkResult, nil);
         }else {
-            completion(nil, nil, TranslateError(TranslateErrorTypeAPI, @"获取 token 失败", nil));
+            [reqDict setObject:responseObject ?: [NSNull null] forKey:TranslateErrorRequestResponseKey];
+            completion(nil, nil, TranslateError(TranslateErrorTypeAPI, @"获取 token 失败", reqDict));
         }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        completion(nil, nil, TranslateError(TranslateErrorTypeNetwork, @"获取 token 失败", nil));
+        [reqDict setObject:error forKey:TranslateErrorRequestErrorKey];
+        completion(nil, nil, TranslateError(TranslateErrorTypeNetwork, @"获取 token 失败", reqDict));
     } ];
 }
 
@@ -126,7 +131,8 @@
     // 获取sign
     JSValue *value = [self.jsFunction callWithArguments:@[text, self.gtk]];
     NSString *sign = [value toString];
-
+    
+    NSString *url = [kBaiduRootPage stringByAppendingString:@"/v2transapi"];
     NSDictionary *params = @{
         @"from": [self languageStringFromEnum:from],
         @"to": [self languageStringFromEnum:to],
@@ -135,10 +141,12 @@
         @"sign": sign,
         @"token": self.token,
     };
+    NSMutableDictionary *reqDict = [NSMutableDictionary dictionaryWithObjectsAndKeys:url, TranslateErrorRequestURLKey, params, TranslateErrorRequestParamKey, nil];
     
     mm_weakify(self)
-    [self.jsonSession POST:[kBaiduRootPage stringByAppendingString:@"/v2transapi"] parameters:params progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    [self.jsonSession POST:url parameters:params progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         mm_strongify(self)
+        NSString *message = nil;
         if (responseObject) {
             BaiduTranslateResponse *response = [BaiduTranslateResponse mj_objectWithKeyValues:responseObject];
             if (response) {
@@ -319,20 +327,20 @@
                         self.token = nil;
                         self.gtk = nil;
                         [self translate:text from:from to:to completion:completion];
+                        return;
                     }else {
-                        completion(nil, TranslateError(TranslateErrorTypeAPI, @"百度翻译获取 token 失败", nil));
+                        message = @"百度翻译获取 token 失败";
                     }
-                    return;
                 }else {
-                    NSString *string = [NSString stringWithFormat:@"翻译失败，错误码 %zd", response.error];
-                    completion(nil, TranslateError(TranslateErrorTypeAPI, string, nil));
-                    return;
+                    message = [NSString stringWithFormat:@"翻译失败，错误码 %zd", response.error];
                 }
             }
         }
-        completion(nil, TranslateError(TranslateErrorTypeAPI, @"翻译失败", nil));
+        [reqDict setObject:responseObject ?: [NSNull null] forKey:TranslateErrorRequestResponseKey];
+        completion(nil, TranslateError(TranslateErrorTypeAPI, (message ?: @"翻译失败"), reqDict));
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        completion(nil, TranslateError(TranslateErrorTypeNetwork, @"翻译失败", nil));
+        [reqDict setObject:error forKey:TranslateErrorRequestErrorKey];
+        completion(nil, TranslateError(TranslateErrorTypeNetwork, @"翻译失败", reqDict));
     }];
 }
 
@@ -416,9 +424,11 @@
     
     if (!self.token || !self.gtk) {
         // 获取 token
+        MMLogInfo(@"百度翻译请求 token");
         mm_weakify(self)
         [self sendGetTokenAndGtkRequestWithCompletion:^(NSString *token, NSString *gtk, NSError *error) {
             mm_strongify(self)
+            MMLogInfo(@"百度翻译回调 token: %@, gtk: %@", token, gtk);
             if (error) {
                 completion(nil, error);
                 return;
@@ -445,22 +455,28 @@
         queryString = [queryString substringToIndex:73];
     }
     
+    NSString *url = [kBaiduRootPage stringByAppendingString:@"/langdetect"];
+    NSDictionary *params = @{@"query": queryString};
+    NSMutableDictionary *reqDict = [NSMutableDictionary dictionaryWithObjectsAndKeys:url, TranslateErrorRequestURLKey, params, TranslateErrorRequestParamKey, nil];
+    
     mm_weakify(self);
     [self.jsonSession POST:[kBaiduRootPage stringByAppendingString:@"/langdetect"] parameters:@{@"query":queryString} progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         mm_strongify(self);
+        [reqDict setObject:responseObject ?: [NSNull null] forKey:TranslateErrorRequestResponseKey];
         if (responseObject && [responseObject isKindOfClass:[NSDictionary class]]) {
             NSDictionary *jsonResult = responseObject;
             NSString *from = [jsonResult objectForKey:@"lan"];
             if ([from isKindOfClass:NSString.class] && from.length) {
                 completion([self languageEnumFromString:from], nil);
             }else {
-                completion(Language_auto, TranslateError(TranslateErrorTypeUnsupportLanguage, nil, nil));
+                completion(Language_auto, TranslateError(TranslateErrorTypeUnsupportLanguage, nil, reqDict));
             }
             return;
         }
-        completion(Language_auto, TranslateError(TranslateErrorTypeAPI, @"判断语言失败", nil));
+        completion(Language_auto, TranslateError(TranslateErrorTypeAPI, @"判断语言失败", reqDict));
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        completion(Language_auto, TranslateError(TranslateErrorTypeNetwork, @"判断语言失败", nil));
+        [reqDict setObject:error forKey:TranslateErrorRequestErrorKey];
+        completion(Language_auto, TranslateError(TranslateErrorTypeNetwork, @"判断语言失败", reqDict));
     }];
 }
 
@@ -502,14 +518,16 @@
         toLang = [self languageStringFromEnum:to];
     }
     
-    NSDictionary *para = @{
+    NSString *url = [kBaiduRootPage stringByAppendingPathComponent:@"/getocr"];
+    NSDictionary *params = @{
         @"image": data,
         @"from": fromLang,
         @"to": toLang
     };
+    NSMutableDictionary *reqDict = [NSMutableDictionary dictionaryWithObjectsAndKeys:url, TranslateErrorRequestURLKey, params, TranslateErrorRequestParamKey, nil];
     
     mm_weakify(self);
-    [self.jsonSession POST:@"https://fanyi.baidu.com/getocr" parameters:para constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
+    [self.jsonSession POST:url parameters:params constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
         [formData appendPartWithFileData:data name:@"image" fileName:@"blob" mimeType:@"image/png"];
     } progress:^(NSProgress * _Nonnull uploadProgress) {
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
@@ -548,10 +566,12 @@
                     return;
                 }
             }
-            completion(nil, TranslateError(TranslateErrorTypeAPI, @"识别图片文本失败", nil));
         }
+        [reqDict setObject:responseObject ?: [NSNull null] forKey:TranslateErrorRequestResponseKey];
+        completion(nil, TranslateError(TranslateErrorTypeAPI, @"识别图片文本失败", reqDict));
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        completion(nil, TranslateError(TranslateErrorTypeNetwork, @"识别图片文本失败", nil));
+        [reqDict setObject:error forKey:TranslateErrorRequestErrorKey];
+        completion(nil, TranslateError(TranslateErrorTypeNetwork, @"识别图片文本失败", reqDict));
     }];
 }
 

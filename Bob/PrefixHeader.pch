@@ -11,8 +11,8 @@
 #import <ReactiveObjC/ReactiveObjC.h>
 #import <AFNetworking/AFNetworking.h>
 
-#import "MMMake.h"
 #import "MMMacro.h"
+#import "MMMake.h"
 #import "NSColor+MM.h"
 #import "NSAttributedString+MM.h"
 #import "NSMutableAttributedString+MM.h"

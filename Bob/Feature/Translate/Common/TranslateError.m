@@ -9,6 +9,10 @@
 #import "TranslateError.h"
 
 NSString * const TranslateErrorRequestKey = @"TranslateErrorRequestKey";
+NSString * const TranslateErrorRequestURLKey = @"URL";
+NSString * const TranslateErrorRequestParamKey = @"Param";
+NSString * const TranslateErrorRequestResponseKey = @"Response";
+NSString * const TranslateErrorRequestErrorKey = @"Error";
 
 @implementation TranslateError
 

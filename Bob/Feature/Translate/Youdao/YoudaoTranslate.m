@@ -177,9 +177,12 @@
         @"to": [self languageStringFromEnum:to],
         @"q": text,
     };
+    NSMutableDictionary *reqDict = [NSMutableDictionary dictionaryWithObjectsAndKeys:url, TranslateErrorRequestURLKey, params, TranslateErrorRequestParamKey, nil];
+    
     mm_weakify(self);
     [self.jsonSession POST:url parameters:params progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         mm_strongify(self);
+        NSString *message = nil;
         if (responseObject) {
             YoudaoTranslateResponse *response = [YoudaoTranslateResponse mj_objectWithKeyValues:responseObject];
             if (response && response.errorCode.integerValue == 0) {
@@ -300,14 +303,14 @@
                     return;
                 }
             }else {
-                NSString *string = [NSString stringWithFormat:@"翻译失败，错误码 %@", response.errorCode];
-                completion(nil, TranslateError(TranslateErrorTypeAPI, string, nil));
-                return;
+                message = [NSString stringWithFormat:@"翻译失败，错误码 %@", response.errorCode];
             }
         }
-        completion(nil, TranslateError(TranslateErrorTypeAPI, @"翻译失败", nil));
+        [reqDict setObject:responseObject ?: [NSNull null] forKey:TranslateErrorRequestResponseKey];
+        completion(nil, TranslateError(TranslateErrorTypeAPI, (message ?: @"翻译失败"), reqDict));
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        completion(nil, TranslateError(TranslateErrorTypeNetwork, @"翻译失败", nil));
+        [reqDict setObject:error forKey:TranslateErrorRequestErrorKey];
+        completion(nil, TranslateError(TranslateErrorTypeNetwork, @"翻译失败", reqDict));
     }];
 }
 
@@ -362,6 +365,8 @@
     NSDictionary *params = @{
         @"imgBase": encodedImageStr,
     };
+    NSMutableDictionary *reqDict = [NSMutableDictionary dictionaryWithObjectsAndKeys:url, TranslateErrorRequestURLKey, params, TranslateErrorRequestParamKey, nil];
+    
     mm_weakify(self);
     [self.jsonSession POST:url parameters:params progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         mm_strongify(self);
@@ -388,9 +393,11 @@
                 }
             }
         }
-        completion(nil, TranslateError(TranslateErrorTypeAPI, @"图片翻译失败", nil));
+        [reqDict setObject:responseObject ?: [NSNull null] forKey:TranslateErrorRequestResponseKey];
+        completion(nil, TranslateError(TranslateErrorTypeAPI, @"图片翻译失败", reqDict));
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        completion(nil, TranslateError(TranslateErrorTypeNetwork, @"图片翻译失败", nil));
+        [reqDict setObject:error forKey:TranslateErrorRequestErrorKey];
+        completion(nil, TranslateError(TranslateErrorTypeNetwork, @"图片翻译失败", reqDict));
     }];
 }
 

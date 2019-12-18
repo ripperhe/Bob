@@ -20,10 +20,15 @@
 
 #define kMargin 12.0
 #define kQueryMinHeight 120.0
-#define increaseSeed NSInteger seed = ++self.seed;
+#define increaseSeed \
+NSUInteger seed = ++self.seed; \
+if (seed == NSUIntegerMax) { \
+    seed = 0; \
+    self.seed = 0; \
+}
 #define checkSeed \
 if (seed != self.seed) { \
-NSLog(@"过滤失效的回调 %zd", seed); \
+MMLogInfo(@"过滤失效的网络回调 %zd", seed); \
 return; \
 }
 
@@ -36,7 +41,7 @@ return; \
 @property (nonatomic, strong) AVPlayer *player;
 @property (nonatomic, strong) TranslateResult *currentResult;
 @property (nonatomic, strong) MMEventMonitor *monitor;
-@property (nonatomic, assign) NSInteger seed;
+@property (nonatomic, assign) NSUInteger seed;
 
 @property (nonatomic, strong) NSButton *pinButton;
 @property (nonatomic, strong) NSButton *foldButton;
@@ -386,21 +391,6 @@ return; \
     [self resetWithState:stateString query:nil];
 }
 
-- (void)refreshWithTranslateResult:(TranslateResult *)result error:(NSError *)error {
-    if (error) {
-        [self.resultView refreshWithStateString:error.localizedDescription];
-    }else {
-        self.currentResult = result;
-        [self.resultView refreshWithResult:result];
-    }
-    mm_weakify(self)
-    dispatch_async(dispatch_get_main_queue(), ^{
-        mm_strongify(self);
-        [self moveWindowToScreen];
-        [self resetQueryViewHeightConstraint];
-    });
-}
-
 - (void)translateText:(NSString *)text {
     self.isTranslating = YES;
     [NSPasteboard mm_generalPasteboardSetString:text];
@@ -439,9 +429,26 @@ return; \
         mm_strongify(self)
         checkSeed
         self.isTranslating = NO;
-        NSLog(@"识别到的文本:\n%@", ocrResult.texts);
+        NSLog(@"识别到的文本:\n%@", ocrResult.mergedText);
         [self refreshWithTranslateResult:result error:error];
     }];
+}
+
+- (void)refreshWithTranslateResult:(TranslateResult *)result error:(NSError *)error {
+    if (error) {
+        [self.resultView refreshWithStateString:error.localizedDescription];
+        NSString *errorInfo = [NSString stringWithFormat:@"%@\n%@", error.localizedDescription, [error.userInfo objectForKey:TranslateErrorRequestKey]];
+        MMLogInfo(@"%@", errorInfo);
+    }else {
+        self.currentResult = result;
+        [self.resultView refreshWithResult:result];
+    }
+    mm_weakify(self)
+    dispatch_async(dispatch_get_main_queue(), ^{
+        mm_strongify(self);
+        [self moveWindowToScreen];
+        [self resetQueryViewHeightConstraint];
+    });
 }
 
 - (void)retry {
