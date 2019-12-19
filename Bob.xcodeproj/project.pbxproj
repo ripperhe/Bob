@@ -14,6 +14,7 @@
 		C90BE318239F38EC00ADE88B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C90BE317239F38EC00ADE88B /* main.m */; };
 		C90C77852391188400A65E42 /* SnipFocusView.m in Sources */ = {isa = PBXBuildFile; fileRef = C90C77842391188400A65E42 /* SnipFocusView.m */; };
 		C910457023A3AF44001D5211 /* Translate.m in Sources */ = {isa = PBXBuildFile; fileRef = C910456F23A3AF44001D5211 /* Translate.m */; };
+		C91C153823AB8B0600CCAEC0 /* MMTool.m in Sources */ = {isa = PBXBuildFile; fileRef = C91C153723AB8B0600CCAEC0 /* MMTool.m */; };
 		C91DF6B023A35E07009CB158 /* MMOrderedDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = C91DF6AE23A35E07009CB158 /* MMOrderedDictionary.m */; };
 		C91DF6B323A375E5009CB158 /* YoudaoTranslateResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = C91DF6B223A375E5009CB158 /* YoudaoTranslateResponse.m */; };
 		C91DF6B723A390A7009CB158 /* YoudaoOCRResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = C91DF6B623A390A7009CB158 /* YoudaoOCRResponse.m */; };
@@ -110,6 +111,8 @@
 		C90C77842391188400A65E42 /* SnipFocusView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SnipFocusView.m; sourceTree = "<group>"; };
 		C910456E23A3AF44001D5211 /* Translate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Translate.h; sourceTree = "<group>"; };
 		C910456F23A3AF44001D5211 /* Translate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Translate.m; sourceTree = "<group>"; };
+		C91C153623AB8B0600CCAEC0 /* MMTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MMTool.h; sourceTree = "<group>"; };
+		C91C153723AB8B0600CCAEC0 /* MMTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MMTool.m; sourceTree = "<group>"; };
 		C91DF6AE23A35E07009CB158 /* MMOrderedDictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMOrderedDictionary.m; sourceTree = "<group>"; };
 		C91DF6AF23A35E07009CB158 /* MMOrderedDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMOrderedDictionary.h; sourceTree = "<group>"; };
 		C91DF6B123A375E5009CB158 /* YoudaoTranslateResponse.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YoudaoTranslateResponse.h; sourceTree = "<group>"; };
@@ -485,6 +488,8 @@
 			isa = PBXGroup;
 			children = (
 				C99EEBBE2385799D00FEE666 /* MMMacro.h */,
+				C91C153623AB8B0600CCAEC0 /* MMTool.h */,
+				C91C153723AB8B0600CCAEC0 /* MMTool.m */,
 				C99EEBBB2385799D00FEE666 /* MMMake.h */,
 				C99EEBB22385799D00FEE666 /* MMMake.m */,
 				C99EEBB42385799D00FEE666 /* NSColor+MM.h */,
@@ -752,6 +757,7 @@
 				C99EEBD92385799D00FEE666 /* NSUserDefaults+MM.m in Sources */,
 				C99EEBCB2385799D00FEE666 /* ImageButton.m in Sources */,
 				C99EEBC72385799D00FEE666 /* TranslateResult.m in Sources */,
+				C91C153823AB8B0600CCAEC0 /* MMTool.m in Sources */,
 				C99EEBCF2385799D00FEE666 /* TranslateWindow.m in Sources */,
 				C9C3BDD3238EA0EF00D5F1C1 /* Snip.m in Sources */,
 				C9C3BDCD238E78BA00D5F1C1 /* SnipViewController.m in Sources */,

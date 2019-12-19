@@ -160,7 +160,7 @@ static Snip *_instance;
         // 在当前的 main window
         [self.currentMainWindowController.snipViewController showAndUpdateFocusView];
     }else {
-        // 不再当前 main window
+        // 不在当前 main window
         if (self.currentMainWindowController.snipViewController.isStart) {
             // 如果已经开始拖拽
             [self.currentMainWindowController.snipViewController showAndUpdateFocusView];
