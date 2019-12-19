@@ -292,7 +292,7 @@
                 }else {
                     make.top.offset(kMargin);
                 }
-                make.left.offset(kMargin);
+                make.left.offset(kMargin + 2);
                 make.right.lessThanOrEqualTo(self).offset(-kMargin);
             }];
         }];

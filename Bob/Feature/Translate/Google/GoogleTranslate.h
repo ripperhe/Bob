@@ -19,6 +19,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface GoogleTranslate : Translate
 
+/// 是否使用国内谷歌翻译
 @property (nonatomic, assign) BOOL isCN;
 
 @end

@@ -9,6 +9,7 @@
 #import "TranslateViewController.h"
 #import "BaiduTranslate.h"
 #import "YoudaoTranslate.h"
+#import "GoogleTranslate.h"
 #import "Selection.h"
 #import "PopUpButton.h"
 #import "QueryView.h"
@@ -203,7 +204,8 @@ return; \
         [button mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.equalTo(self.queryView.mas_bottom).offset(12);
             make.left.offset(kMargin);
-            make.width.mas_equalTo(100);
+            make.width.mas_greaterThanOrEqualTo(100);
+            make.width.mas_lessThanOrEqualTo(200);
             make.height.mas_equalTo(25);
         }];
         [button updateMenuWithTitleArray:[self.translateArray mm_map:^id _Nullable(Translate * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
@@ -347,6 +349,10 @@ return; \
     self.translateArray = @[
         [BaiduTranslate new],
         [YoudaoTranslate new],
+        [GoogleTranslate mm_anyMake:^(GoogleTranslate *  _Nonnull obj) {
+            obj.isCN = YES;
+        }],
+        [GoogleTranslate new],
     ];
     self.translate = [self.translateArray mm_find:^BOOL(Translate * _Nonnull obj, NSUInteger idx) {
         if ([obj.identifier isEqualToString:Configuration.shared.translateIdentifier]) {
@@ -501,6 +507,7 @@ return; \
 }
 
 - (void)playAudioWithURL:(NSString *)url {
+    MMLogInfo(@"播放音频 %@", url);
     [self.player pause];
     [self.player replaceCurrentItemWithPlayerItem:[AVPlayerItem playerItemWithURL:[NSURL URLWithString:url]]];
     [self.player play];
