@@ -31,11 +31,12 @@
     return newArray.copy;
 }
 
-- (id)mm_find:(BOOL (^)(id _Nonnull, NSUInteger))block {
+- (id)mm_find:(id (^)(id _Nonnull, NSUInteger))block {
     __block id target = nil;
     [self enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        if (block(obj, idx)) {
-            target = obj;
+        id result = block(obj, idx);
+        if (result) {
+            target = result;
             *stop = YES;
         }
     }];

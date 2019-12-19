@@ -18,8 +18,8 @@ NS_ASSUME_NONNULL_BEGIN
 /// 遍历过滤元素并组成新数组
 - (NSArray<ObjectType> *)mm_where:(BOOL (^)(ObjectType obj, NSUInteger idx, BOOL *stop))block;
 
-/// 遍历数组查找某一个元素，找到之后返回元素，并自动停止遍历
-- (ObjectType)mm_find:(BOOL (^)(ObjectType obj, NSUInteger idx))block;
+/// 遍历数组查找某一个元素，找到之后返回元素（可以进行处理），并自动停止遍历；没有找到则返回 nil
+- (id)mm_find:(id _Nullable (^)(ObjectType obj, NSUInteger idx))block;
 
 /// 遍历处理元素并将返回的数组组成一个大数组
 - (NSArray *)mm_combine:(NSArray * _Nullable (^)(ObjectType obj, NSUInteger idx, BOOL *stop))block;

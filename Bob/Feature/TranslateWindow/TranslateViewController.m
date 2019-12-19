@@ -37,7 +37,6 @@ return; \
 
 @property (nonatomic, strong) NSArray<Translate *> *translateArray;
 @property (nonatomic, strong) Translate *translate;
-@property (nonatomic, assign) NSInteger translateIdx;
 @property (nonatomic, assign) BOOL isTranslating;
 @property (nonatomic, strong) AVPlayer *player;
 @property (nonatomic, strong) TranslateResult *currentResult;
@@ -211,11 +210,12 @@ return; \
         [button updateMenuWithTitleArray:[self.translateArray mm_map:^id _Nullable(Translate * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
             return obj.name;
         }]];
-        [button updateWithIndex:self.translateIdx];
+        [button updateWithIndex:[[self.translateArray mm_find:^id _Nullable(Translate * _Nonnull obj, NSUInteger idx) {
+            return obj == self.translate ? @(idx): nil;
+        }] integerValue]];
         mm_weakify(self);
         [button setMenuItemSeletedBlock:^(NSInteger index, NSString *title) {
             mm_strongify(self);
-            self.translateIdx = index;
             Translate *t = [self.translateArray objectAtIndex:index];
             if (t != self.translate) {
                 Configuration.shared.translateIdentifier = t.identifier;
@@ -354,12 +354,8 @@ return; \
         }],
         [GoogleTranslate new],
     ];
-    self.translate = [self.translateArray mm_find:^BOOL(Translate * _Nonnull obj, NSUInteger idx) {
-        if ([obj.identifier isEqualToString:Configuration.shared.translateIdentifier]) {
-            self.translateIdx = idx;
-            return YES;
-        }
-        return NO;
+    self.translate = [self.translateArray mm_find:^id(Translate * _Nonnull obj, NSUInteger idx) {
+        return [obj.identifier isEqualToString:Configuration.shared.translateIdentifier] ? obj : nil;
     }];
     if (!self.translate) {
         self.translate = self.translateArray.firstObject;

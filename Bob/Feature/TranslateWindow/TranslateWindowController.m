@@ -71,9 +71,9 @@ static TranslateWindowController *_instance;
 - (void)showAtMouseLocation {
     self.hadShow = YES;
     NSPoint mouseLocation = [NSEvent mouseLocation];
-    NSScreen *screen = [NSScreen.screens mm_find:^BOOL(NSScreen * _Nonnull obj, NSUInteger idx) {
+    NSScreen *screen = [NSScreen.screens mm_find:^id(NSScreen * _Nonnull obj, NSUInteger idx) {
         // 找到鼠标所在屏幕
-        return NSPointInRect(mouseLocation, obj.frame);
+        return NSPointInRect(mouseLocation, obj.frame) ? obj : nil;
     }];
     if (!screen) return;
     

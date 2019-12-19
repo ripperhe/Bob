@@ -166,8 +166,8 @@ static Snip *_instance;
             [self.currentMainWindowController.snipViewController showAndUpdateFocusView];
         }else {
             // 切换 main window
-            SnipWindowController *newMain = [self.windowControllers mm_find:^BOOL(SnipWindowController * _Nonnull obj, NSUInteger idx) {
-                return NSPointInRect(mouseLocation, obj.window.frame);
+            SnipWindowController *newMain = [self.windowControllers mm_find:^id(SnipWindowController * _Nonnull obj, NSUInteger idx) {
+                return NSPointInRect(mouseLocation, obj.window.frame) ? obj : nil;
             }];
             if (newMain) {
                 [self.currentMainWindowController.snipViewController hiddenFocusView];
