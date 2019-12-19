@@ -15,6 +15,7 @@ userInfo:nil]
 
 @interface Translate ()
 
+@property (nonatomic, strong) MMOrderedDictionary *langDict;
 @property (nonatomic, strong) NSArray *languages;
 @property (nonatomic, strong) NSDictionary<NSNumber *, NSString *> *langStringFromEnumDict;
 @property (nonatomic, strong) NSDictionary<NSString *, NSNumber *> *langEnumFromStringDict;
@@ -24,30 +25,47 @@ userInfo:nil]
 
 @implementation Translate
 
-- (instancetype)init {
-    self = [super init];
-    if (self) {
-        MMOrderedDictionary *langDict = [self supportLanguagesDictionary];
-        self.languages = [langDict sortedKeys];
-        self.langStringFromEnumDict = [langDict keysAndObjects];
-        self.langEnumFromStringDict = [[langDict keysAndObjects] mm_reverseKeysAndObjectsDictionary];
-        self.langIndexDict = [self.languages mm_objectToIndexDictionary];
+- (MMOrderedDictionary *)langDict {
+    if (!_langDict) {
+        _langDict = [self supportLanguagesDictionary];
     }
-    return self;
+    return _langDict;
 }
 
-#pragma mark -
-
 - (NSArray<NSNumber *> *)languages {
+    if (!_languages) {
+        _languages = [self.langDict sortedKeys];
+    }
     return _languages;
 }
 
+- (NSDictionary<NSNumber *,NSString *> *)langStringFromEnumDict {
+    if (!_langStringFromEnumDict) {
+        _langStringFromEnumDict = [self.langDict keysAndObjects];
+    }
+    return _langStringFromEnumDict;
+}
+
+- (NSDictionary<NSString *,NSNumber *> *)langEnumFromStringDict {
+    if (!_langEnumFromStringDict) {
+        _langEnumFromStringDict = [[self.langDict keysAndObjects] mm_reverseKeysAndObjectsDictionary];
+    }
+    return _langEnumFromStringDict;
+}
+
+- (NSDictionary<NSNumber *,NSNumber *> *)langIndexDict {
+    if (!_langIndexDict) {
+        _langIndexDict = [self.languages mm_objectToIndexDictionary];
+    }
+    return _langIndexDict;
+}
+
 - (NSString *)languageStringFromEnum:(Language)lang {
-    return [_langStringFromEnumDict objectForKey:@(lang)];
+    return [self.langStringFromEnumDict objectForKey:@(lang)];
 }
 
 - (Language)languageEnumFromString:(NSString *)langString {
-    return [[_langEnumFromStringDict objectForKey:langString] integerValue];
+    return [[self.langEnumFromStringDict objectForKey:langString] integerValue];
 }
 
 - (NSInteger)indexForLanguage:(Language)lang {
