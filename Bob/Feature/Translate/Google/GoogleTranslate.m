@@ -317,8 +317,8 @@
         return;
     }
     
-    void(^translateBlock)(Language) = ^(Language langTo) {
-        [self sendTranslateRequestWithText:text from:from to:langTo completion:^(id  _Nullable responseObject, NSString * _Nullable signText, NSMutableDictionary *reqDict, NSError * _Nullable error) {
+    void(^translateBlock)(NSString *, Language, Language) = ^(NSString *text, Language langFrom, Language langTo) {
+        [self sendTranslateRequestWithText:text from:langFrom to:langTo completion:^(id  _Nullable responseObject, NSString * _Nullable signText, NSMutableDictionary *reqDict, NSError * _Nullable error) {
             if (error) {
                 completion(nil, error);
                 return;
@@ -437,7 +437,7 @@
     };
     
     if (to == Language_auto) {
-        // 需要先识别语言
+        // 需要先识别语言，用于指定目标语言
         [self detect:text completion:^(Language lang, NSError * _Nullable error) {
             if (error) {
                 completion(nil, error);
@@ -445,16 +445,15 @@
             }
             
             Language langTo = Language_auto;
-            if (lang == Language_zh_Hans ||
-                lang == Language_zh_Hant) {
+            if (lang == Language_zh_Hans || lang == Language_zh_Hant) {
                 langTo = Language_en;
             }else {
                 langTo = Language_zh_Hans;
             }
-            translateBlock(langTo);
+            translateBlock(text, lang, langTo);
         }];
     }else {
-        translateBlock(to);
+        translateBlock(text, from, to);
     }
 }
 
