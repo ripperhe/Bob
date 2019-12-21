@@ -94,7 +94,9 @@ BOOL MMDefaultLogAsyncEnabled = YES;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         NSString *cachesDirectory = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES).firstObject;
-        _path = [cachesDirectory stringByAppendingPathComponent:@"MMLogs"];
+        // 加上 identifier，兼容关闭沙盒的情况
+        NSString *identifier = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleIdentifier"];
+        _path = [cachesDirectory stringByAppendingFormat:@"/%@/MMLogs", identifier];
     });
     return _path;
 }
