@@ -19,13 +19,20 @@
 	<key>CFBundleShortVersionString</key>
 	<string>$(MARKETING_VERSION)</string>
 	<key>CFBundleVersion</key>
-	<string>1</string>
+	<string>$(CURRENT_PROJECT_VERSION)</string>
 	<key>LSApplicationCategoryType</key>
 	<string>public.app-category.utilities</string>
 	<key>LSMinimumSystemVersion</key>
 	<string>$(MACOSX_DEPLOYMENT_TARGET)</string>
 	<key>LSUIElement</key>
 	<true/>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+		<key>NSAllowsArbitraryLoadsInWebContent</key>
+		<true/>
+	</dict>
 	<key>NSHumanReadableCopyright</key>
 	<string>Copyright © 2019 ripperhe. All rights reserved.</string>
 	<key>NSMainStoryboardFile</key>
@@ -36,12 +43,9 @@
 	<true/>
 	<key>NSSupportsSuddenTermination</key>
 	<true/>
-    <key>NSAppTransportSecurity</key>
-    <dict>
-        <key>NSAllowsArbitraryLoads</key>
-        <true/>
-        <key>NSAllowsArbitraryLoadsInWebContent</key>
-        <true/>
-    </dict>
+	<key>SUFeedURL</key>
+	<string>https://raw.githubusercontent.com/ripperhe/Bob/master/appcast.xml</string>
+	<key>SUPublicEDKey</key>
+	<string>9A+xsrQOIlVVWM8Ck/XH0AoTCqHf7S7S1SKTNP62LJE=</string>
 </dict>
 </plist>

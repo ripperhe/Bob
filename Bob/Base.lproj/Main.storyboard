@@ -681,6 +681,7 @@
                         <outlet property="snipItem" destination="2TG-8C-8RM" id="NNT-OJ-7eY"/>
                     </connections>
                 </customObject>
+                <customObject id="jrA-nT-KAI" customClass="SUUpdater"/>
                 <menu autoenablesItems="NO" identifier="status.item.menu" id="A3F-ys-zOg" userLabel="Status Item Menu">
                     <items>
                         <menuItem title="Bob" enabled="NO" id="PkP-25-JBw">
@@ -749,21 +750,30 @@
                                 <action selector="preferenceAction:" target="qM9-fT-Fym" id="Emg-Mm-dS5"/>
                             </connections>
                         </menuItem>
-                        <menuItem isSeparatorItem="YES" id="xcA-Vz-R94"/>
-                        <menuItem title="使用教程(开发中)" id="yWr-rH-hQa">
+                        <menuItem title="检查更新" id="GQ2-WA-9QB">
                             <modifierMask key="keyEquivalentModifierMask"/>
                             <connections>
-                                <action selector="documentationAction:" target="qM9-fT-Fym" id="OoC-My-foN"/>
+                                <action selector="checkForUpdates:" target="jrA-nT-KAI" id="9sy-r4-kzD"/>
                             </connections>
                         </menuItem>
-                        <menuItem title="导出日志" id="XpX-Ud-znp">
+                        <menuItem title="帮助" id="ICB-w8-IqK">
                             <modifierMask key="keyEquivalentModifierMask"/>
-                            <connections>
-                                <action selector="exportLogAction:" target="qM9-fT-Fym" id="bm3-88-xNM"/>
-                            </connections>
-                        </menuItem>
-                        <menuItem title="检查更新(开发中)" id="GQ2-WA-9QB">
-                            <modifierMask key="keyEquivalentModifierMask"/>
+                            <menu key="submenu" title="帮助" id="Q2R-dF-dyU">
+                                <items>
+                                    <menuItem title="使用教程(开发中)" id="yWr-rH-hQa">
+                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                        <connections>
+                                            <action selector="documentationAction:" target="qM9-fT-Fym" id="OoC-My-foN"/>
+                                        </connections>
+                                    </menuItem>
+                                    <menuItem title="导出日志" id="XpX-Ud-znp">
+                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                        <connections>
+                                            <action selector="exportLogAction:" target="qM9-fT-Fym" id="bm3-88-xNM"/>
+                                        </connections>
+                                    </menuItem>
+                                </items>
+                            </menu>
                         </menuItem>
                         <menuItem isSeparatorItem="YES" id="Fwt-JX-loz"/>
                         <menuItem title="退出" keyEquivalent="q" id="JZ0-yT-1tw">

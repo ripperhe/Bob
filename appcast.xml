@@ -1,0 +1,12 @@
+<?xml version="1.0" standalone="yes"?>
+<rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" version="2.0">
+    <channel>
+        <title>Bob</title>
+        <item>
+            <title>0.1.0</title>
+            <pubDate>周六, 21 12月 2019 17:02:30 +0800</pubDate>
+            <sparkle:minimumSystemVersion>10.12</sparkle:minimumSystemVersion>
+            <enclosure url="https://github.com/ripperhe/Bob/releases/download/0.1.0/Bob.app.zip" sparkle:version="0.1.0.0" sparkle:shortVersionString="0.1.0" length="6395907" type="application/octet-stream" sparkle:edSignature="qTw8LnEZtfTRbYzX/E4NZavbk5db3mu9MUWujctlRsKbLczlK73o1wsFC1lG+0GYmSnCJNl7sV644ccqkdowCg=="/>
+        </item>
+    </channel>
+</rss>
