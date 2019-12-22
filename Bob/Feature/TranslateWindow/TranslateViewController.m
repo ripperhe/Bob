@@ -386,15 +386,23 @@ return; \
 
 #pragma mark -
 
-- (void)resetWithState:(NSString *)stateString query:(NSString *)query {
+- (void)resetWithState:(NSString *)stateString query:(NSString *)query actionTitle:(NSString *)actionTitle action:(void (^)(void))action {
     self.currentResult = nil;
     self.queryView.textView.string = query ?: @"";
-    [self.resultView refreshWithStateString:stateString];
+    [self.resultView refreshWithStateString:stateString actionTitle:actionTitle action:action];
     [self resizeWindowWithQueryViewExpectHeight:0];
 }
 
+- (void)resetWithState:(NSString *)stateString query:(NSString *)query {
+    [self resetWithState:stateString query:query actionTitle:nil action:nil];
+}
+
 - (void)resetWithState:(NSString *)stateString {
-    [self resetWithState:stateString query:nil];
+    [self resetWithState:stateString query:nil actionTitle:nil action:nil];
+}
+
+- (void)resetWithState:(NSString *)stateString actionTitle:(NSString *)actionTitle action:(void (^)(void))action {
+    [self resetWithState:stateString query:nil actionTitle:actionTitle action:action];
 }
 
 - (void)translateText:(NSString *)text {

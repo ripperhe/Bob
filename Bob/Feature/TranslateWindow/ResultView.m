@@ -10,6 +10,12 @@
 
 #define kMargin 12.0
 
+@interface ResultView ()
+
+@property (nonatomic, copy) void(^actionBlock)(void);
+
+@end
+
 @implementation ResultView
 
 - (instancetype)initWithFrame:(NSRect)frame {
@@ -30,16 +36,43 @@
                 make.bottom.lessThanOrEqualTo(self).offset(-kMargin);
             }];
         }];
+        self.actionButton = [NSButton mm_make:^(NSButton * _Nonnull button) {
+            [self addSubview:button];
+            button.hidden = YES;
+            button.bordered = NO;
+            button.bezelStyle = NSBezelStyleRegularSquare;
+            [button setButtonType:NSButtonTypeMomentaryChange];
+            [button mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.top.equalTo(self.stateTextField.mas_bottom).offset(5);
+                make.left.equalTo(self.stateTextField);
+                make.bottom.lessThanOrEqualTo(self).offset(-kMargin);
+            }];
+            mm_weakify(self)
+            [button setRac_command:[[RACCommand alloc] initWithSignalBlock:^RACSignal * _Nonnull(id  _Nullable input) {
+                mm_strongify(self)
+                NSLog(@"点击 action");
+                if (self.actionBlock) {
+                    void(^block)(void) = self.actionBlock;
+                    block();
+                }
+                return RACSignal.empty;
+            }]];
+        }];
     }
     return self;
 }
 
 - (void)refreshWithResult:(TranslateResult *)result {
+    self.stateTextField.hidden = YES;
+    self.stateTextField.stringValue = @"";
+    self.actionButton.hidden = YES;
+    self.actionButton.attributedTitle = [NSAttributedString new];
+
     if (result.wordResult) {
         // 显示word
-        self.stateTextField.hidden = YES;
         [self.normalResultView removeFromSuperview];
         self.normalResultView.hidden = YES;
+        
         [self addSubview:self.wordResultView];
         self.wordResultView.hidden = NO;
         [self.wordResultView mas_remakeConstraints:^(MASConstraintMaker *make) {
@@ -48,9 +81,9 @@
         [self.wordResultView refreshWithResult:result];
     }else {
         // 显示普通的
-        self.stateTextField.hidden = YES;
         [self.wordResultView removeFromSuperview];
         self.wordResultView.hidden = YES;
+        
         [self addSubview:self.normalResultView];
         self.normalResultView.hidden = NO;
         [self.normalResultView refreshWithStrings:result.normalResults];
@@ -61,12 +94,25 @@
 }
 
 - (void)refreshWithStateString:(NSString *)string {
+    [self refreshWithStateString:string actionTitle:nil action:nil];
+}
+
+- (void)refreshWithStateString:(NSString *)string actionTitle:(NSString * _Nullable)actionTitle action:(void (^ _Nullable)(void))action {
     [self.normalResultView removeFromSuperview];
     self.normalResultView.hidden = YES;
     [self.wordResultView removeFromSuperview];
     self.wordResultView.hidden = YES;
+    
     self.stateTextField.hidden = NO;
     self.stateTextField.stringValue = string;
+    if (actionTitle.length) {
+        self.actionButton.hidden = NO;
+        self.actionButton.attributedTitle = [NSAttributedString mm_attributedStringWithString:actionTitle font:[NSFont systemFontOfSize:14] color:[NSColor mm_colorWithHexString:@"#007AFF"]];
+        self.actionBlock = action;
+    }else {
+        self.actionButton.hidden = YES;
+        self.actionBlock = nil;
+    }
 }
 
 @end

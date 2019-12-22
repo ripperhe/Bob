@@ -140,7 +140,9 @@ static TranslateWindowController *_instance;
         if (text.length) {
             [self.viewController translateText:text];
         }else {
-            [self.viewController resetWithState:@"划词翻译没有获取到文本"];
+            [self.viewController resetWithState:@"划词翻译没有获取到文本" actionTitle:@"可能的原因 →" action:^{
+                [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"https://github.com/ripperhe/Bob#%E5%88%92%E8%AF%8D%E7%BF%BB%E8%AF%91%E8%8E%B7%E5%8F%96%E4%B8%8D%E5%88%B0%E6%96%87%E6%9C%AC"]];
+            }];
             [self.viewController resetQueryViewHeightConstraint];
         }
     }];

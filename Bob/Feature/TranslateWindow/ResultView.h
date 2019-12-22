@@ -18,9 +18,11 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) NormalResultView *normalResultView;
 @property (nonatomic, strong) WordResultView *wordResultView;
 @property (nonatomic, strong) NSTextField *stateTextField;
+@property (nonatomic, strong) NSButton *actionButton;
 
 - (void)refreshWithResult:(TranslateResult *)result;
 - (void)refreshWithStateString:(NSString *)string;
+- (void)refreshWithStateString:(NSString *)string actionTitle:(NSString * _Nullable)actionTitle action:(void (^ _Nullable )(void))action;
 
 @end
 
