@@ -12,6 +12,7 @@
 
 @interface ResultView ()
 
+@property (nonatomic, strong) MASConstraint *actionButtonBottomConstraint;
 @property (nonatomic, copy) void(^actionBlock)(void);
 
 @end
@@ -45,7 +46,7 @@
             [button mas_makeConstraints:^(MASConstraintMaker *make) {
                 make.top.equalTo(self.stateTextField.mas_bottom).offset(5);
                 make.left.equalTo(self.stateTextField.mas_left).offset(-2);
-                make.bottom.lessThanOrEqualTo(self).offset(-kMargin);
+                self.actionButtonBottomConstraint = make.bottom.lessThanOrEqualTo(self).offset(-kMargin);
             }];
             mm_weakify(self)
             [button setRac_command:[[RACCommand alloc] initWithSignalBlock:^RACSignal * _Nonnull(id  _Nullable input) {
@@ -109,9 +110,11 @@
         self.actionButton.hidden = NO;
         self.actionButton.attributedTitle = [NSAttributedString mm_attributedStringWithString:actionTitle font:[NSFont systemFontOfSize:14] color:[NSColor mm_colorWithHexString:@"#007AFF"]];
         self.actionBlock = action;
+        [self.actionButtonBottomConstraint install];
     }else {
         self.actionButton.hidden = YES;
         self.actionBlock = nil;
+        [self.actionButtonBottomConstraint uninstall];
     }
 }
 
