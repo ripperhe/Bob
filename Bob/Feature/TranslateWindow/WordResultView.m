@@ -300,10 +300,6 @@
         lastView = meanTextField;
     }
     
-//    [lastView mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.bottom.inset(kMargin);
-//    }];
-    
     [self mas_makeConstraints:^(MASConstraintMaker *make) {
         make.bottom.greaterThanOrEqualTo(lastView.mas_bottom).offset(kMargin);
     }];

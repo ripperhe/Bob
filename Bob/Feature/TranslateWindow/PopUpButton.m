@@ -27,7 +27,6 @@ DefineMethodMMMake_m(PopUpButton)
 
 - (void)setup {
     self.wantsLayer = YES;
-//    self.layer.backgroundColor = NSColor.mm_randomColor.CGColor;
     self.layer.borderColor = [NSColor mm_colorWithHexString:@"#EEEEEE"].CGColor;
     self.layer.borderWidth = 1;
     self.layer.cornerRadius = 2;

@@ -44,7 +44,7 @@
             [button setButtonType:NSButtonTypeMomentaryChange];
             [button mas_makeConstraints:^(MASConstraintMaker *make) {
                 make.top.equalTo(self.stateTextField.mas_bottom).offset(5);
-                make.left.equalTo(self.stateTextField);
+                make.left.equalTo(self.stateTextField.mas_left).offset(-2);
                 make.bottom.lessThanOrEqualTo(self).offset(-kMargin);
             }];
             mm_weakify(self)
