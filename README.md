@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="https://raw.githubusercontent.com/ripperhe/Resource/master/20191222/bob-log.png" />
+</p>
+
 # Bob
 
 Bob 是一款  Mac 端翻译软件，支持**划词翻译**和**截图翻译**，当然，手动输入进行翻译也是可以的。
@@ -6,7 +10,7 @@ Bob 是一款  Mac 端翻译软件，支持**划词翻译**和**截图翻译**�
 
 ### 下载安装
 
-从 [GitHub release](https://github.com/ripperhe/Bob/releases) 中下载最新的 zip 包，然后解压拖拽到应用程序文件夹即可
+从 [GitHub release](https://github.com/ripperhe/Bob/releases) 中下载最新的 `Bob.app.zip` 安装包，然后解压拖拽到**应用程序**文件夹即可
 
 ### 开启辅助功能权限
 
@@ -16,7 +20,7 @@ Bob 是一款  Mac 端翻译软件，支持**划词翻译**和**截图翻译**�
 
 如果不小心拒绝了，打开 `系统偏好设置-安全性与隐私-隐私-辅助功能`，确保勾选上了 Bob
 
-![辅助功能权限](https://raw.githubusercontent.com/ripperhe/Resource/master/20191221/辅助功能权限.png)
+![辅助功能权限](https://raw.githubusercontent.com/ripperhe/Resource/master/20191222/辅助功能权限.png)
 
 ### 开启屏幕录制权限 （macOS 10.15 以上才需要）
 
@@ -26,7 +30,7 @@ Bob 是一款  Mac 端翻译软件，支持**划词翻译**和**截图翻译**�
 
 如果不小心拒绝了，打开 `系统偏好设置-安全性与隐私-隐私-屏幕录制`，确保勾选上了 Bob
 
-![屏幕录制权限](https://raw.githubusercontent.com/ripperhe/Resource/master/20191221/屏幕录制权限.png)
+![屏幕录制权限](https://raw.githubusercontent.com/ripperhe/Resource/master/20191222/屏幕录制权限.png)
 
 ## 使用方法
 
@@ -71,7 +75,7 @@ Bob 是一款  Mac 端翻译软件，支持**划词翻译**和**截图翻译**�
 
 ### 朗读按钮点击了没反应？
 
-朗读按钮点击之后，会进行网络请求获取音频播放，没有反应可能是句子太长，加载较慢，当然也有可能是是一些未知的 BUG，后期会考虑点击之后进行一些 UI 提示
+朗读按钮点击之后，会进行网络请求获取音频播放，没有反应可能是句子太长，加载较慢，当然也有可能是 BUG，后期会考虑点击之后进行一些 UI 提示
 
 ### 翻译报错？
 
@@ -79,8 +83,8 @@ Bob 是一款  Mac 端翻译软件，支持**划词翻译**和**截图翻译**�
 
 * 网络问题
 * 接口调用过于频繁
-* 接口格式改变
-* 软件 BUG
+* 接口数据结构改变
+* BUG?
 
 建议尝试以下方案：
 
