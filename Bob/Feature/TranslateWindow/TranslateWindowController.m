@@ -140,7 +140,7 @@ static TranslateWindowController *_instance;
         if (text.length) {
             [self.viewController translateText:text];
         }else {
-            [self.viewController resetWithState:@"没有获取到文本"];
+            [self.viewController resetWithState:@"划词翻译没有获取到文本"];
             [self.viewController resetQueryViewHeightConstraint];
         }
     }];
@@ -158,7 +158,16 @@ static TranslateWindowController *_instance;
     [self.viewController resetWithState:@"正在截图..."];
     [Snip.shared startWithCompletion:^(NSImage * _Nullable image) {
         NSLog(@"获取到图片 %@", image);
+        // 缓存最后一张图片，统一放到 MMLogs 文件夹，方便管理
+        static NSString *_imagePath = nil;
+        static dispatch_once_t onceToken;
+        dispatch_once(&onceToken, ^{
+            _imagePath = [[MMManagerForLog logDirectoryWithName:@"Image"] stringByAppendingPathComponent:@"snip_image.png"];
+        });
+        [[NSFileManager defaultManager] removeItemAtPath:_imagePath error:nil];
         if (image) {
+            [image mm_writeToFileAsPNG:_imagePath];
+            NSLog(@"已保存图片\n%@", _imagePath);
             [self ensureShowAtMouseLocation];
             [self.viewController translateImage:image];
         }

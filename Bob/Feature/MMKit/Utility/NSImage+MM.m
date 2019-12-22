@@ -59,12 +59,38 @@
 }
 
 - (BOOL)mm_writeToFileAsPNG:(NSString *)path {
+    if (!path.length) {
+        return NO;
+    }
+    NSFileManager *manager = [NSFileManager defaultManager];
+    NSString *directory = [path stringByDeletingLastPathComponent];
+    if (!directory.length) {
+        return NO;
+    }
+    if (![manager fileExistsAtPath:directory]) {
+        if (![manager createDirectoryAtPath:directory withIntermediateDirectories:YES attributes:nil error:nil]) {
+            return NO;
+        }
+    }
     NSData *data = [self mm_PNGData];
     BOOL result = [data writeToFile:path atomically:NO];
     return result;
 }
 
 - (BOOL)mm_writeToFileAsJPEG:(NSString *)path {
+    if (!path.length) {
+        return NO;
+    }
+    NSFileManager *manager = [NSFileManager defaultManager];
+    NSString *directory = [path stringByDeletingLastPathComponent];
+    if (!directory.length) {
+        return NO;
+    }
+    if (![manager fileExistsAtPath:directory]) {
+        if (![manager createDirectoryAtPath:directory withIntermediateDirectories:YES attributes:nil error:nil]) {
+            return NO;
+        }
+    }
     NSData *data = [self mm_JPEGData];
     BOOL result = [data writeToFile:path atomically:NO];
     return result;

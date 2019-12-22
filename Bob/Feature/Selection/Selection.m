@@ -14,19 +14,6 @@
 + (void)getText:(void (^)(NSString * _Nullable))completion {
     [[NSPasteboard generalPasteboard] clearContents];
     
-    //            CGKeyCode inputKeyCode = kVK_ANSI_C;
-    //            CGEventSourceRef source = CGEventSourceCreate(kCGEventSourceStateCombinedSessionState);
-    //            CGEventRef saveCommandDown = CGEventCreateKeyboardEvent(source, inputKeyCode, YES);
-    //            CGEventSetFlags(saveCommandDown, kCGEventFlagMaskCommand);
-    //            CGEventRef saveCommandUp = CGEventCreateKeyboardEvent(source, inputKeyCode, NO);
-    //
-    //            CGEventPost(kCGAnnotatedSessionEventTap, saveCommandDown);
-    //            CGEventPost(kCGAnnotatedSessionEventTap, saveCommandUp);
-    //
-    //            CFRelease(saveCommandUp);
-    //            CFRelease(saveCommandDown);
-    //            CFRelease(source);
-    
     CGEventRef push = CGEventCreateKeyboardEvent(NULL, kVK_ANSI_C, true);
     CGEventSetFlags(push, kCGEventFlagMaskCommand);
     CGEventPost(kCGHIDEventTap, push);

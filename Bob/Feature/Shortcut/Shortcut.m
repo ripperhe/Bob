@@ -17,12 +17,14 @@
     NSData *selectionShortcutData = [NSKeyedArchiver archivedDataWithRootObject:selectionShortcut];
     MASShortcut *snipShortcut = [MASShortcut shortcutWithKeyCode:kVK_ANSI_S modifierFlags:NSEventModifierFlagOption];
     NSData *snipShortcutData = [NSKeyedArchiver archivedDataWithRootObject:snipShortcut];
-
+    MASShortcut *inputShortcut = [MASShortcut shortcutWithKeyCode:kVK_ANSI_A modifierFlags:NSEventModifierFlagOption];
+    NSData *inputShortcutData = [NSKeyedArchiver archivedDataWithRootObject:inputShortcut];
 
     // Register default values to be used for the first app start
     [[NSUserDefaults standardUserDefaults] registerDefaults:@{
-        SelectionShortcutKey : selectionShortcutData,
-        SnipShortcutKey : snipShortcutData,
+        SelectionShortcutKey: selectionShortcutData,
+        SnipShortcutKey: snipShortcutData,
+        InputShortcutKey: inputShortcutData,
     }];
     
     [[MASShortcutBinder sharedBinder] bindShortcutWithDefaultsKey:SelectionShortcutKey toAction:^{
