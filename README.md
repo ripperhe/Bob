@@ -37,7 +37,7 @@ Bob 是一款  Mac 端翻译软件，支持**划词翻译**和**截图翻译**�
 | 功能 | 描述 | 预览 |
 | :---: | :---: | :---: |
 | 划词翻译 | 选中需要翻译的文本之后，按下划词翻译快捷键即可（默认 `⌥ + D`） | ![划词翻译-句子](https://raw.githubusercontent.com/ripperhe/Resource/master/20191222/划词翻译-句子.gif) |
-| 截图翻译 | 按下划词翻译快捷键（默认 `⌥ + S`），截取需要翻译的区域 | ![截图翻译-句子](https://raw.githubusercontent.com/ripperhe/Resource/master/20191222/截图翻译-句子.gif) |
+| 截图翻译 | 按下截图翻译快捷键（默认 `⌥ + S`），截取需要翻译的区域 | ![截图翻译-句子](https://raw.githubusercontent.com/ripperhe/Resource/master/20191222/截图翻译-句子.gif) |
 | 输入翻译| 按下输入翻译快捷键（默认 `⌥ + A`），输入需要翻译的文本，`Enter` 键翻译 | ![输入翻译-单词](https://raw.githubusercontent.com/ripperhe/Resource/master/20191222/输入翻译-单词.gif) |
 
 * 划词翻译在**可以选中文本，并且可以复制**的情况下使用
@@ -101,7 +101,5 @@ Bob 是一款  Mac 端翻译软件，支持**划词翻译**和**截图翻译**�
 * [isee15/Capture-Screen-For-Multi-Screens-On-Mac](https://github.com/isee15/Capture-Screen-For-Multi-Screens-On-Mac)
 
 ## 最后
-
-这个软件为什么叫 Bob，其实我也不搞不明白，可能就觉得和图标比较配吧，图标是我家灵魂画手画的，恩，就是这样~ 🥳
 
 Bob 还很年轻，可能会有各种大大小小的问题，有任何问题或者建议可以直接提 issue，或者加入 QQ 群 **971584165** 反馈，希望大家可以陪 TA 一起成长~
