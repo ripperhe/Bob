@@ -531,7 +531,8 @@
         @"from": fromLang,
         @"to": toLang
     };
-    NSMutableDictionary *reqDict = [NSMutableDictionary dictionaryWithObjectsAndKeys:url, TranslateErrorRequestURLKey, params, TranslateErrorRequestParamKey, nil];
+    // 图片 base64 字符串过长，暂不打印
+    NSMutableDictionary *reqDict = [NSMutableDictionary dictionaryWithObjectsAndKeys:url, TranslateErrorRequestURLKey, @{@"from": fromLang, @"to": toLang}, TranslateErrorRequestParamKey, nil];
     
     mm_weakify(self);
     [self.jsonSession POST:url parameters:params constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {

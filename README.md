@@ -12,21 +12,21 @@ Bob 是一款  Mac 端翻译软件，支持**划词翻译**和**截图翻译**�
 
 第一次使用**划词翻译**的时候会弹出以下提示，点击 `打开系统偏好设置`，勾选上 Bob
 
-![](https://raw.githubusercontent.com/ripperhe/Resource/master/20191221/辅助功能权限提醒.png)
+![辅助功能权限提醒](https://raw.githubusercontent.com/ripperhe/Resource/master/20191221/辅助功能权限提醒.png)
 
 如果不小心拒绝了，打开 `系统偏好设置-安全性与隐私-隐私-辅助功能`，确保勾选上了 Bob
 
-![](https://raw.githubusercontent.com/ripperhe/Resource/master/20191221/辅助功能权限.png)
+![辅助功能权限](https://raw.githubusercontent.com/ripperhe/Resource/master/20191221/辅助功能权限.png)
 
 ### 开启屏幕录制权限 （macOS 10.15 以上才需要）
 
 第一次使用**截图翻译**的时候会弹出以下提示，点击 `打开系统偏好设置`，勾选上 Bob
 
-![](https://raw.githubusercontent.com/ripperhe/Resource/master/20191221/屏幕录制权限提醒.png)
+![屏幕录制权限提醒](https://raw.githubusercontent.com/ripperhe/Resource/master/20191221/屏幕录制权限提醒.png)
 
 如果不小心拒绝了，打开 `系统偏好设置-安全性与隐私-隐私-屏幕录制`，确保勾选上了 Bob
 
-![](https://raw.githubusercontent.com/ripperhe/Resource/master/20191221/屏幕录制权限.png)
+![屏幕录制权限](https://raw.githubusercontent.com/ripperhe/Resource/master/20191221/屏幕录制权限.png)
 
 ## 使用方法
 

@@ -370,7 +370,8 @@
     NSDictionary *params = @{
         @"imgBase": encodedImageStr,
     };
-    NSMutableDictionary *reqDict = [NSMutableDictionary dictionaryWithObjectsAndKeys:url, TranslateErrorRequestURLKey, params, TranslateErrorRequestParamKey, nil];
+    // 图片 base64 字符串过长，暂不打印
+    NSMutableDictionary *reqDict = [NSMutableDictionary dictionaryWithObjectsAndKeys:url, TranslateErrorRequestURLKey, nil];
     
     mm_weakify(self);
     [self.jsonSession POST:url parameters:params progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
