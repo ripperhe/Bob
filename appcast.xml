@@ -3,16 +3,10 @@
     <channel>
         <title>Bob</title>
         <item>
-            <title>0.1.1</title>
-            <pubDate>周日, 22 12月 2019 18:07:20 +0800</pubDate>
-            <sparkle:minimumSystemVersion>10.12</sparkle:minimumSystemVersion>
-            <enclosure url="https://github.com/ripperhe/Bob/releases/download/0.1.1/Bob.app.zip" sparkle:version="0.1.1.0" sparkle:shortVersionString="0.1.1" length="6393575" type="application/octet-stream" sparkle:edSignature="5MjbnLe6kKcovU8LOL8TdYe8ujZ52JLF2g7vIAU0Cb+/m9Lwdp2bQ3bnHOAcWSPlAv2ui3LgnWmpaWjHzt1vAA=="/>
-        </item>
-        <item>
             <title>0.1.0</title>
-            <pubDate>周日, 22 12月 2019 18:06:39 +0800</pubDate>
+            <pubDate>周日, 22 12月 2019 18:20:35 +0800</pubDate>
             <sparkle:minimumSystemVersion>10.12</sparkle:minimumSystemVersion>
-            <enclosure url="https://github.com/ripperhe/Bob/releases/download/0.1.0/Bob.app.zip" sparkle:version="0.1.0.0" sparkle:shortVersionString="0.1.0" length="6393616" type="application/octet-stream" sparkle:edSignature="4xDvJxVXibzQJpD0DifIpqv8fOh0u/zyuKaKwwe5gPSxAKT3ufUCcK1HHA3fsYvegW8Q3xmRTcOm1CXSyVpaAQ=="/>
+            <enclosure url="https://raw.githubusercontent.com/ripperhe/Bob/master/Bob.app.zip" sparkle:version="0.1.0.0" sparkle:shortVersionString="0.1.0" length="6393758" type="application/octet-stream" sparkle:edSignature="S/dUQQ2a8Mz7LxiV3L4Scm783xsaFyEMfeXROWW8gTlZOvTkD7Z+Qt2C62vNP4WqG5B7dgkxPQnShQBHNLGuBg=="/>
         </item>
     </channel>
 </rss>
