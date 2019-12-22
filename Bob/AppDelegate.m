@@ -23,4 +23,5 @@
 - (void)applicationWillTerminate:(NSNotification *)aNotification {
     [StatusItem.shared remove];
 }
+
 @end

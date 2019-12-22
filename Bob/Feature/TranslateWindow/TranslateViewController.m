@@ -184,8 +184,12 @@ return; \
         mm_weakify(self)
         [view setAudioActionBlock:^(QueryView * _Nonnull view) {
             mm_strongify(self);
-            if (self.currentResult.fromSpeakURL && [self.currentResult.text isEqualToString:view.textView.string]) {
-                [self playAudioWithURL:self.currentResult.fromSpeakURL];
+            if ([self.currentResult.text isEqualToString:view.textView.string]) {
+                if (self.currentResult.fromSpeakURL) {
+                    [self playAudioWithURL:self.currentResult.fromSpeakURL];
+                }else {
+                    [self playAudioWithText:self.currentResult.text lang:self.currentResult.from];
+                }
             }else {
                 [self playAudioWithText:view.textView.string lang:Configuration.shared.from];
             }
@@ -324,7 +328,7 @@ return; \
             if (self.currentResult.toSpeakURL) {
                 [self playAudioWithURL:self.currentResult.toSpeakURL];
             }else {
-                [self playAudioWithText:view.textView.string lang:self.currentResult.to];
+                [self playAudioWithText:self.currentResult.text lang:self.currentResult.to];
             }
         }];
         [view.normalResultView setCopyActionBlock:^(NormalResultView * _Nonnull view) {
