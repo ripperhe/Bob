@@ -69,7 +69,7 @@ static Configuration *_instance;
 
     NSNumber *fold = [NSUserDefaults mm_read:kFoldKey];
     if (![fold isKindOfClass:[NSNumber class]]) {
-        fold = @YES;
+        fold = @NO;
         [NSUserDefaults mm_write:fold forKey:kFoldKey];
     }
     self.isFold = [fold boolValue];
