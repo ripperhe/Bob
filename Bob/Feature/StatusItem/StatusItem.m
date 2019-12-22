@@ -117,6 +117,7 @@ static StatusItem *_instance;
 
 - (IBAction)documentationAction:(NSMenuItem *)sender {
     NSLog(@"使用教程");
+    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"https://github.com/ripperhe/Bob"]];
 }
 
 - (IBAction)exportLogAction:(id)sender {

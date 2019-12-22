@@ -351,8 +351,8 @@ return; \
 
 - (void)setupTranslate {
     self.translateArray = @[
-        [BaiduTranslate new],
         [YoudaoTranslate new],
+        [BaiduTranslate new],
         [GoogleTranslate mm_anyMake:^(GoogleTranslate *  _Nonnull obj) {
             obj.isCN = YES;
         }],

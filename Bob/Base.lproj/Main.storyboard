@@ -760,7 +760,7 @@
                             <modifierMask key="keyEquivalentModifierMask"/>
                             <menu key="submenu" title="帮助" id="Q2R-dF-dyU">
                                 <items>
-                                    <menuItem title="使用教程(开发中)" id="yWr-rH-hQa">
+                                    <menuItem title="使用教程" id="yWr-rH-hQa">
                                         <modifierMask key="keyEquivalentModifierMask"/>
                                         <connections>
                                             <action selector="documentationAction:" target="qM9-fT-Fym" id="OoC-My-foN"/>
