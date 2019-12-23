@@ -37,6 +37,7 @@ DefineMethodMMMake_m(NormalResultView)
         scrollView.hasHorizontalScroller = NO;
         scrollView.hasVerticalScroller = YES;
         scrollView.autohidesScrollers = YES;
+        scrollView.backgroundColor = NSColor.clearColor;
         self.textView = [TextView mm_make:^(TextView * _Nonnull textView) {
             textView.editable = NO;
             [textView setAutoresizingMask:NSViewHeightSizable | NSViewWidthSizable];
@@ -59,7 +60,7 @@ DefineMethodMMMake_m(NormalResultView)
         button.toolTip = @"播放音频";
         [button mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.offset(9.5);
-            make.bottom.inset(3);
+            make.bottom.inset(-5);
             make.width.height.equalTo(@26);
         }];
         mm_weakify(self)
