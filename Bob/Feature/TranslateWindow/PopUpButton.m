@@ -27,7 +27,7 @@ DefineMethodMMMake_m(PopUpButton)
 
 - (void)setup {
     self.wantsLayer = YES;
-    self.layer.borderColor = [NSColor mm_colorWithHexString:@"#EEEEEE"].CGColor;
+    self.layer.borderColor = NSColor.systemGrayColor.CGColor;
     self.layer.borderWidth = 1;
     self.layer.cornerRadius = 2;
     self.bordered = NO;
@@ -61,7 +61,6 @@ DefineMethodMMMake_m(PopUpButton)
             textField.bordered = NO;
             textField.backgroundColor = NSColor.clearColor;
             textField.font = [NSFont systemFontOfSize:12];
-            textField.textColor = [NSColor mm_colorWithHexString:@"#333333"];
             textField.maximumNumberOfLines = 1;
             textField.lineBreakMode = NSLineBreakByTruncatingTail;
             [textField mas_makeConstraints:^(MASConstraintMaker *make) {

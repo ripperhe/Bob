@@ -31,9 +31,6 @@ DefineMethodMMMake_m(NormalResultView)
 
 - (void)setup {
     self.wantsLayer = YES;
-    self.layer.backgroundColor = [NSColor mm_colorWithHexString:@"#EEEEEE"].CGColor;
-    self.layer.borderColor = [NSColor mm_colorWithHexString:@"#EEEEEE"].CGColor;
-    self.layer.borderWidth = 1;
     
     self.scrollView = [NSScrollView mm_make:^(NSScrollView *  _Nonnull scrollView) {
         [self addSubview:scrollView];
@@ -42,7 +39,6 @@ DefineMethodMMMake_m(NormalResultView)
         scrollView.autohidesScrollers = YES;
         self.textView = [TextView mm_make:^(TextView * _Nonnull textView) {
             textView.editable = NO;
-            textView.backgroundColor = [NSColor mm_colorWithHexString:@"#EEEEEE"];
             [textView setAutoresizingMask:NSViewHeightSizable | NSViewWidthSizable];
         }];
         scrollView.documentView = self.textView;

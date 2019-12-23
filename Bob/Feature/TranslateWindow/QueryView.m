@@ -28,19 +28,14 @@ DefineMethodMMMake_m(QueryView)
 
 - (void)setup {
     self.wantsLayer = YES;
-    self.layer.backgroundColor = NSColor.whiteColor.CGColor;
-    self.layer.borderColor = [NSColor mm_colorWithHexString:@"#EEEEEE"].CGColor;
-    self.layer.borderWidth = 1;
 
     self.scrollView = [NSScrollView mm_make:^(NSScrollView *  _Nonnull scrollView) {
         [self addSubview:scrollView];
         scrollView.wantsLayer = YES;
-        scrollView.backgroundColor = NSColor.mm_randomColor;
         scrollView.hasVerticalScroller = YES;
         scrollView.hasHorizontalScroller = NO;
         scrollView.autohidesScrollers = YES;
         self.textView = [TextView mm_make:^(TextView * _Nonnull textView) {
-            textView.backgroundColor = NSColor.whiteColor;
             [textView setAutoresizingMask:NSViewHeightSizable | NSViewWidthSizable];
             textView.delegate = self;
         }];
@@ -61,7 +56,7 @@ DefineMethodMMMake_m(QueryView)
         button.toolTip = @"播放音频";
         [button mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.offset(9.5);
-            make.bottom.inset(3);
+            make.bottom.inset(-5);
             make.width.height.equalTo(@26);
         }];
         mm_weakify(self)

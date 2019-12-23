@@ -23,13 +23,12 @@
     self = [super initWithFrame:frame];
     if (self) {
         self.wantsLayer = YES;
-        self.layer.backgroundColor = [NSColor mm_colorWithHexString:@"#EEEEEE"].CGColor;
+        self.layer.backgroundColor = NSColor.clearColor.CGColor;
         self.normalResultView = [NormalResultView new];
         self.wordResultView = [WordResultView new];
         self.stateTextField = [[NSTextField wrappingLabelWithString:@""] mm_put:^(NSTextField * _Nonnull textField) {
             [self addSubview:textField];
             textField.font = [NSFont systemFontOfSize:14];
-            textField.textColor = [NSColor mm_colorWithHexString:@"#333333"];
             [textField mas_makeConstraints:^(MASConstraintMaker *make) {
                 make.top.offset(kMargin);
                 make.left.offset(kMargin);
@@ -68,7 +67,7 @@
     self.stateTextField.stringValue = @"";
     self.actionButton.hidden = YES;
     self.actionButton.attributedTitle = [NSAttributedString new];
-
+    
     if (result.wordResult) {
         // 显示word
         [self.normalResultView removeFromSuperview];
@@ -108,7 +107,7 @@
     self.stateTextField.stringValue = string;
     if (actionTitle.length) {
         self.actionButton.hidden = NO;
-        self.actionButton.attributedTitle = [NSAttributedString mm_attributedStringWithString:actionTitle font:[NSFont systemFontOfSize:14] color:[NSColor mm_colorWithHexString:@"#007AFF"]];
+        self.actionButton.attributedTitle = [NSAttributedString mm_attributedStringWithString:actionTitle font:[NSFont systemFontOfSize:14] color:[NSColor systemBlueColor]];
         self.actionBlock = action;
         [self.actionButtonBottomConstraint install];
     }else {

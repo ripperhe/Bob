@@ -21,7 +21,6 @@
     self = [super initWithFrame:frame];
     if (self) {
         self.wantsLayer = YES;
-        self.layer.backgroundColor = [NSColor mm_colorWithHexString:@"#EEEEEE"].CGColor;
     }
     return self;
 }
@@ -38,7 +37,6 @@
         NSTextField *nameTextFiled = [NSTextField mm_make:^(NSTextField * _Nonnull textField) {
             [self addSubview:textField];
             textField.stringValue = obj.name;
-            textField.textColor = [NSColor mm_colorWithHexString:@"#333333"];
             textField.font = [NSFont systemFontOfSize:13];
             textField.editable = NO;
             textField.bordered = NO;
@@ -56,7 +54,6 @@
         NSTextField *valueTextField = [NSTextField mm_make:^(NSTextField * _Nonnull textField) {
             [self addSubview:textField];
             textField.stringValue = [NSString stringWithFormat:@"[%@]", obj.value];
-            textField.textColor = [NSColor mm_colorWithHexString:@"#333333"];
             textField.font = [NSFont systemFontOfSize:13];
             textField.editable = NO;
             textField.bordered = NO;
@@ -99,7 +96,6 @@
             partTextFiled = [NSTextField mm_make:^(NSTextField * _Nonnull textField) {
                 [self addSubview:textField];
                 textField.stringValue = obj.part;
-                textField.textColor = [NSColor mm_colorWithHexString:@"#999999"];
                 textField.font = [NSFont systemFontOfSize:13];
                 textField.editable = NO;
                 textField.bordered = NO;
@@ -122,7 +118,6 @@
         NSTextField *meanTextField = [[NSTextField wrappingLabelWithString:@""] mm_put:^(NSTextField * _Nonnull textField) {
             [self addSubview:textField];
             textField.stringValue = [NSString mm_stringByCombineComponents:obj.means separatedString:@"; "];
-            textField.textColor = [NSColor mm_colorWithHexString:@"#333333"];
             textField.font = [NSFont systemFontOfSize:13];
             textField.backgroundColor = NSColor.clearColor;
             textField.alignment = NSTextAlignmentLeft;
@@ -153,7 +148,6 @@
         NSTextField *nameTextFiled = [NSTextField mm_make:^(NSTextField * _Nonnull textField) {
             [self addSubview:textField];
             textField.stringValue = [NSString stringWithFormat:@"%@: ", obj.name];
-            textField.textColor = [NSColor mm_colorWithHexString:@"#333333"];
             textField.font = [NSFont systemFontOfSize:13];
             textField.editable = NO;
             textField.bordered = NO;
@@ -179,7 +173,7 @@
                 button.imageScaling = NSImageScaleProportionallyDown;
                 button.bezelStyle = NSBezelStyleRegularSquare;
                 [button setButtonType:NSButtonTypeMomentaryChange];
-                button.attributedTitle = [NSAttributedString mm_attributedStringWithString:obj font:[NSFont systemFontOfSize:13] color:[NSColor mm_colorWithHexString:@"#007AFF"]];
+                button.attributedTitle = [NSAttributedString mm_attributedStringWithString:obj font:[NSFont systemFontOfSize:13] color:[NSColor systemBlueColor]];
                 [button sizeToFit];
                 [button mas_makeConstraints:^(MASConstraintMaker *make) {
                     if (idx == 0) {
@@ -213,7 +207,6 @@
             partTextFiled = [NSTextField mm_make:^(NSTextField * _Nonnull textField) {
                 [self addSubview:textField];
                 textField.stringValue = obj.part;
-                textField.textColor = [NSColor mm_colorWithHexString:@"#999999"];
                 textField.font = [NSFont systemFontOfSize:13];
                 textField.editable = NO;
                 textField.bordered = NO;
@@ -237,7 +230,7 @@
             button.imageScaling = NSImageScaleProportionallyDown;
             button.bezelStyle = NSBezelStyleRegularSquare;
             [button setButtonType:NSButtonTypeMomentaryChange];
-            button.attributedTitle = [NSAttributedString mm_attributedStringWithString:obj.word font:[NSFont systemFontOfSize:13] color:[NSColor mm_colorWithHexString:@"#007AFF"]];
+            button.attributedTitle = [NSAttributedString mm_attributedStringWithString:obj.word font:[NSFont systemFontOfSize:13] color:[NSColor systemBlueColor]];
             [button sizeToFit];
             [button mas_makeConstraints:^(MASConstraintMaker *make) {
                 make.left.offset(kMargin);
@@ -264,7 +257,6 @@
         NSTextField *meanTextField = [[NSTextField wrappingLabelWithString:@""] mm_put:^(NSTextField * _Nonnull textField) {
             [self addSubview:textField];
             textField.stringValue = [NSString mm_stringByCombineComponents:obj.means separatedString:@"; "] ?: @"";
-            textField.textColor = [NSColor mm_colorWithHexString:@"#333333"];
             textField.font = [NSFont systemFontOfSize:13];
             textField.backgroundColor = NSColor.clearColor;
             textField.alignment = NSTextAlignmentLeft;
@@ -282,7 +274,6 @@
         NSTextField *meanTextField = [[NSTextField wrappingLabelWithString:@""] mm_put:^(NSTextField * _Nonnull textField) {
             [self addSubview:textField];
             textField.stringValue = [NSString mm_stringByCombineComponents:result.normalResults separatedString:@"\n"] ?: @"";
-            textField.textColor = [NSColor mm_colorWithHexString:@"#333333"];
             textField.font = [NSFont systemFontOfSize:13];
             textField.backgroundColor = NSColor.clearColor;
             textField.alignment = NSTextAlignmentLeft;

@@ -31,7 +31,7 @@
                     <rect key="frame" x="162" y="77" width="37" height="21"/>
                     <textFieldCell key="cell" lineBreakMode="clipping" title="Bob" id="yae-62-con">
                         <font key="font" metaFont="systemMedium" size="18"/>
-                        <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="0.84999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
@@ -39,7 +39,7 @@
                     <rect key="frame" x="163" y="56" width="34" height="16"/>
                     <textFieldCell key="cell" lineBreakMode="clipping" title="0.0.0" id="hdN-VE-mP8">
                         <font key="font" metaFont="system"/>
-                        <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="0.84705882352941175" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
@@ -50,7 +50,7 @@
                             <rect key="frame" x="-2" y="0.0" width="51" height="16"/>
                             <textFieldCell key="cell" lineBreakMode="clipping" title="GitHub:" id="Evh-qa-4AD">
                                 <font key="font" usesAppearanceFont="YES"/>
-                                <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="0.84705882352941175" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                             </textFieldCell>
                         </textField>
@@ -65,7 +65,7 @@
                             </gestureRecognizers>
                             <textFieldCell key="cell" lineBreakMode="clipping" title="https://github.com/ripperhe/Bob" id="p2x-R8-N2c">
                                 <font key="font" metaFont="system"/>
-                                <color key="textColor" red="0.098039215686274508" green="0.48627450980392156" blue="0.9882352941176471" alpha="0.84705882352941175" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="textColor" name="linkColor" catalog="System" colorSpace="catalog"/>
                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                             </textFieldCell>
                         </textField>

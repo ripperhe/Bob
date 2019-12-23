@@ -21,7 +21,6 @@ DefineMethodMMMake_m(TextView)
             style.paragraphSpacing = 5;
         }]];
         self.font = [NSFont systemFontOfSize:14];
-        self.textColor = [NSColor mm_colorWithHexString:@"#333333"];
         self.alignment = NSTextAlignmentLeft;
         self.textContainerInset  = CGSizeMake(8, 12);
     }

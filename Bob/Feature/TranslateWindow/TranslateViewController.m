@@ -92,7 +92,6 @@ return; \
 
 - (void)setupViews {
     self.view.wantsLayer = YES;
-    self.view.layer.backgroundColor = NSColor.whiteColor.CGColor;
     
     self.pinButton = [NSButton mm_make:^(NSButton * button) {
         [self.view addSubview:button];
