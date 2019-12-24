@@ -22,6 +22,7 @@
 		C9676F2B23A0908F007DD023 /* NSPasteboard+MM.m in Sources */ = {isa = PBXBuildFile; fileRef = C9676F2A23A0908F007DD023 /* NSPasteboard+MM.m */; };
 		C9889F6123AA0FDA00C2D127 /* GoogleTranslate.m in Sources */ = {isa = PBXBuildFile; fileRef = C9889F6023AA0FDA00C2D127 /* GoogleTranslate.m */; };
 		C9889F6423AA25C800C2D127 /* google-translate-sign.js in Resources */ = {isa = PBXBuildFile; fileRef = C9889F6323AA25C800C2D127 /* google-translate-sign.js */; };
+		C988B28823B1F12D007C8108 /* DarkModeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C988B28723B1F12D007C8108 /* DarkModeManager.m */; };
 		C98C17A1239E3F4A00BD02DB /* PreferencesWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = C98C17A0239E3F4A00BD02DB /* PreferencesWindowController.m */; };
 		C98C17A5239E40AC00BD02DB /* GeneralViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C98C17A3239E40AC00BD02DB /* GeneralViewController.m */; };
 		C98C17A6239E40AC00BD02DB /* GeneralViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C98C17A4239E40AC00BD02DB /* GeneralViewController.xib */; };
@@ -127,6 +128,9 @@
 		C9889F5F23AA0FDA00C2D127 /* GoogleTranslate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GoogleTranslate.h; sourceTree = "<group>"; };
 		C9889F6023AA0FDA00C2D127 /* GoogleTranslate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GoogleTranslate.m; sourceTree = "<group>"; };
 		C9889F6323AA25C800C2D127 /* google-translate-sign.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = "google-translate-sign.js"; sourceTree = "<group>"; };
+		C988B28623B1F12D007C8108 /* DarkModeManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DarkModeManager.h; sourceTree = "<group>"; };
+		C988B28723B1F12D007C8108 /* DarkModeManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DarkModeManager.m; sourceTree = "<group>"; };
+		C988B28923B1F135007C8108 /* Singleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Singleton.h; sourceTree = "<group>"; };
 		C98C179F239E3F4A00BD02DB /* PreferencesWindowController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PreferencesWindowController.h; sourceTree = "<group>"; };
 		C98C17A0239E3F4A00BD02DB /* PreferencesWindowController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PreferencesWindowController.m; sourceTree = "<group>"; };
 		C98C17A2239E40AC00BD02DB /* GeneralViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GeneralViewController.h; sourceTree = "<group>"; };
@@ -304,6 +308,16 @@
 			path = Google;
 			sourceTree = "<group>";
 		};
+		C988B28523B1F11F007C8108 /* DarkMode */ = {
+			isa = PBXGroup;
+			children = (
+				C988B28923B1F135007C8108 /* Singleton.h */,
+				C988B28623B1F12D007C8108 /* DarkModeManager.h */,
+				C988B28723B1F12D007C8108 /* DarkModeManager.m */,
+			);
+			path = DarkMode;
+			sourceTree = "<group>";
+		};
 		C98C179A239E1B7400BD02DB /* PerferenceWindow */ = {
 			isa = PBXGroup;
 			children = (
@@ -408,6 +422,7 @@
 		C99EEB872385799D00FEE666 /* Feature */ = {
 			isa = PBXGroup;
 			children = (
+				C988B28523B1F11F007C8108 /* DarkMode */,
 				C98CFA1E239F8C4000FB7EC4 /* MMKit */,
 				C99EEBAD2385799D00FEE666 /* Selection */,
 				C9C3BDC4238E766B00D5F1C1 /* Snip */,
@@ -808,6 +823,7 @@
 				C99EEBDB2385799D00FEE666 /* NSAttributedString+MM.m in Sources */,
 				C959D33A238809B800DD8808 /* OCRResult.m in Sources */,
 				C91DF6B723A390A7009CB158 /* YoudaoOCRResponse.m in Sources */,
+				C988B28823B1F12D007C8108 /* DarkModeManager.m in Sources */,
 				C9F7E87C23A2165F0025ADF6 /* YoudaoTranslate.m in Sources */,
 				C99EEBCC2385799D00FEE666 /* NormalResultView.m in Sources */,
 				C99142742390FCBD0025E75E /* NSImage+MM.m in Sources */,

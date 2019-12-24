@@ -28,6 +28,8 @@
 #import "NSPasteboard+MM.h"
 #import "NSDictionary+MM.h"
 #import "MMOrderedDictionary.h"
+#import "Singleton.h"
+#import <ReactiveObjC.h>
 
 #import "MMLog.h"
 #define NSLog(frmt, ...) MMLogVerbose(frmt, ##__VA_ARGS__)
