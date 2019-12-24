@@ -27,13 +27,20 @@ singleton_m(DarkModeManager)
     return [self shared];
 }
 
+- (void)excuteLight:(void(^)(void))light dark:(void(^)(void))dark {
+    [RACObserve([DarkModeManager manager], systemDarkMode) subscribeNext:^(id  _Nullable x) {
+        if ([x boolValue]) {
+            !dark ?: dark();
+        } else {
+            !light ?: light();
+        }
+    }];
+}
+
 - (void)fetch {
     NSDictionary *dict = [[NSUserDefaults standardUserDefaults] persistentDomainForName:NSGlobalDomain];
     id style = [dict objectForKey:@"AppleInterfaceStyle"];
     self.systemDarkMode = ( style && [style isKindOfClass:[NSString class]] && NSOrderedSame == [style caseInsensitiveCompare:@"dark"] );
-    [RACObserve(self, systemDarkMode) subscribeNext:^(id  _Nullable x) {
-        NSLog(@"%@", x);
-    }];
 }
 
 - (void)monitor {

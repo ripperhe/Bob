@@ -30,6 +30,7 @@
 #import "MMOrderedDictionary.h"
 #import "Singleton.h"
 #import <ReactiveObjC.h>
+#import "DarkModeManager.h"
 
 #import "MMLog.h"
 #define NSLog(frmt, ...) MMLogVerbose(frmt, ##__VA_ARGS__)
