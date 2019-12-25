@@ -92,13 +92,6 @@ return; \
 
 - (void)setupViews {
     self.view.wantsLayer = YES;
-    [DarkModeManager.manager excuteLight:^{
-        self.view.layer.backgroundColor = NSColor.whiteColor.CGColor;
-    } dark:^{
-        self.view.layer.backgroundColor = NSColor.mm_randomColor.CGColor;
-    }];
-   
-    
     self.pinButton = [NSButton mm_make:^(NSButton * button) {
         [self.view addSubview:button];
         button.bordered = NO;

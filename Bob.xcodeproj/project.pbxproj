@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C90007F323B3BA710002B6A0 /* NSObject+DarkMode.m in Sources */ = {isa = PBXBuildFile; fileRef = C90007F223B3BA710002B6A0 /* NSObject+DarkMode.m */; };
+		C90007F623B3C5BB0002B6A0 /* NSView+HiddenDebug.m in Sources */ = {isa = PBXBuildFile; fileRef = C90007F523B3C5BB0002B6A0 /* NSView+HiddenDebug.m */; };
 		C90BE30D239F38EB00ADE88B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C90BE30C239F38EB00ADE88B /* AppDelegate.m */; };
 		C90BE310239F38EB00ADE88B /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C90BE30F239F38EB00ADE88B /* ViewController.m */; };
 		C90BE312239F38EC00ADE88B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C90BE311239F38EC00ADE88B /* Assets.xcassets */; };
@@ -99,6 +101,10 @@
 /* Begin PBXFileReference section */
 		3A08EDDF832035FD57B6A226 /* Pods-Bob.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bob.release.xcconfig"; path = "Target Support Files/Pods-Bob/Pods-Bob.release.xcconfig"; sourceTree = "<group>"; };
 		3F045DD4639F4F9836B1E8D6 /* Pods_Bob.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Bob.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C90007F123B3BA710002B6A0 /* NSObject+DarkMode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+DarkMode.h"; sourceTree = "<group>"; };
+		C90007F223B3BA710002B6A0 /* NSObject+DarkMode.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSObject+DarkMode.m"; sourceTree = "<group>"; };
+		C90007F423B3C5BB0002B6A0 /* NSView+HiddenDebug.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSView+HiddenDebug.h"; sourceTree = "<group>"; };
+		C90007F523B3C5BB0002B6A0 /* NSView+HiddenDebug.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSView+HiddenDebug.m"; sourceTree = "<group>"; };
 		C90BE309239F38EB00ADE88B /* BobHelper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BobHelper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C90BE30B239F38EB00ADE88B /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		C90BE30C239F38EB00ADE88B /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -314,6 +320,10 @@
 				C988B28923B1F135007C8108 /* Singleton.h */,
 				C988B28623B1F12D007C8108 /* DarkModeManager.h */,
 				C988B28723B1F12D007C8108 /* DarkModeManager.m */,
+				C90007F123B3BA710002B6A0 /* NSObject+DarkMode.h */,
+				C90007F223B3BA710002B6A0 /* NSObject+DarkMode.m */,
+				C90007F423B3C5BB0002B6A0 /* NSView+HiddenDebug.h */,
+				C90007F523B3C5BB0002B6A0 /* NSView+HiddenDebug.m */,
 			);
 			path = DarkMode;
 			sourceTree = "<group>";
@@ -772,6 +782,7 @@
 				C98CFA33239FA6F400FB7EC4 /* MMCrashUncaughtExceptionHandler.m in Sources */,
 				C99EEBD42385799D00FEE666 /* StatusItem.m in Sources */,
 				C98CFA34239FA6F400FB7EC4 /* MMCrashSignalExceptionHandler.m in Sources */,
+				C90007F623B3C5BB0002B6A0 /* NSView+HiddenDebug.m in Sources */,
 				C9AEF96B23A0D57A003BE95C /* TextView.m in Sources */,
 				C91DF6B023A35E07009CB158 /* MMOrderedDictionary.m in Sources */,
 				C98C17A5239E40AC00BD02DB /* GeneralViewController.m in Sources */,
@@ -811,6 +822,7 @@
 				C98C17AA239E410300BD02DB /* AboutViewController.m in Sources */,
 				C98CFA35239FA6F400FB7EC4 /* MMCrashFileTool.m in Sources */,
 				C99EEBC52385799D00FEE666 /* BaiduTranslate.m in Sources */,
+				C90007F323B3BA710002B6A0 /* NSObject+DarkMode.m in Sources */,
 				C99EEB1D2385796700FEE666 /* AppDelegate.m in Sources */,
 				C99EEBD72385799D00FEE666 /* MMMake.m in Sources */,
 				C9D679CC23A3403F0073957C /* NSDictionary+MM.m in Sources */,

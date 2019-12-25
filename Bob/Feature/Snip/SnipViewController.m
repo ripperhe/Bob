@@ -31,11 +31,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.wantsLayer = YES;
-    [DarkModeManager.manager excuteLight:^{
-        self.view.layer.backgroundColor = [NSColor whiteColor].CGColor;
-    } dark:^{
-        self.view.layer.backgroundColor = [NSColor mm_randomColor].CGColor;
-    }];
     
     self.imageView = [NSImageView mm_make:^(NSImageView * _Nonnull imageView) {
         [self.view addSubview:imageView];
