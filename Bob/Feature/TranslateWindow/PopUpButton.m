@@ -18,12 +18,21 @@
 
 DefineMethodMMMake_m(PopUpButton)
 
-- (instancetype)initWithFrame:(NSRect)frameRect {
-    if (self = [super initWithFrame:frameRect]) {
+- (instancetype)initWithStretch:(BOOL)stretch {
+    if (self = [super initWithFrame:NSZeroRect]) {
+        self.stretch = stretch;
         [self setup];
     }
     return self;
 }
+
++ (instancetype)mm_makeWithStretch:(BOOL)stretch block:(void (NS_NOESCAPE ^)(PopUpButton * _Nonnull botton))block {
+    id obj = [[self alloc] initWithStretch:stretch];
+    block(obj);
+    return obj;
+}
+
+
 
 - (void)setup {
     self.wantsLayer = YES;
@@ -52,10 +61,15 @@ DefineMethodMMMake_m(PopUpButton)
     
     [NSView mm_make:^(NSView * _Nonnull titleContainerView) {
         [self addSubview:titleContainerView];
+        titleContainerView.layer.backgroundColor = [NSColor redColor].CGColor;
+        titleContainerView.wantsLayer = YES;
         [titleContainerView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.center.offset(0);
-            make.left.greaterThanOrEqualTo(self).offset(5);
-            make.right.lessThanOrEqualTo(self).inset(5);
+            if (self.stretch) {
+                make.left.offset(15);
+                make.right.offset(-15);
+            }
+
         }];
         
         self.textField = [NSTextField mm_make:^(NSTextField * _Nonnull textField) {
@@ -82,7 +96,7 @@ DefineMethodMMMake_m(PopUpButton)
             imageView.image = [NSImage imageNamed:@"arrow_down"];
             [imageView mas_makeConstraints:^(MASConstraintMaker *make) {
                 make.left.equalTo(self.textField.mas_right).offset(3);
-                make.centerY.equalTo(self.textField);
+                make.centerY.equalTo(self.textField).offset(2.5);
                 make.right.equalTo(titleContainerView);
                 make.width.height.equalTo(@8);
             }];

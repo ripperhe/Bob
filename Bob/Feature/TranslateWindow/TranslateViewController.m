@@ -208,7 +208,7 @@ return; \
         }];
     }];
     
-    self.translateButton = [PopUpButton mm_make:^(PopUpButton *  _Nonnull button) {
+    self.translateButton = [PopUpButton mm_makeWithStretch:YES block:^(PopUpButton * _Nonnull button) {
         [self.view addSubview:button];
         [button mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.equalTo(self.queryView.mas_bottom).offset(12);
@@ -234,13 +234,13 @@ return; \
             }
         }];
     }];
-    
-    self.fromLanguageButton = [PopUpButton mm_make:^(PopUpButton *  _Nonnull button) {
+   
+    self.fromLanguageButton = [PopUpButton mm_makeWithStretch:NO block:^(PopUpButton * _Nonnull button) {
         [self.view addSubview:button];
         [button mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.equalTo(self.translateButton.mas_bottom).offset(12);
             make.left.offset(kMargin);
-            make.width.mas_equalTo(100);
+            make.width.mas_equalTo(114);
             make.height.mas_equalTo(25);
         }];
         [button updateMenuWithTitleArray:[self.translate.languages mm_map:^id _Nullable(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
@@ -288,7 +288,7 @@ return; \
         }]];
     }];
     
-    self.toLanguageButton = [PopUpButton mm_make:^(PopUpButton *  _Nonnull button) {
+    self.toLanguageButton = [PopUpButton mm_makeWithStretch:NO block:^(PopUpButton * _Nonnull button) {
         [self.view addSubview:button];
         [button mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.equalTo(self.transformButton.mas_right).offset(20);
@@ -384,8 +384,8 @@ return; \
         }
         if (!Configuration.shared.isPin) {
             // 关闭视图
-            [TranslateWindowController.shared close];
-            [self.monitor stop];
+//            [TranslateWindowController.shared close];
+//            [self.monitor stop];
         }
     }];
 }

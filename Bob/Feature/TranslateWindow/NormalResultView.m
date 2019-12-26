@@ -31,8 +31,13 @@ DefineMethodMMMake_m(NormalResultView)
 
 - (void)setup {
     self.wantsLayer = YES;
-    self.layer.backgroundColor = [NSColor mm_colorWithHexString:@"#EEEEEE"].CGColor;
-    self.layer.borderColor = [NSColor mm_colorWithHexString:@"#EEEEEE"].CGColor;
+    [self.layer excuteLight:^(id  _Nonnull x) {
+        [x setBackgroundColor:[NSColor mm_colorWithHexString:@"#EEEEEE"].CGColor];
+        [x setBorderColor:[NSColor mm_colorWithHexString:@"#EEEEEE"].CGColor];
+    } drak:^(id  _Nonnull x) {
+        [x setBackgroundColor:DarkGrayColor.CGColor];
+        [x setBorderColor:DarkGrayColor.CGColor];
+    }];
     self.layer.borderWidth = 1;
     
     self.scrollView = [NSScrollView mm_make:^(NSScrollView *  _Nonnull scrollView) {
