@@ -10,6 +10,8 @@
 #import "ImageButton.h"
 
 #define kMargin 12.0
+/// wrappingLabel的约束需要偏移2,不知道是什么神设计
+#define kFixWrappingLabelMargin 2.0
 
 @interface WordResultView ()
 
@@ -147,7 +149,7 @@
                     make.left.equalTo(partTextFiled.mas_right).offset(8);
                     make.top.equalTo(partTextFiled);
                 }else {
-                    make.left.offset(kMargin);
+                    make.left.offset(kMargin + kFixWrappingLabelMargin);
                     if (lastView) {
                         if (idx == 0) {
                             make.top.equalTo(lastView.mas_bottom).offset(10);
@@ -320,7 +322,7 @@
                 }else {
                     make.top.offset(kMargin);
                 }
-                make.left.offset(kMargin + 2);
+                make.left.offset(kMargin + kFixWrappingLabelMargin);
                 make.right.lessThanOrEqualTo(self).offset(-kMargin);
             }];
         }];

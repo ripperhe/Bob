@@ -10,8 +10,8 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-#define DeepDarkColor [NSColor mm_colorWithHexString:@"#131415"]
-#define DarkGrayColor [NSColor mm_colorWithHexString:@"#2E2F30"]
+#define DeepDarkColor [NSColor mm_colorWithHexString:@"#262728"]
+#define DarkGrayColor [NSColor mm_colorWithHexString:@"#333435"]
 
 @interface NSColor (MM)
 

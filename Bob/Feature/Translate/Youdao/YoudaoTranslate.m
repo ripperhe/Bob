@@ -226,13 +226,14 @@
                             wordResult.phonetics = phoneticArray.copy;
                         }
                         
-                        
+                        // 解析词性词义
                         if (wordResult.phonetics) {
                             // 英文查词
-                            
-                            // 解析词性词义
                             NSMutableArray *partArray = [NSMutableArray array];
                             [basic.explains enumerateObjectsUsingBlock:^(NSString * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                                if (![obj isKindOfClass:NSString.class]) {
+                                    return;
+                                }
                                 TranslatePart *part = [TranslatePart new];
                                 part.means = @[obj];
                                 [partArray addObject:part];
@@ -242,26 +243,40 @@
                             }
                         }else if (result.from == Language_zh_Hans && result.to == Language_en) {
                             // 中文查词
-                            
                             NSMutableArray *simpleWordArray = [NSMutableArray array];
                             [basic.explains enumerateObjectsUsingBlock:^(NSString * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-                                if ([obj containsString:@";"]) {
-                                    // 拆分成多个 测试中
-                                    MMLogInfo(@"有道翻译手动拆词 %@", obj);
-                                    NSArray<NSString *> *words = [obj componentsSeparatedByString:@";"];
-                                    [words enumerateObjectsUsingBlock:^(NSString * _Nonnull subObj, NSUInteger idx, BOOL * _Nonnull stop) {
+                                if ([obj isKindOfClass:NSString.class]) {
+                                    if ([obj containsString:@";"]) {
+                                        // 拆分成多个 测试中
+                                        MMLogInfo(@"有道翻译手动拆词 %@", obj);
+                                        NSArray<NSString *> *words = [obj componentsSeparatedByString:@";"];
+                                        [words enumerateObjectsUsingBlock:^(NSString * _Nonnull subObj, NSUInteger idx, BOOL * _Nonnull stop) {
+                                            TranslateSimpleWord *word = [TranslateSimpleWord new];
+                                            word.word = subObj;
+                                            // 有道没法获取到单词词性
+                                            // word.part = @"misc.";
+                                            [simpleWordArray addObject:word];
+                                        }];
+                                    }else {
                                         TranslateSimpleWord *word = [TranslateSimpleWord new];
-                                        word.word = subObj;
+                                        word.word = obj;
                                         // 有道没法获取到单词词性
                                         // word.part = @"misc.";
                                         [simpleWordArray addObject:word];
-                                    }];
-                                }else {
-                                    TranslateSimpleWord *word = [TranslateSimpleWord new];
-                                    word.word = obj;
-                                    // 有道没法获取到单词词性
-                                    // word.part = @"misc.";
-                                    [simpleWordArray addObject:word];
+                                    }
+                                }else if ([obj isKindOfClass:NSDictionary.class]) {
+                                    // 20191226 突然变成了字典结构，应该是改 API 了
+                                    NSDictionary *dict = (NSDictionary *)obj;
+                                    NSString *text = [dict objectForKey:@"text"];
+                                    NSString *tran = [dict objectForKey:@"tran"];
+                                    if ([text isKindOfClass:NSString.class] && text.length) {
+                                        TranslateSimpleWord *word = [TranslateSimpleWord new];
+                                        word.word = text;
+                                        if ([tran isKindOfClass:NSString.class] && tran.length) {
+                                            word.means = @[tran];
+                                        }
+                                        [simpleWordArray addObject:word];
+                                    }
                                 }
                             }];
                             if (simpleWordArray.count) {
@@ -308,7 +323,7 @@
                 }
             } @catch (NSException *exception) {
                 MMLogInfo(@"有道翻译翻译接口数据解析异常 %@", exception);
-                message = @"有道翻译翻译接口数据解析异常 %@";
+                message = @"有道翻译翻译接口数据解析异常";
             }
         }
         [reqDict setObject:responseObject ?: [NSNull null] forKey:TranslateErrorRequestResponseKey];

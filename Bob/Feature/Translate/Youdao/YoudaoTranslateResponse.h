@@ -31,8 +31,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy) NSString *us_speech;
 /// 英式发音，英文查词成功，一定存在
 @property (nonatomic, copy) NSString *uk_speech;
-/// 基本释义
-@property (nonatomic, copy) NSArray<NSString *> *explains;
+/// 基本释义 英文查词是NSString，中文查词是NSDictionary
+@property (nonatomic, copy) NSArray *explains;
 
 @end
 

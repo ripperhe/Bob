@@ -67,10 +67,13 @@ return; \
     self.view.wantsLayer = YES;
     self.view.layer.cornerRadius = 4;
     self.view.layer.masksToBounds = YES;
-    [self.view excuteLight:^(id  _Nonnull x) {
-        [x setBackgroundColor:NSColor.whiteColor];
-    } drak:^(id  _Nonnull x) {
-        [x setBackgroundColor:DeepDarkColor];
+    [self.view excuteLight:^(NSView *  _Nonnull x) {
+        x.layer.backgroundColor = NSColor.whiteColor.CGColor;
+        x.layer.borderWidth = 0;
+    } drak:^(NSView *  _Nonnull x) {
+        x.layer.backgroundColor = DeepDarkColor.CGColor;
+        x.layer.borderColor = [NSColor mm_colorWithHexString:@"#727374" alpha:0.7].CGColor;
+        x.layer.borderWidth = 0.7;
     }];
 }
 
@@ -375,6 +378,7 @@ return; \
 
 - (void)setupMonitor {
     mm_weakify(self)
+    return;
     self.monitor = [MMEventMonitor globalMonitorWithEvent:NSEventMaskLeftMouseDown | NSEventMaskRightMouseDown handler:^(NSEvent * _Nonnull event) {
         mm_strongify(self);
         if (NSPointInRect([NSEvent mouseLocation], TranslateWindowController.shared.window.frame)) {
