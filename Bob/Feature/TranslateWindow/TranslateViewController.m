@@ -384,8 +384,8 @@ return; \
         }
         if (!Configuration.shared.isPin) {
             // 关闭视图
-//            [TranslateWindowController.shared close];
-//            [self.monitor stop];
+            [TranslateWindowController.shared close];
+            [self.monitor stop];
         }
     }];
 }
