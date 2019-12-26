@@ -64,6 +64,11 @@ return; \
 /// 用代码创建 NSViewController 貌似不会自动创建 view，需要手动初始化
 - (void)loadView {
     self.view = [NSView new];
+    [self.view excuteLight:^(id  _Nonnull x) {
+        [x setBackgroundColor:NSColor.whiteColor];
+    } drak:^(id  _Nonnull x) {
+        [x setBackgroundColor:DeepDarkColor];
+    }];
 }
 
 - (void)viewDidLoad {

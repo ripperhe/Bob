@@ -21,7 +21,11 @@ DefineMethodMMMake_m(TextView)
             style.paragraphSpacing = 5;
         }]];
         self.font = [NSFont systemFontOfSize:14];
-        self.textColor = [NSColor mm_colorWithHexString:@"#333333"];
+        [self excuteLight:^(id  _Nonnull x) {
+            [x setTextColor:[NSColor mm_colorWithHexString:@"#333333"]];
+        } drak:^(id  _Nonnull x) {
+            [x setTextColor:[NSColor whiteColor]];
+        }];
         self.alignment = NSTextAlignmentLeft;
         self.textContainerInset  = CGSizeMake(8, 12);
     }

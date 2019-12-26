@@ -42,7 +42,13 @@ DefineMethodMMMake_m(NormalResultView)
         scrollView.autohidesScrollers = YES;
         self.textView = [TextView mm_make:^(TextView * _Nonnull textView) {
             textView.editable = NO;
-            textView.backgroundColor = [NSColor mm_colorWithHexString:@"#EEEEEE"];
+            [textView excuteLight:^(id  _Nonnull x) {
+                [x setBackgroundColor:[NSColor mm_colorWithHexString:@"#EEEEEE"]];
+                [x setTextColor:[NSColor mm_colorWithHexString:@"#000000"]];
+            } drak:^(id  _Nonnull x) {
+                [x setBackgroundColor:DarkGrayColor];
+                [x setTextColor:[NSColor whiteColor]];
+            }];
             [textView setAutoresizingMask:NSViewHeightSizable | NSViewWidthSizable];
         }];
         scrollView.documentView = self.textView;

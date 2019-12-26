@@ -28,9 +28,15 @@ DefineMethodMMMake_m(QueryView)
 
 - (void)setup {
     self.wantsLayer = YES;
-    self.layer.backgroundColor = NSColor.whiteColor.CGColor;
-    self.layer.borderColor = [NSColor mm_colorWithHexString:@"#EEEEEE"].CGColor;
+    [self.layer excuteLight:^(id  _Nonnull x) {
+        [x setBackgroundColor:NSColor.whiteColor.CGColor];
+        [x setBorderColor:[NSColor mm_colorWithHexString:@"#EEEEEE"].CGColor];
+    } drak:^(id  _Nonnull x) {
+        [x setBackgroundColor:DeepDarkColor.CGColor];
+        [x setBorderColor:DarkGrayColor.CGColor];
+    }];
     self.layer.borderWidth = 1;
+    self.layer.cornerRadius = 4;
 
     self.scrollView = [NSScrollView mm_make:^(NSScrollView *  _Nonnull scrollView) {
         [self addSubview:scrollView];
@@ -40,7 +46,13 @@ DefineMethodMMMake_m(QueryView)
         scrollView.hasHorizontalScroller = NO;
         scrollView.autohidesScrollers = YES;
         self.textView = [TextView mm_make:^(TextView * _Nonnull textView) {
-            textView.backgroundColor = NSColor.whiteColor;
+            [textView excuteLight:^(id  _Nonnull x) {
+                [x setBackgroundColor:NSColor.whiteColor];
+                [x setTextColor:[NSColor mm_colorWithHexString:@"#000000"]];
+            } drak:^(id  _Nonnull x) {
+                [x setBackgroundColor:DeepDarkColor];
+                [x setTextColor:[NSColor whiteColor]];
+            }];
             [textView setAutoresizingMask:NSViewHeightSizable | NSViewWidthSizable];
             textView.delegate = self;
         }];

@@ -30,10 +30,10 @@ DefineMethodMMMake_m(PopUpButton)
     [self.layer excuteLight:^(id  _Nonnull x) {
         [x setBorderColor:[NSColor mm_colorWithHexString:@"#EEEEEE"].CGColor];
     } drak:^(id  _Nonnull x) {
-        [x setBorderColor:[NSColor mm_colorWithHexString:@"#131415"].CGColor];
+        [x setBorderColor:DarkGrayColor.CGColor];
     }];
     self.layer.borderWidth = 1;
-    self.layer.cornerRadius = 2;
+    self.layer.cornerRadius = 4;
     self.bordered = NO;
     self.imageScaling = NSImageScaleProportionallyDown;
     self.bezelStyle = NSBezelStyleRegularSquare;
@@ -65,7 +65,11 @@ DefineMethodMMMake_m(PopUpButton)
             textField.bordered = NO;
             textField.backgroundColor = NSColor.clearColor;
             textField.font = [NSFont systemFontOfSize:12];
-            textField.textColor = [NSColor mm_colorWithHexString:@"#333333"];
+            [textField excuteLight:^(id  _Nonnull x) {
+                textField.textColor = [NSColor mm_colorWithHexString:@"#333333"];
+            } drak:^(id  _Nonnull x) {
+                textField.textColor = [NSColor whiteColor];
+            }];
             textField.maximumNumberOfLines = 1;
             textField.lineBreakMode = NSLineBreakByTruncatingTail;
             [textField mas_makeConstraints:^(MASConstraintMaker *make) {

@@ -23,13 +23,23 @@
     self = [super initWithFrame:frame];
     if (self) {
         self.wantsLayer = YES;
-        self.layer.backgroundColor = [NSColor mm_colorWithHexString:@"#EEEEEE"].CGColor;
+        [self.layer excuteLight:^(id  _Nonnull x) {
+            [x setBackgroundColor:[NSColor mm_colorWithHexString:@"#EEEEEE"].CGColor];
+        } drak:^(id  _Nonnull x) {
+            [x setBackgroundColor:DarkGrayColor.CGColor];
+        }];
+        self.layer.cornerRadius = 4;
+        self.layer.masksToBounds = YES;
         self.normalResultView = [NormalResultView new];
         self.wordResultView = [WordResultView new];
         self.stateTextField = [[NSTextField wrappingLabelWithString:@""] mm_put:^(NSTextField * _Nonnull textField) {
             [self addSubview:textField];
             textField.font = [NSFont systemFontOfSize:14];
-            textField.textColor = [NSColor mm_colorWithHexString:@"#333333"];
+            [textField excuteLight:^(id  _Nonnull x) {
+                [x setTextColor:[NSColor mm_colorWithHexString:@"#333333"]];
+            } drak:^(id  _Nonnull x) {
+                [x setTextColor:NSColor.whiteColor];
+            }];
             [textField mas_makeConstraints:^(MASConstraintMaker *make) {
                 make.top.offset(kMargin);
                 make.left.offset(kMargin);

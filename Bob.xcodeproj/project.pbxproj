@@ -438,7 +438,6 @@
 				C9C3BDC4238E766B00D5F1C1 /* Snip */,
 				C9F7E87623A210B80025ADF6 /* Translate */,
 				C99EEB882385799D00FEE666 /* Configuration */,
-				C98C17AD239E511200BD02DB /* Shortcut */,
 				C99EEBAA2385799D00FEE666 /* StatusItem */,
 				C98C179A239E1B7400BD02DB /* PerferenceWindow */,
 				C99EEB972385799D00FEE666 /* TranslateWindow */,
@@ -497,6 +496,7 @@
 		C99EEBAA2385799D00FEE666 /* StatusItem */ = {
 			isa = PBXGroup;
 			children = (
+				C98C17AD239E511200BD02DB /* Shortcut */,
 				C99EEBAC2385799D00FEE666 /* StatusItem.h */,
 				C99EEBAB2385799D00FEE666 /* StatusItem.m */,
 			);

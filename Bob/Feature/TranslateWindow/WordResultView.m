@@ -21,7 +21,11 @@
     self = [super initWithFrame:frame];
     if (self) {
         self.wantsLayer = YES;
-        self.layer.backgroundColor = [NSColor mm_colorWithHexString:@"#EEEEEE"].CGColor;
+        [self.layer excuteLight:^(id  _Nonnull x) {
+            [x setBackgroundColor:[NSColor mm_colorWithHexString:@"#EEEEEE"].CGColor];
+        } drak:^(id  _Nonnull x) {
+            [x setBackgroundColor:DarkGrayColor.CGColor];
+        }];
     }
     return self;
 }
@@ -38,7 +42,11 @@
         NSTextField *nameTextFiled = [NSTextField mm_make:^(NSTextField * _Nonnull textField) {
             [self addSubview:textField];
             textField.stringValue = obj.name;
-            textField.textColor = [NSColor mm_colorWithHexString:@"#333333"];
+            [textField excuteLight:^(id  _Nonnull x) {
+                [x setTextColor:[NSColor mm_colorWithHexString:@"#333333"]];
+            } drak:^(id  _Nonnull x) {
+                [x setTextColor:NSColor.whiteColor];
+            }];
             textField.font = [NSFont systemFontOfSize:13];
             textField.editable = NO;
             textField.bordered = NO;
@@ -56,7 +64,11 @@
         NSTextField *valueTextField = [NSTextField mm_make:^(NSTextField * _Nonnull textField) {
             [self addSubview:textField];
             textField.stringValue = [NSString stringWithFormat:@"[%@]", obj.value];
-            textField.textColor = [NSColor mm_colorWithHexString:@"#333333"];
+            [textField excuteLight:^(id  _Nonnull x) {
+                [x setTextColor:[NSColor mm_colorWithHexString:@"#333333"]];
+            } drak:^(id  _Nonnull x) {
+                [x setTextColor:NSColor.whiteColor];
+            }];
             textField.font = [NSFont systemFontOfSize:13];
             textField.editable = NO;
             textField.bordered = NO;
@@ -122,7 +134,11 @@
         NSTextField *meanTextField = [[NSTextField wrappingLabelWithString:@""] mm_put:^(NSTextField * _Nonnull textField) {
             [self addSubview:textField];
             textField.stringValue = [NSString mm_stringByCombineComponents:obj.means separatedString:@"; "];
-            textField.textColor = [NSColor mm_colorWithHexString:@"#333333"];
+            [textField excuteLight:^(id  _Nonnull x) {
+                [x setTextColor:[NSColor mm_colorWithHexString:@"#333333"]];
+            } drak:^(id  _Nonnull x) {
+                [x setTextColor:NSColor.whiteColor];
+            }];
             textField.font = [NSFont systemFontOfSize:13];
             textField.backgroundColor = NSColor.clearColor;
             textField.alignment = NSTextAlignmentLeft;
@@ -153,7 +169,11 @@
         NSTextField *nameTextFiled = [NSTextField mm_make:^(NSTextField * _Nonnull textField) {
             [self addSubview:textField];
             textField.stringValue = [NSString stringWithFormat:@"%@: ", obj.name];
-            textField.textColor = [NSColor mm_colorWithHexString:@"#333333"];
+            [textField excuteLight:^(id  _Nonnull x) {
+                [x setTextColor:[NSColor mm_colorWithHexString:@"#333333"]];
+            } drak:^(id  _Nonnull x) {
+                [x setTextColor:NSColor.whiteColor];
+            }];
             textField.font = [NSFont systemFontOfSize:13];
             textField.editable = NO;
             textField.bordered = NO;
@@ -264,7 +284,11 @@
         NSTextField *meanTextField = [[NSTextField wrappingLabelWithString:@""] mm_put:^(NSTextField * _Nonnull textField) {
             [self addSubview:textField];
             textField.stringValue = [NSString mm_stringByCombineComponents:obj.means separatedString:@"; "] ?: @"";
-            textField.textColor = [NSColor mm_colorWithHexString:@"#333333"];
+            [textField excuteLight:^(id  _Nonnull x) {
+                [x setTextColor:[NSColor mm_colorWithHexString:@"#333333"]];
+            } drak:^(id  _Nonnull x) {
+                [x setTextColor:NSColor.whiteColor];
+            }];
             textField.font = [NSFont systemFontOfSize:13];
             textField.backgroundColor = NSColor.clearColor;
             textField.alignment = NSTextAlignmentLeft;
@@ -282,7 +306,11 @@
         NSTextField *meanTextField = [[NSTextField wrappingLabelWithString:@""] mm_put:^(NSTextField * _Nonnull textField) {
             [self addSubview:textField];
             textField.stringValue = [NSString mm_stringByCombineComponents:result.normalResults separatedString:@"\n"] ?: @"";
-            textField.textColor = [NSColor mm_colorWithHexString:@"#333333"];
+            [textField excuteLight:^(id  _Nonnull x) {
+                [x setTextColor:[NSColor mm_colorWithHexString:@"#333333"]];
+            } drak:^(id  _Nonnull x) {
+                [x setTextColor:NSColor.whiteColor];
+            }];
             textField.font = [NSFont systemFontOfSize:13];
             textField.backgroundColor = NSColor.clearColor;
             textField.alignment = NSTextAlignmentLeft;
