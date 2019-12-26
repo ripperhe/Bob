@@ -247,21 +247,17 @@
                             [basic.explains enumerateObjectsUsingBlock:^(NSString * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
                                 if ([obj isKindOfClass:NSString.class]) {
                                     if ([obj containsString:@";"]) {
-                                        // 拆分成多个 测试中
+                                        // 拆分成多个
                                         MMLogInfo(@"有道翻译手动拆词 %@", obj);
                                         NSArray<NSString *> *words = [obj componentsSeparatedByString:@";"];
                                         [words enumerateObjectsUsingBlock:^(NSString * _Nonnull subObj, NSUInteger idx, BOOL * _Nonnull stop) {
                                             TranslateSimpleWord *word = [TranslateSimpleWord new];
                                             word.word = subObj;
-                                            // 有道没法获取到单词词性
-                                            // word.part = @"misc.";
                                             [simpleWordArray addObject:word];
                                         }];
                                     }else {
                                         TranslateSimpleWord *word = [TranslateSimpleWord new];
                                         word.word = obj;
-                                        // 有道没法获取到单词词性
-                                        // word.part = @"misc.";
                                         [simpleWordArray addObject:word];
                                     }
                                 }else if ([obj isKindOfClass:NSDictionary.class]) {
@@ -270,12 +266,23 @@
                                     NSString *text = [dict objectForKey:@"text"];
                                     NSString *tran = [dict objectForKey:@"tran"];
                                     if ([text isKindOfClass:NSString.class] && text.length) {
-                                        TranslateSimpleWord *word = [TranslateSimpleWord new];
-                                        word.word = text;
-                                        if ([tran isKindOfClass:NSString.class] && tran.length) {
-                                            word.means = @[tran];
+                                        if ([text containsString:@";"]) {
+                                            // 拆分成多个 测试中
+                                            MMLogInfo(@"有道翻译手动拆词 %@", text);
+                                            NSArray<NSString *> *words = [text componentsSeparatedByString:@";"];
+                                            [words enumerateObjectsUsingBlock:^(NSString * _Nonnull subObj, NSUInteger idx, BOOL * _Nonnull stop) {
+                                                TranslateSimpleWord *word = [TranslateSimpleWord new];
+                                                word.word = subObj;
+                                                [simpleWordArray addObject:word];
+                                            }];
+                                        }else {
+                                            TranslateSimpleWord *word = [TranslateSimpleWord new];
+                                            word.word = text;
+                                            if ([tran isKindOfClass:NSString.class] && tran.length) {
+                                                word.means = @[tran];
+                                            }
+                                            [simpleWordArray addObject:word];
                                         }
-                                        [simpleWordArray addObject:word];
                                     }
                                 }
                             }];
