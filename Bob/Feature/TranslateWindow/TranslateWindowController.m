@@ -47,6 +47,7 @@ static TranslateWindowController *_instance;
 - (instancetype)init {
     if (self = [super init]) {
         NSWindow *window = [[TranslateWindow alloc] initWithContentRect:CGRectZero styleMask: NSWindowStyleMaskClosable | NSWindowStyleMaskResizable backing:NSBackingStoreBuffered defer:YES];
+        window.backgroundColor = [NSColor clearColor];
         TranslateViewController *viewController = [TranslateViewController new];
         viewController.window = window;
         window.contentViewController = viewController;
