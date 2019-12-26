@@ -13,8 +13,5 @@
 
 @implementation NSView (HiddenDebug)
 
-- (void)setHidden:(BOOL)hidden {
-    
-}
 
 @end

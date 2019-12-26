@@ -41,7 +41,6 @@ DefineMethodMMMake_m(QueryView)
     self.scrollView = [NSScrollView mm_make:^(NSScrollView *  _Nonnull scrollView) {
         [self addSubview:scrollView];
         scrollView.wantsLayer = YES;
-        scrollView.backgroundColor = NSColor.mm_randomColor;
         scrollView.hasVerticalScroller = YES;
         scrollView.hasHorizontalScroller = NO;
         scrollView.autohidesScrollers = YES;

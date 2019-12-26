@@ -17,10 +17,8 @@ DefineMethodMMMake_h(PopUpButton, button)
 @property (nonatomic, strong) NSTextField *textField;
 @property (nonatomic, strong) NSImageView *imageView;
 @property (nonatomic, strong, nullable) NSMenu *customMenu;
-@property (nonatomic, assign) BOOL stretch;
 @property (nonatomic, copy) void(^menuItemSeletedBlock)(NSInteger index, NSString *title);
 
-+ (instancetype)mm_makeWithStretch:(BOOL)stretch block:(void (NS_NOESCAPE ^)(PopUpButton * _Nonnull botton))block;
 - (void)updateMenuWithTitleArray:(NSArray<NSString *> *)titles;
 - (void)updateWithIndex:(NSInteger)index;
 
