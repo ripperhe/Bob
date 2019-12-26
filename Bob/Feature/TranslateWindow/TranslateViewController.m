@@ -377,7 +377,6 @@ return; \
 }
 
 - (void)setupMonitor {
-#if 0
     mm_weakify(self)
     self.monitor = [MMEventMonitor globalMonitorWithEvent:NSEventMaskLeftMouseDown | NSEventMaskRightMouseDown handler:^(NSEvent * _Nonnull event) {
         mm_strongify(self);
@@ -392,7 +391,6 @@ return; \
             [self.monitor stop];
         }
     }];
-#endif
 }
 
 #pragma mark -
