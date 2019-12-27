@@ -8,8 +8,11 @@
 
 #import "Configuration.h"
 #import <ServiceManagement/ServiceManagement.h>
+#import <Sparkle/Sparkle.h>
 
+#define kAutoCopyTranslateResultKey @"configuration_auto_copy_translate_result"
 #define kLaunchAtStartupKey @"configuration_launch_at_startup"
+
 #define kTranslateIdentifierKey @"configuration_translate_identifier"
 #define kFromKey @"configuration_from"
 #define kToKey @"configuration_to"
@@ -39,43 +42,15 @@ static Configuration *_instance;
 }
 
 - (void)setup {
-    NSString *translateIdentifier = [NSUserDefaults mm_read:kTranslateIdentifierKey];
-    if (![translateIdentifier isKindOfClass:NSString.class]) {
-        translateIdentifier = nil;
-        [NSUserDefaults mm_write:nil forKey:kTranslateIdentifierKey];
-    }
-    self.translateIdentifier = translateIdentifier;
-    
-    NSNumber *from = [NSUserDefaults mm_read:kFromKey];
-    if (![from isKindOfClass:[NSNumber class]]) {
-        from = @(Language_auto);
-        [NSUserDefaults mm_write:from forKey:kFromKey];
-    }
-    self.from = [from integerValue];
-    
-    NSNumber *to = [NSUserDefaults mm_read:kToKey];
-    if (![to isKindOfClass:[NSNumber class]]) {
-        to = @(Language_auto);
-        [NSUserDefaults mm_write:to forKey:kToKey];
-    }
-    self.to = [to integerValue];
-    
-    NSNumber *pin = [NSUserDefaults mm_read:kPinKey];
-    if (![pin isKindOfClass:[NSNumber class]]) {
-        pin = @NO;
-        [NSUserDefaults mm_write:pin forKey:kPinKey];
-    }
-    self.isPin = [pin boolValue];
-
-    NSNumber *fold = [NSUserDefaults mm_read:kFoldKey];
-    if (![fold isKindOfClass:[NSNumber class]]) {
-        fold = @NO;
-        [NSUserDefaults mm_write:fold forKey:kFoldKey];
-    }
-    self.isFold = [fold boolValue];
+    self.autoCopyTranslateResult = [[NSUserDefaults mm_read:kAutoCopyTranslateResultKey defaultValue:@NO checkClass:NSNumber.class] boolValue];
+    self.translateIdentifier = [NSUserDefaults mm_read:kTranslateIdentifierKey defaultValue:nil checkClass:NSString.class];
+    self.from = [[NSUserDefaults mm_read:kFromKey defaultValue:@(Language_auto) checkClass:NSNumber.class] integerValue];
+    self.to = [[NSUserDefaults mm_read:kToKey defaultValue:@(Language_auto) checkClass:NSNumber.class] integerValue];
+    self.isPin = [[NSUserDefaults mm_read:kPinKey defaultValue:@NO checkClass:NSNumber.class] boolValue];
+    self.isFold = [[NSUserDefaults mm_read:kFoldKey defaultValue:@NO checkClass:NSNumber.class] boolValue];
 }
 
-#pragma mark -
+#pragma mark - getter
 
 - (BOOL)launchAtStartup {
     BOOL launchAtStartup = [[NSUserDefaults mm_read:kLaunchAtStartupKey] boolValue];
@@ -83,9 +58,24 @@ static Configuration *_instance;
     return launchAtStartup;
 }
 
+- (BOOL)automaticallyChecksForUpdates {
+    return [SUUpdater sharedUpdater].automaticallyChecksForUpdates;
+}
+
+#pragma mark - setter
+
+- (void)setAutoCopyTranslateResult:(BOOL)autoCopyTranslateResult {
+    _autoCopyTranslateResult = autoCopyTranslateResult;
+    [NSUserDefaults mm_write:@(autoCopyTranslateResult) forKey:kAutoCopyTranslateResultKey];
+}
+
 - (void)setLaunchAtStartup:(BOOL)launchAtStartup {
     [NSUserDefaults mm_write:@(launchAtStartup) forKey:kLaunchAtStartupKey];
     [self updateLoginItemWithLaunchAtStartup:launchAtStartup];
+}
+
+- (void)setAutomaticallyChecksForUpdates:(BOOL)automaticallyChecksForUpdates {
+    [[SUUpdater sharedUpdater] setAutomaticallyChecksForUpdates:automaticallyChecksForUpdates];
 }
 
 - (void)setTranslateIdentifier:(NSString *)translateIdentifier {

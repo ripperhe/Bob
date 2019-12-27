@@ -469,6 +469,11 @@ return; \
         NSString *errorInfo = [NSString stringWithFormat:@"%@\n%@", error.localizedDescription, [error.userInfo objectForKey:TranslateErrorRequestKey]];
         MMLogInfo(@"%@", errorInfo);
     }else {
+        if (Configuration.shared.autoCopyTranslateResult &&
+            result.normalResults.count) {
+            // 自动拷贝翻译结果
+            [NSPasteboard mm_generalPasteboardSetString:[NSString mm_stringByCombineComponents:result.normalResults separatedString:@"\n"]];
+        }
         self.currentResult = result;
         [self.resultView refreshWithResult:result];
     }

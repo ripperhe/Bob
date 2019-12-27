@@ -15,7 +15,9 @@
 @property (weak) IBOutlet MASShortcutView *selectionShortcutView;
 @property (weak) IBOutlet MASShortcutView *snipShortcutView;
 @property (weak) IBOutlet MASShortcutView *inputShortcutView;
+@property (weak) IBOutlet NSButton *autoCopyTranslateResultButton;
 @property (weak) IBOutlet NSButton *launchAtStartupButton;
+@property (weak) IBOutlet NSButton *autoCheckUpdateButton;
 
 @end
 
@@ -38,13 +40,22 @@
     self.inputShortcutView.style = MASShortcutViewStyleTexturedRect;
     [self.inputShortcutView setAssociatedUserDefaultsKey:InputShortcutKey];
 
+    self.autoCopyTranslateResultButton.mm_isOn = Configuration.shared.autoCopyTranslateResult;
     self.launchAtStartupButton.mm_isOn = Configuration.shared.launchAtStartup;
+    self.autoCheckUpdateButton.mm_isOn = Configuration.shared.automaticallyChecksForUpdates;
 }
 
 #pragma mark - event
 
+- (IBAction)autoCopyTranslateResultButtonClicked:(NSButton *)sender {    Configuration.shared.autoCopyTranslateResult = sender.mm_isOn;
+}
+
 - (IBAction)launchAtStartupButtonClicked:(NSButton *)sender {
     Configuration.shared.launchAtStartup = sender.mm_isOn;
+}
+
+- (IBAction)autoCheckUpdateButtonClicked:(NSButton *)sender {
+    Configuration.shared.automaticallyChecksForUpdates = sender.mm_isOn;
 }
 
 #pragma mark - MASPreferencesViewController
