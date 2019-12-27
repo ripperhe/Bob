@@ -14,6 +14,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (instancetype)shared;
 
+- (void)show;
+
 @end
 
 NS_ASSUME_NONNULL_END

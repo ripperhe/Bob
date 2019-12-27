@@ -112,7 +112,7 @@ static StatusItem *_instance;
     if (!Configuration.shared.isPin) {
         [TranslateWindowController.shared close];
     }
-    [PreferencesWindowController.shared showWindow:nil];
+    [PreferencesWindowController.shared show];
 }
 
 - (IBAction)documentationAction:(NSMenuItem *)sender {
