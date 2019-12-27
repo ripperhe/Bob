@@ -61,6 +61,10 @@ return; \
 
 @implementation TranslateViewController
 
+- (BOOL)acceptsFirstResponder {
+    return YES;
+}
+
 /// 用代码创建 NSViewController 貌似不会自动创建 view，需要手动初始化
 - (void)loadView {
     self.view = [NSView new];
@@ -90,6 +94,9 @@ return; \
     
     if (!Configuration.shared.isPin) {
         [self.monitor start];
+    }
+    if (!Configuration.shared.isFold) {
+        [self makeTextViewBecomeFirstResponser];
     }
 }
 
@@ -543,6 +550,14 @@ return; \
     [self.player play];
 }
 
+- (void)makeTextViewBecomeFirstResponser {
+    @try {
+        [self.window makeFirstResponder:self.queryView.textView];
+    } @catch (NSException *exception) {
+        MMLogInfo(@"聚焦输入框异常 %@", exception);
+    }
+}
+
 #pragma mark - window frame
 
 - (void)resetQueryViewHeightConstraint {
@@ -569,6 +584,9 @@ return; \
     }];
     [self resizeWindowWithQueryViewExpectHeight:self.queryHeightWhenFold];
     dispatch_async(dispatch_get_main_queue(), ^{
+        if (!isFold) {
+            [self makeTextViewBecomeFirstResponser];
+        }
         [self resetQueryViewHeightConstraint];
     });
 }

@@ -45,29 +45,19 @@ static TranslateWindowController *_instance;
 }
 
 - (instancetype)init {
-    if (self = [super init]) {
-        NSWindow *window = [[TranslateWindow alloc] initWithContentRect:CGRectZero styleMask: NSWindowStyleMaskClosable | NSWindowStyleMaskResizable backing:NSBackingStoreBuffered defer:YES];
-        window.backgroundColor = [NSColor clearColor];
+    self = [super init];
+    if (self) {
+        TranslateWindow *window = [TranslateWindow new];
         TranslateViewController *viewController = [TranslateViewController new];
         viewController.window = window;
         window.contentViewController = viewController;
-        window.movableByWindowBackground = YES;
-        window.level = NSModalPanelWindowLevel;
-        [self setWindow:window];
+        self.window = window;
         self.viewController = viewController;
     }
     return self;
 }
 
 #pragma mark -
-
-- (void)showAtCenter {
-    self.hadShow = YES;
-    [NSApp activateIgnoringOtherApps:YES];
-    [self.window makeKeyAndOrderFront:nil];
-    [self.window makeMainWindow];
-    [self.window center];
-}
 
 - (void)showAtMouseLocation {
     self.hadShow = YES;
@@ -103,9 +93,11 @@ static TranslateWindowController *_instance;
     }
     
     // https://stackoverflow.com/questions/7460092/nswindow-makekeyandorderfront-makes-window-appear-but-not-key-or-front
-    [NSApp activateIgnoringOtherApps:YES];
     [self.window makeKeyAndOrderFront:nil];
-    [self.window makeMainWindow];
+    if (!self.window.isKeyWindow) {
+        // fail to make key window, then force activate application for key window
+        [NSApp activateIgnoringOtherApps:YES];
+    }
     [self.window setFrameTopLeftPoint:mouseLocation];
 }
 
@@ -186,7 +178,11 @@ static TranslateWindowController *_instance;
     [self.viewController updateFoldState:NO];
     [self.viewController resetWithState:@"↩︎ 翻译\n⇧ + ↩︎ 换行\n⌘ + R 重试\n⌘ + W 关闭"];
     [self ensureShowAtMouseLocation];
-    [NSApp activateIgnoringOtherApps:YES];
+    [self.window makeKeyAndOrderFront:nil];
+    if (!self.window.isKeyWindow) {
+        // fail to make key window, then force activate application for key window
+        [NSApp activateIgnoringOtherApps:YES];
+    }
 }
 
 - (void)rerty {

@@ -10,7 +10,10 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface TranslateWindow : NSWindow
+// It's critical to have a `NSPanel` window with `nonactivatingPanel` style mask.
+// Also, make sure to override `canBecomeKey` to allow window to become key.
+
+@interface TranslateWindow : NSPanel
 
 @end
 
