@@ -403,7 +403,7 @@
                     
                     // 普通释义
                     NSArray<NSArray *> *normalArray = responseArray[0];
-                    if (normalArray) {
+                    if (normalArray && [normalArray isKindOfClass:NSArray.class]) {
                         NSArray *normalResults = [normalArray mm_map:^id _Nullable(NSArray * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
                             if ([obj isKindOfClass:[NSArray class]]) {
                                 if (obj.count && [obj.firstObject isKindOfClass:[NSString class]]) {

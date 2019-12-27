@@ -464,16 +464,15 @@ return; \
 }
 
 - (void)refreshWithTranslateResult:(TranslateResult *)result error:(NSError *)error {
+    if (Configuration.shared.autoCopyTranslateResult) {
+        // 自动拷贝翻译结果，如果翻译失败，则清空剪切板
+        [NSPasteboard mm_generalPasteboardSetString:[NSString mm_stringByCombineComponents:result.normalResults separatedString:@"\n"]];
+    }
     if (error) {
         [self.resultView refreshWithStateString:error.localizedDescription];
         NSString *errorInfo = [NSString stringWithFormat:@"%@\n%@", error.localizedDescription, [error.userInfo objectForKey:TranslateErrorRequestKey]];
         MMLogInfo(@"%@", errorInfo);
     }else {
-        if (Configuration.shared.autoCopyTranslateResult &&
-            result.normalResults.count) {
-            // 自动拷贝翻译结果
-            [NSPasteboard mm_generalPasteboardSetString:[NSString mm_stringByCombineComponents:result.normalResults separatedString:@"\n"]];
-        }
         self.currentResult = result;
         [self.resultView refreshWithResult:result];
     }

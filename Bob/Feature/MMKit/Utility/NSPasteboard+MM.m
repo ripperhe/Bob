@@ -12,6 +12,7 @@
 
 + (BOOL)mm_generalPasteboardSetString:(NSString *)string {
     [[NSPasteboard generalPasteboard] clearContents];
+    if (!string.length) return NO;
     return [[NSPasteboard generalPasteboard] setString:string forType:NSPasteboardTypeString];
 }
 
