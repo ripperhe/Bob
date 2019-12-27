@@ -184,7 +184,7 @@ static TranslateWindowController *_instance;
     }
     Configuration.shared.isFold = NO;
     [self.viewController updateFoldState:NO];
-    [self.viewController resetWithState:@"Enter 翻译\nShift + Enter 换行\n⌘ + R 重试\n⌘ + W 关闭"];
+    [self.viewController resetWithState:@"↩︎ 翻译\n⇧ + ↩︎ 换行\n⌘ + R 重试\n⌘ + W 关闭"];
     [self ensureShowAtMouseLocation];
     [NSApp activateIgnoringOtherApps:YES];
 }
