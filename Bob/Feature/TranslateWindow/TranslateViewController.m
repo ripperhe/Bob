@@ -97,6 +97,7 @@ return; \
     [super viewDidDisappear];
     
     [self.monitor stop];
+    [self.player pause];
 }
 
 #pragma mark -

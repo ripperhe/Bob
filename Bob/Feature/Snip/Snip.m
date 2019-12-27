@@ -12,8 +12,8 @@
 
 @property (nonatomic, strong) NSMutableArray<SnipWindowController *> *windowControllers;
 @property (nonatomic, copy) void(^completion)(NSImage * _Nullable image);
-@property (nonatomic, strong) MMEventMonitor *localMouseMonitor;
-@property (nonatomic, strong) MMEventMonitor *globalMouseMonitor;
+@property (nonatomic, strong) MMEventMonitor *mouseMoveMonitor;
+@property (nonatomic, strong) MMEventMonitor *rightMouseDownMonitor;
 @property (nonatomic, weak) SnipWindowController *currentMainWindowController;
 
 @end
@@ -46,22 +46,22 @@ static Snip *_instance;
     return _windowControllers;
 }
 
-- (MMEventMonitor *)localMouseMonitor {
-    if (!_localMouseMonitor) {
-        _localMouseMonitor = [MMEventMonitor localMonitorWithEvent:NSEventMaskMouseMoved handler:^(NSEvent * _Nonnull event) {
+- (MMEventMonitor *)mouseMoveMonitor {
+    if (!_mouseMoveMonitor) {
+        _mouseMoveMonitor = [MMEventMonitor bothMonitorWithEvent:NSEventMaskMouseMoved handler:^(NSEvent * _Nonnull event) {
             [self mouseMoved:event];
         }];
     }
-    return _localMouseMonitor;
+    return _mouseMoveMonitor;
 }
 
-- (MMEventMonitor *)globalMouseMonitor {
-    if (!_globalMouseMonitor) {
-        _globalMouseMonitor = [MMEventMonitor globalMonitorWithEvent:NSEventMaskMouseMoved handler:^(NSEvent * _Nonnull event) {
-            [self mouseMoved:event];
+- (MMEventMonitor *)rightMouseDownMonitor {
+    if (!_rightMouseDownMonitor) {
+        _rightMouseDownMonitor = [MMEventMonitor bothMonitorWithEvent:NSEventMaskRightMouseDown handler:^(NSEvent * _Nonnull event) {
+            [self stop];
         }];
     }
-    return _globalMouseMonitor;
+    return _rightMouseDownMonitor;
 }
 
 #pragma mark -
@@ -92,8 +92,8 @@ static Snip *_instance;
         [self.windowControllers addObject:windowController];
     }];
     
-    [self.localMouseMonitor start];
-    [self.globalMouseMonitor start];
+    [self.mouseMoveMonitor start];
+    [self.rightMouseDownMonitor start];
     
     [[[NSWorkspace sharedWorkspace] notificationCenter] addObserver:self selector:@selector(screenChanged:) name:NSWorkspaceActiveSpaceDidChangeNotification object:[NSWorkspace sharedWorkspace]];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(screenChanged:) name:NSApplicationDidChangeScreenParametersNotification object:nil];
@@ -104,8 +104,10 @@ static Snip *_instance;
 - (void)stopWithImage:(NSImage *)image {
     self.isSnapshotting = NO;
     
-    [self.localMouseMonitor stop];
-    [self.globalMouseMonitor stop];
+    [self.mouseMoveMonitor stop];
+    [self.rightMouseDownMonitor stop];
+    self.mouseMoveMonitor = nil;
+    self.rightMouseDownMonitor = nil;
     
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     [[[NSWorkspace sharedWorkspace] notificationCenter] removeObserver:self];
