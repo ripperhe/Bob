@@ -370,7 +370,17 @@
     
     [self translate:text from:from to:Language_auto completion:^(TranslateResult * _Nullable result, NSError * _Nullable error) {
         if (result) {
-            completion(result.fromSpeakURL, nil);
+            if (result.fromSpeakURL.length) {
+                completion(result.fromSpeakURL, nil);
+            }else {
+                NSDictionary *params = @{
+                    TranslateErrorRequestParamKey : @{
+                            @"text": text?:@"",
+                            @"from": @(from),
+                    },
+                };
+                completion(nil, TranslateError(TranslateErrorTypeUnsupportLanguage, @"有道翻译不支持获取该语言音频", params));
+            }
         }else {
             completion(nil, error);
         }

@@ -16,7 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// 语种的中文名称
 @property (nonatomic, copy) NSString *name;
 /// 此语种对应的音标值
-@property (nonatomic, copy) NSString *value;
+@property (nonatomic, copy, nullable) NSString *value;
 /// 此音标对应的语音地址
 @property (nonatomic, copy) NSString *speakURL;
 

@@ -528,6 +528,8 @@ return; \
             mm_strongify(self);
             if (!error) {
                 [self playAudioWithURL:url];
+            }else {
+                MMLogInfo(@"获取音频 URL 失败 %@", error);
             }
         }];
     }
@@ -536,6 +538,7 @@ return; \
 - (void)playAudioWithURL:(NSString *)url {
     MMLogInfo(@"播放音频 %@", url);
     [self.player pause];
+    if (!url.length) return;
     [self.player replaceCurrentItemWithPlayerItem:[AVPlayerItem playerItemWithURL:[NSURL URLWithString:url]]];
     [self.player play];
 }

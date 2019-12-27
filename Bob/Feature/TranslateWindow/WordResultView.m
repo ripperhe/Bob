@@ -63,23 +63,27 @@
             }];
         }];
         
-        NSTextField *valueTextField = [NSTextField mm_make:^(NSTextField * _Nonnull textField) {
-            [self addSubview:textField];
-            textField.stringValue = [NSString stringWithFormat:@"[%@]", obj.value];
-            [textField excuteLight:^(id  _Nonnull x) {
-                [x setTextColor:[NSColor mm_colorWithHexString:@"#333333"]];
-            } drak:^(id  _Nonnull x) {
-                [x setTextColor:NSColor.whiteColor];
+        // 部分没有音标文本
+        NSTextField *valueTextField = nil;
+        if (obj.value.length) {
+            valueTextField = [NSTextField mm_make:^(NSTextField * _Nonnull textField) {
+                [self addSubview:textField];
+                textField.stringValue = [NSString stringWithFormat:@"[%@]", obj.value];
+                [textField excuteLight:^(id  _Nonnull x) {
+                    [x setTextColor:[NSColor mm_colorWithHexString:@"#333333"]];
+                } drak:^(id  _Nonnull x) {
+                    [x setTextColor:NSColor.whiteColor];
+                }];
+                textField.font = [NSFont systemFontOfSize:13];
+                textField.editable = NO;
+                textField.bordered = NO;
+                textField.backgroundColor = NSColor.clearColor;
+                [textField mas_makeConstraints:^(MASConstraintMaker *make) {
+                    make.left.equalTo(nameTextFiled.mas_right).offset(8);
+                    make.centerY.equalTo(nameTextFiled);
+                }];
             }];
-            textField.font = [NSFont systemFontOfSize:13];
-            textField.editable = NO;
-            textField.bordered = NO;
-            textField.backgroundColor = NSColor.clearColor;
-            [textField mas_makeConstraints:^(MASConstraintMaker *make) {
-                make.left.equalTo(nameTextFiled.mas_right).offset(8);
-                make.centerY.equalTo(nameTextFiled);
-            }];
-        }];
+        }
         
         NSButton *audioButton = [ImageButton mm_make:^(ImageButton * _Nonnull button) {
             [self addSubview:button];
@@ -90,8 +94,8 @@
             button.image = [NSImage imageNamed:@"audio"];
             button.toolTip = @"播放音频";
             [button mas_makeConstraints:^(MASConstraintMaker *make) {
-                make.left.equalTo(valueTextField.mas_right).offset(7);
-                make.centerY.equalTo(valueTextField);
+                make.left.equalTo(valueTextField ? valueTextField.mas_right : nameTextFiled.mas_right).offset(6);
+                make.centerY.equalTo(valueTextField ?: nameTextFiled);
                 make.width.height.equalTo(@26);
             }];
             mm_weakify(self, obj)
