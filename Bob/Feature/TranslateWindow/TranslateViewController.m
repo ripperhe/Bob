@@ -112,6 +112,7 @@ return; \
         button.image = [NSImage imageNamed:@"pin_normal"];
         button.alternateImage = [NSImage imageNamed:@"pin_selected"];
         button.mm_isOn = Configuration.shared.isPin;
+        button.toolTip = button.mm_isOn ? @"取消钉住" : @"钉住";
         [button mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.left.offset(6);
             make.width.height.mas_equalTo(32);
@@ -125,6 +126,7 @@ return; \
             }else {
                 [self.monitor start];
             }
+            button.toolTip = button.mm_isOn ? @"取消钉住" : @"钉住";
             return RACSignal.empty;
         }]];
     }];
@@ -138,6 +140,7 @@ return; \
         button.image = [NSImage imageNamed:@"fold_up"];
         button.alternateImage = [NSImage imageNamed:@"fold_down"];
         button.mm_isOn = Configuration.shared.isFold;
+        button.toolTip = button.mm_isOn ? @"展开" : @"折叠";
         [button mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.offset(9);
             make.right.inset(9);
@@ -148,6 +151,7 @@ return; \
             mm_strongify(button)
             Configuration.shared.isFold = button.mm_isOn;
             [self updateFoldState:button.mm_isOn];
+            button.toolTip = button.mm_isOn ? @"展开" : @"折叠";
             return RACSignal.empty;
         }]];
     }];
@@ -159,6 +163,7 @@ return; \
         button.bezelStyle = NSBezelStyleRegularSquare;
         [button setButtonType:NSButtonTypeToggle];
         button.image = [NSImage imageNamed:@"link"];
+        button.toolTip = @"跳转网页";
         [button mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.equalTo(self.foldButton);
             make.right.equalTo(self.foldButton.mas_left).inset(8);
