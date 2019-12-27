@@ -328,7 +328,7 @@ return; \
             }
             make.left.right.equalTo(self.queryView);
             make.bottom.inset(kMargin);
-            make.height.greaterThanOrEqualTo(@(100));
+            make.height.greaterThanOrEqualTo(@(kQueryMinHeight));
         }];
         mm_weakify(self)
         [view.normalResultView setAudioActionBlock:^(NormalResultView * _Nonnull view) {

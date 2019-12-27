@@ -10,7 +10,6 @@
 #import "DarkModeManager.h"
 #import <AppKit/AppKit.h>
 
-
 @implementation NSObject (DarkMode)
 
 - (void)excuteLight:(void(^)(id x))light drak:(void(^)(id x))dark {

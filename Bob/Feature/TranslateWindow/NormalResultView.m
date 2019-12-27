@@ -11,6 +11,9 @@
 #import "TranslateWindowController.h"
 #import "TextView.h"
 
+#define kMinHeight 120.0
+#define kTextViewBottomInset 36.0
+
 @interface NormalResultView ()
 
 @property (nonatomic, strong) MASConstraint *scrollViewHeightConstraint;
@@ -59,8 +62,8 @@ DefineMethodMMMake_m(NormalResultView)
         scrollView.documentView = self.textView;
         [scrollView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.left.right.inset(0);
-            make.bottom.inset(26);
-            self.scrollViewHeightConstraint = make.height.equalTo(@(100 - 26));
+            make.bottom.inset(kTextViewBottomInset);
+            self.scrollViewHeightConstraint = make.height.equalTo(@(kMinHeight - kTextViewBottomInset));
         }];
     }];
     
@@ -73,8 +76,8 @@ DefineMethodMMMake_m(NormalResultView)
         button.image = [NSImage imageNamed:@"audio"];
         button.toolTip = @"播放音频";
         [button mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.offset(9.5);
-            make.bottom.inset(3);
+            make.left.offset(12);
+            make.bottom.inset(6);
             make.width.height.equalTo(@26);
         }];
         mm_weakify(self)
@@ -96,9 +99,9 @@ DefineMethodMMMake_m(NormalResultView)
         button.image = [NSImage imageNamed:@"copy"];
         button.toolTip = @"复制";
         [button mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.equalTo(self.audioButton.mas_right).offset(1.5);
+            make.left.equalTo(self.audioButton.mas_right);
             make.bottom.equalTo(self.audioButton);
-            make.width.height.equalTo(@26);
+            make.width.height.equalTo(self.audioButton);
         }];
         mm_weakify(self)
         [button setRac_command:[[RACCommand alloc] initWithSignalBlock:^RACSignal * _Nonnull(id  _Nullable input) {
@@ -136,8 +139,8 @@ DefineMethodMMMake_m(NormalResultView)
     // TODO: 有时候高度计算会显示出滚动条，没解决之前先加个10吧
     height += 10;
     
-    if (height < 100 - 26) {
-        height = 100 - 26;
+    if (height < kMinHeight - kTextViewBottomInset) {
+        height = kMinHeight - kTextViewBottomInset;
         // self.scrollView.hasVerticalScroller = NO;
     }else if (height > 500) {
         height = 500;

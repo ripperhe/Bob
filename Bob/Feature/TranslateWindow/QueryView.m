@@ -10,6 +10,9 @@
 #import "ImageButton.h"
 #import "TextView.h"
 
+#define kMinHeight 120.0
+#define kTextViewBottomInset 36.0
+
 @interface QueryView ()<NSTextViewDelegate>
 
 @end
@@ -58,7 +61,7 @@ DefineMethodMMMake_m(QueryView)
         scrollView.documentView = self.textView;
         [scrollView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.left.right.inset(0);
-            make.bottom.inset(26);
+            make.bottom.inset(kTextViewBottomInset);
         }];
     }];
     
@@ -71,8 +74,8 @@ DefineMethodMMMake_m(QueryView)
         button.image = [NSImage imageNamed:@"audio"];
         button.toolTip = @"播放音频";
         [button mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.offset(9.5);
-            make.bottom.inset(3);
+            make.left.offset(12);
+            make.bottom.inset(6);
             make.width.height.equalTo(@26);
         }];
         mm_weakify(self)
@@ -94,9 +97,9 @@ DefineMethodMMMake_m(QueryView)
         button.image = [NSImage imageNamed:@"copy"];
         button.toolTip = @"复制";
         [button mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.equalTo(self.audioButton.mas_right).offset(1.5);
+            make.left.equalTo(self.audioButton.mas_right);
             make.bottom.equalTo(self.audioButton);
-            make.width.height.equalTo(@26);
+            make.width.height.equalTo(self.audioButton);
         }];
         mm_weakify(self)
         [button setRac_command:[[RACCommand alloc] initWithSignalBlock:^RACSignal * _Nonnull(id  _Nullable input) {
