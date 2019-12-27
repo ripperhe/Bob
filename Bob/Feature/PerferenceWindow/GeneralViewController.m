@@ -47,7 +47,8 @@
 
 #pragma mark - event
 
-- (IBAction)autoCopyTranslateResultButtonClicked:(NSButton *)sender {    Configuration.shared.autoCopyTranslateResult = sender.mm_isOn;
+- (IBAction)autoCopyTranslateResultButtonClicked:(NSButton *)sender {
+    Configuration.shared.autoCopyTranslateResult = sender.mm_isOn;
 }
 
 - (IBAction)launchAtStartupButtonClicked:(NSButton *)sender {
