@@ -31,7 +31,7 @@ DefineMethodMMMake_m(PopUpButton)
     [self.layer excuteLight:^(id  _Nonnull x) {
         [x setBorderColor:[NSColor mm_colorWithHexString:@"#EEEEEE"].CGColor];
     } drak:^(id  _Nonnull x) {
-        [x setBorderColor:DarkGrayColor.CGColor];
+        [x setBorderColor:DarkBorderColor.CGColor];
     }];
     self.layer.borderWidth = 1;
     self.layer.cornerRadius = 4;

@@ -36,7 +36,7 @@ DefineMethodMMMake_m(QueryView)
         [x setBorderColor:[NSColor mm_colorWithHexString:@"#EEEEEE"].CGColor];
     } drak:^(id  _Nonnull x) {
         [x setBackgroundColor:DeepDarkColor.CGColor];
-        [x setBorderColor:DarkGrayColor.CGColor];
+        [x setBorderColor:DarkBorderColor.CGColor];
     }];
     self.layer.borderWidth = 1;
     self.layer.cornerRadius = 4;
