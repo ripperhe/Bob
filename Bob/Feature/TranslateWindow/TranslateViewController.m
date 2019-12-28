@@ -76,8 +76,8 @@ return; \
         x.layer.borderWidth = 0;
     } drak:^(NSView *  _Nonnull x) {
         x.layer.backgroundColor = DeepDarkColor.CGColor;
-        x.layer.borderColor = [NSColor mm_colorWithHexString:@"#727374" alpha:0.7].CGColor;
-        x.layer.borderWidth = 0.7;
+        x.layer.borderColor = [[NSColor whiteColor] colorWithAlphaComponent:0.15].CGColor;
+        x.layer.borderWidth = 1;
     }];
 }
 
