@@ -40,7 +40,7 @@ static PreferencesWindowController *_instance;
         [NSApp activateIgnoringOtherApps:YES];
     }
     // https://stackoverflow.com/questions/5682712/center-programmatically-created-window
-    // 不知道为什么设置 `[self.window center]` 无效，设置frame强制居中
+    // 设置 `[self.window center]` 无效，设置frame强制居中
     if (self.window.screen) {
         CGPoint center = CGPointMake(NSWidth(self.window.screen.frame) * 0.5, NSHeight(self.window.screen.frame) * 0.7);
         self.window.center = center;
