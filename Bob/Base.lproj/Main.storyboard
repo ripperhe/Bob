@@ -772,8 +772,11 @@
                                             <action selector="exportLogAction:" target="qM9-fT-Fym" id="bm3-88-xNM"/>
                                         </connections>
                                     </menuItem>
-                                    <menuItem title="QQ 群: 971584165" enabled="NO" id="dNw-c8-pV2">
+                                    <menuItem title="QQ 群: 971584165（点击复制）" id="dNw-c8-pV2">
                                         <modifierMask key="keyEquivalentModifierMask"/>
+                                        <connections>
+                                            <action selector="qqGroupAction:" target="qM9-fT-Fym" id="qZF-Nl-zPW"/>
+                                        </connections>
                                     </menuItem>
                                 </items>
                             </menu>

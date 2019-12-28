@@ -158,6 +158,11 @@ static StatusItem *_instance;
     }
 }
 
+- (IBAction)qqGroupAction:(id)sender {
+    NSLog(@"QQ 群");
+    [NSPasteboard mm_generalPasteboardSetString:@"971584165"];
+}
+
 #pragma mark -
 
 - (void)menuWillOpen:(NSMenu *)menu {
