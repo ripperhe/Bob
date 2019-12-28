@@ -51,7 +51,7 @@ static StatusItem *_instance;
     NSStatusItem *item = [[NSStatusBar systemStatusBar] statusItemWithLength:NSSquareStatusItemLength];
     [item.button setToolTip:@"Bob"];
 #if DEBUG
-    NSImage *image = [NSImage imageNamed:@"logo"];
+    NSImage *image = [NSImage imageNamed:@"logo_status_debug"];
 #else
     NSImage *image = [NSImage imageNamed:@"logo_status"];
 #endif
