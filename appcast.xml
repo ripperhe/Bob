@@ -3,10 +3,31 @@
     <channel>
         <title>Bob</title>
         <item>
+            <title>0.2.0</title>
+            <description>
+            <![CDATA[
+            <ul>
+            <li>适配暗黑模式</li>
+            <li>翻译视图 UI 微调</li>
+            <li>新增了自动复制翻译结果的选项</li>
+            <li>快捷键提示改为用技术符号表示</li>
+            <li>截图模式可使用鼠标右键退出</li>
+            <li>弱化了翻译视图弹出影响</li>
+            <li>修复了有道词典中文查词数据解决异常的问题</li>
+            <li>解决了关闭翻译视图后无法停止朗读的问题</li>
+            <li>修复了偏好设置以及检查更新弹窗不居中的问题</li>
+            </ul>
+            ]]>
+            </description>
+            <pubDate>周六, 28 12月 2019 17:22:38 +0800</pubDate>
+            <sparkle:minimumSystemVersion>10.12</sparkle:minimumSystemVersion>
+            <enclosure url="https://github.com/ripperhe/Bob/releases/download/0.2.0/Bob.app.zip" sparkle:version="0.2.0.0" sparkle:shortVersionString="0.2.0" length="6413811" type="application/octet-stream" sparkle:edSignature="XlmsTBkRT4zIZ/K1o1eQEUPwMVYIyR+NQ+M9Ptk1g4WYfUqyRx3XLM6NynXPlFq++zp2w0DzNw3YUUsc45a+Dg=="/>
+        </item>
+        <item>
             <title>0.1.0</title>
             <pubDate>周日, 22 12月 2019 18:20:35 +0800</pubDate>
             <sparkle:minimumSystemVersion>10.12</sparkle:minimumSystemVersion>
-            <enclosure url="https://raw.githubusercontent.com/ripperhe/Bob/master/Bob.app.zip" sparkle:version="0.1.0.0" sparkle:shortVersionString="0.1.0" length="6393758" type="application/octet-stream" sparkle:edSignature="S/dUQQ2a8Mz7LxiV3L4Scm783xsaFyEMfeXROWW8gTlZOvTkD7Z+Qt2C62vNP4WqG5B7dgkxPQnShQBHNLGuBg=="/>
+            <enclosure url="https://github.com/ripperhe/Bob/releases/download/0.1.0/Bob.app.zip" sparkle:version="0.1.0.0" sparkle:shortVersionString="0.1.0" length="6393758" type="application/octet-stream" sparkle:edSignature="S/dUQQ2a8Mz7LxiV3L4Scm783xsaFyEMfeXROWW8gTlZOvTkD7Z+Qt2C62vNP4WqG5B7dgkxPQnShQBHNLGuBg=="/>
         </item>
     </channel>
 </rss>
