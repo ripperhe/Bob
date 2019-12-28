@@ -19,7 +19,7 @@
                                   backing:NSBackingStoreBuffered
                                     defer:YES]) {
         self.movableByWindowBackground = YES;
-        self.level = NSFloatingWindowLevel;
+        self.level = NSModalPanelWindowLevel;
         self.backgroundColor = [NSColor clearColor];
         self.hasShadow = YES;
         self.opaque = NO;
