@@ -8,6 +8,6 @@
 
 #define NSLog(frmt, ...) MMLogVerbose(frmt, ##__VA_ARGS__)
 
-#define DeepDarkColor [NSColor mm_colorWithHexString:@"#1C1E21"]
+#define DeepDarkColor [NSColor mm_colorWithHexString:@"#26292C"]
 #define DarkGrayColor [NSColor mm_colorWithHexString:@"#333435"]
-#define DarkBorderColor [NSColor mm_colorWithHexString:@"#454647"]
+#define DarkBorderColor [NSColor mm_colorWithHexString:@"#464748"]

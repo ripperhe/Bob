@@ -21,6 +21,8 @@
         self.movableByWindowBackground = YES;
         self.level = NSFloatingWindowLevel;
         self.backgroundColor = [NSColor clearColor];
+        self.hasShadow = YES;
+        self.opaque = NO;
     }
     return self;
 }

@@ -69,7 +69,7 @@ return; \
 - (void)loadView {
     self.view = [NSView new];
     self.view.wantsLayer = YES;
-    self.view.layer.cornerRadius = 4;
+    self.view.layer.cornerRadius = 5;
     self.view.layer.masksToBounds = YES;
     [self.view excuteLight:^(NSView *  _Nonnull x) {
         x.layer.backgroundColor = NSColor.whiteColor.CGColor;

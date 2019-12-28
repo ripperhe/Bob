@@ -45,7 +45,7 @@
         [[NSScanner scannerWithString:[hexStr substringWithRange:range]] scanHexInt:&green];
         range.location = 5;
         [[NSScanner scannerWithString:[hexStr substringWithRange:range]] scanHexInt:&blue];
-        NSColor *color= [self colorWithRed:red/255. green:green/255. blue:blue/255. alpha:alpha];
+        NSColor *color= [self colorWithRed:red/255.0 green:green/255.0 blue:blue/255.0 alpha:alpha];
         return color;
     }
 }

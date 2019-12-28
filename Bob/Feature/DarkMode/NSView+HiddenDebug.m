@@ -7,11 +7,8 @@
 //
 
 #import "NSView+HiddenDebug.h"
-
 #import <AppKit/AppKit.h>
 
-
 @implementation NSView (HiddenDebug)
-
 
 @end
