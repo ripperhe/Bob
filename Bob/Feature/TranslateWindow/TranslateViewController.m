@@ -350,7 +350,7 @@ return; \
             if (self.currentResult.toSpeakURL) {
                 [self playAudioWithURL:self.currentResult.toSpeakURL];
             }else {
-                [self playAudioWithText:self.currentResult.text lang:self.currentResult.to];
+                [self playAudioWithText:[NSString mm_stringByCombineComponents:self.currentResult.normalResults separatedString:@"\n"] lang:self.currentResult.to];
             }
         }];
         [view.normalResultView setCopyActionBlock:^(NormalResultView * _Nonnull view) {
