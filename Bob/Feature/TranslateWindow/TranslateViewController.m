@@ -283,7 +283,7 @@ return; \
         button.bordered = NO;
         button.imageScaling = NSImageScaleProportionallyDown;
         button.bezelStyle = NSBezelStyleRegularSquare;
-        [button setButtonType:NSButtonTypeToggle];
+        [button setButtonType:NSButtonTypeMomentaryChange];
         button.image = [NSImage imageNamed:@"transform"];
         [button mas_makeConstraints:^(MASConstraintMaker *make) {
             make.centerY.equalTo(self.fromLanguageButton);
