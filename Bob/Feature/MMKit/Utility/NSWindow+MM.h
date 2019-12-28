@@ -27,7 +27,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, assign) NSPoint origin;
 @property (nonatomic, assign) NSSize size;
-@property (nonatomic, assign) NSPoint center;
+/// 注意，window 本身有 center 方法，使得 window 居中显示，之前命名重复，导致严重问题
+@property (nonatomic, assign) NSPoint centerPoint;
 
 @property (nonatomic, assign) NSPoint topLeft;
 @property (nonatomic, assign) NSPoint leftBottom;

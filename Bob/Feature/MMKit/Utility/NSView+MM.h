@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-// 考虑 flipped
+/// 已考虑 flipped
 @interface NSView (MM)
 
 @property (nonatomic, assign) CGFloat x;

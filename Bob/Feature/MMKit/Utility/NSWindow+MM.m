@@ -130,11 +130,11 @@
     [self setFrame:newFrame display:YES];
 }
 
-- (NSPoint)center {
+- (NSPoint)centerPoint {
     return NSMakePoint(NSMidX(self.frame), NSMidY(self.frame));
 }
 
-- (void)setCenter:(NSPoint)center {
+- (void)setCenterPoint:(NSPoint)center {
     NSRect newFrame = self.frame;
     newFrame.origin.x = center.x - self.frame.size.width * 0.5;
     newFrame.origin.y = center.y - self.frame.size.height * 0.5;
