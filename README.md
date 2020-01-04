@@ -14,6 +14,14 @@ macOS 10.12+
 
 ### 下载安装
 
+#### 1. Homebrew Cask 安装
+
+```
+brew cask install bob
+```
+
+#### 2. 手动安装
+
 从 [GitHub release](https://github.com/ripperhe/Bob/releases) 中下载最新的 `Bob.app.zip` 安装包，然后解压拖拽到**应用程序**文件夹即可
 
 ⚠️ 目前只在 GitHub 分发安装包，其它地址分发的都有可能存在风险，请仔细辨别
@@ -26,6 +34,8 @@ macOS 10.12+
 
 如果不小心拒绝了，打开 `系统偏好设置-安全性与隐私-隐私-辅助功能`，确保勾选上了 Bob
 
+如果没有弹出请求权限的弹框，则在该页面点击 `+` 号，进入应用程序文件夹选中 Bob，点击 `打开`，然后勾选上 Bob
+
 ![辅助功能权限](https://raw.githubusercontent.com/ripperhe/Resource/master/20191222/辅助功能权限.png)
 
 ### 开启屏幕录制权限 （macOS 10.15 以上才需要）
@@ -35,6 +45,8 @@ macOS 10.12+
 ![屏幕录制权限提醒](https://raw.githubusercontent.com/ripperhe/Resource/master/20191221/屏幕录制权限提醒.png)
 
 如果不小心拒绝了，打开 `系统偏好设置-安全性与隐私-隐私-屏幕录制`，确保勾选上了 Bob
+
+如果没有弹出请求权限的弹框，则在该页面点击 `+` 号，进入应用程序文件夹选中 Bob，点击 `打开`，然后勾选上 Bob
 
 ![屏幕录制权限](https://raw.githubusercontent.com/ripperhe/Resource/master/20191222/屏幕录制权限.png)
 
