@@ -122,3 +122,7 @@ brew cask install bob
 ## 最后
 
 Bob 还很年轻，可能会有各种大大小小的问题，有任何问题或者建议可以直接提 issue，或者加入 QQ 群 **971584165** 反馈，希望大家可以陪 TA 一起成长~
+
+<p align="center">
+	<img src="https://raw.githubusercontent.com/ripperhe/Resource/master/202015/ripper_wechat.JPG" width="250" />
+</p>
