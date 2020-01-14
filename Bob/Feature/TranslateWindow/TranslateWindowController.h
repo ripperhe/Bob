@@ -24,6 +24,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)activeLastFrontmostApplication;
 
+- (void)close;
+
 @end
 
 NS_ASSUME_NONNULL_END

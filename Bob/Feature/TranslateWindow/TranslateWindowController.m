@@ -202,4 +202,12 @@ static TranslateWindowController *_instance;
     self.lastFrontmostApplication = nil;
 }
 
+- (void)close {
+    if (Snip.shared.isSnapshotting) {
+        [Snip.shared stop];
+    }else {
+        [[[NSApplication sharedApplication] keyWindow] close];
+        [TranslateWindowController.shared activeLastFrontmostApplication];
+    }}
+
 @end

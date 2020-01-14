@@ -19,12 +19,15 @@
     NSData *snipShortcutData = [NSKeyedArchiver archivedDataWithRootObject:snipShortcut];
     MASShortcut *inputShortcut = [MASShortcut shortcutWithKeyCode:kVK_ANSI_A modifierFlags:NSEventModifierFlagOption];
     NSData *inputShortcutData = [NSKeyedArchiver archivedDataWithRootObject:inputShortcut];
+        MASShortcut *closeShortcut = [MASShortcut shortcutWithKeyCode:kVK_Escape modifierFlags:nil];
+        NSData *closeShortcutData = [NSKeyedArchiver archivedDataWithRootObject:closeShortcut];
 
     // Register default values to be used for the first app start
     [[NSUserDefaults standardUserDefaults] registerDefaults:@{
         SelectionShortcutKey: selectionShortcutData,
         SnipShortcutKey: snipShortcutData,
         InputShortcutKey: inputShortcutData,
+        CloseShortcutKey: closeShortcutData
     }];
     
     [[MASShortcutBinder sharedBinder] bindShortcutWithDefaultsKey:SelectionShortcutKey toAction:^{
@@ -37,6 +40,11 @@
     
     [[MASShortcutBinder sharedBinder] bindShortcutWithDefaultsKey:InputShortcutKey toAction:^{
         [TranslateWindowController.shared inputTranslate];
+    }];
+    
+
+    [[MASShortcutBinder sharedBinder] bindShortcutWithDefaultsKey:CloseShortcutKey toAction:^{
+        [TranslateWindowController.shared close];
     }];
 
     [[MASShortcutValidator sharedValidator] setAllowAnyShortcutWithOptionModifier:YES];
