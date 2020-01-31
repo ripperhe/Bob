@@ -126,3 +126,32 @@ Bob 还很年轻，可能会有各种大大小小的问题，有任何问题或�
 <p align="center">
 	<img src="https://raw.githubusercontent.com/ripperhe/Resource/master/202015/ripper_wechat.JPG" width="250" />
 </p>
+## Contributors
+
+### Code Contributors
+
+This project exists thanks to all the people who contribute. [[Contribute](CONTRIBUTING.md)].
+<a href="https://github.com/ripperhe/Bob/graphs/contributors"><img src="https://opencollective.com/bob_/contributors.svg?width=890&button=false" /></a>
+
+### Financial Contributors
+
+Become a financial contributor and help us sustain our community. [[Contribute](https://opencollective.com/bob_/contribute)]
+
+#### Individuals
+
+<a href="https://opencollective.com/bob_"><img src="https://opencollective.com/bob_/individuals.svg?width=890"></a>
+
+#### Organizations
+
+Support this project with your organization. Your logo will show up here with a link to your website. [[Contribute](https://opencollective.com/bob_/contribute)]
+
+<a href="https://opencollective.com/bob_/organization/0/website"><img src="https://opencollective.com/bob_/organization/0/avatar.svg"></a>
+<a href="https://opencollective.com/bob_/organization/1/website"><img src="https://opencollective.com/bob_/organization/1/avatar.svg"></a>
+<a href="https://opencollective.com/bob_/organization/2/website"><img src="https://opencollective.com/bob_/organization/2/avatar.svg"></a>
+<a href="https://opencollective.com/bob_/organization/3/website"><img src="https://opencollective.com/bob_/organization/3/avatar.svg"></a>
+<a href="https://opencollective.com/bob_/organization/4/website"><img src="https://opencollective.com/bob_/organization/4/avatar.svg"></a>
+<a href="https://opencollective.com/bob_/organization/5/website"><img src="https://opencollective.com/bob_/organization/5/avatar.svg"></a>
+<a href="https://opencollective.com/bob_/organization/6/website"><img src="https://opencollective.com/bob_/organization/6/avatar.svg"></a>
+<a href="https://opencollective.com/bob_/organization/7/website"><img src="https://opencollective.com/bob_/organization/7/avatar.svg"></a>
+<a href="https://opencollective.com/bob_/organization/8/website"><img src="https://opencollective.com/bob_/organization/8/avatar.svg"></a>
+<a href="https://opencollective.com/bob_/organization/9/website"><img src="https://opencollective.com/bob_/organization/9/avatar.svg"></a>
