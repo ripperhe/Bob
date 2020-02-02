@@ -16,7 +16,7 @@ macOS 10.12+
 
 #### 1. Homebrew Cask 安装
 
-```
+```sh
 brew cask install bob
 ```
 
@@ -30,33 +30,34 @@ brew cask install bob
 
 第一次使用**划词翻译**的时候会弹出以下提示，点击 `打开系统偏好设置`，勾选上 Bob
 
-![辅助功能权限提醒](https://raw.githubusercontent.com/ripperhe/Resource/master/20191221/辅助功能权限提醒.png)
+<img src="https://raw.githubusercontent.com/ripperhe/oss/master/2020/0117/辅助功能弹窗.png" alt="辅助功能弹窗" width = "500" />
 
 如果不小心拒绝了，打开 `系统偏好设置-安全性与隐私-隐私-辅助功能`，确保勾选上了 Bob
 
 如果没有弹出请求权限的弹框，则在该页面点击 `+` 号，进入应用程序文件夹选中 Bob，点击 `打开`，然后勾选上 Bob
 
-![辅助功能权限](https://raw.githubusercontent.com/ripperhe/Resource/master/20191222/辅助功能权限.png)
+<img src="https://raw.githubusercontent.com/ripperhe/oss/master/2020/0117/辅助功能设置.png" alt="辅助功能设置" width = "600" />
 
-### 开启屏幕录制权限 （macOS 10.15 以上才需要）
+### 开启屏幕录制权限（macOS 10.15 以上才需要）
 
 第一次使用**截图翻译**的时候会弹出以下提示，点击 `打开系统偏好设置`，勾选上 Bob
 
-![屏幕录制权限提醒](https://raw.githubusercontent.com/ripperhe/Resource/master/20191221/屏幕录制权限提醒.png)
+<img src="https://raw.githubusercontent.com/ripperhe/oss/master/2020/0117/屏幕录制弹窗.png" alt="屏幕录制弹窗" width = "500" />
 
 如果不小心拒绝了，打开 `系统偏好设置-安全性与隐私-隐私-屏幕录制`，确保勾选上了 Bob
 
 如果没有弹出请求权限的弹框，则在该页面点击 `+` 号，进入应用程序文件夹选中 Bob，点击 `打开`，然后勾选上 Bob
 
-![屏幕录制权限](https://raw.githubusercontent.com/ripperhe/Resource/master/20191222/屏幕录制权限.png)
+<img src="https://raw.githubusercontent.com/ripperhe/oss/master/2020/0117/屏幕录制设置.png" alt="屏幕录制设置" width = "600" />
 
 ## 使用方法
 
 | 功能 | 描述 | 预览 |
 | :---: | :---: | :---: |
-| 划词翻译 | 选中需要翻译的文本之后，按下划词翻译快捷键即可（默认 `⌥ + D`） | ![划词翻译-句子](https://raw.githubusercontent.com/ripperhe/Resource/master/20191222/划词翻译-句子.gif) |
-| 截图翻译 | 按下截图翻译快捷键（默认 `⌥ + S`），截取需要翻译的区域 | ![截图翻译-句子](https://raw.githubusercontent.com/ripperhe/Resource/master/20191222/截图翻译-句子.gif) |
-| 输入翻译| 按下输入翻译快捷键（默认 `⌥ + A`），输入需要翻译的文本，`Enter` 键翻译 | ![输入翻译-单词](https://raw.githubusercontent.com/ripperhe/Resource/master/20191222/输入翻译-单词.gif) |
+| 划词翻译 | 选中需要翻译的文本之后，按下划词翻译快捷键即可（默认 `⌥ + D`） | ![划词翻译-句子](https://raw.githubusercontent.com/ripperhe/oss/master/2020/0117/划词翻译-句子.gif) |
+| 截图翻译 | 按下截图翻译快捷键（默认 `⌥ + S`），截取需要翻译的区域 | ![截图翻译-句子](https://raw.githubusercontent.com/ripperhe/oss/master/2020/0117/截图翻译-句子.gif) |
+| 输入翻译| 按下输入翻译快捷键（默认 `⌥ + A`），输入需要翻译的文本，`Enter` 键翻译 | ![输入翻译-单词](https://raw.githubusercontent.com/ripperhe/oss/master/2020/0117/输入翻译-单词.gif) |
+| 插件翻译 | `0.3.0` 版本开始支持，选中需要翻译的文本之后，点击 [PopClip](https://pilotmoon.com/popclip/) 插件图标即可，详情见 [Bob-PopClip](https://github.com/ripperhe/Bob-PopClip) | ![插件翻译-句子](https://raw.githubusercontent.com/ripperhe/oss/master/2020/0117/插件翻译-句子.gif) |
 
 * 划词翻译在**可以选中文本，并且可以复制**的情况下使用
 * 截图翻译建议在无法选中或复制的情况下使用
@@ -71,7 +72,7 @@ brew cask install bob
 | 支持的语种数量 |  114 | 28 | 104 | 104 |
 | 速度 | 快 | 一般 | 较慢 | 较慢 |
 | 是否需要科学上网| 不需要 | 不需要 | 不需要 | 需要 |
-| 英语音标 | ✅ | ✅ | ❌ | ❌ |
+| 英语音标 | ❌ | ✅ | ❌ | ❌ |
 | 句子翻译 | ✅ | ✅ | ✅ | ✅ |
 | 是否有 OCR 接口 | ✅ | ✅ | ❌ | ❌ |
 
@@ -91,9 +92,9 @@ brew cask install bob
 
 有些软件或者网站复制文本之后还会在文本后面追加一些信息，所以有时候翻译的文本和选中的可能有些出入。
 
-### Status Menu 的划词翻译 Item 为什么是灰色？
+### 菜单栏的**划词翻译**选项为什么是灰色？
 
-因为划词翻译需要获取选中的文本，点击 Item 没法获取到选中的文本，所以设置为不可点击（灰色），不能点击但还放在 Menu 中是为了方便查看划词翻译快捷键
+因为划词翻译需要获取选中的文本，点击菜单栏图标会导致上一个软件失焦，此时就没法获取到选中的文本，所以设置为不可点击（灰色），划词翻译选项不能点击但还把它放在菜单中是为了方便查看划词翻译快捷键
 
 ### 朗读按钮点击了没反应？
 
@@ -110,7 +111,11 @@ brew cask install bob
 
 当然，所有问题都可以尝试**切换翻译源**和**重启 Bob**。
 
-如果尝试之后仍旧不行或者是其他的问题，建议点击 Status Bar 图标，选中 `帮助-导出日志` ，然后提 issue，或在 QQ 群 **971584165** 反馈，并将日志文件上传
+如果尝试之后仍旧不行或者是其他的问题，建议点击菜单栏图标，选中 `帮助-导出日志` ，然后提 issue，或在 QQ 群 **971584165** 反馈，并将日志文件上传
+
+## 开发者
+
+<a href="https://github.com/ripperhe/Bob/graphs/contributors"><img src="https://opencollective.com/bob_/contributors.svg?width=890&button=false" /></a>
 
 ## 感谢
 
@@ -122,6 +127,8 @@ brew cask install bob
 ## 最后
 
 Bob 还很年轻，可能会有各种大大小小的问题，有任何问题或者建议可以直接提 issue，或者加入 QQ 群 **971584165** 反馈，希望大家可以陪 TA 一起成长~
+
+[赞赏列表](RewardList.md)
 
 <p align="center">
 	<img src="https://raw.githubusercontent.com/ripperhe/Resource/master/202015/ripper_wechat.JPG" width="250" />
