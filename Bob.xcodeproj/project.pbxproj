@@ -74,7 +74,6 @@
 		C99EEBDC2385799D00FEE666 /* NSColor+MM.m in Sources */ = {isa = PBXBuildFile; fileRef = C99EEBBD2385799D00FEE666 /* NSColor+MM.m */; };
 		C99EEBDD2385799D00FEE666 /* NSMutableAttributedString+MM.m in Sources */ = {isa = PBXBuildFile; fileRef = C99EEBC22385799D00FEE666 /* NSMutableAttributedString+MM.m */; };
 		C99EEBDE2385799D00FEE666 /* NSArray+MM.m in Sources */ = {isa = PBXBuildFile; fileRef = C99EEBC32385799D00FEE666 /* NSArray+MM.m */; };
-		C9A66F2D23AE11F900914F54 /* appcast.xml in Resources */ = {isa = PBXBuildFile; fileRef = C9A66F2C23AE11F800914F54 /* appcast.xml */; };
 		C9AEF96B23A0D57A003BE95C /* TextView.m in Sources */ = {isa = PBXBuildFile; fileRef = C9AEF96A23A0D57A003BE95C /* TextView.m */; };
 		C9C3BDC7238E76B000D5F1C1 /* SnipWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9C3BDC6238E76B000D5F1C1 /* SnipWindowController.m */; };
 		C9C3BDCA238E76C800D5F1C1 /* SnipWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = C9C3BDC9238E76C800D5F1C1 /* SnipWindow.m */; };
@@ -234,7 +233,6 @@
 		C99EEBC22385799D00FEE666 /* NSMutableAttributedString+MM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableAttributedString+MM.m"; sourceTree = "<group>"; };
 		C99EEBC32385799D00FEE666 /* NSArray+MM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+MM.m"; sourceTree = "<group>"; };
 		C99EEBDF238585E700FEE666 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
-		C9A66F2C23AE11F800914F54 /* appcast.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = appcast.xml; sourceTree = SOURCE_ROOT; };
 		C9AEF96923A0D57A003BE95C /* TextView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TextView.h; sourceTree = "<group>"; };
 		C9AEF96A23A0D57A003BE95C /* TextView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TextView.m; sourceTree = "<group>"; };
 		C9B5CA3F23B72C580038EE98 /* BobMacro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BobMacro.h; sourceTree = "<group>"; };
@@ -416,7 +414,6 @@
 		C99EEB1A2385796700FEE666 /* Bob */ = {
 			isa = PBXGroup;
 			children = (
-				C9A66F2B23AE0E1E00914F54 /* Sparkle */,
 				C99EEB872385799D00FEE666 /* Feature */,
 				C99EEB1B2385796700FEE666 /* AppDelegate.h */,
 				C99EEB1C2385796700FEE666 /* AppDelegate.m */,
@@ -441,6 +438,7 @@
 				C9C3BDC4238E766B00D5F1C1 /* Snip */,
 				C9F7E87623A210B80025ADF6 /* Translate */,
 				C99EEB882385799D00FEE666 /* Configuration */,
+				C98C17AD239E511200BD02DB /* Shortcut */,
 				C99EEBAA2385799D00FEE666 /* StatusItem */,
 				C98C179A239E1B7400BD02DB /* PerferenceWindow */,
 				C99EEB972385799D00FEE666 /* TranslateWindow */,
@@ -499,7 +497,6 @@
 		C99EEBAA2385799D00FEE666 /* StatusItem */ = {
 			isa = PBXGroup;
 			children = (
-				C98C17AD239E511200BD02DB /* Shortcut */,
 				C99EEBAC2385799D00FEE666 /* StatusItem.h */,
 				C99EEBAB2385799D00FEE666 /* StatusItem.m */,
 			);
@@ -529,14 +526,6 @@
 				C91DF6AE23A35E07009CB158 /* MMOrderedDictionary.m */,
 			);
 			path = Utility;
-			sourceTree = "<group>";
-		};
-		C9A66F2B23AE0E1E00914F54 /* Sparkle */ = {
-			isa = PBXGroup;
-			children = (
-				C9A66F2C23AE11F800914F54 /* appcast.xml */,
-			);
-			path = Sparkle;
 			sourceTree = "<group>";
 		};
 		C9C3BDC4238E766B00D5F1C1 /* Snip */ = {
@@ -721,7 +710,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				C99EEB222385796900FEE666 /* Assets.xcassets in Resources */,
-				C9A66F2D23AE11F900914F54 /* appcast.xml in Resources */,
 				C99EEBC92385799D00FEE666 /* baidu-translate-sign.js in Resources */,
 				C99EEB252385796900FEE666 /* Main.storyboard in Resources */,
 				C98C17A6239E40AC00BD02DB /* GeneralViewController.xib in Resources */,
