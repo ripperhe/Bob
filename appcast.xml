@@ -3,6 +3,27 @@
     <channel>
         <title>Bob</title>
         <item>
+            <title>0.3.0</title>
+            <description>
+            <![CDATA[
+            <ul>
+            <li>新增了设置字体大小的功能</li>
+            <li>支持 ESC 关闭翻译页面</li>
+            <li>支持 PopClip 插件翻译</li>
+            <li>取词时去掉首尾的空白字符</li>
+            <li>输入翻译居中显示（0.2.0 之前显示在鼠标位置）</li>
+            <li>新增了未开启辅助功能权限的提示</li>
+            <li>修复了部分机型无法使用截图翻译的问题</li>
+            <li>修复了翻译窗口超出屏幕底部偶尔无法回调屏幕的问题</li>
+            <li>修复了 10.12 默认显示为深色的问题</li>
+            </ul>
+            ]]>
+            </description>
+            <pubDate>周日, 02 2月 2020 21:29:58 +0800</pubDate>
+            <sparkle:minimumSystemVersion>10.12</sparkle:minimumSystemVersion>
+            <enclosure url="https://github.com/ripperhe/Bob/releases/download/0.3.0/Bob.app.zip" sparkle:version="0.3.0.0" sparkle:shortVersionString="0.3.0" length="6435399" type="application/octet-stream" sparkle:edSignature="wA5iVvL/j3XqbDbheDpJJAmwrj426E18p89cQq/QJn0K8UkWdnX75hn8unTmU+oFi4Gt3zzv+xFjvTAJjnrFCw=="/>
+        </item>
+        <item>
             <title>0.2.0</title>
             <description>
             <![CDATA[
