@@ -21,7 +21,7 @@
             </description>
             <pubDate>周日, 02 2月 2020 21:29:58 +0800</pubDate>
             <sparkle:minimumSystemVersion>10.12</sparkle:minimumSystemVersion>
-            <enclosure url="https://github.com/ripperhe/Bob/releases/download/0.3.0/Bob.app.zip" sparkle:version="0.3.0.0" sparkle:shortVersionString="0.3.0" length="6435399" type="application/octet-stream" sparkle:edSignature="wA5iVvL/j3XqbDbheDpJJAmwrj426E18p89cQq/QJn0K8UkWdnX75hn8unTmU+oFi4Gt3zzv+xFjvTAJjnrFCw=="/>
+            <enclosure url="https://github.com/ripperhe/Bob/releases/download/v0.3.0/Bob.app.zip" sparkle:version="0.3.0.0" sparkle:shortVersionString="0.3.0" length="6435399" type="application/octet-stream" sparkle:edSignature="wA5iVvL/j3XqbDbheDpJJAmwrj426E18p89cQq/QJn0K8UkWdnX75hn8unTmU+oFi4Gt3zzv+xFjvTAJjnrFCw=="/>
         </item>
         <item>
             <title>0.2.0</title>
