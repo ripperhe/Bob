@@ -1,5 +1,9 @@
 <p align="center">
-  <img src="https://raw.githubusercontent.com/ripperhe/Resource/master/20191222/bob-log.png" />
+  <img src="https://raw.githubusercontent.com/ripperhe/oss/master/2019/1222/bob-logo.png" width=240 />
+</p>
+<p align="center">
+	<a href="https://github.com/ripperhe/Bob/releases/latest"><img src="https://img.shields.io/github/v/release/ripperhe/Bob?logo=github" alt="GitHub release" /></a>
+	<a href="https://github.com/ripperhe/Bob/releases/latest"><img src="https://img.shields.io/github/downloads/ripperhe/Bob/total" alt="Downloads" /></a>
 </p>
 
 # Bob
@@ -30,25 +34,25 @@ brew cask install bob
 
 第一次使用**划词翻译**的时候会弹出以下提示，点击 `打开系统偏好设置`，勾选上 Bob
 
-<img src="https://raw.githubusercontent.com/ripperhe/oss/master/2020/0117/辅助功能弹窗.png" alt="辅助功能弹窗" width = "500" />
+<img src="https://raw.githubusercontent.com/ripperhe/oss/master/2020/0117/辅助功能弹窗.png" alt="辅助功能弹窗" width=500 />
 
 如果不小心拒绝了，打开 `系统偏好设置-安全性与隐私-隐私-辅助功能`，确保勾选上了 Bob
 
 如果没有弹出请求权限的弹框，则在该页面点击 `+` 号，进入应用程序文件夹选中 Bob，点击 `打开`，然后勾选上 Bob
 
-<img src="https://raw.githubusercontent.com/ripperhe/oss/master/2020/0117/辅助功能设置.png" alt="辅助功能设置" width = "600" />
+<img src="https://raw.githubusercontent.com/ripperhe/oss/master/2020/0117/辅助功能设置.png" alt="辅助功能设置" width=600 />
 
 ### 开启屏幕录制权限（macOS 10.15 以上才需要）
 
 第一次使用**截图翻译**的时候会弹出以下提示，点击 `打开系统偏好设置`，勾选上 Bob
 
-<img src="https://raw.githubusercontent.com/ripperhe/oss/master/2020/0117/屏幕录制弹窗.png" alt="屏幕录制弹窗" width = "500" />
+<img src="https://raw.githubusercontent.com/ripperhe/oss/master/2020/0117/屏幕录制弹窗.png" alt="屏幕录制弹窗" width=500 />
 
 如果不小心拒绝了，打开 `系统偏好设置-安全性与隐私-隐私-屏幕录制`，确保勾选上了 Bob
 
 如果没有弹出请求权限的弹框，则在该页面点击 `+` 号，进入应用程序文件夹选中 Bob，点击 `打开`，然后勾选上 Bob
 
-<img src="https://raw.githubusercontent.com/ripperhe/oss/master/2020/0117/屏幕录制设置.png" alt="屏幕录制设置" width = "600" />
+<img src="https://raw.githubusercontent.com/ripperhe/oss/master/2020/0117/屏幕录制设置.png" alt="屏幕录制设置" width=600 />
 
 ## 使用方法
 
@@ -131,5 +135,5 @@ Bob 还很年轻，可能会有各种大大小小的问题，有任何问题或�
 [赞赏列表](RewardList.md)
 
 <p align="center">
-	<img src="https://raw.githubusercontent.com/ripperhe/Resource/master/202015/ripper_wechat.JPG" width="250" />
+	<img src="https://raw.githubusercontent.com/ripperhe/oss/master/2020/0105/ripper_wechat.JPG" width=250 />
 </p>
