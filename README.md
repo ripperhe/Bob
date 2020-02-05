@@ -4,6 +4,7 @@
 <p align="center">
 	<a href="https://github.com/ripperhe/Bob/releases/latest"><img src="https://img.shields.io/github/v/release/ripperhe/Bob?logo=github" alt="GitHub release" /></a>
 	<a href="https://github.com/ripperhe/Bob/releases/latest"><img src="https://img.shields.io/github/downloads/ripperhe/Bob/total" alt="Downloads" /></a>
+	<a href="https://github.com/ripperhe/Bob/releases/latest"><img src="https://img.shields.io/github/downloads/ripperhe/Bob/latest/total" alt="Downloads latest" /></a>
 </p>
 
 # Bob
@@ -18,41 +19,39 @@ macOS 10.12+
 
 ### 下载安装
 
-#### 1. Homebrew Cask 安装
+#### Homebrew Cask 安装
 
 ```sh
 brew cask install bob
 ```
 
-#### 2. 手动安装
+#### 手动安装
 
 从 [GitHub release](https://github.com/ripperhe/Bob/releases) 中下载最新的 `Bob.app.zip` 安装包，然后解压拖拽到**应用程序**文件夹即可
 
 ⚠️ 目前只在 GitHub 分发安装包，其它地址分发的都有可能存在风险，请仔细辨别
 
-### 开启辅助功能权限
+### 权限设置
 
-第一次使用**划词翻译**的时候会弹出以下提示，点击 `打开系统偏好设置`，勾选上 Bob
+<details><summary><strong>开启辅助功能权限</strong></summary><br>
+<p>
+<p>第一次使用<strong>划词翻译</strong>的时候会弹出以下提示，点击 <code>打开系统偏好设置</code>，勾选上 Bob</p>
+<p><img src="https://raw.githubusercontent.com/ripperhe/oss/master/2020/0117/辅助功能弹窗.png" alt="辅助功能弹窗" width=500 /></p>
+<p>如果不小心拒绝了，打开 <code>系统偏好设置-安全性与隐私-隐私-辅助功能</code>，确保勾选上了 Bob</p>
+<p>如果没有弹出请求权限的弹框，则在该页面点击 <code>+</code> 号，进入应用程序文件夹选中 Bob，点击 <code>打开</code>，然后勾选上 Bob</p>
+<p><img src="https://raw.githubusercontent.com/ripperhe/oss/master/2020/0117/辅助功能设置.png" alt="辅助功能设置" width=600 /></p>
+</p>
+</details>
 
-<img src="https://raw.githubusercontent.com/ripperhe/oss/master/2020/0117/辅助功能弹窗.png" alt="辅助功能弹窗" width=500 />
-
-如果不小心拒绝了，打开 `系统偏好设置-安全性与隐私-隐私-辅助功能`，确保勾选上了 Bob
-
-如果没有弹出请求权限的弹框，则在该页面点击 `+` 号，进入应用程序文件夹选中 Bob，点击 `打开`，然后勾选上 Bob
-
-<img src="https://raw.githubusercontent.com/ripperhe/oss/master/2020/0117/辅助功能设置.png" alt="辅助功能设置" width=600 />
-
-### 开启屏幕录制权限（macOS 10.15 以上才需要）
-
-第一次使用**截图翻译**的时候会弹出以下提示，点击 `打开系统偏好设置`，勾选上 Bob
-
-<img src="https://raw.githubusercontent.com/ripperhe/oss/master/2020/0117/屏幕录制弹窗.png" alt="屏幕录制弹窗" width=500 />
-
-如果不小心拒绝了，打开 `系统偏好设置-安全性与隐私-隐私-屏幕录制`，确保勾选上了 Bob
-
-如果没有弹出请求权限的弹框，则在该页面点击 `+` 号，进入应用程序文件夹选中 Bob，点击 `打开`，然后勾选上 Bob
-
-<img src="https://raw.githubusercontent.com/ripperhe/oss/master/2020/0117/屏幕录制设置.png" alt="屏幕录制设置" width=600 />
+<details><summary><strong>开启屏幕录制权限</strong>（macOS 10.15 以上才需要）</summary><br>
+<p>
+<p>第一次使用<strong>截图翻译</strong>的时候会弹出以下提示，点击 <code>打开系统偏好设置</code>，勾选上 Bob</p>
+<p><img src="https://raw.githubusercontent.com/ripperhe/oss/master/2020/0117/屏幕录制弹窗.png" alt="屏幕录制弹窗" width=500 /></p>
+<p>如果不小心拒绝了，打开 <code>系统偏好设置-安全性与隐私-隐私-屏幕录制</code>，确保勾选上了 Bob</p>
+<p>如果没有弹出请求权限的弹框，则在该页面点击 <code>+</code> 号，进入应用程序文件夹选中 Bob，点击 <code>打开</code>，然后勾选上 Bob</p>
+<p><img src="https://raw.githubusercontent.com/ripperhe/oss/master/2020/0117/屏幕录制设置.png" alt="屏幕录制设置" width=600 /></p>
+</p>
+</details>
 
 ## 使用方法
 
