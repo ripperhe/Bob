@@ -33,7 +33,8 @@ brew cask install bob
 
 ### 权限设置
 
-<details><summary><strong>开启辅助功能权限</strong></summary><br>
+<details>
+<summary><strong>开启辅助功能权限</strong></summary><br>
 <p>
 <p>第一次使用<strong>划词翻译</strong>的时候会弹出以下提示，点击 <code>打开系统偏好设置</code>，勾选上 Bob</p>
 <p><img src="https://raw.githubusercontent.com/ripperhe/oss/master/2020/0117/辅助功能弹窗.png" alt="辅助功能弹窗" width=500 /></p>
@@ -43,7 +44,8 @@ brew cask install bob
 </p>
 </details>
 
-<details><summary><strong>开启屏幕录制权限</strong>（macOS 10.15 以上才需要）</summary><br>
+<details>
+<summary><strong>开启屏幕录制权限</strong>（macOS 10.15 以上才需要）</summary><br>
 <p>
 <p>第一次使用<strong>截图翻译</strong>的时候会弹出以下提示，点击 <code>打开系统偏好设置</code>，勾选上 Bob</p>
 <p><img src="https://raw.githubusercontent.com/ripperhe/oss/master/2020/0117/屏幕录制弹窗.png" alt="屏幕录制弹窗" width=500 /></p>
@@ -89,23 +91,27 @@ brew cask install bob
 
 ## 常见问题
 
-<details><summary>划词翻译获取不到文本？</summary><br>
+<h6>划词翻译获取不到文本</h6>
+<details>
+<summary>划词翻译获取不到文本？</summary>
 <p>
-<h3 id="toc_10">划词翻译获取不到文本？</h3>
 <p>首先检查一下是否开启了辅助功能权限（文章前面有开启方法），如果已开启，再检查一下所选中的文本是否可复制。划词翻译本质上就是发出 <code>⌘ + C</code> 这个组合键复制选中的文本，然后从剪切板获取文本进行翻译，所以如果文本本身没法复制，则没法获取到，此时建议使用截图翻译。</p>
 <p>有些软件或者网站复制文本之后还会在文本后面追加一些信息，所以有时候翻译的文本和选中的可能有些出入。</p>
 </p>
 </details>
 
-<details><summary>菜单栏的<strong>划词翻译</strong>选项为什么是灰色？</summary><br>
+<details>
+<summary>菜单栏的<strong>划词翻译</strong>选项为什么是灰色？</summary><br>
 <p>因为划词翻译需要获取选中的文本，点击菜单栏图标会导致上一个软件失焦，此时就没法获取到选中的文本，所以设置为不可点击（灰色），划词翻译选项不能点击但还把它放在菜单中是为了方便查看划词翻译快捷键</p>
 </details>
 
-<details><summary>朗读按钮点击了没反应？</summary><br>
+<details>
+<summary>朗读按钮点击了没反应？</summary><br>
 <p>朗读按钮点击之后，会进行网络请求获取音频播放，没有反应可能是句子太长，加载较慢，当然也有可能是 BUG，后期会考虑点击之后进行一些 UI 提示</p>
 </details>
 
-<details><summary>翻译报错？</summary><br>
+<details>
+<summary>翻译报错？</summary><br>
 <p>
 <table>
 <thead>
@@ -142,7 +148,8 @@ brew cask install bob
 </p>
 </details>
 
-<details><summary>如何导出日志？</summary><br>
+<details>
+<summary>如何导出日志？</summary><br>
 <p>点击菜单栏图标，选中 <code>帮助-导出日志</code></p>
 </details>
 
