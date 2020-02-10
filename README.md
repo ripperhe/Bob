@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://raw.githubusercontent.com/ripperhe/oss/master/2019/1222/bob-logo.png" width=240 />
+  <img src="https://gitee.com/ripperhe/oss/raw/master/2019/1222/bob-logo.png" width=240 />
 </p>
 <p align="center">
 	<a href="https://github.com/ripperhe/Bob/releases/latest"><img src="https://img.shields.io/github/v/release/ripperhe/Bob?logo=github" alt="GitHub release" /></a>
@@ -37,10 +37,10 @@ brew cask install bob
 <summary><strong>开启辅助功能权限</strong></summary><br>
 <p>
 <p>第一次使用<strong>划词翻译</strong>的时候会弹出以下提示，点击 <code>打开系统偏好设置</code>，勾选上 Bob</p>
-<p><img src="https://raw.githubusercontent.com/ripperhe/oss/master/2020/0117/辅助功能弹窗.png" alt="辅助功能弹窗" width=500 /></p>
+<p><img src="https://gitee.com/ripperhe/oss/raw/master/2020/0117/辅助功能弹窗.png" alt="辅助功能弹窗" width=500 /></p>
 <p>如果不小心拒绝了，打开 <code>系统偏好设置-安全性与隐私-隐私-辅助功能</code>，确保勾选上了 Bob</p>
 <p>如果没有弹出请求权限的弹框，则在该页面点击 <code>+</code> 号，进入应用程序文件夹选中 Bob，点击 <code>打开</code>，然后勾选上 Bob</p>
-<p><img src="https://raw.githubusercontent.com/ripperhe/oss/master/2020/0117/辅助功能设置.png" alt="辅助功能设置" width=600 /></p>
+<p><img src="https://gitee.com/ripperhe/oss/raw/master/2020/0117/辅助功能设置.png" alt="辅助功能设置" width=600 /></p>
 </p>
 </details>
 
@@ -48,10 +48,10 @@ brew cask install bob
 <summary><strong>开启屏幕录制权限</strong>（macOS 10.15 以上才需要）</summary><br>
 <p>
 <p>第一次使用<strong>截图翻译</strong>的时候会弹出以下提示，点击 <code>打开系统偏好设置</code>，勾选上 Bob</p>
-<p><img src="https://raw.githubusercontent.com/ripperhe/oss/master/2020/0117/屏幕录制弹窗.png" alt="屏幕录制弹窗" width=500 /></p>
+<p><img src="https://gitee.com/ripperhe/oss/raw/master/2020/0117/屏幕录制弹窗.png" alt="屏幕录制弹窗" width=500 /></p>
 <p>如果不小心拒绝了，打开 <code>系统偏好设置-安全性与隐私-隐私-屏幕录制</code>，确保勾选上了 Bob</p>
 <p>如果没有弹出请求权限的弹框，则在该页面点击 <code>+</code> 号，进入应用程序文件夹选中 Bob，点击 <code>打开</code>，然后勾选上 Bob</p>
-<p><img src="https://raw.githubusercontent.com/ripperhe/oss/master/2020/0117/屏幕录制设置.png" alt="屏幕录制设置" width=600 /></p>
+<p><img src="https://gitee.com/ripperhe/oss/raw/master/2020/0117/屏幕录制设置.png" alt="屏幕录制设置" width=600 /></p>
 </p>
 </details>
 
@@ -59,10 +59,10 @@ brew cask install bob
 
 | 功能 | 描述 | 预览 |
 | :---: | :---: | :---: |
-| 划词翻译 | 选中需要翻译的文本之后，按下划词翻译快捷键即可（默认 `⌥ + D`） | ![划词翻译-句子](https://raw.githubusercontent.com/ripperhe/oss/master/2020/0117/划词翻译-句子.gif) |
-| 截图翻译 | 按下截图翻译快捷键（默认 `⌥ + S`），截取需要翻译的区域 | ![截图翻译-句子](https://raw.githubusercontent.com/ripperhe/oss/master/2020/0117/截图翻译-句子.gif) |
-| 输入翻译| 按下输入翻译快捷键（默认 `⌥ + A`），输入需要翻译的文本，`Enter` 键翻译 | ![输入翻译-单词](https://raw.githubusercontent.com/ripperhe/oss/master/2020/0117/输入翻译-单词.gif) |
-| 插件翻译 | `0.3.0` 版本开始支持，选中需要翻译的文本之后，点击 [PopClip](https://pilotmoon.com/popclip/) 插件图标即可，详情见 [Bob-PopClip](https://github.com/ripperhe/Bob-PopClip) | ![插件翻译-句子](https://raw.githubusercontent.com/ripperhe/oss/master/2020/0117/插件翻译-句子.gif) |
+| 划词翻译 | 选中需要翻译的文本之后，按下划词翻译快捷键即可（默认 `⌥ + D`） | ![划词翻译-句子](https://gitee.com/ripperhe/oss/raw/master/2020/0117/划词翻译-句子.gif) |
+| 截图翻译 | 按下截图翻译快捷键（默认 `⌥ + S`），截取需要翻译的区域 | ![截图翻译-句子](https://gitee.com/ripperhe/oss/raw/master/2020/0117/截图翻译-句子.gif) |
+| 输入翻译| 按下输入翻译快捷键（默认 `⌥ + A`），输入需要翻译的文本，`Enter` 键翻译 | ![输入翻译-单词](https://gitee.com/ripperhe/oss/raw/master/2020/0117/输入翻译-单词.gif) |
+| 插件翻译 | `0.3.0` 版本开始支持，选中需要翻译的文本之后，点击 [PopClip](https://pilotmoon.com/popclip/) 插件图标即可，详情见 [Bob-PopClip](https://github.com/ripperhe/Bob-PopClip) | ![插件翻译-句子](https://gitee.com/ripperhe/oss/raw/master/2020/0117/插件翻译-句子.gif) |
 
 * 划词翻译在**可以选中文本，并且可以复制**的情况下使用
 * 截图翻译建议在无法选中或复制的情况下使用
@@ -181,5 +181,5 @@ Bob 还很年轻，可能会有各种大大小小的问题，有任何问题或�
 [赞赏列表](RewardList.md)
 
 <p align="center">
-	<img src="https://raw.githubusercontent.com/ripperhe/oss/master/2020/0105/ripper_wechat.JPG" width=250 />
+	<img src="https://gitee.com/ripperhe/oss/raw/master/2020/0105/ripper_wechat.JPG" width=250 />
 </p>
