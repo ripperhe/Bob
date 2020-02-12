@@ -21,9 +21,9 @@ labels: 'bug'
 
 ## 运行环境
 <!--「必填」软件的运行环境。-->
-* Device: <!--例如 MacBook Pro (Retina, 15-inch, Mid 2015)-->
-* macOS: <!--10.15.3-->
-* Bob Version: <!--0.3.0-->
+* Device: <!--e.g. MacBook Pro (Retina, 15-inch, Mid 2015)-->
+* macOS: <!--e.g. 10.15.3-->
+* Bob Version: <!--e.g. 0.3.0-->
 
 ## 描述问题
 <!--「必填」对错误的清晰而简洁的描述。-->

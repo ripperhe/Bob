@@ -21,10 +21,9 @@ labels: 'enhancement'
 
 ## 运行环境
 <!--「必填」软件的运行环境，我得确认一下你的软件版本。-->
-
-* Device: <!--例如 MacBook Pro (Retina, 15-inch, Mid 2015)-->
-* macOS: <!--10.15.3-->
-* Bob Version: <!--0.3.0-->
+* Device: <!--e.g. MacBook Pro (Retina, 15-inch, Mid 2015)-->
+* macOS: <!--e.g. 10.15.3-->
+* Bob Version: <!--e.g. 0.3.0-->
 
 ## 请描述目前使用过程中有什么便
 <!-- 「必填」清晰描述使用过程中遇到的问题 -->
