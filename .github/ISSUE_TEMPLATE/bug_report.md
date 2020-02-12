@@ -1,6 +1,6 @@
 ---
 name: 反馈问题
-about: Bob 运行出现异常
+about: Bob 安装或使用出现异常
 title: ''
 labels: 'bug'
 ---
