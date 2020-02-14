@@ -10,6 +10,7 @@
 #import "BaiduTranslate.h"
 #import "YoudaoTranslate.h"
 #import "GoogleTranslate.h"
+#import "SougouTranslate.h"
 #import "Selection.h"
 #import "PopUpButton.h"
 #import "QueryView.h"
@@ -374,6 +375,7 @@ return; \
 
 - (void)setupTranslate {
     self.translateArray = @[
+        [SougouTranslate new],
         [YoudaoTranslate new],
         [BaiduTranslate new],
         [GoogleTranslate mm_anyMake:^(GoogleTranslate *  _Nonnull obj) {

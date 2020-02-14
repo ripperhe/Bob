@@ -82,6 +82,8 @@
 		C9D679CC23A3403F0073957C /* NSDictionary+MM.m in Sources */ = {isa = PBXBuildFile; fileRef = C9D679CB23A3403F0073957C /* NSDictionary+MM.m */; };
 		C9F7E87C23A2165F0025ADF6 /* YoudaoTranslate.m in Sources */ = {isa = PBXBuildFile; fileRef = C9F7E87B23A2165F0025ADF6 /* YoudaoTranslate.m */; };
 		D2B213678C42C42C2AD2339C /* Pods_Bob.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F045DD4639F4F9836B1E8D6 /* Pods_Bob.framework */; };
+		D49A52F323F6E2E3005EB9A6 /* SougouTranslate.m in Sources */ = {isa = PBXBuildFile; fileRef = D49A52EF23F6E2E3005EB9A6 /* SougouTranslate.m */; };
+		D49A52F423F6E2E3005EB9A6 /* NSString+Additional.m in Sources */ = {isa = PBXBuildFile; fileRef = D49A52F223F6E2E3005EB9A6 /* NSString+Additional.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -248,6 +250,10 @@
 		C9D679CB23A3403F0073957C /* NSDictionary+MM.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+MM.m"; sourceTree = "<group>"; };
 		C9F7E87A23A2165F0025ADF6 /* YoudaoTranslate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YoudaoTranslate.h; sourceTree = "<group>"; };
 		C9F7E87B23A2165F0025ADF6 /* YoudaoTranslate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YoudaoTranslate.m; sourceTree = "<group>"; };
+		D49A52EF23F6E2E3005EB9A6 /* SougouTranslate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SougouTranslate.m; sourceTree = "<group>"; };
+		D49A52F023F6E2E3005EB9A6 /* NSString+Additional.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Additional.h"; sourceTree = "<group>"; };
+		D49A52F123F6E2E3005EB9A6 /* SougouTranslate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SougouTranslate.h; sourceTree = "<group>"; };
+		D49A52F223F6E2E3005EB9A6 /* NSString+Additional.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Additional.m"; sourceTree = "<group>"; };
 		DA7129FC389066F3A2227458 /* Pods-Bob.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bob.debug.xcconfig"; path = "Target Support Files/Pods-Bob/Pods-Bob.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -579,6 +585,7 @@
 		C9F7E87623A210B80025ADF6 /* Translate */ = {
 			isa = PBXGroup;
 			children = (
+				D49A52EE23F6E2E3005EB9A6 /* Sougou */,
 				C9F7E87723A212050025ADF6 /* Common */,
 				C99EEB8B2385799D00FEE666 /* Baidu */,
 				C9F7E87823A215270025ADF6 /* Youdao */,
@@ -615,6 +622,17 @@
 				C91DF6B623A390A7009CB158 /* YoudaoOCRResponse.m */,
 			);
 			path = Youdao;
+			sourceTree = "<group>";
+		};
+		D49A52EE23F6E2E3005EB9A6 /* Sougou */ = {
+			isa = PBXGroup;
+			children = (
+				D49A52F023F6E2E3005EB9A6 /* NSString+Additional.h */,
+				D49A52F223F6E2E3005EB9A6 /* NSString+Additional.m */,
+				D49A52F123F6E2E3005EB9A6 /* SougouTranslate.h */,
+				D49A52EF23F6E2E3005EB9A6 /* SougouTranslate.m */,
+			);
+			path = Sougou;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -821,12 +839,14 @@
 				C98CFA35239FA6F400FB7EC4 /* MMCrashFileTool.m in Sources */,
 				C99EEBC52385799D00FEE666 /* BaiduTranslate.m in Sources */,
 				C90007F323B3BA710002B6A0 /* NSObject+DarkMode.m in Sources */,
+				D49A52F423F6E2E3005EB9A6 /* NSString+Additional.m in Sources */,
 				C99EEB1D2385796700FEE666 /* AppDelegate.m in Sources */,
 				C99EEBD72385799D00FEE666 /* MMMake.m in Sources */,
 				C9D679CC23A3403F0073957C /* NSDictionary+MM.m in Sources */,
 				C91DF6B323A375E5009CB158 /* YoudaoTranslateResponse.m in Sources */,
 				C9889F6123AA0FDA00C2D127 /* GoogleTranslate.m in Sources */,
 				C99EEBD22385799D00FEE666 /* ResultView.m in Sources */,
+				D49A52F323F6E2E3005EB9A6 /* SougouTranslate.m in Sources */,
 				C99EEBDC2385799D00FEE666 /* NSColor+MM.m in Sources */,
 				C99EEBD02385799D00FEE666 /* TranslateWindowController.m in Sources */,
 				C99EEBD82385799D00FEE666 /* NSString+MM.m in Sources */,
