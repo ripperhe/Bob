@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://raw.githubusercontent.com/ripperhe/oss/master/2019/1222/bob-logo.png" width=240 />
+  <img src="https://cdn.jsdelivr.net/gh/ripperhe/oss@master/2019/1222/bob-logo.png" width=240 />
 </p>
 <p align="center">
 	<a href="https://github.com/ripperhe/Bob/releases/latest"><img src="https://img.shields.io/github/v/release/ripperhe/Bob?logo=github" alt="GitHub release" /></a>
@@ -9,7 +9,7 @@
 
 # Bob
 
-Bob 是一款  Mac 端翻译软件，支持**划词翻译**和**截图翻译**，当然，手动输入进行翻译也是可以的。
+Bob 是一款 Mac 端翻译软件，支持**划词翻译**和**截图翻译**，当然，手动输入进行翻译也是可以的。
 
 ## 如何安装
 
@@ -37,21 +37,34 @@ brew cask install bob
 <summary><strong>开启辅助功能权限</strong></summary><br>
 <p>
 <p>第一次使用<strong>划词翻译</strong>的时候会弹出以下提示，点击 <code>打开系统偏好设置</code>，勾选上 Bob</p>
-<p><img src="https://raw.githubusercontent.com/ripperhe/oss/master/2020/0117/辅助功能弹窗.png" alt="辅助功能弹窗" width=500 /></p>
-<p>如果不小心拒绝了，打开 <code>系统偏好设置-安全性与隐私-隐私-辅助功能</code>，确保勾选上了 Bob</p>
+<p><img src="https://cdn.jsdelivr.net/gh/ripperhe/oss@master/2020/0117/辅助功能弹窗.png" alt="辅助功能弹窗" width=500 /></p>
+<p>如果不小心拒绝了，打开 系统偏好设置 > 安全性与隐私 > 隐私 > 辅助功能，确保勾选上了 Bob</p>
 <p>如果没有弹出请求权限的弹框，则在该页面点击 <code>+</code> 号，进入应用程序文件夹选中 Bob，点击 <code>打开</code>，然后勾选上 Bob</p>
-<p><img src="https://raw.githubusercontent.com/ripperhe/oss/master/2020/0117/辅助功能设置.png" alt="辅助功能设置" width=600 /></p>
+<p><img src="https://cdn.jsdelivr.net/gh/ripperhe/oss@master/2020/0117/辅助功能设置.png" alt="辅助功能设置" width=600 /></p>
 </p>
 </details>
 
 <details>
-<summary><strong>开启屏幕录制权限</strong>（macOS 10.15 以上才需要）</summary><br>
+<summary><strong>开启屏幕录制权限</strong>「macOS 10.15 以上才需要」</summary><br>
 <p>
 <p>第一次使用<strong>截图翻译</strong>的时候会弹出以下提示，点击 <code>打开系统偏好设置</code>，勾选上 Bob</p>
-<p><img src="https://raw.githubusercontent.com/ripperhe/oss/master/2020/0117/屏幕录制弹窗.png" alt="屏幕录制弹窗" width=500 /></p>
-<p>如果不小心拒绝了，打开 <code>系统偏好设置-安全性与隐私-隐私-屏幕录制</code>，确保勾选上了 Bob</p>
+<p><img src="https://cdn.jsdelivr.net/gh/ripperhe/oss@master/2020/0117/屏幕录制弹窗.png" alt="屏幕录制弹窗" width=500 /></p>
+<p>如果不小心拒绝了，打开 系统偏好设置 > 安全性与隐私 > 隐私 > 屏幕录制，确保勾选上了 Bob</p>
 <p>如果没有弹出请求权限的弹框，则在该页面点击 <code>+</code> 号，进入应用程序文件夹选中 Bob，点击 <code>打开</code>，然后勾选上 Bob</p>
-<p><img src="https://raw.githubusercontent.com/ripperhe/oss/master/2020/0117/屏幕录制设置.png" alt="屏幕录制设置" width=600 /></p>
+<p><img src="https://cdn.jsdelivr.net/gh/ripperhe/oss@master/2020/0117/屏幕录制设置.png" alt="屏幕录制设置" width=600 /></p>
+</p>
+</details>
+
+<details>
+<summary><strong>开启 Chrome 相关权限</strong>「如果不使用 Chrome 请忽略」</summary><br>
+<p>
+<p>如果你使用 Chrome 浏览器，为了让 Bob 在 Chrome 浏览器下的取词体验更加接近网页插件，请开启以下权限：</p>
+<p>1. 在 Chrome 菜单栏 > 视图 > 开发者 中开启  <code>允许 Apple 事件中的 JavaScript</code></p>
+<p><img src="https://cdn.jsdelivr.net/gh/ripperhe/oss@master/2020/0316/chrome设置.png" alt="chrome设置" width=600 /></p>
+<p>2. 第一次在 Chrome 使用<strong>划词翻译</strong>的时候，应该会出现以下弹窗，请点击「好」（弹窗只会出现一次，除非重置自动化权限）</p>
+<p><img src="https://cdn.jsdelivr.net/gh/ripperhe/oss@master/2020/0316/自动化Chrome弹窗.png" alt="自动化Chrome弹窗" width=500 /></p>
+<p>3. 处理弹窗之后，在 系统偏好设置 > 安全性与隐私 > 隐私 > 自动化 应该可看到以下选项，请确保其已经被勾上</p>
+<p><img src="https://cdn.jsdelivr.net/gh/ripperhe/oss@master/2020/0316/自动化Chrome设置.png" alt="自动化Chrome设置" width=600 /></p>
 </p>
 </details>
 
@@ -59,35 +72,31 @@ brew cask install bob
 
 | 功能 | 描述 | 预览 |
 | :---: | :---: | :---: |
-| 划词翻译 | 选中需要翻译的文本之后，按下划词翻译快捷键即可（默认 `⌥ + D`） | ![划词翻译-句子](https://raw.githubusercontent.com/ripperhe/oss/master/2020/0117/划词翻译-句子.gif) |
-| 截图翻译 | 按下截图翻译快捷键（默认 `⌥ + S`），截取需要翻译的区域 | ![截图翻译-句子](https://raw.githubusercontent.com/ripperhe/oss/master/2020/0117/截图翻译-句子.gif) |
-| 输入翻译| 按下输入翻译快捷键（默认 `⌥ + A`），输入需要翻译的文本，`Enter` 键翻译 | ![输入翻译-单词](https://raw.githubusercontent.com/ripperhe/oss/master/2020/0117/输入翻译-单词.gif) |
-| 插件翻译 | `0.3.0` 版本开始支持，选中需要翻译的文本之后，点击 [PopClip](https://pilotmoon.com/popclip/) 插件图标即可，详情见 [Bob-PopClip](https://github.com/ripperhe/Bob-PopClip) | ![插件翻译-句子](https://raw.githubusercontent.com/ripperhe/oss/master/2020/0117/插件翻译-句子.gif) |
+| 划词翻译 | 选中需要翻译的文本之后，按下划词翻译快捷键即可（默认 `⌥ + D`） | ![划词翻译-句子](https://cdn.jsdelivr.net/gh/ripperhe/oss@master/2020/0117/划词翻译-句子.gif) |
+| 截图翻译 | 按下截图翻译快捷键（默认 `⌥ + S`），截取需要翻译的区域 | ![截图翻译-句子](https://cdn.jsdelivr.net/gh/ripperhe/oss@master/2020/0117/截图翻译-句子.gif) |
+| 输入翻译| 按下输入翻译快捷键（默认 `⌥ + A`），输入需要翻译的文本，`Enter` 键翻译 | ![输入翻译-单词](https://cdn.jsdelivr.net/gh/ripperhe/oss@master/2020/0117/输入翻译-单词.gif) |
+| 插件翻译 | `0.3.0` 版本开始支持，选中需要翻译的文本之后，点击 [PopClip](https://pilotmoon.com/popclip/) 插件图标即可，详情见 [Bob-PopClip](https://github.com/ripperhe/Bob-PopClip) | ![插件翻译-句子](https://cdn.jsdelivr.net/gh/ripperhe/oss@master/2020/0117/插件翻译-句子.gif) |
 
 * 划词翻译在**可以选中文本，并且可以复制**的情况下使用
 * 截图翻译建议在无法选中或复制的情况下使用
 * 输入翻译通常在以上方法获取的文本不准的情况下使用
 
-## 支持的翻译源
+## 支持的翻译引擎
 
-目前 Bob 支持有道翻译、百度翻译和谷歌翻译，以下对比比较粗糙，主要根据个人的使用体验评判的，具体细节可以自行感受
+目前 Bob 支持有道翻译、百度翻译和谷歌翻译，对比如下
 
-| 功能 | 有道翻译 | 百度翻译 | 谷歌翻译（国内） | 谷歌翻译 |
-| :---: | :---: | :---: | :---: |  :---: |
-| 支持的语种数量 |  114 | 28 | 104 | 104 |
-| 速度 | 快 | 一般 | 较慢 | 较慢 |
-| 是否需要科学上网| 不需要 | 不需要 | 不需要 | 需要 |
-| 英语音标 | ❌ | ✅ | ❌ | ❌ |
-| 句子翻译 | ✅ | ✅ | ✅ | ✅ |
-| 是否有 OCR 接口 | ✅ | ✅ | ❌ | ❌ |
+| 翻译引擎 | 英文查词 | 英语音标 | 中文查词 | 句子翻译 | 支持语种数 | 是否需要科学上网 | 
+| :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+| 有道翻译 | ✅ | ✅ | ✅ | ✅ | 114 | 不需要 |
+| 百度翻译 | ✅ | ✅ | ✅ | ✅ | 28 | 不需要 |
+| 谷歌翻译cn | ✅ | ❌ | ✅ | ✅ | 109 | 不需要 |
+| 谷歌翻译 | ✅ | ❌ | ✅ | ✅ | 109 | 需要 |
 
-百度翻译和谷歌翻译可以识别驼峰形式的句子，形如 "WhatAreYouDoing"。
+关于截图翻译使用的 OCR 接口，百度翻译目前用的百度自家的接口，其他翻译都用的有道 OCR 接口，后续会改为可自行切换。
 
-由于谷歌翻译没有找到合适的 OCR 接口，所以在截图翻译的时候，使用有道的 OCR 接口进行识图，然后再调用谷歌的翻译接口进行翻译。
+谷歌翻译cn和谷歌翻译结果完全一样，只是谷歌翻译需科学上网使用，但谷歌翻译cn不需要。
 
-国内谷歌翻译和谷歌翻译结果完全一样，只是谷歌翻译需科学上网使用，但国内谷歌翻译不需要。
-
-注意：如果你已经科学上网，那么国内谷歌翻译可能会无法使用。**另外，如果你的科学上网配置不当，那会导致其他翻译接口如百度、有道翻译速度明显下降，请使用 PAC 模式而不是全局模式。**
+**注意：如果你已经科学上网，那么国内谷歌翻译可能会无法使用。另外，如果你的科学上网配置不当，那会导致其他翻译接口如百度、有道翻译速度明显下降，请使用 PAC 模式而不是全局模式。**
 
 ## 常见问题
 
@@ -105,11 +114,6 @@ brew cask install bob
 </ol> 
 <p>有些软件或者网站复制文本之后还会在文本后面追加一些信息，所以有时候获取到的文本和选中的可能有些出入。</p>
 </p>
-</details>
-
-<details>
-<summary>菜单栏的<strong>划词翻译</strong>选项为什么是灰色？</summary><br>
-<p>因为划词翻译需要获取选中的文本，点击菜单栏图标会导致上一个软件失焦，此时就没法获取到选中的文本，所以设置为不可点击（灰色），划词翻译选项不能点击但还把它放在菜单中是为了方便查看划词翻译快捷键</p>
 </details>
 
 <details>
@@ -173,7 +177,7 @@ brew cask install bob
 
 ## 最后
 
-> 由于一些原因，`0.3.0` 以后的代码暂不开源，不过依旧会持续更新，免费使用
+**最后一个开源的版本为 `0.2.0`，**已包含 Bob 所有核心代码，**如需查看，可克隆仓库，在 `archive_0.2.0` 文件夹查看**
 
 Bob 还很年轻，可能会有各种大大小小的问题，有任何问题或者建议可以直接提 issue，或者加入 QQ 群 **971584165** 反馈~
 
@@ -182,5 +186,5 @@ Bob 还很年轻，可能会有各种大大小小的问题，有任何问题或�
 [赞赏列表](RewardList.md)
 
 <p align="center">
-	<img src="https://raw.githubusercontent.com/ripperhe/oss/master/2020/0105/ripper_wechat.JPG" width=250 />
+	<img src="https://cdn.jsdelivr.net/gh/ripperhe/oss@master/2020/0105/ripper_wechat.JPG" width=250 />
 </p>
