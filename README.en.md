@@ -6,6 +6,9 @@
 	<a href="https://github.com/ripperhe/Bob/releases/latest"><img src="https://img.shields.io/github/downloads/ripperhe/Bob/total" alt="Downloads" /></a>
 	<a href="https://github.com/ripperhe/Bob/releases/latest"><img src="https://img.shields.io/github/downloads/ripperhe/Bob/latest/total" alt="Downloads latest" /></a>
 </p>
+<p align="center">
+  <a href="https://github.com/ripperhe/Bob">Chinese</a> | <strong>English</strong>
+</p>
 
 # Bob
 
@@ -85,18 +88,22 @@ Download the latest release from [GitHub release](https://github.com/ripperhe/Bo
 
 Bob currently supports Youdao, Baidu, and Google Translate, as follows:
 
-| Engine | English | English Phonetic | Chinese | Sentences | Supported Languages | Internet Access |
+| Engine | English | English Phonetic | Chinese | Sentences | Supported Languages | Scientific Internet <sup>[1](#scientific-internet)</sup> |
 | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
-| Youdao | ✅ | ✅ | ✅ | ✅ | 114 | No need |
-| Baidu | ✅ | ✅ | ✅ | ✅ | 28 | No need |
-| Google CN | ✅ | ❌ | ✅ | ✅ | 109 | No need |
-| Google | ✅ | ❌ | ✅ | ✅ | 109 | Need |
+| Youdao | ✅ | ✅ | ✅ | ✅ | 114 | - |
+| Baidu | ✅ | ✅ | ✅ | ✅ | 28 | - |
+| Google CN | ✅ | ❌ | ✅ | ✅ | 109 | - |
+| Google | ✅ | ❌ | ✅ | ✅ | 109 | Required |
 
 Regarding the OCR interface used by screenshot translation, Baidu's own interface currently used by Baidu Translation. Other translations use the proper OCR interface, which will be changed later.
 
 Google Translate cn and Google Translate have exactly the same results, except that Google Translate needs to be used on the Internet, but Google Translate cn does not.
 
 **Note: If you are already online on the Internet, Google Translate may not be available. In addition, if your scientific Internet connection is not configured properly, it will cause other translation interfaces such as Tao, Baidu translation speed to drop significantly, and even fail. Please use PAC mode instead of global mode.**
+
+<a name="#scientific-internet"><sup>[1]</sup></a> _Scientific internet_ is
+a term often used in China to express the need for a VPN to bypass government
+blocked websites such as Google.
 
 ## Common Problems
 
