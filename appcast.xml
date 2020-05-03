@@ -1,0 +1,78 @@
+<?xml version="1.0" standalone="yes"?>
+<rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" version="2.0">
+    <channel>
+        <title>Bob</title>
+        <item>
+            <title>0.4.0</title>
+            <description>
+            <![CDATA[
+            <ul>
+            <li>支持切换和自定义菜单栏图标</li>
+            <li>支持隐藏菜单栏图标</li>
+            <li>支持显示上次翻译结果</li>
+            <li>可设置翻译窗口位置在鼠标位置、居中和菜单栏图标下方</li>
+            <li>可独立设置划词翻译和截图翻译输入框折叠状态</li>
+            <li>可设置划词取到的翻译原文中的「\n」替换为「空格」</li>
+            <li>可设置自动复制截图翻译OCR结果</li>
+            <li>可设置自动复制翻译结果中点击后自动查询的单词</li>
+            <li>谷歌翻译新增了维吾尔语等几门语言</li>
+            <li>优化了取词功能，理论上不再影响剪切板</li>
+            <li>针对Chrome浏览器的取词做了特殊处理，开启相关权限后取词更准</li>
+            <li>修复了系统外观选为「自动」的时候，深色浅色切换异常的问题</li>
+            </ul>
+            ]]>
+            </description>
+            <pubDate>周一, 16 3月 2020 14:04:51 +0800</pubDate>
+            <sparkle:minimumSystemVersion>10.12</sparkle:minimumSystemVersion>
+            <enclosure url="https://github.com/ripperhe/Bob/releases/download/v0.4.0/Bob.app.zip" sparkle:version="0.4.0.0" sparkle:shortVersionString="0.4.0" length="6556874" type="application/octet-stream" sparkle:edSignature="zs2k5m/0iDLzxOtoHQtC0uQsSYgr2/axf8HLGT+JIW2hk8sSMO3h+fY+JAMaD7u/MnLnFe0O4qywUT//tR7aBA=="/>
+        </item>
+        <item>
+            <title>0.3.0</title>
+            <description>
+            <![CDATA[
+            <ul>
+            <li>新增了设置字体大小的功能</li>
+            <li>支持 ESC 关闭翻译页面</li>
+            <li>支持 PopClip 插件翻译</li>
+            <li>取词时去掉首尾的空白字符</li>
+            <li>输入翻译居中显示（0.2.0 之前显示在鼠标位置）</li>
+            <li>新增了未开启辅助功能权限的提示</li>
+            <li>修复了部分机型无法使用截图翻译的问题</li>
+            <li>修复了翻译窗口超出屏幕底部偶尔无法回调屏幕的问题</li>
+            <li>修复了 10.12 默认显示为深色的问题</li>
+            </ul>
+            ]]>
+            </description>
+            <pubDate>周日, 02 2月 2020 21:29:58 +0800</pubDate>
+            <sparkle:minimumSystemVersion>10.12</sparkle:minimumSystemVersion>
+            <enclosure url="https://github.com/ripperhe/Bob/releases/download/v0.3.0/Bob.app.zip" sparkle:version="0.3.0.0" sparkle:shortVersionString="0.3.0" length="6435399" type="application/octet-stream" sparkle:edSignature="wA5iVvL/j3XqbDbheDpJJAmwrj426E18p89cQq/QJn0K8UkWdnX75hn8unTmU+oFi4Gt3zzv+xFjvTAJjnrFCw=="/>
+        </item>
+        <item>
+            <title>0.2.0</title>
+            <description>
+            <![CDATA[
+            <ul>
+            <li>适配暗黑模式</li>
+            <li>翻译视图 UI 微调</li>
+            <li>新增了自动复制翻译结果的选项</li>
+            <li>快捷键提示改为用技术符号表示</li>
+            <li>截图模式可使用鼠标右键退出</li>
+            <li>弱化了翻译视图弹出影响</li>
+            <li>修复了有道词典中文查词数据解决异常的问题</li>
+            <li>解决了关闭翻译视图后无法停止朗读的问题</li>
+            <li>修复了偏好设置以及检查更新弹窗不居中的问题</li>
+            </ul>
+            ]]>
+            </description>
+            <pubDate>周六, 28 12月 2019 17:22:38 +0800</pubDate>
+            <sparkle:minimumSystemVersion>10.12</sparkle:minimumSystemVersion>
+            <enclosure url="https://github.com/ripperhe/Bob/releases/download/0.2.0/Bob.app.zip" sparkle:version="0.2.0.0" sparkle:shortVersionString="0.2.0" length="6413811" type="application/octet-stream" sparkle:edSignature="XlmsTBkRT4zIZ/K1o1eQEUPwMVYIyR+NQ+M9Ptk1g4WYfUqyRx3XLM6NynXPlFq++zp2w0DzNw3YUUsc45a+Dg=="/>
+        </item>
+        <item>
+            <title>0.1.0</title>
+            <pubDate>周日, 22 12月 2019 18:20:35 +0800</pubDate>
+            <sparkle:minimumSystemVersion>10.12</sparkle:minimumSystemVersion>
+            <enclosure url="https://github.com/ripperhe/Bob/releases/download/0.1.0/Bob.app.zip" sparkle:version="0.1.0.0" sparkle:shortVersionString="0.1.0" length="6393758" type="application/octet-stream" sparkle:edSignature="S/dUQQ2a8Mz7LxiV3L4Scm783xsaFyEMfeXROWW8gTlZOvTkD7Z+Qt2C62vNP4WqG5B7dgkxPQnShQBHNLGuBg=="/>
+        </item>
+    </channel>
+</rss>
