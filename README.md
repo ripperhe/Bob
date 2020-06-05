@@ -182,12 +182,6 @@ brew cask install bob
 
 **最后一个开源的版本为 `0.2.0`，如需查看，可克隆仓库，在 `archive_0.2.0` 文件夹查看**
 
-Bob 还很年轻，可能会有各种大大小小的问题，有任何问题或者建议可以直接提 issue，或者加入 QQ 群 **971584165** 反馈~
-
-如果想请我喝咖啡，可以微信扫描下方赞赏码哦~ 😘
+有任何问题和建议可以加 QQ 群 **971584165** 讨论，由于更新缓慢，赞赏码暂时不贴了，再次感谢所有曾经支持过 Bob 的朋友 🤝
 
 [赞赏列表](RewardList.md)
-
-<p align="center">
-	<img src="https://cdn.jsdelivr.net/gh/ripperhe/oss@master/2020/0105/ripper_wechat.JPG" width=250 />
-</p>

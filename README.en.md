@@ -188,10 +188,4 @@ The inspiration and part of the code for this repository comes from the followin
 
 Bob is still very young, and there may be various problems, big and small. If you have any questions or suggestions, you can directly raise issues, or join the QQ group **971584165** 反馈~
 
-If you want to invite me for coffee, you can scan the praise code below on WeChat~ 😘
-
 [Praise list](RewardList.md)
-
-<p align="center">
-	<img src="https://cdn.jsdelivr.net/gh/ripperhe/oss@master/2020/0105/ripper_wechat.JPG" width=250 />
-</p>
