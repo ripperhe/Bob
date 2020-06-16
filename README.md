@@ -169,7 +169,15 @@ brew cask install bob
 
 ## 开发者
 
-<a href="https://github.com/ripperhe/Bob/graphs/contributors"><img src="https://opencollective.com/bob_/contributors.svg?width=890&button=false" /></a>
+<!--<a href="https://github.com/ripperhe/Bob/graphs/contributors"><img src="https://opencollective.com/bob_/contributors.svg?width=890&button=false" /></a>
+-->
+
+<p>
+<a href="https://github.com/chengsifang">
+<img src="https://avatars0.githubusercontent.com/u/10810457?v=4" alt="chengsifang" width="50" style="border-radius:50%"/></a>
+<a href="https://github.com/ripperhe">
+<img src="https://avatars0.githubusercontent.com/u/13943595?v=4" alt="ripperhe" width="50" style="border-radius:50%"/></a>
+</p>
 
 ## 感谢
 
