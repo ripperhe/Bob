@@ -173,7 +173,7 @@ brew cask install bob
 -->
 
 <p>
-<a href="https://github.com/chengsifang">
+<a href="https://github.com/chensifang">
 <img src="https://avatars0.githubusercontent.com/u/10810457?v=4" alt="chengsifang" width="50" style="border-radius:50%"/></a>
 <a href="https://github.com/ripperhe">
 <img src="https://avatars0.githubusercontent.com/u/13943595?v=4" alt="ripperhe" width="50" style="border-radius:50%"/></a>
