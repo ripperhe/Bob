@@ -32,7 +32,6 @@ function ocr(query, completion) {
 | --- | --- | --- |
 | image | [$data](plugin/api/data.md) | 需要识别的图片数据 |
 | from | string | 目前用户选中的源语言，可能是 `auto`。查看 [语种列表](plugin/addtion/language.md)。 |
-| to | string | 目前用户选中的目标语言，可能是 `auto`。查看 [语种列表](plugin/addtion/language.md)。 |
 
 示例：
 
