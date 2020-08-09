@@ -1,0 +1,186 @@
+{
+    "from": "zh-Hans",
+    "to": "en",
+    "fromParagraphs": [
+        "愤怒"
+    ],
+    "toParagraphs": [
+        "anger"
+    ],
+    "toDict": {
+        "relatedWordParts": [
+            {
+                "part": "名词",
+                "words": [
+                    {
+                        "word": "anger",
+                        "means": [
+                            "愤怒",
+                            "怒",
+                            "怒气",
+                            "怒火",
+                            "愤",
+                            "火气"
+                        ]
+                    },
+                    {
+                        "word": "rage",
+                        "means": [
+                            "愤怒",
+                            "怒气",
+                            "怒",
+                            "怒火",
+                            "盛怒",
+                            "忿怒"
+                        ]
+                    },
+                    {
+                        "word": "wrath",
+                        "means": [
+                            "愤怒",
+                            "雷霆"
+                        ]
+                    },
+                    {
+                        "word": "fury",
+                        "means": [
+                            "愤怒",
+                            "怒",
+                            "暴怒",
+                            "怒火",
+                            "怒气",
+                            "盛怒"
+                        ]
+                    },
+                    {
+                        "word": "outrage",
+                        "means": [
+                            "暴行",
+                            "愤怒",
+                            "侮辱"
+                        ]
+                    },
+                    {
+                        "word": "indignation",
+                        "means": [
+                            "愤慨",
+                            "愤怒",
+                            "义愤"
+                        ]
+                    },
+                    {
+                        "word": "pique",
+                        "means": [
+                            "愤怒"
+                        ]
+                    },
+                    {
+                        "word": "bile",
+                        "means": [
+                            "胆汁",
+                            "愤怒",
+                            "坏脾气"
+                        ]
+                    },
+                    {
+                        "word": "vehemence",
+                        "means": [
+                            "愤怒"
+                        ]
+                    },
+                    {
+                        "word": "huff",
+                        "means": [
+                            "愤怒",
+                            "发怒"
+                        ]
+                    },
+                    {
+                        "word": "umbrage",
+                        "means": [
+                            "愤怒"
+                        ]
+                    },
+                    {
+                        "word": "teen",
+                        "means": [
+                            "愤怒"
+                        ]
+                    },
+                    {
+                        "word": "vehemency",
+                        "means": [
+                            "愤怒"
+                        ]
+                    },
+                    {
+                        "word": "paddy",
+                        "means": [
+                            "稻田",
+                            "稻谷",
+                            "稻",
+                            "谷",
+                            "稻子",
+                            "愤怒"
+                        ]
+                    }
+                ]
+            },
+            {
+                "part": "形容词",
+                "words": [
+                    {
+                        "word": "angry",
+                        "means": [
+                            "愤怒",
+                            "生气",
+                            "恼怒",
+                            "恼",
+                            "忿怒",
+                            "忧郁"
+                        ]
+                    },
+                    {
+                        "word": "indignant",
+                        "means": [
+                            "愤怒",
+                            "愤慨",
+                            "气愤",
+                            "愤愤不平",
+                            "激愤",
+                            "愠"
+                        ]
+                    },
+                    {
+                        "word": "raging",
+                        "means": [
+                            "愤怒",
+                            "熊熊",
+                            "炽灼的"
+                        ]
+                    }
+                ]
+            },
+            {
+                "part": "动词",
+                "words": [
+                    {
+                        "word": "pique",
+                        "means": [
+                            "愤怒",
+                            "激怒"
+                        ]
+                    },
+                    {
+                        "word": "huff",
+                        "means": [
+                            "愤怒",
+                            "发怒"
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    "raw": {}
+}

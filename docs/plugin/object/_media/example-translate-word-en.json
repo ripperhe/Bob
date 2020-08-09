@@ -1,0 +1,92 @@
+{
+    "from": "en",
+    "to": "zh-Hans",
+    "fromParagraphs": [
+        "good"
+    ],
+    "toParagraphs": [
+        "好"
+    ],
+    "toDict": {
+        "phonetics": [
+            {
+                "type": "us",
+                "value": "ɡʊd",
+                "tts": {
+                    "type": "url",
+                    "value": "http://xxxxxxxxxx..."
+                }
+            },
+            {
+                "type": "uk",
+                "value": "ɡʊd",
+                "tts": {
+                    "type": "url",
+                    "value": "http://xxxxxxxxxx..."
+                }
+            }
+        ],
+        "parts": [
+            {
+                "part": "adj.",
+                "means": [
+                    "好的",
+                    "优良的",
+                    "愉快的",
+                    "虔诚的"
+                ]
+            },
+            {
+                "part": "n.",
+                "means": [
+                    "好处",
+                    "善行",
+                    "慷慨的行为"
+                ]
+            },
+            {
+                "part": "adv.",
+                "means": [
+                    "好"
+                ]
+            },
+            {
+                "part": "n.",
+                "means": [
+                    "(Good)人名",
+                    "(英)古德",
+                    "(瑞典)戈德"
+                ]
+            }
+        ],
+        "exchanges": [
+            {
+                "name": "比较级",
+                "words": [
+                    "better"
+                ]
+            },
+            {
+                "name": "最高级",
+                "words": [
+                    "best"
+                ]
+            },
+            {
+                "name": "复数",
+                "words": [
+                    "goods"
+                ]
+            }
+        ]
+    },
+    "fromTTS": {
+        "type": "url",
+        "value": "http://xxxxxxxxxx..."
+    },
+    "toTTS": {
+        "type": "url",
+        "value": "http://xxxxxxxxxx..."
+    },
+    "raw": {}
+}
