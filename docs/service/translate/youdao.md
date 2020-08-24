@@ -1,4 +1,4 @@
-!> 免责声明：以下信息仅供参考，请以服务商官网最新信息为准。更新时间：2020年4月28日。
+!> 免责声明：以下信息仅供参考，请以服务商官网最新信息为准。更新时间：2020年8月24日。
 
 ## 0. 收费模式
 
@@ -18,55 +18,71 @@
 
 <img src="https://gitee.com/ripperhe/oss/raw/master/2020/0428/youdao_translate_login.png" alt="youdao_translate_login" width=1000 />
 
-## 2.创建应用
+## 2. 创建应用
 
 登录完成后，进入 [「应用管理-我的应用」](https://ai.youdao.com/appmgr.s)，点击「创建应用」
 
-<img src="https://gitee.com/ripperhe/oss/raw/master/2020/0428/youdao_translate_app_1.png" alt="youdao_translate_app_1" width=1000 />
+<img src="https://gitee.com/ripperhe/oss/raw/master/2020/0824/youdao_translate_app_1.png" alt="youdao_translate_app_1" width=1000 />
 
 应用名称随意填写，类别不用选，描述不用填，接入方式选「API」，然后点击「下一步」
 
-<img src="https://gitee.com/ripperhe/oss/raw/master/2020/0428/youdao_translate_app_2.png" alt="youdao_translate_app_2" width=1000 />
+<img src="https://gitee.com/ripperhe/oss/raw/master/2020/0824/youdao_translate_app_2.png" alt="youdao_translate_app_2" width=1000 />
 
 然后点击「创建应用」
 
-<img src="https://gitee.com/ripperhe/oss/raw/master/2020/0428/youdao_translate_app_3.png" alt="youdao_translate_app_3" width=1000 />
+<img src="https://gitee.com/ripperhe/oss/raw/master/2020/0824/youdao_translate_app_3.png" alt="youdao_translate_app_3" width=1000 />
 
-## 3. 创建翻译实例
+## 3. 创建文本翻译实例
 
 应用创建完成，进入 [「自然语言翻译-翻译实例」](https://ai.youdao.com/fanyi-services.s) 创建实例
 
-<img src="https://gitee.com/ripperhe/oss/raw/master/2020/0428/youdao_translate_service_1.png" alt="youdao_translate_service_1" width=1000 />
+<img src="https://gitee.com/ripperhe/oss/raw/master/2020/0824/youdao_translate_service_1.png" alt="youdao_translate_service_1" width=1000 />
 
 实例名称随意填写，类型选「文本翻译」，然后点击「下一步」
 
-<img src="https://gitee.com/ripperhe/oss/raw/master/2020/0428/youdao_translate_service_2.png" alt="youdao_translate_service_2" width=1000 />
+<img src="https://gitee.com/ripperhe/oss/raw/master/2020/0824/youdao_translate_service_2.png" alt="youdao_translate_service_2" width=1000 />
 
 点击「创建实例」
 
-<img src="https://gitee.com/ripperhe/oss/raw/master/2020/0428/youdao_translate_service_3.png" alt="youdao_translate_service_3" width=1000 />
+<img src="https://gitee.com/ripperhe/oss/raw/master/2020/0824/youdao_translate_service_3.png" alt="youdao_translate_service_3" width=1000 />
 
-## 4.  将翻译实例和应用绑定
+## 4. 创建语音合成实例
 
-进入 [「自然语言翻译-翻译实例」](https://ai.youdao.com/fanyi-services.s) ，点击刚才创建的翻译实例的「绑定应用」按钮
+!> 在查单词时，有道翻译结果中往往会有单词发音，需要创建语音合成实例并绑定到应用才能正常播放。
 
-<img src="https://gitee.com/ripperhe/oss/raw/master/2020/0428/youdao_translate_bind_1.png" alt="youdao_translate_bind_1" width=1000 />
+进入 [「语音合成TTS-TTS实例」](https://ai.youdao.com/tts-services.s) 创建实例
 
-勾选上第2步创建的应用，点击「提交更改」
+<img src="https://gitee.com/ripperhe/oss/raw/master/2020/0824/youdao_translate_service_tts_1.png" alt="youdao_translate_service_tts_1" width=1000 />
 
-<img src="https://gitee.com/ripperhe/oss/raw/master/2020/0428/youdao_translate_bind_2.png" alt="youdao_translate_bind_2" width=1000 />
+实例名称随意填写，然后点击「下一步」
 
-## 5. 获取秘钥
+<img src="https://gitee.com/ripperhe/oss/raw/master/2020/0824/youdao_translate_service_tts_2.png" alt="youdao_translate_service_tts_2" width="1000" />
+
+点击「创建实例」
+
+<img src="https://gitee.com/ripperhe/oss/raw/master/2020/0824/youdao_translate_service_tts_3.png" alt="youdao_translate_service_tts_3" width="1000" />
+
+## 5. 将实例和应用绑定
+
+进入 [「应用管理-我的应用」](https://ai.youdao.com/appmgr.s)，点击刚才创建的应用右边的「绑定服务」
+
+<img src="https://gitee.com/ripperhe/oss/raw/master/2020/0824/youdao_translate_bind_1.png" alt="youdao_translate_bind_1" width="1000" />
+
+勾选上刚才创建的**翻译实例**和**语音合成实例**，点击「提交更改」
+
+<img src="https://gitee.com/ripperhe/oss/raw/master/2020/0824/youdao_translate_bind_2.png" alt="youdao_translate_bind_2" width="1000" />
+
+## 6. 获取秘钥
 
 进入 [「应用管理-我的应用」](https://ai.youdao.com/appmgr.s)，点击第2步创建的应用
 
-<img src="https://gitee.com/ripperhe/oss/raw/master/2020/0428/youdao_translate_secret_1.png" alt="youdao_translate_secret_1" width=1000 />
+<img src="https://gitee.com/ripperhe/oss/raw/master/2020/0824/youdao_translate_secret_1.png" alt="youdao_translate_secret_1" width=1000 />
 
 下图所示即为所需的秘钥
 
-<img src="https://gitee.com/ripperhe/oss/raw/master/2020/0428/youdao_translate_secret_2.png" alt="youdao_translate_secret_2" width=1000 />
+<img src="https://gitee.com/ripperhe/oss/raw/master/2020/0824/youdao_translate_secret_2.png" alt="youdao_translate_secret_2" width=1000 />
 
-## 6. 填写秘钥
+## 7. 填写秘钥
 
 在 Bob 的 偏好设置 > 服务 中，选中「文本翻译」，点击 `+` 号，选中「有道翻译」，然后将刚才获取到的秘钥填写到对应位置即可。
 
