@@ -25,6 +25,7 @@
 | parts | array | 词性词义数组，一般英文查词会有，见 [part object](#part-object)。 |
 | exchanges | array | 其他形式数组，一般英文查词会有，见 [exchange object](#exchange-object)。 |
 | relatedWordParts | array | 相关的单词数组，一般中文查词会有，表示和该中文对应的英文单词有哪些，见 [related word part object](#related-word-part-object)。 |
+| addtions | array | 附加内容数组，考虑到以上字段无法覆盖所有词典内容，比如例句、记忆技巧等，可将相应数据添加到该数组，最终也会显示到翻译结果中，见 [addtion object](#addtion-object)。 |
 
 ## phonetic object
 
@@ -77,6 +78,15 @@
 | means | array | 词义 `string` 数组。 |
 
 `word` 必须有值，`means` 可以不传。
+
+## addtion object
+
+该对象用于描述一段附加内容。
+
+| 属性 | 类型 | 说明 |
+| --- | --- | --- |
+| name | string | 附加内容名称。 |
+| value | string | 附加内容。 |
 
 ## 示例
 
