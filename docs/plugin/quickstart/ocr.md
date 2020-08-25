@@ -32,6 +32,7 @@ function ocr(query, completion) {
 | --- | --- | --- |
 | image | [$data](plugin/api/data.md) | 需要识别的图片数据 |
 | from | string | 目前用户选中的源语言，可能是 `auto`。查看 [语种列表](plugin/addtion/language.md)。 |
+| detectFrom | string | 图片中最可能的语言，一定不是 `auto`，如果插件不具备检测语种的能力，可直接使用该属性。查看 [语种列表](plugin/addtion/language.md)。 |
 
 示例：
 
@@ -39,7 +40,7 @@ function ocr(query, completion) {
 {
     'image': $data数据,
     'from': 'auto',
-    'to': 'zh-Hans'
+    'detectFrom': 'en'
 }
 ```
 
