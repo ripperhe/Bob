@@ -5,6 +5,7 @@
 	* [腾讯翻译君](service/translate/tencent.md)
 	* [搜狗翻译](service/translate/sougou.md)
 	* [彩云小译](service/translate/caiyun.md)
+	* [谷歌翻译](service/translate/google.md)
 * **文本识别**
 	* [百度智能云通用OCR](service/ocr/baidu.md)
 	* [腾讯云通用OCR](service/ocr/tencent.md)
