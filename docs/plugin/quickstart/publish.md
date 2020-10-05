@@ -23,7 +23,7 @@ version object 结构如下：
 | --- | --- | :---:| --- |
 | version | string | ✅ | 版本号，请与对应插件包 info.json 中的信息一致。 |
 | desc | string | ✅ | 插件的更新内容。 |
-| sha256 | string | ✅ | 插件包 SHA256 哈希值，会和从 url 中下载的插件包进行比对校验。 |
+| sha256 | string | ✅ | 插件包 SHA256 哈希值，会和从 url 中下载的插件包进行校验。 |
 | url | string | ✅ | 插件包下载地址。 |
 | minBobVersion | string | - | 最低支持本插件的 Bob 版本，请与对应插件包 info.json 中的信息一致。 |
 
@@ -63,11 +63,11 @@ https://purge.jsdelivr.net/gh/用户名/插件仓库名@master/appcast.json
 
 #### 存放插件包
 
-一般插件包也不会太大，可能几百 KB，如果直接传到 `GitHub Releases` 将无法使用 jsDelivr（我没找到如何使用），所以还是建议放到仓库的某个位置，然后利用 jsDelivr 加速。
+插件包如果直接传到 `GitHub Releases` 将无法使用 jsDelivr（我没找到如何使用），所以还是建议放到仓库的某个位置，然后利用 jsDelivr 加速。
 
-所以在 `version object` 的 url 字段中，也务必填入 jsDelivr 的资源链接，否则检查更新成功后，下载资源可能会失败。
+所以在 `version object` 的 url 字段中，也请填入 jsDelivr 的资源链接，否则很可能会导致下载失败。
 
-建议将每次插件安装包的名字加上版本号，这样对应的 url 就不同，不需要去手动更新 jsDelivr 缓存。
+建议将插件安装包的名字加上版本号，这样对应的 url 就不同，不需要去手动更新相应的 jsDelivr 缓存。
 
 ### 示例
 
