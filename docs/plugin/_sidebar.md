@@ -7,7 +7,8 @@
         * [文本识别](plugin/quickstart/ocr.md)
         * [语音合成](plugin/quickstart/tts.md)
     * [调试插件](plugin/quickstart/debug.md)
-    * [发布插件](plugin/quickstart/release.md)
+    * [打包插件](plugin/quickstart/pack.md)
+    * [发布插件](plugin/quickstart/publish.md)
 * **基本接口**
     * [前言](plugin/api/intro.md)
     * [模块化](plugin/api/module.md)

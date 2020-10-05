@@ -10,7 +10,8 @@
 | icon | string | - | 插件图标标识符，如果插件根目录有 `icon.png` 文件，则会将其作为插件图标，不会读取该字段；如果没有，会读取该字段，值可以为 [这个图标列表](plugin/addtion/icon.md) 中所包含的任意一个ID。 |
 | author | string | - | 插件作者。 |
 | homepage| string | - | 插件主页网址。 |
-| minBobVersion | string | - | 最低支持本插件的 Bob 版本，建议填写您开发插件时候的调试插件的 Bob 版本，目前应该是 `0.5.0`。 |
+| appcast | string | - | 插件发布信息 URL。详情见 [发布插件](plugin/quickstart/publish.md)。 |
+| minBobVersion | string | - | 最低支持本插件的 Bob 版本，建议填写您开发插件时候的 Bob 版本，目前应该是 `0.5.0`。 |
 | options | array | - | 插件选项数组，该字段用于提供一些选项供用户选择或填写，详情见 `option object`。 |
 
 ## option object
