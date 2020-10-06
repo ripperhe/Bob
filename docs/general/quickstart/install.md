@@ -5,7 +5,7 @@
 | 版本 | 系统要求 |
 | --- | --- |
 | 0.1.0 - 0.4.0 | macOS 10.12+ |
-| 0.5.0 | macOS 10.13+ |
+| 0.5.0+ | macOS 10.13+ |
 
 ## Homebrew Cask 安装
 
@@ -21,5 +21,3 @@ brew cask install bob
 | 从 [Gitee release](https://gitee.com/ripperhe/Bob/releases) 下载 | 国内用这个 | // TODO：暂无 |
 
 下载完成之后，解压并拖拽到**应用程序**文件夹即可
-
-!> 目前只在 GitHub 和 Gitee 分发安装包，其它地址分发的都有可能存在风险，请仔细辨别

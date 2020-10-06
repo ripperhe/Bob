@@ -43,6 +43,7 @@
     "icon": "001",
     "author": "ripperhe",
     "homepage": "https://github.com",
+    "appcast": "https://raw.githubusercontent.com/xxxx/xxxx/master/appcast.json",
     "minBobVersion": "0.5.0",
     "options": [
         {
