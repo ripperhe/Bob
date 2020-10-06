@@ -3,6 +3,27 @@
     <channel>
         <title>Bob</title>
         <item>
+            <title>0.5.1</title>
+            <description>
+            <![CDATA[
+            <ul>
+            <li>接入了多家服务，通过申请私人秘钥使用</li>
+            <li>支持多开翻译，最多可同时开启5个</li>
+            <li>支持插件，可以实现自定义 API</li>
+            <li>支持驼峰拆分、蛇形拆分</li>
+            <li>UI 调整</li>
+            <li>删除了隐藏菜单栏图标的功能</li>
+            <li>删除了拖拽翻译窗口大小的功能</li>
+            <li>删除了原有的百度翻译、有道翻译和谷歌翻译</li>
+            <li>更新内容详情<a href="https://ripperhe.gitee.io/bob/#/blog/2020-08-03-0.5.0-new-features">https://ripperhe.gitee.io/bob/#/blog/2020-08-03-0.5.0-new-features</a></li>
+            </ul>
+            ]]>
+            </description>
+            <pubDate>周二, 06 10月 2020 22:08:34 +0800</pubDate>
+            <sparkle:minimumSystemVersion>10.13</sparkle:minimumSystemVersion>
+            <enclosure url="https://gitee.com/ripperhe/Bob/attach_files/489388/download/Bob.app.zip" sparkle:version="0.5.1.0" sparkle:shortVersionString="0.5.1" length="7251028" type="application/octet-stream" sparkle:edSignature="hwLGvvAN3jYAwGJoOfypTXk4WsEKbXB22tIdb5/O0hy4dyvHy4S+WfqSaNtk1DJAtaFbohXgRiLe+ts7UMT/BQ=="/>
+        </item>
+        <item>
             <title>0.4.0</title>
             <description>
             <![CDATA[
