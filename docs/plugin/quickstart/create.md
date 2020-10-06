@@ -13,6 +13,6 @@
 
 为了方便开发，我们给不同类型的插件分别创建了模板，你可以直接**点击下方链接下载**，每个模板文件是一个压缩包，将其解压即可。
 
-* [文本翻译插件模板](https://cdn.jsdelivr.net/gh/ripperhe/oss@master/2020/0805/bob-plugin-template-translate.zip)
-* [文本识别插件模板](https://cdn.jsdelivr.net/gh/ripperhe/oss@master/2020/0805/bob-plugin-template-ocr.zip)
-* [语音合成插件模板](https://cdn.jsdelivr.net/gh/ripperhe/oss@master/2020/0805/bob-plugin-template-ocr.zip)
+* [文本翻译插件模板](https://cdn.jsdelivr.net/gh/ripperhe/oss@master/2020/1006/bob-plugin-template-translate.zip)
+* [文本识别插件模板](https://cdn.jsdelivr.net/gh/ripperhe/oss@master/2020/1006/bob-plugin-template-ocr.zip)
+* [语音合成插件模板](https://cdn.jsdelivr.net/gh/ripperhe/oss@master/2020/1006/bob-plugin-template-tts.zip)
