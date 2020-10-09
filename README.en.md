@@ -37,7 +37,7 @@ brew cask install bob
 | Channel | Suggest | Download |
 | --- | --- | --- |
 | [GitHub release](https://github.com/ripperhe/Bob/releases) | Use this in foreign countries | [Download⬇](https://github.com/ripperhe/Bob/releases/latest/download/Bob.app.zip) |
-| [Gitee release](https://gitee.com/ripperhe/Bob/releases) | Use this in China | [Download ⬇](https://gitee.com/ripperhe/Bob/attach_files/489388/download/Bob.app.zip) |
+| [Gitee release](https://gitee.com/ripperhe/Bob/releases) | Use this in China | [Download ⬇](https://gitee.com/ripperhe/Bob/attach_files/490477/download/Bob.app.zip) |
 
 After the download is complete, unzip and drag app to your Applications folder.
 

@@ -3,6 +3,19 @@
     <channel>
         <title>Bob</title>
         <item>
+            <title>0.5.2</title>
+            <description>
+            <![CDATA[
+            <ul>
+            <li>修复在 macOS High Sierra (10.13) 崩溃的问题</li>
+            </ul>
+            ]]>
+            </description>
+            <pubDate>周五, 09 10月 2020 17:13:20 +0800</pubDate>
+            <sparkle:minimumSystemVersion>10.13</sparkle:minimumSystemVersion>
+            <enclosure url="https://gitee.com/ripperhe/Bob/attach_files/490477/download/Bob.app.zip" sparkle:version="0.5.2.1" sparkle:shortVersionString="0.5.2" length="7251230" type="application/octet-stream" sparkle:edSignature="mj24h+wy55P/uVHWdVsCiqpJm5sl2hc+9mCzVENuIXkMNahN+t5ltqTb7BsbVxurKvVwJRh+v8wAn3odz6CXAg=="/>
+        </item>
+        <item>
             <title>0.5.1</title>
             <description>
             <![CDATA[
