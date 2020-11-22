@@ -2,6 +2,8 @@
 
 ## 0. 收费模式
 
+?> 注意：注册时赠送的体验资金**不能用于**搜狗深智 OCR
+
 [查看详情](https://deepi.sogou.com/doccenter/textcognitivedoc)
 
 | 服务 | 免费额度 | 超出免费额度 | 并发请求数 |
