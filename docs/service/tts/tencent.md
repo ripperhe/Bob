@@ -1,11 +1,4 @@
-
-* 重要提示！！！腾讯云语音合成暂不可用，请等待 App 和文档更新，谢谢~
-* 重要提示！！！腾讯云语音合成暂不可用，请等待 App 和文档更新，谢谢~
-* 重要提示！！！腾讯云语音合成暂不可用，请等待 App 和文档更新，谢谢~
-
----
-
-!> 免责声明：以下信息仅供参考，请以服务商官网最新信息为准。更新时间：2020年7月29日。
+!> 免责声明：以下信息仅供参考，请以服务商官网最新信息为准。更新时间：2020年11月28日。
 
 ## 0. 收费模式
 
@@ -13,7 +6,8 @@
 
 | 服务 | 免费额度 | 超出免费额度 | 并发请求数 |
 | :-- | :-- | :-- | :-- |
-| 语音合成 | 每月100万字符 👍 | 0.2元/万字符 | |
+| 语音合成 – 普通音色 | 新用户可领取800万字符，3月内有效 | 0.2元/万字符 | 20次/秒（免费试用为3次/秒） |
+| 语音合成 – 精品音色 | 与普通音色共用800万免费额度 | 0.3元/万字符 | 20次/秒（免费试用为3次/秒） |
 
 > 1个中文、1个字母、1个标点符号都计算为1个字符。
 
@@ -41,11 +35,19 @@
 
 ## 3. 开通语音合成
 
-?> 如果进入语音合成页面能直接看到调用量，证明已开通，请直接跳过此步骤
-
-进入 [「语音合成」](https://console.cloud.tencent.com/tts) 页面，点「免费试用」就行。
+进入 [「语音合成」](https://console.cloud.tencent.com/tts) 页面，点「免费试用」就行。如果进入语音合成页面能直接看到调用量，可接着看下看。
 
 <img src="https://gitee.com/ripperhe/oss/raw/master/2020/0808/tencent_tts_open.png" alt="tencent_tts_open" width="1000" />
+
+前面讲过，新用户可以领取一个免费资源包，内含800万调用字符，有效期为3个月。进入 [「语言合成-资源包管理」](https://console.cloud.tencent.com/tts/resourcebundle) 页面，点击「免费领取资源包」即可
+
+<img src="https://cdn.jsdelivr.net/gh/ripperhe/oss@master/2020/1128/tencent_tts_get_free_1.png" alt="tencent_tts_get_free_1" width=1000 />
+
+领取成功如下所示
+
+<img src="https://cdn.jsdelivr.net/gh/ripperhe/oss@master/2020/1128/tencent_tts_get_free_2.png" alt="tencent_tts_get_free_2" width=1000 />
+
+如果免费资源包已使用完毕，想继续使用，有预付费和后付费两种方案，[收费模式详情页]((https://cloud.tencent.com/product/tts/pricing)) 说的比较清楚，这里不再赘述了。
 
 ## 4. 获取秘钥方法1（更快捷）
 
