@@ -3,6 +3,28 @@
     <channel>
         <title>Bob</title>
         <item>
+            <title>0.5.3</title>
+            <description>
+            <![CDATA[
+            <ul>
+            <li>Intel 和 Apple Silicon 双架构支持</li>
+            <li>修复部分机型在 Big Sur 下菜单栏图标显示异常的问题</li>
+            <li>修复部分机型在 Chrome 浏览器下划词翻译窗口突然消失的问题</li>
+            <li>修复部分机型 Apple 语音合成无法使用及崩溃的问题</li>
+            <li>修复腾讯云语音合成无法使用的问题并增加可选项</li>
+            <li>修复 Emoji 导致有道翻译崩溃的问题</li>
+            <li>默认隐藏插件设置项的输入框文本</li>
+            <li>调整开启权限的提示</li>
+            <li>调整免费服务异常的提示</li>
+            <li>调整导出日志的提示</li>
+            </ul>
+            ]]>
+            </description>
+            <pubDate>周日, 29 11月 2020 18:42:05 +0800</pubDate>
+            <sparkle:minimumSystemVersion>10.13</sparkle:minimumSystemVersion>
+            <enclosure url="https://gitee.com/ripperhe/Bob/attach_files/534304/download/Bob.zip" sparkle:version="0.5.3.0" sparkle:shortVersionString="0.5.3" length="8842780" type="application/octet-stream" sparkle:edSignature="HNS0DAGiFaLIJ/FGq737PruWXogeo4fEr7qnj1iukYtDiA7eA3Ic+pgVvkm6OVfmVMsOzFK6WSagFM6lsolzCA=="/>
+        </item>
+        <item>
             <title>0.5.2</title>
             <description>
             <![CDATA[
