@@ -4,8 +4,8 @@
 
 | 属性 | 类型 | 说明 |
 | --- | --- | --- |
-| from | string | 由翻译接口提供的源语种，可以与查询时的 from 不同。查看 [语种列表](plugin/addtion/language.md)。 |
-| to | string | 由翻译接口提供的目标语种，可以与查询时的 to 不同。查看 [语种列表](plugin/addtion/language.md)。 |
+| from | string | 由翻译接口提供的源语言，可以与查询时的 from 不同。查看 [语言代码](plugin/addtion/language.md)。 |
+| to | string | 由翻译接口提供的目标语言，可以与查询时的 to 不同。查看 [语言代码](plugin/addtion/language.md)。 |
 | fromParagraphs | array | 原文分段拆分过后的 `string` 数组，可不传。 |
 | toParagraphs | array | 译文分段拆分过后的 `string` 数组，必传。 |
 | toDict | object | 词典结果，见 [to dict object](#to-dict-object)。可不传。 |

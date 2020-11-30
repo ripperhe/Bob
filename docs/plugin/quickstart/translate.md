@@ -1,9 +1,9 @@
 文本翻译插件需要实现两个函数:
 
-1. 获取支持的语种数组的函数
+1. 获取支持的语言数组的函数
 2. 执行翻译的函数
 
-## 1. 获取支持的语种数组
+## 1. 获取支持的语言数组
 
 ```js
 function supportLanguages() {
@@ -11,9 +11,9 @@ function supportLanguages() {
 }
 ```
 
-该函数不需要参数，调用时返回支持的语种字符串数组即可。
+该函数不需要参数，调用时返回支持的语言字符串数组即可。
 
-鉴于各个服务商的语种标识符都略有差异，我们定义了一套 Bob 专用的语种标准码，所有需要回传语种给 Bob 主程序的地方，都要使用 [这套语种标准码](plugin/addtion/language.md)。
+鉴于各个服务商的语言标识符都略有差异，我们定义了一套 Bob 专用的语言代码，所有需要回传语言给 Bob 主程序的地方，都要使用 [这套语言代码](plugin/addtion/language.md)。
 
 ## 2. 执行翻译
 
@@ -39,10 +39,10 @@ function translate(query, completion) {
 | 属性 | 类型 | 说明 |
 | --- | --- | --- |
 | text | string | 需要翻译的文本。 |
-| from | string | 用户选中的源语种标准码，可能是 `auto`。查看 [语种列表](plugin/addtion/language.md)。 |
-| to | string | 用户选中的目标语种标准码，可能是 `auto`。查看 [语种列表](plugin/addtion/language.md)。 |
-| detectFrom | string | 检测过后的源语种，一定不是 `auto`，如果插件不具备检测语种的能力，可直接使用该属性。查看 [语种列表](plugin/addtion/language.md)。 |
-| detectTo | string | 检测过后的目标语种，一定不是 `auto`，如果不想自行推测用户实际需要的目标语种，可直接使用该属性。查看 [语种列表](plugin/addtion/language.md)。 |
+| from | string | 用户选中的源语言代码，可能是 `auto`。查看 [语言代码](plugin/addtion/language.md)。 |
+| to | string | 用户选中的目标语言代码，可能是 `auto`。查看 [语言代码](plugin/addtion/language.md)。 |
+| detectFrom | string | 检测过后的源语言，一定不是 `auto`，如果插件不具备检测语言的能力，可直接使用该属性。查看 [语言代码](plugin/addtion/language.md)。 |
+| detectTo | string | 检测过后的目标语言，一定不是 `auto`，如果不想自行推测用户实际需要的目标语言，可直接使用该属性。查看 [语言代码](plugin/addtion/language.md)。 |
 
 示例：
 

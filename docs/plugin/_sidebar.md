@@ -26,5 +26,5 @@
     * [tts result](plugin/object/ttsresult.md)
 * **附录**
     * [内置图标](plugin/addtion/icon.md)
-    * [语种列表](plugin/addtion/language.md)
+    * [语言代码](plugin/addtion/language.md)
     

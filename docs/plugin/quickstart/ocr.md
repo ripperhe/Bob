@@ -1,9 +1,9 @@
 文本识别插件需要实现两个函数：
 
-1. 获取支持的语种数组的函数
+1. 获取支持的语言数组的函数
 2. 执行文字识别的函数
 
-## 1. 获取支持的语种数组
+## 1. 获取支持的语言数组
 
 与文本翻译插件要求相同，[点此查看](plugin/quickstart/translate.md)。
 
@@ -31,8 +31,8 @@ function ocr(query, completion) {
 | 属性 | 类型 | 说明 |
 | --- | --- | --- |
 | image | [$data](plugin/api/data.md) | 需要识别的图片数据 |
-| from | string | 目前用户选中的源语言，可能是 `auto`。查看 [语种列表](plugin/addtion/language.md)。 |
-| detectFrom | string | 图片中最可能的语言，一定不是 `auto`，如果插件不具备检测语种的能力，可直接使用该属性。查看 [语种列表](plugin/addtion/language.md)。 |
+| from | string | 目前用户选中的源语言，可能是 `auto`。查看 [语言代码](plugin/addtion/language.md)。 |
+| detectFrom | string | 图片中最可能的语言，一定不是 `auto`，如果插件不具备检测语言的能力，可直接使用该属性。查看 [语言代码](plugin/addtion/language.md)。 |
 
 示例：
 

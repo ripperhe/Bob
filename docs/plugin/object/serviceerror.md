@@ -13,7 +13,7 @@
 
 * `unknown` 未知错误
 * `param` 参数错误
-* `unsupportLanguage` 不支持的语种
+* `unsupportLanguage` 不支持的语言
 * `secretKey` 缺少秘钥
 * `network` 网络异常，网络请失败
 * `api` 服务接口异常

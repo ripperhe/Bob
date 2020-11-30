@@ -1,9 +1,9 @@
 语音合成插件需要实现两个函数：
 
-1. 获取支持的语种数组的函数
+1. 获取支持的语言数组的函数
 2. 执行语音合成的函数
 
-## 1. 获取支持的语种数组
+## 1. 获取支持的语言数组
 
 与文本翻译插件要求相同，[点此查看](plugin/quickstart/translate.md)。
 
@@ -31,7 +31,7 @@ function tts(query, completion) {
 | 属性 | 类型 | 说明 |
 | --- | --- | --- |
 | text | string | 需要合成的文本 |
-| lang | string | 当前文本的语种，一定不是 `auto`。查看 [语种列表](plugin/addtion/language.md)。 |
+| lang | string | 当前文本的语言，一定不是 `auto`。查看 [语言代码](plugin/addtion/language.md)。 |
 
 示例：
 
