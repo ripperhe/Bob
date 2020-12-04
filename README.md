@@ -3,7 +3,6 @@
 </p>
 <p align="center">
 	<a href="https://github.com/ripperhe/Bob/releases/latest"><img src="https://img.shields.io/github/v/release/ripperhe/Bob?logo=github" alt="GitHub release" /></a>
-	<a href="https://github.com/ripperhe/Bob/releases/latest"><img src="https://img.shields.io/github/downloads/ripperhe/Bob/total" alt="Downloads" /></a>
 	<a href="https://jq.qq.com/?_wv=1027&k=UYj7vAPG"><img src="https://img.shields.io/badge/QQ%20%E7%BE%A4-971584165-red" alt="QQ群" /></a>
 </p>
 <p align="center">
