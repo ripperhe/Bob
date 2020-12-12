@@ -4,12 +4,10 @@
 <p align="center">
 	<a href="https://github.com/ripperhe/Bob/releases/latest"><img src="https://img.shields.io/github/v/release/ripperhe/Bob?logo=github" alt="GitHub release" /></a>
 	<a href="https://jq.qq.com/?_wv=1027&k=UYj7vAPG"><img src="https://img.shields.io/badge/QQ%20%E7%BE%A4-971584165-red" alt="QQ群" /></a>
+	<a href="https://ripperhe.gitee.io/bob/"><img src="https://img.shields.io/badge/docsify-%E8%AF%A6%E7%BB%86%E4%BD%BF%E7%94%A8%E6%96%87%E6%A1%A3-brightgreen" alt="Document" /></a>
 </p>
 <p align="center">
   <strong>Chinese</strong> | <a href="https://github.com/ripperhe/Bob/blob/master/README.en.md">English</a>
-</p>
-<p align="center">
-  <a href="https://ripperhe.gitee.io/bob/">⚡️ 详细使用教程</a>
 </p>
 
 # Bob
