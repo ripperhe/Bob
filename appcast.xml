@@ -3,6 +3,26 @@
     <channel>
         <title>Bob</title>
         <item>
+            <title>0.5.4</title>
+            <description>
+            <![CDATA[
+            <ul>
+            <li>适配 Big Sur 图标</li>
+            <li>新增 Google 语音合成</li>
+            <li>语音合成服务支持根据语言选择声音</li>
+            <li>彩云小译使用 https 协议</li>
+            <li>修复了 Google 翻译引号乱码的问题</li>
+            <li>修复了部分用户翻译窗口失焦后不消失的问题</li>
+            <li>修复了在 Chrome 浏览器下 Google 表格无法取词的问题</li>
+            <li>修复了百度 OCR 高精度版数字中间有空格的问题</li>
+            </ul>
+            ]]>
+            </description>
+            <pubDate>周日, 27 12月 2020 23:58:32 +0800</pubDate>
+            <sparkle:minimumSystemVersion>10.13</sparkle:minimumSystemVersion>
+            <enclosure url="https://gitee.com/ripperhe/Bob/attach_files/562998/download/Bob.zip" sparkle:version="0.5.4.0" sparkle:shortVersionString="0.5.4" length="8924138" type="application/octet-stream" sparkle:edSignature="2jLhdAlitYAqSGQi/yQlWBxVNmgJ3Ds+PfPE5Bn0ahsQSv59Dxzsy7jKPTYUR5i9kCR+AyVnNv8qs2NvxotHAg=="/>
+        </item>
+        <item>
             <title>0.5.3</title>
             <description>
             <![CDATA[
