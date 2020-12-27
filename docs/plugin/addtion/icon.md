@@ -17,6 +17,6 @@
 | 110 | ![](./_media/110.png ':size=32') | 搜狗深智 |
 | 111 | ![](./_media/111.png ':size=32') | 搜狗翻译 |
 | 112 | ![](./_media/112.png ':size=32') | 彩云小译 |
-| 113 | ![](./_media/113.png ':size=32') | 谷歌 |
-| 114 | ![](./_media/114.png ':size=32') | 谷歌翻译 |
-| 115 | ![](./_media/115.png ':size=32') | DeepL翻译 |
+| 113 | ![](./_media/113.png ':size=32') | Google |
+| 114 | ![](./_media/114.png ':size=32') | Google 翻译 |
+| 115 | ![](./_media/115.png ':size=32') | DeepL 翻译 |
