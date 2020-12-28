@@ -49,7 +49,11 @@
 
 如果免费资源包已使用完毕，想继续使用，有预付费和后付费两种方案，[收费模式详情页]((https://cloud.tencent.com/product/tts/pricing)) 说的比较清楚，这里不再赘述了。
 
-## 4. 获取秘钥方法1（更快捷）
+## 4. 获取秘钥
+
+注意，获取秘钥有两个方法，方法1更快捷，方法2更安全，**任选一个跟着操作就可以了**。
+
+### 方法1（更快捷）
 
 如果想更快捷地获取秘钥，可以直接获取「主账号」的秘钥，**该秘钥可以直接访问您账户下的所有腾讯云资源**。
 
@@ -63,7 +67,7 @@
 
 <img src="https://gitee.com/ripperhe/oss/raw/master/2020/0501/tencent_translate_secret_1_2.png" alt="tencent_translate_secret_1_2" width=1000 />
 
-## 5. 获取秘钥方法2（更安全）
+### 方法2（更安全）
 
 如果想要更安全一些，可以创建一个「子用户」，然后只给这个「子用户」开启访问「语音合成」API的权限
 
@@ -103,7 +107,7 @@
 
 <img src="https://gitee.com/ripperhe/oss/raw/master/2020/0501/tencent_translate_secret_2_2.png" alt="tencent_translate_secret_2_2" width=1000 />
 
-## 6. 填写秘钥
+## 5. 填写秘钥
 
 在 Bob 的 偏好设置 > 服务 中，选中「语音合成」，点击 `+` 号，选中「腾讯云语音合成」，然后将刚才获取到的秘钥填写到对应位置即可。
 
