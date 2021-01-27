@@ -26,7 +26,7 @@ Bob is a macOS translation application for text and pictures, and manual input.
 ### Homebrew Cask
 
 ```sh
-brew cask install bob
+brew install --cask bob
 ```
 
 ### Manual Install

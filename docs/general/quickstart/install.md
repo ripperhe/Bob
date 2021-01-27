@@ -9,7 +9,7 @@
 ## Homebrew Cask 安装
 
 ```bash
-brew cask install bob
+brew install --cask bob
 ```
 
 ## 手动安装

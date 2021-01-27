@@ -36,7 +36,7 @@ Bob 是一款 Mac 端翻译软件，支持**划词翻译**、**截图翻译**以
 ### Homebrew Cask 安装
 
 ```bash
-brew cask install bob
+brew install --cask bob
 ```
 
 ### 手动安装
