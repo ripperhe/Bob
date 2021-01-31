@@ -73,4 +73,4 @@ The inspiration and part of the code for this repository comes from the followin
 
 Bob is still very young, and there may be various problems, big and small. If you have any questions or suggestions, you can directly raise issues, or join the QQ group **971584165** ~
 
-[Praise list](RewardList.md)
+[Praise list](https://github.com/ripperhe/Bob/blob/master/RewardList.md)
