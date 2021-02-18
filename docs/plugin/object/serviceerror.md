@@ -15,7 +15,7 @@
 * `param` 参数错误
 * `unsupportLanguage` 不支持的语言
 * `secretKey` 缺少秘钥
-* `network` 网络异常，网络请失败
+* `network` 网络异常，请求失败
 * `api` 服务接口异常
 
 请尽量将错误类型（`type`）设置正确，如果实在不知道错误类型归为哪一类，`type` 可设置为 `unknown`，但一定要设置好 `message`，用于提示
