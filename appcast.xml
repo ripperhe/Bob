@@ -3,6 +3,23 @@
     <channel>
         <title>Bob</title>
         <item>
+            <title>0.6.0</title>
+            <description>
+            <![CDATA[
+            <ul>
+            <li>新增阿里翻译、小牛翻译、简明英汉词典增强版</li>
+            <li>新增 Google OCR</li>
+            <li>新增翻译结果为英文时将其复制为驼峰或蛇形字符串的功能（可在偏好设置开启）</li>
+            <li>修复在 Safari 浏览器下查看 Google 文档无法取词的问题</li>
+            <li>修复在部分系统下无法截图的问题</li>
+            </ul>
+            ]]>
+            </description>
+            <pubDate>周日, 14 3月 2021 00:20:08 +0800</pubDate>
+            <sparkle:minimumSystemVersion>10.13</sparkle:minimumSystemVersion>
+            <enclosure url="https://gitee.com/ripperhe/Bob/attach_files/634978/download/Bob.zip" sparkle:version="1" sparkle:shortVersionString="0.6.0" length="9456536" type="application/octet-stream" sparkle:edSignature="tmhEtj3jw5fpB/dcRHZ6ZRCNTVfnbn0YXDPo/0b2/9yXjbVDd6DZXK3OHlNOHpiuCQwIgZnKQceBfaPjZ6v/Cg=="/>
+        </item>
+        <item>
             <title>0.5.4</title>
             <description>
             <![CDATA[
