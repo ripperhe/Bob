@@ -19,7 +19,7 @@ Google 翻译 API 秘钥申请成本较高，我自己申请的过程也不是�
 
 VPN 的问题请自行解决，不在本文讨论的范畴。
 
-Visa 卡我使用的是「招商银行 Visa 全币卡」，卡面是下图中框住的那一张，可自行到招商银行官网申请。
+我使用的 Visa 卡是「招商银行 Visa 全币卡」，卡面是下图中框住的那一张，可自行到招商银行官网申请。
 
 <img src="https://cdn.jsdelivr.net/gh/ripperhe/oss@master/2020/0831/google_translate_visa.png" alt="google_translate_visa.png" width="1000" />
 

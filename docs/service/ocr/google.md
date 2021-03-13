@@ -1,25 +1,22 @@
-!> 免责声明：以下信息仅供参考，请以服务商官网最新信息为准。更新时间：2020年12月27日。
+!> 免责声明：以下信息仅供参考，请以服务商官网最新信息为准。更新时间：2021年3月5日。
 
 ## 0. 收费模式
 
-[查看详情](https://cloud.google.com/text-to-speech/pricing?hl=zh_CN)
+[查看详情](https://cloud.google.com/vision/pricing?hl=zh_CN)
 
 | 服务 | 免费额度 | 超出免费额度 | 并发请求数 |
 | :-- | :-- | :-- | :-- |
-| 标准（非 WaveNet）语音 | 每月400万字符 👍 | 4美元/100万字符 | 无相关说明 |
-| WaveNet 语音 | 每月100万字符 👍 | 16美元/100万字符 | 无相关说明 |
-
-> 注意：声音名称中带 `WaveNet` 即为 WaveNet 语音
+| 文本检测（TEXT_DETECTION） | 每月1000次 👍 | 1.5美元/1000次 | 1800次/分钟 |
 
 ## 1. 申请条件
 
-!> 注意，在国内使用 Google 语音合成 API 需要使用 VPN，如果不能接受这一点，不需要再往下看了。
+!> 注意，在国内使用 Google 文本识别 API 需要使用 VPN，如果不能接受这一点，不需要再往下看了。
 
-?> Google 语音合成 API 地址为 `https://texttospeech.googleapis.com/v1/text:synthesize`
+?> Google 文本识别 API 地址为 `https://vision.googleapis.com/v1/images:annotate`
 
-Google 语音合成 API 秘钥申请和 Google 翻译的秘钥申请类似，以下很多步骤是直接从 Goole 翻译申请文档拷贝过来的，有些步骤可根据实际情况跳过。
+Google 文本识别 API 秘钥申请和 Google 翻译的秘钥申请类似，以下很多步骤是直接从 Goole 翻译申请文档拷贝过来的，有些步骤可根据实际情况跳过。
 
-假设你是在国内，在申请 Google 语音合成 API 之前，需要准备好以下道具：
+假设你是在国内，在申请 Google 文本识别 API 之前，需要准备好以下道具：
 
 1. 用于访问 Google 的 VPN
 2. 用于海外支付的 Visa 卡（不清楚其他卡是否可行）
@@ -82,15 +79,15 @@ VPN 的问题请自行解决，不在本文讨论的范畴。
 
 <img src="https://cdn.jsdelivr.net/gh/ripperhe/oss@master/2020/0831/google_translate_project2.png" alt="google_translate_project2" width=1000 />
 
-## 6. 启用 Cloud Text-to-Speech API
+## 6. 启用 Cloud Vision API
 
-进入 [Cloud Text-to-Speech API](https://console.cloud.google.com/apis/library/texttospeech.googleapis.com)，选中刚才创建的项目，点击「打开」
+进入 [Cloud Vision API](https://console.cloud.google.com/apis/library/vision.googleapis.com)，选中刚才创建的项目，点击「打开」
 
-<img src="https://cdn.jsdelivr.net/gh/ripperhe/oss@master/2020/1227/google_tts_api1.png" alt="google_translate_api1" width=1000 />
+<img src="https://cdn.jsdelivr.net/gh/ripperhe/oss@master/2021/0305/google_ocr_api1.png" alt="google_ocr_api1" width=1000 />
 
 点击「启用」
 
-<img src="https://cdn.jsdelivr.net/gh/ripperhe/oss@master/2020/1227/google_tts_api2.png" alt="google_translate_api2" width=1000 />
+<img src="https://cdn.jsdelivr.net/gh/ripperhe/oss@master/2021/0305/google_ocr_api2.png" alt="google_ocr_api2" width=1000 />
 
 ?> 注意，如果你选中项目还没启用结算功能，则会有下面提示；如果没有提示，直接跳过这一步
 
@@ -114,15 +111,15 @@ VPN 的问题请自行解决，不在本文讨论的范畴。
 
 如下图所示即为需要的秘钥
 
-<img src="https://cdn.jsdelivr.net/gh/ripperhe/oss@master/2020/1227/google_tts_secret3.png" alt="google_translate_secret3" width=1000 />
+<img src="https://cdn.jsdelivr.net/gh/ripperhe/oss@master/2021/0305/google_ocr_secret3.png" alt="google_ocr_secret3" width=1000 />
 
-如果想要安全一些，可以点击上图中的「限制秘钥」，指定该秘钥仅可访问「Cloud Text-to-Speech API」
+如果想要安全一些，可以点击上图中的「限制秘钥」，指定该秘钥仅可访问「Cloud Vision API」
 
-<img src="https://cdn.jsdelivr.net/gh/ripperhe/oss@master/2020/1227/google_tts_secret4.png" alt="google_translate_secret4" width=1000 />
+<img src="https://cdn.jsdelivr.net/gh/ripperhe/oss@master/2021/0305/google_ocr_secret4.png" alt="google_ocr_secret4" width=1000 />
 
 ## 8. 填写秘钥
 
-在 Bob 的 偏好设置 > 服务 中，选中「语音合成」，点击 `+` 号，选中「Google 语音合成」，然后将刚才获取到的秘钥填写到对应位置即可。
+在 Bob 的 偏好设置 > 服务 中，选中「文本识别」，点击 `+` 号，选中「Google OCR」，然后将刚才获取到的秘钥填写到对应位置即可。
 
 详细使用方法可查看 [服务](general/quickstart/service) 页面。
 
