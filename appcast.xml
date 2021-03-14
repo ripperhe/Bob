@@ -3,6 +3,19 @@
     <channel>
         <title>Bob</title>
         <item>
+            <title>0.6.1</title>
+            <description>
+            <![CDATA[
+            <ul>
+            <li>修复截图翻译在 Catalina 崩溃的问题</li>
+            </ul>
+            ]]>
+            </description>
+            <pubDate>周日, 14 3月 2021 16:31:12 +0800</pubDate>
+            <sparkle:minimumSystemVersion>10.13</sparkle:minimumSystemVersion>
+            <enclosure url="https://gitee.com/ripperhe/Bob/attach_files/635221/download/Bob.zip" sparkle:version="4" sparkle:shortVersionString="0.6.1" length="9457577" type="application/octet-stream" sparkle:edSignature="X2hiSdO5KEt05RgEuQ5febfzgyK1lkJsJXrMiPt73KAnuli4jUswmqIw/WFRttXOob4mrQ2uxYv9N8ZxMtx7DA=="/>
+        </item>
+        <item>
             <title>0.6.0</title>
             <description>
             <![CDATA[
