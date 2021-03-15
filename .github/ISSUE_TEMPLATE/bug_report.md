@@ -1,7 +1,7 @@
 ---
 name: 反馈问题
 about: Bob 安装或使用出现异常
-title: '您好，请按照模板填写，谢谢啦 🙏'
+title: ''
 labels: 'bug'
 ---
 
