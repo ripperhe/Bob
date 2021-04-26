@@ -11,13 +11,23 @@
 | 通用文字识别（按量付费状态） | 每天50000次 👍 | 0.0050元/次 | 10次/秒 |
 | 通用文字识别（高精度版）（按量付费状态） | 每天500次 👍  | 0.030元/次 | 10次/秒 |
 
+!> 如需使用**请尽快注册并实名认证**，百度官方在2021年5月24日开始将调低免费额度，具体看[这篇文章](blog/2021-04-26-baidu-ocr-news)
+
 ## 1. 注册登录
 
 [点击此处跳转网页](https://cloud.baidu.com/)
 
 ![baidu_ocr_login](https://gitee.com/ripperhe/oss/raw/master/2020/0502/baidu_ocr_login.png)
 
-## 2. 创建新应用
+## 2. 实名认证
+
+如果你看到这篇文章是在2021年5月24日之前，建议您进行实名认证，这样可以获取巨多的免费额度。（2021年5月24日之后实名认证了相对也会有更多免费额度，但差别没那么大）
+
+[点击此处跳转网页](https://console.bce.baidu.com/qualify/#/qualify/index)
+
+<img src="https://cdn.jsdelivr.net/gh/ripperhe/oss@master/2021/0426/baidu_ocr_auth.png" alt="baidu_ocr_auth.png" width=1000 />
+
+## 3. 创建新应用
 
 登录成功后，点击左边「产品服务」
 
@@ -35,7 +45,7 @@
 
 ![baidu_ocr_app_4](https://gitee.com/ripperhe/oss/raw/master/2020/0502/baidu_ocr_app_4.png)
 
-## 3. 获取秘钥
+## 4. 获取秘钥
 
 进入「文字识别」页面，进入「概览」，点击「管理应用」
 
@@ -45,7 +55,7 @@
 
 ![baidu_ocr_secret_2](https://gitee.com/ripperhe/oss/raw/master/2020/0502/baidu_ocr_secret_2.png)
 
-## 4. 填写秘钥
+## 5. 填写秘钥
 
 在 Bob 的 偏好设置 > 服务 中，选中「文本识别」，点击 `+` 号，选中「百度智能云通用OCR」，然后将刚才获取到的秘钥填写到对应位置即可。
 
