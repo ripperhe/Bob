@@ -16,7 +16,7 @@
 
 [点击此处跳转网页](https://ai.youdao.com/)
 
-<img src="https://gitee.com/ripperhe/oss/raw/master/2020/0428/youdao_translate_login.png" alt="youdao_translate_login" width=1000 />
+<img src="https://cdn.jsdelivr.net/gh/ripperhe/oss@master/2020/0428/youdao_translate_login.png" alt="youdao_translate_login" width=1000 />
 
 ## 2. 创建应用
 
