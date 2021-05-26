@@ -54,7 +54,7 @@
 
 | 服务 | 免费额度 | 超出免费额度 | 并发请求数 | 申请教程 |
 | :-- | :-- | :-- | :-- | :-- |
-| 百度智能云通用 OCR | 每天50000次 👍 | 0.0050元/次 | 2次/秒 | [点此跳转](service/ocr/baidu.md) |
+| 百度智能云通用 OCR | 每月1000次 👍 | 0.0050元/次 | 2次/秒 | [点此跳转](service/ocr/baidu.md) |
 | 腾讯云通用 OCR | 每月1000次 👍 | 0.15元/次 | 无相关说明 | [点此跳转](service/ocr/tencent.md) |
 | 腾讯云图片翻译 | 每月10000次 👍 | 0.045元/次 | 1次/秒 | [点此跳转](service/ocr/tencentimagetranslate.md) |
 | 腾讯优图通用 OCR | 每天1000次 👍 | 禁止使用 | 10次/秒 | [点此跳转](service/ocr/tencentyoutu.md) |
