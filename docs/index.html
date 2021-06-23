@@ -62,20 +62,21 @@
         placeholder: '搜索',
         noData: '找不到结果',
       },
-
-      // plugins: [
-      //   // Edit On Github
-      //   function (hook, vm) {
-      //     hook.beforeEach(function (html) {
-      //       var url = 'https://github.com/ripperhe/docsify-template/blob/master/' + vm.route.file
-      //       var editHtml = '[:memo: Edit Document](' + url + ')\n\n'
-      //       return editHtml
-      //         + html
-      //         + '\n\n----\n\n'
-      //         // + '<a href="https://docsify.js.org" target="_blank" style="color: inherit; font-weight: normal; text-decoration: none;">Powered by docsify</a>'
-      //     })
-      //   },
-      // ]
+      plugins: [
+        // Edit On Github
+        function (hook, vm) {
+          hook.beforeEach(function (html) {
+            var url = 'https://github.com/ripperhe/Bob/blob/master/docs/' + vm.route.file
+            if (vm.route.file === 'https://cdn.jsdelivr.net/gh/ripperhe/Bob@master/README.md') {
+              url = 'https://github.com/ripperhe/Bob/blob/master/README.md'
+            }
+            var editHtml = '[:memo: 在 Github 上编辑](' + url + ')\n\n'
+            return editHtml
+              + html
+              + '\n\n----\n\n'
+          })
+        },
+      ]
     }
   </script>
   <script src="//unpkg.com/docsify/lib/docsify.min.js"></script>
