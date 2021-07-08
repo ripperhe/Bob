@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <!-- 网站标题 -->
@@ -8,12 +9,14 @@
   <link rel="icon" href="_media/favicon.ico">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <meta name="description" content="Description">
-  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
   <!-- Theme 主题设置 [vue.css] [buble.css] [dark.css] [pure.css] -->
   <link rel="stylesheet" href="//unpkg.com/docsify/lib/themes/vue.css">
   <!-- Plugin gitalk -->
   <!-- <link rel="stylesheet" href="//unpkg.com/gitalk/dist/gitalk.css"> -->
 </head>
+
 <body>
   <!-- loading显示的文字 -->
   <div id="app">Loading...</div>
@@ -26,9 +29,9 @@
       // --> 封面 「_coverpage.md」
       coverpage: false,
       // --> 侧边栏 [_sidebar.md]
-      loadSidebar:true,
+      loadSidebar: true,
       // 说实话，没搞懂
-      maxLevel:4,
+      maxLevel: 4,
       // 设置侧边栏中，当前文章的最大目录层级；不设置，则不会显示当前文章目录
       subMaxLevel: 2,
       // --> 导航栏 [_navbar.md]
@@ -70,10 +73,10 @@
             if (vm.route.file === 'https://cdn.jsdelivr.net/gh/ripperhe/Bob@master/README.md') {
               url = 'https://github.com/ripperhe/Bob/blob/master/README.md'
             }
-            var editHtml = '[:memo: 在 Github 上编辑](' + url + ')\n\n'
-            return editHtml
-              + html
+            var editHtml = '[:memo: 在 Github 上编辑](' + url + ')'
+            return html
               + '\n\n----\n\n'
+              + editHtml
           })
         },
       ]
@@ -108,4 +111,5 @@
   <script src="//unpkg.com/prismjs/components/prism-applescript.min.js"></script>
   <script src="//unpkg.com/prismjs/components/prism-bash.min.js"></script>
 </body>
+
 </html>
