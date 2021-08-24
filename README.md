@@ -77,7 +77,6 @@ brew install --cask bob
 
 本仓库的灵感和部分代码来源于以下仓库
 
-* [Selection-Translator/crx-selection-translate](https://github.com/Selection-Translator/crx-selection-translate)
 * [isee15/Capture-Screen-For-Multi-Screens-On-Mac](https://github.com/isee15/Capture-Screen-For-Multi-Screens-On-Mac)
 
 ## 最后

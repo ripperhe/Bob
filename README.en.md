@@ -64,7 +64,6 @@ After the download is complete, unzip and drag app to your Applications folder.
 
 The inspiration and part of the code for this repository comes from the following:
 
-* [Selection-Translator/crx-selection-translate](https://github.com/Selection-Translator/crx-selection-translate)
 * [isee15/Capture-Screen-For-Multi-Screens-On-Mac](https://github.com/isee15/Capture-Screen-For-Multi-Screens-On-Mac)
 
 ## Donate
