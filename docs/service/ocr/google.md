@@ -69,6 +69,8 @@ VPN 的问题请自行解决，不在本文讨论的范畴。
 
 <img src="https://cdn.jsdelivr.net/gh/ripperhe/oss@master/2020/0831/google_translate_pay5.png" alt="google_translate_pay5" width=1000 />
 
+!> 注意：Google 会尝试扣 1 美元用以验证信用卡是否可用，之后会退回来。
+
 ## 5. 创建项目
 
 ?> 如果已经创建过项目，可跳过该步骤
