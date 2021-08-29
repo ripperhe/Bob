@@ -36,6 +36,8 @@
 
 ## 3. 获取秘钥
 
+!> 请妥善保管自己的秘钥，秘钥泄露可能会给您带来损失！
+
 审核通过之后，进入 [「业务申请-公有云服务」](https://open.youtu.qq.com/#/open/application/all) 即可查看秘钥，如下图所示
 
 <img src="https://gitee.com/ripperhe/oss/raw/master/2020/0502/tencentyoutu_ocr_secret.png" alt="tencentyoutu_ocr_secret" width=1000 />

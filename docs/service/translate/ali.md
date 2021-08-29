@@ -35,6 +35,8 @@
 
 ## 3. 获取秘钥
 
+!> 请妥善保管自己的秘钥，秘钥泄露可能会给您带来损失！
+
 登陆阿里云后，点击右上角头像菜单中的「AccessKey 管理」即可跳转秘钥管理页面
 
 <img src="https://cdn.jsdelivr.net/gh/ripperhe/oss@master/2021/0305/ali_translate_secret_1.png" alt="ali_translate_secret_1" width=1000 />

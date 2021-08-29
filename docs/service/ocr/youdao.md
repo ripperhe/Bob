@@ -58,6 +58,8 @@
 
 ## 5. 获取秘钥
 
+!> 请妥善保管自己的秘钥，秘钥泄露可能会给您带来损失！
+
 进入 [「应用管理-我的应用」](https://ai.youdao.com/appmgr.s)，点击第2步创建的应用
 
 <img src="https://gitee.com/ripperhe/oss/raw/master/2020/0502/youdao_ocr_secret_1.png" alt="youdao_ocr_secret_1" width=1000 />

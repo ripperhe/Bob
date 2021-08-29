@@ -42,6 +42,8 @@
 
 ## 3. 获取秘钥
 
+!> 请妥善保管自己的秘钥，秘钥泄露可能会给您带来损失！
+
 审核通过之后，进入 [「我的令牌-令牌列表」](https://dashboard.caiyunapp.com/v1/token/)，点击「令牌」下方的字符串
 
 <img src="https://gitee.com/ripperhe/oss/raw/master/2020/0501/caiyun_translate_secret_1.png" alt="caiyun_translate_secret_1" width=1000 />

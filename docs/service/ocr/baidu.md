@@ -51,6 +51,8 @@
 
 ## 4. 获取秘钥
 
+!> 请妥善保管自己的秘钥，秘钥泄露可能会给您带来损失！
+
 进入「文字识别」页面，进入「概览」，点击「管理应用」
 
 ![baidu_ocr_secret_1](https://gitee.com/ripperhe/oss/raw/master/2020/0502/baidu_ocr_secret_1.png)

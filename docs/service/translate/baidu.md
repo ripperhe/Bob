@@ -65,6 +65,8 @@
 
 ## 4. 获取秘钥
 
+!> 请妥善保管自己的秘钥，秘钥泄露可能会给您带来损失！
+
 [点击此处跳转查询秘钥的页面](http://fanyi-api.baidu.com/api/trans/product/desktop?req=developer)
 
 <img src="https://gitee.com/ripperhe/oss/raw/master/2020/0427/baidu_translate_secret.png" alt="baidu_translate_secret" width=1000 />

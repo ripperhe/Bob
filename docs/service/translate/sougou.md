@@ -24,6 +24,8 @@
 
 ## 2. 获取秘钥
 
+!> 请妥善保管自己的秘钥，秘钥泄露可能会给您带来损失！
+
 进入 [「机器翻译-文本翻译」](https://deepi.sogou.com/registered/texttranslate) ，点击「点击获取」
 
 <img src="https://gitee.com/ripperhe/oss/raw/master/2020/0501/sougou_translate_secret_1.png" alt="sougou_translate_secret_1" width=1000 />

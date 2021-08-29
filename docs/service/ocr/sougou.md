@@ -24,6 +24,8 @@
 
 ## 2. 获取秘钥
 
+!> 请妥善保管自己的秘钥，秘钥泄露可能会给您带来损失！
+
 进入 [「文字识别-文本识别」](https://deepi.sogou.com/registered/textcognitive) ，点击「点击获取」
 
 <img src="https://gitee.com/ripperhe/oss/raw/master/2020/0502/sougou_ocr_secret_1.png" alt="sougou_ocr_secret_1" width=1000 />

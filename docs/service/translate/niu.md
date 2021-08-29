@@ -20,6 +20,8 @@
 
 ## 2. 获取秘钥
 
+!> 请妥善保管自己的秘钥，秘钥泄露可能会给您带来损失！
+
 进入 [「个人中心」](https://niutrans.com/cloud/account_info/info)，下图所示即为所需的秘钥
 
 <img src="https://cdn.jsdelivr.net/gh/ripperhe/oss@master/2021/0305/niu_translate_secret.png" alt="niu_translate_secret" width=1000 />
