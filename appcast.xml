@@ -3,6 +3,30 @@
     <channel>
         <title>Bob</title>
         <item>
+            <title>0.7.0</title>
+            <description>
+            <![CDATA[
+            <ul>
+            <li>全新的偏好设置页面</li>
+            <li>全新的快捷键系统，支持双击 command 等按键触发快捷键（由于换了快捷键系统，如果你之前修改过快捷键，请升级完再手动修改下）</li>
+            <li>新增翻译历史记录</li>
+            <li>新增翻译收藏夹</li>
+            <li>新增偏好设置导入导出功能</li>
+            <li>新增金山词霸查词引擎</li>
+            <li>支持隐藏菜单栏图标</li>
+            <li>支持在翻译窗口快捷切换服务</li>
+            <li>部分常用设置迁移到翻译窗口快捷控制菜单</li>
+            <li>翻译窗口 UI 微调</li>
+            <li>修复部分 PDF 软件的换行符无法替换为空格的问题</li>
+            <li>修复一些崩溃</li>
+            </ul>
+            ]]>
+            </description>
+            <pubDate>周六, 27 11月 2021 17:53:18 +0800</pubDate>
+            <sparkle:minimumSystemVersion>10.13</sparkle:minimumSystemVersion>
+            <enclosure url="https://gitee.com/ripperhe/Bob/attach_files/893969/download/Bob.zip" sparkle:version="13" sparkle:shortVersionString="0.7.0" length="13799354" type="application/octet-stream" sparkle:edSignature="cvKPHXB6EpCmjnRFWL6n8Yz7Waf4UhfOTjVPCd0QJENu3g6FIX1xpPpKgu3k7nCxm+VfShfpzVQXfWHMljdcDw=="/>
+        </item>
+        <item>
             <title>0.6.1</title>
             <description>
             <![CDATA[
