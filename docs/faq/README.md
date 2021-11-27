@@ -4,3 +4,4 @@
 * [取词问题如何解决？](faq/selection-error.md)
 * [截图问题如何解决？](faq/screenshot-error.md)
 * [如何导出日志？](faq/export-log.md)
+* [开启 Chrome 权限有什么好处?](faq/chrome-permission.md)
