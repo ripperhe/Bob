@@ -17,7 +17,7 @@ brew install --cask bob
 | 渠道 | 建议 | 下载 |
 | --- | --- | --- |
 | 从 [GitHub release](https://github.com/ripperhe/Bob/releases) 下载 | 国外从这里下载更快 | [点此下载 ⬇](https://github.com/ripperhe/Bob/releases/latest/download/Bob.zip) |
-| 从 [Gitee release](https://gitee.com/ripperhe/Bob/releases) 下载 | 国内从这里下载更快 | [点此下载 ⬇](https://gitee.com/ripperhe/Bob/attach_files/635221/download/Bob.zip) |
+| 从 [Gitee release](https://gitee.com/ripperhe/Bob/releases) 下载 | 国内从这里下载更快 | [点此下载 ⬇](https://gitee.com/ripperhe/Bob/attach_files/893969/download/Bob.zip) |
 
 下载完成之后
 1. 将 `Bob.zip` 解压为 `Bob.app` 文件
