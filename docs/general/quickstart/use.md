@@ -1,4 +1,3 @@
-!> 使用之前记得 [开启权限](general/quickstart/permission) ~
 
 | 功能 | 描述 | 预览 |
 | :---: | :---: | :---: |

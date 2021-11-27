@@ -5,7 +5,7 @@ Bob 插件需要使用 `JavaScript` 语言开发，为了能够更好地实现�
 
 ## require
 
-这是我们实现的一个简易版的 `require`，用于引入模块，使用方法和 `Node.js` 的 `require` 基本一致。
+这是我实现的一个简易版的 `require`，用于引入模块，使用方法和 `Node.js` 的 `require` 基本一致。
 
 ## $info
 

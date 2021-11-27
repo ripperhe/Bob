@@ -13,7 +13,7 @@ function supportLanguages() {
 
 该函数不需要参数，调用时返回支持的语言字符串数组即可。
 
-鉴于各个服务商的语言标识符都略有差异，我们定义了一套 Bob 专用的语言代码，所有需要回传语言给 Bob 主程序的地方，都要使用 [这套语言代码](plugin/addtion/language.md)。
+鉴于各个服务商的语言标识符都略有差异，我定义了一套 Bob 专用的语言代码，所有需要回传语言给 Bob 主程序的地方，都要使用 [这套语言代码](plugin/addtion/language.md)。
 
 ## 2. 执行翻译
 

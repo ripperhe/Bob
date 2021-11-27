@@ -1,4 +1,4 @@
-最开始我们并不打算提供这个数据类的接口，由于文本识别插件需要用到图片数据，考虑之后我们觉得 [NSData](https://developer.apple.com/documentation/foundation/nsdata) 的形式最为合适，但这是`Objective-C` 的数据类型，于是我们将其包装了一下，为插件环境提供了一个 `$data` 类。
+最开始我并不打算提供这个数据类的接口，由于文本识别插件需要用到图片数据，考虑之后我觉得 [NSData](https://developer.apple.com/documentation/foundation/nsdata) 的形式最为合适，但这是`Objective-C` 的数据类型，于是我将其包装了一下，为插件环境提供了一个 `$data` 类。
 
 这个类和其他 `$` 开头的 API 略有不同，其他的 API 更像是一个单例类，拿来就用，但是 `$data` 不一样，它所代表的是一个类，所以我们会使用到它的类方法、对象属性和对象方法。
 
