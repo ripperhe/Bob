@@ -75,14 +75,19 @@ brew install --cask bob
 
 ## 感谢
 
-本仓库的灵感和部分代码来源于以下仓库
-
-* [isee15/Capture-Screen-For-Multi-Screens-On-Mac](https://github.com/isee15/Capture-Screen-For-Multi-Screens-On-Mac)
+* 感谢 [@isee15](https://github.com/isee15/Capture-Screen-For-Multi-Screens-On-Mac) 提供最初版本截图功能的思路
+* 感谢 @可口可乐 长期帮忙解决用户反馈
+* 感谢 [@ix4n33](https://github.com/IsaacXen) 不定期提供技术支持
+* 感谢朋友们的赞赏（由于更新缓慢，赞赏码暂时不贴了） [赞赏列表](https://github.com/ripperhe/Bob/blob/master/RewardList.md)
+* 感谢作者们发文支持 Bob（时间倒序）
+    * @奇客派：[macOS 翻译工具 Bob 大更新：支持更多翻译服务，增强 OCR 功能](https://sspai.com/post/62721)
+    * @鹿額：[截图/划词/输入都能查，快捷高效的 macOS 翻译工具: Bob](https://sspai.com/post/58249)
+    * @Newlearnerの自留地：[Bob：一款 macOS 全局翻译软件，支持划词翻译和截图翻译](https://t.me/NewlearnerChannel/3329)
 
 ## 最后
 
-**最后一个开源的版本为 `0.2.0`，如需查看，可克隆仓库，在 `archive_0.2.0` 文件夹查看**
+目前本仓库主要用于部署使用教程和提供反馈渠道，**最后一个开源的版本为 `0.2.0`，可在 `archive_0.2.0` 文件夹查看。**
 
-有任何问题和建议可以加 QQ 群 **971584165** 讨论，由于更新缓慢，赞赏码暂时不贴了，再次感谢所有曾经支持过 Bob 的朋友 🤝
+有任何问题或建议可以在 GitHub [提 issue](https://github.com/ripperhe/Bob/issues)，回复不一定及时，我有空闲时间一定会来处理的。
 
-[赞赏列表](https://github.com/ripperhe/Bob/blob/master/RewardList.md)
+另外，非常欢迎加入 QQ 群 **971584165** 讨论。
