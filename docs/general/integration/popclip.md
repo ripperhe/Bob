@@ -12,9 +12,9 @@
 
 ### 安装插件
 
-PopClip 插件项目地址: <https://github.com/ripperhe/Bob-PopClip>
+PopClip 插件项目地址: <https://github.com/ripperhe/bob-popclip>
 
-* 下载插件 `Bob.popclipextz` [点此下载 ⬇](https://cdn.jsdelivr.net/gh/ripperhe/Bob-Popclip@master/extension/Bob.popclipextz)
+* 下载插件 `Bob.popclipextz` [点此下载 ⬇](https://cdn.jsdelivr.net/gh/ripperhe/bob-popclip@master/extension/Bob.popclipextz)
 * 插件下载完成后，**双击插件**
 * 如果在 PopClip 的插件页面出现以下图示即代表安装成功
 	
