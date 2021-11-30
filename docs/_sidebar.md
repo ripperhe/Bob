@@ -1,7 +1,6 @@
 * **快速开始**
 	* [下载安装](general/quickstart/install.md)
 	* [基本使用](general/quickstart/use.md)
-	* [开启权限](general/quickstart/permission.md)
 	* [添加服务<sup style="color:red">(new)<sup>](general/quickstart/service.md)
 	* [使用插件<sup style="color:red">(new)<sup>](general/quickstart/plugin.md)
 * **集成**

@@ -4,6 +4,7 @@
 * [取词问题如何解决？](faq/selection-error.md)
 * [截图问题如何解决？](faq/screenshot-error.md)
 * [如何导出日志？](faq/export-log.md)
+* [如何为 Bob 开启权限?](faq/permission.md)
 * [开启 Chrome 权限有什么好处?](faq/chrome-permission.md)
 * [为什么服务的秘钥验证失败？](faq/service-error.md)
 * [各个服务的域名是什么？](faq/service-proxy.md)
