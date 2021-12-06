@@ -6,7 +6,7 @@
 * Bob 反复提示需要开启屏幕录制权限，关闭权限后重新授权也无效
 * 「系统偏好设置-安全性与隐私-隐私-屏幕录制」 授权列表中无法添加上 Bob
 
-如果遇到这一问题，可以按照以下步骤重置Bob的屏幕录制权限：
+如果遇到这一问题，可以按照以下步骤重置 Bob 的屏幕录制权限：
 
 ## 打开终端 App
 
@@ -16,7 +16,7 @@
 
 ## 输入命令
 
-输入命令，单击 Enter 键
+输入命令，并单击键盘 Enter 键执行
 
 ```bash
 tccutil reset ScreenCapture com.ripperhe.Bob
@@ -32,7 +32,7 @@ Successfully reset ScreenCapture approval status for com.ripperhe.Bob
 
 ## 重启电脑
 
-重置完成后，**先重启电脑**，然后再尝试使用 Bob 的截图相关功能，并重新赋予Bob「屏幕录制」权限（赋予权限后需再次重启Bob才能生效）。
+重置完成后，**先重启电脑**，然后再尝试使用 Bob 的截图相关功能，并重新赋予 Bob 「屏幕录制」权限（赋予权限后需再次重启 Bob 才能生效）。
 
 ## 仍未解决？
 
