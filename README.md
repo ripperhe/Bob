@@ -76,7 +76,7 @@ brew install --cask bob
 ## 感谢
 
 * 感谢 [@isee15](https://github.com/isee15/Capture-Screen-For-Multi-Screens-On-Mac) 提供最初版本截图功能的思路
-* 感谢 @可口可乐 长期帮忙解决用户反馈
+* 感谢 [@可口可乐](https://github.com/wwk7225) 长期帮忙解决用户反馈
 * 感谢 [@ix4n33](https://github.com/IsaacXen) 不定期提供技术支持
 * 感谢朋友们的赞赏（由于更新缓慢，赞赏码暂时不贴了） [赞赏列表](https://github.com/ripperhe/Bob/blob/master/RewardList.md)
 * 感谢作者们发文支持 Bob（时间倒序）
