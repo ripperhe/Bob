@@ -8,7 +8,7 @@
         1. 开启控制台显示简介信息
 
             <img src="https://cdn.jsdelivr.net/gh/ripperhe/oss@master/2022/0102/Xnip2022-01-02_18-03-36.jpg" alt="开启控制台简介信息" width=400 />
-        2. 在搜索框输入 `[{当前插件 identifier}]`（图中以插件 `[com.ripper.test-trans]` 为例）
+        2. 点击上方「开始」按钮，并在搜索框输入 `[{当前插件 identifier}]`（图中以插件 `[com.ripper.test-trans]` 为例）
 
             <img src="https://cdn.jsdelivr.net/gh/ripperhe/oss@master/2022/0102/Xnip2022-01-02_18-04-17.jpg" alt="搜索框输入插件id" width=1000 />
         
