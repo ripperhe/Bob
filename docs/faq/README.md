@@ -9,3 +9,4 @@
 * [开启 Chrome 权限有什么好处?](faq/chrome-permission.md)
 * [为什么服务的秘钥验证失败？](faq/service-error.md)
 * [各个服务的域名是什么？](faq/service-proxy.md)
+* [Google Cloud 服务无法使用？](google-service-error.md)
