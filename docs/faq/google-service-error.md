@@ -18,6 +18,12 @@ Google Cloud 服务无法使用常见的原因如下：
 
 > https://cloud.google.com/free/docs/gcp-free-tier?hl=zh_CN#free-tier-usage-limits
 
+## 绑定的银行卡到期啦？
+
+部分用户是在 Google Cloud 绑定的银行卡到期了，导致无法使用，可以自查下。
+
+<img src="https://cdn.jsdelivr.net/gh/ripperhe/oss@master/2022/0110/card-error.jpg" alt="银行卡到期" width=400 />
+
 ## 网络问题？
 
 一般情况下，Google Cloud 的服务 API 在国内还是好使的，但是少部分用户反馈有时候请求不通。
