@@ -88,6 +88,6 @@ brew install --cask bob
 
 目前本仓库主要用于部署使用教程和提供反馈渠道，**最后一个开源的版本为 `0.2.0`，可在 `archive_0.2.0` 文件夹查看。**
 
-有任何问题或建议可以在 GitHub [提 issue](https://github.com/ripperhe/Bob/issues)，回复不一定及时，我有空闲时间一定会来处理的。
+有任何问题或建议请优先在 GitHub [提 issue](https://github.com/ripperhe/Bob/issues)，回复不一定及时，我有空闲时间一定会来处理的。
 
 另外，非常欢迎加入 QQ 群 **971584165** 讨论。

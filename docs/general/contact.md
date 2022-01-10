@@ -1,6 +1,6 @@
 ## 通过 GitHub issue
 
-有任何问题或建议可以在 GitHub 提 issue，回复不一定及时，我有空闲时间一定会来处理的。
+**有任何问题或建议请优先在 GitHub 提 issue**，回复不一定及时，我有空闲时间一定会来处理的。
 
 [👉 点击此处跳转 GitHub issue](https://github.com/ripperhe/Bob/issues)
 
