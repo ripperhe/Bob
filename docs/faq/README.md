@@ -1,13 +1,3 @@
 这个模块主要会记录一些常见的问题。
 
-* [为什么翻译失败？](faq/translate-fail.md)
-* [为什么文本识别失败？](faq/ocr-fail.md)
-* [取词问题如何解决？](faq/selection-error.md)
-* [截图问题如何解决？](faq/screenshot-error.md)
-* [如何导出日志？](faq/export-log.md)
-* [如何为 Bob 开启权限?](faq/permission.md)
-* [开启 Chrome 权限有什么好处?](faq/chrome-permission.md)
-* [为什么服务的秘钥验证失败？](faq/service-error.md)
-* [各个服务的域名是什么？](faq/service-proxy.md)
-* [Google Cloud 服务无法使用？](faq/google-service-error.md)
-* [翻译结果中能展示词典信息吗？](faq/translate-show-dict.md)
+[list](./_sidebar.md ':include')
