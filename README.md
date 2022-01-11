@@ -78,7 +78,7 @@ brew install --cask bob
 * 感谢 [@isee15](https://github.com/isee15/Capture-Screen-For-Multi-Screens-On-Mac) 提供最初版本截图功能的思路
 * 感谢 [@可口可乐](https://github.com/wwk7225) 长期帮忙解决用户反馈
 * 感谢 [@ix4n33](https://github.com/IsaacXen) 不定期提供技术支持
-* 感谢朋友们的赞赏（由于更新缓慢，赞赏码暂时不贴了） [赞赏列表](https://github.com/ripperhe/Bob/blob/master/RewardList.md)
+* 感谢朋友们的赞赏（由于更新缓慢，赞赏码暂时不贴了） [赞赏列表](https://ripperhe.gitee.io/bob/#/general/reward)
 * 感谢作者们发文支持 Bob（时间倒序）
     * @奇客派：[macOS 翻译工具 Bob 大更新：支持更多翻译服务，增强 OCR 功能](https://sspai.com/post/62721)
     * @鹿額：[截图/划词/输入都能查，快捷高效的 macOS 翻译工具: Bob](https://sspai.com/post/58249)
