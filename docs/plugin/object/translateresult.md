@@ -21,6 +21,7 @@
 
 | 属性 | 类型 | 说明 |
 | --- | --- | --- |
+| word | string | 单词/词组，一般英文查词会有。 `@available(Bob 0.6.0)` |
 | phonetics | array | 音标数据数组，一般英文查词会有，见 [phonetic object](#phonetic-object)。 |
 | parts | array | 词性词义数组，一般英文查词会有，见 [part object](#part-object)。 |
 | exchanges | array | 其他形式数组，一般英文查词会有，见 [exchange object](#exchange-object)。 |
