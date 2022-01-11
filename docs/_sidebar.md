@@ -6,6 +6,6 @@
 * **集成**
 	* [PopClip 调用](general/integration/popclip.md)
 	* [AppleScript 调用](general/integration/applescript.md)
-* [发版记录](general/release.md)
+* [发版记录](https://github.com/ripperhe/Bob/releases)
 * [赞赏列表](general/reward.md)
 * [联系我](general/contact.md)
