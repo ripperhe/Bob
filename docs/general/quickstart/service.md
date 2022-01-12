@@ -38,11 +38,11 @@ Bob 的翻译功能是由几种的服务配合完成的，如下所示：
 | 百度翻译试用版 | - | - | - | 内置服务，无需申请，不保证稳定性 |
 | 金山词霸 | - | - | - | 内置服务，无需申请，不保证稳定性 |
 | 简明英汉词典增强版 | - | - | - | 内置服务，无需申请，不保证稳定性 |
-| 百度翻译 | 完全免费，无限使用 👍 | | 1次/秒 | [点此跳转](service/translate/baidu.md) |
-| 有道翻译 | 无 | 48元/100万字符 | 无相关说明 | [点此跳转](service/translate/youdao.md) |
 | 腾讯翻译君 | 每月500万字符 👍 | 58元/100万字符 | 5次/秒 | [点此跳转](service/translate/tencent.md) |
+| 百度翻译 | 完全免费，无限使用 👍 | | 1次/秒 | [点此跳转](service/translate/baidu.md) |
 | 阿里翻译| 每月100万字符 👍 | 50元/100万字符 | 50次/秒 | [点此跳转](service/translate/ali.md) |
-| 搜狗翻译 | 无 | 40元/100万字符 | 50次/秒 | [点此跳转](service/translate/sougou.md) |
+| 有道翻译 | 无 | 48元/100万字符 | 无相关说明 | [点此跳转](service/translate/youdao.md) |
+| 搜狗翻译（即将下线） | 无 | 40元/100万字符 | 50次/秒 | [点此跳转](service/translate/sougou.md) |
 | 彩云小译 | 每月100万字符 👍 | 20元/100万字符 | 无相关说明 | [点此跳转](service/translate/caiyun.md) |
 | 小牛翻译 | 无 | 500元/1000万字符 | 50次/秒 | [点此跳转](service/translate/niu.md) |
 | Google 翻译 | 每月50万字符 | 20美元/100万字符 | 无相关说明 | [点此跳转](service/translate/google.md) |
@@ -56,7 +56,7 @@ Bob 的翻译功能是由几种的服务配合完成的，如下所示：
 | 腾讯云通用 OCR | 每月1000次 👍 | 0.15元/次 | 无相关说明 | [点此跳转](service/ocr/tencent.md) |
 | 腾讯云图片翻译 | 每月10000次 👍 | 0.045元/次 | 1次/秒 | [点此跳转](service/ocr/tencentimagetranslate.md) |
 | 有道智云通用 OCR | 无 | 0.01元/次 | 无相关说明 | [点此跳转](service/ocr/youdao.md) |
-| 搜狗深智 OCR | 无 | 0.006元/次 | 无相关说明 | [点此跳转](service/ocr/sougou.md) |
+| 搜狗深智 OCR（即将下线） | 无 | 0.006元/次 | 无相关说明 | [点此跳转](service/ocr/sougou.md) |
 | Google OCR | 每月1000次 👍 | 1.5美元/1000次 | 1800次/分钟 | [点此跳转](service/ocr/google.md) |
 
 语音合成：
