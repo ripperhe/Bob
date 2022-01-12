@@ -75,6 +75,8 @@
 
 如果想要更安全一些，可以创建一个「子用户」，然后只给这个「子用户」开启访问「机器翻译」API的权限
 
+!> 如果之前为腾讯的其他服务创建过「子用户」，**也请创建一个新的「子用户」**，每个服务对应的权限可能不同，只有权限对应上了才能正常使用。
+
 进入 [「访问管理-用户-用户列表」](https://console.cloud.tencent.com/cam)，点击「新建用户」
 
 <img src="https://gitee.com/ripperhe/oss/raw/master/2020/0501/tencent_translate_user_1.png" alt="tencent_translate_user_1" width=1000 />
@@ -91,7 +93,7 @@
 
 <img src="https://gitee.com/ripperhe/oss/raw/master/2020/0501/tencent_translate_user_4.png" alt="tencent_translate_user_4" width=1000 />
 
-在搜索框输入「tmt」即可快速找到「机器翻译」相关服务，然后勾选上「QcloudTMTFullAccess」，点击「下一步」
+在搜索框输入「tmt」即可快速找到「机器翻译」相关服务，然后勾选上「**QcloudTMTFullAccess**」，点击「下一步」
 
 <img src="https://gitee.com/ripperhe/oss/raw/master/2020/0501/tencent_translate_user_5.png" alt="tencent_translate_user_5" width=1000 />
 
