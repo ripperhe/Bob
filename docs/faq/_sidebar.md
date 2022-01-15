@@ -10,3 +10,4 @@
 * [各个服务的域名是什么？](faq/service-proxy.md)
 * [Google Cloud 服务无法使用？](faq/google-service-error.md)
 * [翻译结果中能展示词典信息吗？](faq/translate-show-dict.md)
+* [如何将 Bob 安装到应用程序文件夹？](faq/move-to-applications.md)
