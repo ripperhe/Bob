@@ -3,8 +3,8 @@
 </p>
 <p align="center">
 	<a href="https://github.com/ripperhe/Bob/releases/latest"><img src="https://img.shields.io/github/v/release/ripperhe/Bob?logo=github" alt="GitHub release" /></a>
-	<a href="https://qm.qq.com/cgi-bin/qm/qr?k=giz1s49Y8MM1sVMJkTgl9TDAJ1223tqo&jump_from=webapi"><img src="https://img.shields.io/badge/QQ%20%E7%BE%A4-459542798-red" alt="QQ群" /></a>
 	<a href="https://ripperhe.gitee.io/bob/"><img src="https://img.shields.io/badge/docsify-%E8%AF%A6%E7%BB%86%E4%BD%BF%E7%94%A8%E6%96%87%E6%A1%A3-brightgreen" alt="Document" /></a>
+  <a href="https://ripperhe.gitee.io/bob/#/general/contact"><img src="https://img.shields.io/badge/QQ%20%E7%BE%A4-459542798-red" alt="QQ群" /></a>
 </p>
 <p align="center">
   <strong>Chinese</strong> | <a href="https://github.com/ripperhe/Bob/blob/master/README.en.md">English</a>
@@ -90,4 +90,4 @@ brew install --cask bob
 
 有任何问题或建议请优先在 GitHub [提 issue](https://github.com/ripperhe/Bob/issues)，回复不一定及时，我有空闲时间一定会来处理的。
 
-另外，非常欢迎加入 QQ 群 **459542798** 讨论。
+另外，非常欢迎 [加入 QQ 群](https://ripperhe.gitee.io/bob/#/general/contact) 讨论。
