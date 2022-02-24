@@ -32,10 +32,7 @@ Successfully reset Accessibility approval status for com.ripperhe.Bob
 
 ## 仍未解决？
 
-如果正确执行上述方案后仍不能正常划词翻译，请加入 QQ 群联系我们。
-
-👉 [点此查看如何加群？](general/contact.md)
-
+如果正确执行上述方案后仍不能正常划词翻译，请联系我吧。
 
 
 

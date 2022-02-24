@@ -73,9 +73,12 @@
             if (vm.route.file === 'https://cdn.jsdelivr.net/gh/ripperhe/Bob@master/README.md') {
               url = 'https://github.com/ripperhe/Bob/blob/master/README.md'
             }
+            var chatHtml = '[:rocket: 点击此处联系我](general/contact.md)'
             var editHtml = '[:memo: 在 Github 上编辑](' + url + ')'
             return html
               + '\n\n----\n\n'
+              + chatHtml
+              + '\n\n'
               + editHtml
           })
         },

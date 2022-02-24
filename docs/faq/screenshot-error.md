@@ -36,9 +36,7 @@ Successfully reset ScreenCapture approval status for com.ripperhe.Bob
 
 ## 仍未解决？
 
-如果正确执行上述方案后仍不能正常截图，请加入 QQ 群联系我们。
-
-👉 [点此查看如何加群？](general/contact.md)
+如果正确执行上述方案后仍不能正常截图，请联系我吧。
 
 
 
