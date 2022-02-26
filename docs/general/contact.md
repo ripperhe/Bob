@@ -8,5 +8,5 @@
 
 扫下方二维码加入 QQ 群 `459542798`，快来呀 😄
 
-<img src="https://cdn.jsdelivr.net/gh/ripperhe/oss@master/2022/0223/bob_qq_group_2_fix.png" alt="bob_qq_group" width=300 />
+<img src="https://cdn.jsdelivr.net/gh/ripperhe/oss@master/2022/0226/bob_qq_group_2.jpg" alt="bob_qq_group" width=300 />
 
