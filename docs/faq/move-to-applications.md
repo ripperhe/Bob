@@ -13,3 +13,13 @@
 如下图所示：
 
 <img src="https://cdn.jsdelivr.net/gh/ripperhe/oss@master/2022/0115/move-to-applications.jpg" alt="拖拽示意" width=1000 />
+
+# 重要提醒
+
+如果你已经将 `Bob.app` 安装到「应用程序」文件夹了，Bob 还提示你未安装到「应用程序」文件夹，请你先卸载掉 Bob，然后按照上述方法重新安装 Bob。
+
+如何卸载：
+1. 先退出 Bob 程序
+2. 然后将 `Bob.app` 移动到废纸篓，清空掉
+
+请务必这样卸载，因为这样不会清除掉你的偏好设置和历史记录等所有数据，你重新安装 Bob 之后，不会受到任何影响。
