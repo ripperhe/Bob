@@ -3,6 +3,26 @@
     <channel>
         <title>Bob</title>
         <item>
+            <title>0.8.0</title>
+            <description>
+            <![CDATA[
+            <ul>
+            <li>新增离线文本识别服务，macOS 11 以上可用</li>
+            <li>支持不保存翻译历史</li>
+            <li>支持在翻译窗口导航栏添加按钮用于快捷显隐输入框</li>
+            <li>优化对连字字符的处理</li>
+            <li>优化取词模块，支持在 Parallels Desktop 取词；<a href="https://ripperhe.gitee.io/bob/#/faq/parallels-desktop-support">详情参考这篇文章</a></li>
+            <li>修复隐藏状态栏图标无效的问题</li>
+            <li>修复在文档文件夹创建 mmkv 文件夹的问题</li>
+            <li>修复金山词霸无法查询大写的问题</li>
+            </ul>
+            ]]>
+            </description>
+            <pubDate>周一, 28 2月 2022 16:25:23 +0800</pubDate>
+            <sparkle:minimumSystemVersion>10.13</sparkle:minimumSystemVersion>
+            <enclosure url="https://gitee.com/ripperhe/Bob/attach_files/980744/download/Bob.zip" sparkle:version="16" sparkle:shortVersionString="0.8.0" length="13998527" type="application/octet-stream" sparkle:edSignature="+QgmVWTp6WhLYq97ujWzpU6Qpr1b0LTWtdzghP9fpnW77nQQW+4fxjT5RP1c/bFud1notDCjPOW60FezJa5hBw=="/>
+        </item>
+        <item>
             <title>0.7.0</title>
             <description>
             <![CDATA[
