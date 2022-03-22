@@ -51,15 +51,6 @@ After the download is complete, unzip and drag app to your Applications folder.
 * Screenshot translation is recommended if it cannot be selected or copied
 * Input translation is usually used when the text obtained by the above method is inaccurate
 
-## Developer
-
-<p>
-<a href="https://github.com/chensifang">
-<img src="https://avatars0.githubusercontent.com/u/10810457?v=4" alt="chengsifang" width="50" style="border-radius:50%"/></a>
-<a href="https://github.com/ripperhe">
-<img src="https://avatars0.githubusercontent.com/u/13943595?v=4" alt="ripperhe" width="50" style="border-radius:50%"/></a>
-</p>
-
 ## Thanks
 
 The inspiration and part of the code for this repository comes from the following:

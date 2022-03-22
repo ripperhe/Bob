@@ -61,18 +61,6 @@ brew install --cask bob
 * 截图翻译建议在无法选中或复制的情况下使用
 * 输入翻译通常在以上方法获取的文本不准的情况下使用
 
-## 开发者
-
-<!--<a href="https://github.com/ripperhe/Bob/graphs/contributors"><img src="https://opencollective.com/bob_/contributors.svg?width=890&button=false" /></a>
--->
-
-<p>
-<a href="https://github.com/chensifang">
-<img src="https://avatars0.githubusercontent.com/u/10810457?v=4" alt="chengsifang" width="50" style="border-radius:50%"/></a>
-<a href="https://github.com/ripperhe">
-<img src="https://avatars0.githubusercontent.com/u/13943595?v=4" alt="ripperhe" width="50" style="border-radius:50%"/></a>
-</p>
-
 ## 感谢
 
 * 感谢 [@isee15](https://github.com/isee15/Capture-Screen-For-Multi-Screens-On-Mac) 提供最初版本截图功能的思路
