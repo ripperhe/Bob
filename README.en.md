@@ -68,7 +68,7 @@ The inspiration and part of the code for this repository comes from the followin
 
 ## Donate
 
-**The last open source version is `0.2.0`. If you want to view it, you can clone the repository and view it in the `archive_0.2.0` folder**
+**The last open source version is `0.2.0`. If you want to view it, you can clone the repository and view it in the `archive_0.2.0` branch.**
 
 Bob is still very young, and there may be various problems, big and small. If you have any questions or suggestions, you can directly raise issues, or [join the QQ group](https://ripperhe.gitee.io/bob/#/general/contact) ~
 
