@@ -23,6 +23,6 @@ var util = require("$util");
 var foo = util.type(null); // null
 ```
 
-具体代码如下所示（PS: 😂 为了写这套插件系统刚学的 JavaScript，请多多指教）：
+具体代码如下所示：
 
 [$util.js](./_media/$util.js ':include :type=code')
