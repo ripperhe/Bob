@@ -73,11 +73,11 @@
 
 由于以上 json 设置了 `options` 字段，所以使用该插件时可以看到设置项，如下所示：
 
-<img src="https://gitee.com/ripperhe/oss/raw/master/2020/0807/plugin-option-1.png" alt="plugin-option-1" width="800" />
+<img src="https://cdn.jsdelivr.net/gh/ripperhe/oss@master/2020/0807/plugin-option-1.png" alt="plugin-option-1" width="800" />
 
 `menu` 类型的展开效果如下：
 
-<img src="https://gitee.com/ripperhe/oss/raw/master/2020/0807/plugin-option-2.png" alt="plugin-option-2" width="400" />
+<img src="https://cdn.jsdelivr.net/gh/ripperhe/oss@master/2020/0807/plugin-option-2.png" alt="plugin-option-2" width="400" />
 
 用户在这里设置之后，插件内部可以根据相应 `option object` 的 `identifier` 取值，具体请查看 [$option](plugin/api/option.md) 相关文章。
 

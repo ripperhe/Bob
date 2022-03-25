@@ -21,7 +21,7 @@
 
 [点击此处跳转网页](https://cloud.baidu.com/)
 
-![baidu_ocr_login](https://gitee.com/ripperhe/oss/raw/master/2020/0502/baidu_ocr_login.png)
+![baidu_ocr_login](https://cdn.jsdelivr.net/gh/ripperhe/oss@master/2020/0502/baidu_ocr_login.png)
 
 ## 2. 实名认证
 
@@ -35,19 +35,19 @@
 
 登录成功后，点击左边「产品服务」
 
-![baidu_ocr_app_1](https://gitee.com/ripperhe/oss/raw/master/2020/0502/baidu_ocr_app_1.png)
+![baidu_ocr_app_1](https://cdn.jsdelivr.net/gh/ripperhe/oss@master/2020/0502/baidu_ocr_app_1.png)
 
 在展开的页面进入「全部产品」，搜索框中输入「文字识别」，点击搜索结果中的「文字识别」
 
-![baidu_ocr_app_2](https://gitee.com/ripperhe/oss/raw/master/2020/0502/baidu_ocr_app_2.png)
+![baidu_ocr_app_2](https://cdn.jsdelivr.net/gh/ripperhe/oss@master/2020/0502/baidu_ocr_app_2.png)
 
 进入「文字识别」页面后，点击「创建应用」
 
-![baidu_ocr_app_3](https://gitee.com/ripperhe/oss/raw/master/2020/0502/baidu_ocr_app_3.png)
+![baidu_ocr_app_3](https://cdn.jsdelivr.net/gh/ripperhe/oss@master/2020/0502/baidu_ocr_app_3.png)
 
 按照下图所示填写信息，点击立即创建
 
-![baidu_ocr_app_4](https://gitee.com/ripperhe/oss/raw/master/2020/0502/baidu_ocr_app_4.png)
+![baidu_ocr_app_4](https://cdn.jsdelivr.net/gh/ripperhe/oss@master/2020/0502/baidu_ocr_app_4.png)
 
 ## 4. 领取资源包
 
@@ -69,11 +69,11 @@
 
 进入「文字识别」页面，进入「概览」，点击「管理应用」
 
-![baidu_ocr_secret_1](https://gitee.com/ripperhe/oss/raw/master/2020/0502/baidu_ocr_secret_1.png)
+![baidu_ocr_secret_1](https://cdn.jsdelivr.net/gh/ripperhe/oss@master/2020/0502/baidu_ocr_secret_1.png)
 
 下图所示即为需要的秘钥
 
-![baidu_ocr_secret_2](https://gitee.com/ripperhe/oss/raw/master/2020/0502/baidu_ocr_secret_2.png)
+![baidu_ocr_secret_2](https://cdn.jsdelivr.net/gh/ripperhe/oss@master/2020/0502/baidu_ocr_secret_2.png)
 
 ## 6. 填写秘钥
 

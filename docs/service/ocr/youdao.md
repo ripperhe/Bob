@@ -16,45 +16,45 @@
 
 [点击此处跳转网页](https://ai.youdao.com/)
 
-<img src="https://gitee.com/ripperhe/oss/raw/master/2020/0502/youdao_ocr_login.png" alt="youdao_ocr_login" width=1000 />
+<img src="https://cdn.jsdelivr.net/gh/ripperhe/oss@master/2020/0502/youdao_ocr_login.png" alt="youdao_ocr_login" width=1000 />
 
 ## 2.创建应用
 
 登录完成后，进入 [「应用管理-我的应用」](https://ai.youdao.com/appmgr.s)，点击「创建应用」
 
-<img src="https://gitee.com/ripperhe/oss/raw/master/2020/0502/youdao_ocr_app_1.png" alt="youdao_ocr_app_1" width=1000 />
+<img src="https://cdn.jsdelivr.net/gh/ripperhe/oss@master/2020/0502/youdao_ocr_app_1.png" alt="youdao_ocr_app_1" width=1000 />
 
 应用名称随意填写，类别不用选，描述不用填，接入方式选「API」，然后点击「下一步」
 
-<img src="https://gitee.com/ripperhe/oss/raw/master/2020/0502/youdao_ocr_app_2.png" alt="youdao_ocr_app_2" width=1000 />
+<img src="https://cdn.jsdelivr.net/gh/ripperhe/oss@master/2020/0502/youdao_ocr_app_2.png" alt="youdao_ocr_app_2" width=1000 />
 
 然后点击「创建应用」
 
-<img src="https://gitee.com/ripperhe/oss/raw/master/2020/0502/youdao_ocr_app_3.png" alt="youdao_ocr_app_3" width=1000 />
+<img src="https://cdn.jsdelivr.net/gh/ripperhe/oss@master/2020/0502/youdao_ocr_app_3.png" alt="youdao_ocr_app_3" width=1000 />
 
 ## 3. 创建OCR实例
 
 应用创建完成，进入 [「文字识别OCR-OCR实例」](https://ai.youdao.com/ocr-services.s) 创建实例
 
-<img src="https://gitee.com/ripperhe/oss/raw/master/2020/0502/youdao_ocr_service_1.png" alt="youdao_ocr_service_1" width=1000 />
+<img src="https://cdn.jsdelivr.net/gh/ripperhe/oss@master/2020/0502/youdao_ocr_service_1.png" alt="youdao_ocr_service_1" width=1000 />
 
 实例名称随意填写，类型选「通用文本识别」，然后点击「下一步」
 
-<img src="https://gitee.com/ripperhe/oss/raw/master/2020/0502/youdao_ocr_service_2.png" alt="youdao_ocr_service_2" width=1000 />
+<img src="https://cdn.jsdelivr.net/gh/ripperhe/oss@master/2020/0502/youdao_ocr_service_2.png" alt="youdao_ocr_service_2" width=1000 />
 
 点击「创建实例」
 
-<img src="https://gitee.com/ripperhe/oss/raw/master/2020/0502/youdao_ocr_service_3.png" alt="youdao_ocr_service_3" width=1000 />
+<img src="https://cdn.jsdelivr.net/gh/ripperhe/oss@master/2020/0502/youdao_ocr_service_3.png" alt="youdao_ocr_service_3" width=1000 />
 
 ## 4.  将OCR实例和应用绑定
 
 进入 [「文字识别OCR-OCR实例」](https://ai.youdao.com/ocr-services.s) ，点击刚才创建的OCR实例的「绑定应用」按钮
 
-<img src="https://gitee.com/ripperhe/oss/raw/master/2020/0502/youdao_ocr_bind_1.png" alt="youdao_ocr_bind_1" width=1000 />
+<img src="https://cdn.jsdelivr.net/gh/ripperhe/oss@master/2020/0502/youdao_ocr_bind_1.png" alt="youdao_ocr_bind_1" width=1000 />
 
 勾选上第2步创建的应用，点击「提交更改」
 
-<img src="https://gitee.com/ripperhe/oss/raw/master/2020/0502/youdao_ocr_bind_2.png" alt="youdao_ocr_bind_2" width=1000 />
+<img src="https://cdn.jsdelivr.net/gh/ripperhe/oss@master/2020/0502/youdao_ocr_bind_2.png" alt="youdao_ocr_bind_2" width=1000 />
 
 ## 5. 获取秘钥
 
@@ -62,11 +62,11 @@
 
 进入 [「应用管理-我的应用」](https://ai.youdao.com/appmgr.s)，点击第2步创建的应用
 
-<img src="https://gitee.com/ripperhe/oss/raw/master/2020/0502/youdao_ocr_secret_1.png" alt="youdao_ocr_secret_1" width=1000 />
+<img src="https://cdn.jsdelivr.net/gh/ripperhe/oss@master/2020/0502/youdao_ocr_secret_1.png" alt="youdao_ocr_secret_1" width=1000 />
 
 下图所示即为所需的秘钥
 
-<img src="https://gitee.com/ripperhe/oss/raw/master/2020/0502/youdao_ocr_secret_2.png" alt="youdao_ocr_secret_2" width=1000 />
+<img src="https://cdn.jsdelivr.net/gh/ripperhe/oss@master/2020/0502/youdao_ocr_secret_2.png" alt="youdao_ocr_secret_2" width=1000 />
 
 ## 6. 填写秘钥
 

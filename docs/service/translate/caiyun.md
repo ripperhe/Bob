@@ -16,7 +16,7 @@
 
 [点击此处跳转网页](https://dashboard.caiyunapp.com/user/sign_in/)
 
-<img src="https://gitee.com/ripperhe/oss/raw/master/2020/0501/caiyun_translate_login.png" alt="caiyun_translate_login" width=1000 />
+<img src="https://cdn.jsdelivr.net/gh/ripperhe/oss@master/2020/0501/caiyun_translate_login.png" alt="caiyun_translate_login" width=1000 />
 
 ## 2. 申请令牌
 
@@ -24,7 +24,7 @@
 
 账户类型选默认的「个人姓名/非盈利组织」，个人姓名和联系名均填自己名字，电话填真实的就好，然后点击「下一步」
 
-<img src="https://gitee.com/ripperhe/oss/raw/master/2020/0501/caiyun_translate_apply_1.png" alt="caiyun_translate_apply_1" width=1000 />
+<img src="https://cdn.jsdelivr.net/gh/ripperhe/oss@master/2020/0501/caiyun_translate_apply_1.png" alt="caiyun_translate_apply_1" width=1000 />
 
 如下图所示，选中「彩云小译API」，依次填入以下信息，然后点击「提交」
 
@@ -34,11 +34,11 @@
 应用开发情况：Mac端软件，可直接使用
 ```
 
-<img src="https://gitee.com/ripperhe/oss/raw/master/2020/0501/caiyun_translate_apply_2.png" alt="caiyun_translate_apply_2" width=1000 />
+<img src="https://cdn.jsdelivr.net/gh/ripperhe/oss@master/2020/0501/caiyun_translate_apply_2.png" alt="caiyun_translate_apply_2" width=1000 />
 
 看到以下提示就算申请完成了，审核大概需要1-2天
 
-<img src="https://gitee.com/ripperhe/oss/raw/master/2020/0501/caiyun_translate_apply_3.png" alt="caiyun_translate_apply_3" width=1000 />
+<img src="https://cdn.jsdelivr.net/gh/ripperhe/oss@master/2020/0501/caiyun_translate_apply_3.png" alt="caiyun_translate_apply_3" width=1000 />
 
 ## 3. 获取秘钥
 
@@ -46,11 +46,11 @@
 
 审核通过之后，进入 [「我的令牌-令牌列表」](https://dashboard.caiyunapp.com/v1/token/)，点击「令牌」下方的字符串
 
-<img src="https://gitee.com/ripperhe/oss/raw/master/2020/0501/caiyun_translate_secret_1.png" alt="caiyun_translate_secret_1" width=1000 />
+<img src="https://cdn.jsdelivr.net/gh/ripperhe/oss@master/2020/0501/caiyun_translate_secret_1.png" alt="caiyun_translate_secret_1" width=1000 />
 
 如下图所示即为需要的秘钥
 
-<img src="https://gitee.com/ripperhe/oss/raw/master/2020/0501/caiyun_translate_secret_2.png" alt="caiyun_translate_secret_2" width=1000 />
+<img src="https://cdn.jsdelivr.net/gh/ripperhe/oss@master/2020/0501/caiyun_translate_secret_2.png" alt="caiyun_translate_secret_2" width=1000 />
 
 ## 4. 填写秘钥
 

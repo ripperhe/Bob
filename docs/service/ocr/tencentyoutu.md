@@ -16,13 +16,13 @@
 
 [点击此处跳转网页](https://open.youtu.qq.com/#/open)
 
-<img src="https://gitee.com/ripperhe/oss/raw/master/2020/0502/tencentyoutu_ocr_login.png" alt="tencentyoutu_ocr_login" width=1000 />
+<img src="https://cdn.jsdelivr.net/gh/ripperhe/oss@master/2020/0502/tencentyoutu_ocr_login.png" alt="tencentyoutu_ocr_login" width=1000 />
 
 ## 2. 申请公有云服务
 
 进入 [「业务申请-公用云服务」](https://open.youtu.qq.com/#/open/application/all)，点击「申请公有云服务」
 
-<img src="https://gitee.com/ripperhe/oss/raw/master/2020/0502/tencentyoutu_ocr_apply_1.png" alt="tencentyoutu_ocr_apply_1" width=1000 />
+<img src="https://cdn.jsdelivr.net/gh/ripperhe/oss@master/2020/0502/tencentyoutu_ocr_apply_1.png" alt="tencentyoutu_ocr_apply_1" width=1000 />
 
 内容按照下图填写即可，然后点击「提交申请」
 
@@ -32,7 +32,7 @@
 应用地址：https://github.com/ripperhe/Bob
 ```
 
-<img src="https://gitee.com/ripperhe/oss/raw/master/2020/0502/tencentyoutu_ocr_apply_2.png" alt="tencentyoutu_ocr_apply_2" width=1000 />
+<img src="https://cdn.jsdelivr.net/gh/ripperhe/oss@master/2020/0502/tencentyoutu_ocr_apply_2.png" alt="tencentyoutu_ocr_apply_2" width=1000 />
 
 !> 审核时间大概需要两天
 
@@ -42,7 +42,7 @@
 
 审核通过之后，进入 [「业务申请-公有云服务」](https://open.youtu.qq.com/#/open/application/all) 即可查看秘钥，如下图所示
 
-<img src="https://gitee.com/ripperhe/oss/raw/master/2020/0502/tencentyoutu_ocr_secret.png" alt="tencentyoutu_ocr_secret" width=1000 />
+<img src="https://cdn.jsdelivr.net/gh/ripperhe/oss@master/2020/0502/tencentyoutu_ocr_secret.png" alt="tencentyoutu_ocr_secret" width=1000 />
 
 ## 4. 填写秘钥
 

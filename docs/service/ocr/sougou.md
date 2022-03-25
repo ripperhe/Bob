@@ -18,11 +18,11 @@
 
 [点击此处跳转网页](https://deepi.sogou.com/login)
 
-<img src="https://gitee.com/ripperhe/oss/raw/master/2020/0502/sougou_ocr_login.png" alt="sougou_ocr_login" width=1000 />
+<img src="https://cdn.jsdelivr.net/gh/ripperhe/oss@master/2020/0502/sougou_ocr_login.png" alt="sougou_ocr_login" width=1000 />
 
 **如果刚注册，需要填写个人信息，按照下图填写即可**
 
-<img src="https://gitee.com/ripperhe/oss/raw/master/2020/0502/sougou_ocr_info.png" alt="sougou_ocr_info" width=1000 />
+<img src="https://cdn.jsdelivr.net/gh/ripperhe/oss@master/2020/0502/sougou_ocr_info.png" alt="sougou_ocr_info" width=1000 />
 
 ## 2. 获取秘钥
 
@@ -30,11 +30,11 @@
 
 进入 [「文字识别-文本识别」](https://deepi.sogou.com/registered/textcognitive) ，点击「点击获取」
 
-<img src="https://gitee.com/ripperhe/oss/raw/master/2020/0502/sougou_ocr_secret_1.png" alt="sougou_ocr_secret_1" width=1000 />
+<img src="https://cdn.jsdelivr.net/gh/ripperhe/oss@master/2020/0502/sougou_ocr_secret_1.png" alt="sougou_ocr_secret_1" width=1000 />
 
 下图所示即需要的秘钥
 
-<img src="https://gitee.com/ripperhe/oss/raw/master/2020/0502/sougou_ocr_secret_2.png" alt="sougou_ocr_secret_2" width=1000 />
+<img src="https://cdn.jsdelivr.net/gh/ripperhe/oss@master/2020/0502/sougou_ocr_secret_2.png" alt="sougou_ocr_secret_2" width=1000 />
 
 ## 3. 填写秘钥
 

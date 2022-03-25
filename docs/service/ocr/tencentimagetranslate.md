@@ -17,7 +17,7 @@
 
 [点击此处跳转网页](https://cloud.tencent.com/)
 
-<img src="https://gitee.com/ripperhe/oss/raw/master/2020/0501/tencent_translate_login.png" alt="tencent_translate_login" width=1000 />
+<img src="https://cdn.jsdelivr.net/gh/ripperhe/oss@master/2020/0501/tencent_translate_login.png" alt="tencent_translate_login" width=1000 />
 
 ## 2. 个人认证
 
@@ -25,15 +25,15 @@
 
  进入 [「账号信息-查看或修改认证」](https://console.cloud.tencent.com/developer/auth)，点击「开始个人认证」
 
-<img src="https://gitee.com/ripperhe/oss/raw/master/2020/0501/tencent_translate_auth_1.png" alt="tencent_translate_auth_1" width=1000 />
+<img src="https://cdn.jsdelivr.net/gh/ripperhe/oss@master/2020/0501/tencent_translate_auth_1.png" alt="tencent_translate_auth_1" width=1000 />
 
 以下信息如实填写，然后点击「下一步」
 
-<img src="https://gitee.com/ripperhe/oss/raw/master/2020/0501/tencent_translate_auth_2.png" alt="tencent_translate_auth_2" width=1000 />
+<img src="https://cdn.jsdelivr.net/gh/ripperhe/oss@master/2020/0501/tencent_translate_auth_2.png" alt="tencent_translate_auth_2" width=1000 />
 
 如下提示即代表认证成功
 
-<img src="https://gitee.com/ripperhe/oss/raw/master/2020/0501/tencent_translate_auth_3.png" alt="tencent_translate_auth_3" width=1000 />
+<img src="https://cdn.jsdelivr.net/gh/ripperhe/oss@master/2020/0501/tencent_translate_auth_3.png" alt="tencent_translate_auth_3" width=1000 />
 
 ## 3. 开通机器翻译
 
@@ -43,11 +43,11 @@
 
 如果只是想使用免费额度，直接点击「免费试用」（每月免费额度使用完之后将直接无法使用，不会扣费）
 
-<img src="https://gitee.com/ripperhe/oss/raw/master/2020/0501/tencent_translate_open_1.png" alt="tencent_translate_open_1" width=1000 />
+<img src="https://cdn.jsdelivr.net/gh/ripperhe/oss@master/2020/0501/tencent_translate_open_1.png" alt="tencent_translate_open_1" width=1000 />
 
 如下提示即代表开通成功
 
-<img src="https://gitee.com/ripperhe/oss/raw/master/2020/0501/tencent_translate_open_2.png" alt="tencent_translate_open_2" width=1000 />
+<img src="https://cdn.jsdelivr.net/gh/ripperhe/oss@master/2020/0501/tencent_translate_open_2.png" alt="tencent_translate_open_2" width=1000 />
 
 ## 4. 获取秘钥
 
@@ -65,11 +65,11 @@
 
 ?> 如果已有秘钥，可直接使用，无需再新建
 
-<img src="https://gitee.com/ripperhe/oss/raw/master/2020/0501/tencent_translate_secret_1_1.png" alt="tencent_translate_secret_1_1" width=1000 />
+<img src="https://cdn.jsdelivr.net/gh/ripperhe/oss@master/2020/0501/tencent_translate_secret_1_1.png" alt="tencent_translate_secret_1_1" width=1000 />
 
 如下图所示即所需的秘钥
 
-<img src="https://gitee.com/ripperhe/oss/raw/master/2020/0501/tencent_translate_secret_1_2.png" alt="tencent_translate_secret_1_2" width=1000 />
+<img src="https://cdn.jsdelivr.net/gh/ripperhe/oss@master/2020/0501/tencent_translate_secret_1_2.png" alt="tencent_translate_secret_1_2" width=1000 />
 
 ### 方法2（更安全）
 
@@ -79,39 +79,39 @@
 
 进入 [「访问管理-用户-用户列表」](https://console.cloud.tencent.com/cam)，点击「新建用户」
 
-<img src="https://gitee.com/ripperhe/oss/raw/master/2020/0501/tencent_translate_user_1.png" alt="tencent_translate_user_1" width=1000 />
+<img src="https://cdn.jsdelivr.net/gh/ripperhe/oss@master/2020/0501/tencent_translate_user_1.png" alt="tencent_translate_user_1" width=1000 />
 
 点击「自定义创建」
 
-<img src="https://gitee.com/ripperhe/oss/raw/master/2020/0501/tencent_translate_user_2.png" alt="tencent_translate_user_2" width=1000 />
+<img src="https://cdn.jsdelivr.net/gh/ripperhe/oss@master/2020/0501/tencent_translate_user_2.png" alt="tencent_translate_user_2" width=1000 />
 
 选择「可访问资源并接受消息」
 
-<img src="https://gitee.com/ripperhe/oss/raw/master/2020/0501/tencent_translate_user_3.png" alt="tencent_translate_user_3" width=1000 />
+<img src="https://cdn.jsdelivr.net/gh/ripperhe/oss@master/2020/0501/tencent_translate_user_3.png" alt="tencent_translate_user_3" width=1000 />
 
 用户名随意设置，勾选上「编程访问」，其他的不用勾选，然后点击「下一步」
 
-<img src="https://gitee.com/ripperhe/oss/raw/master/2020/0501/tencent_translate_user_4.png" alt="tencent_translate_user_4" width=1000 />
+<img src="https://cdn.jsdelivr.net/gh/ripperhe/oss@master/2020/0501/tencent_translate_user_4.png" alt="tencent_translate_user_4" width=1000 />
 
 在搜索框输入「tmt」即可快速找到「机器翻译」相关服务，然后勾选上「**QcloudTMTFullAccess**」，点击「下一步」
 
-<img src="https://gitee.com/ripperhe/oss/raw/master/2020/0501/tencent_translate_user_5.png" alt="tencent_translate_user_5" width=1000 />
+<img src="https://cdn.jsdelivr.net/gh/ripperhe/oss@master/2020/0501/tencent_translate_user_5.png" alt="tencent_translate_user_5" width=1000 />
 
 点击「完成」
 
-<img src="https://gitee.com/ripperhe/oss/raw/master/2020/0501/tencent_translate_user_6.png" alt="tencent_translate_user_6" width=1000 />
+<img src="https://cdn.jsdelivr.net/gh/ripperhe/oss@master/2020/0501/tencent_translate_user_6.png" alt="tencent_translate_user_6" width=1000 />
 
 如下图所示即为所需秘钥
 
-<img src="https://gitee.com/ripperhe/oss/raw/master/2020/0501/tencent_translate_user_7.png" alt="tencent_translate_user_7" width=1000 />
+<img src="https://cdn.jsdelivr.net/gh/ripperhe/oss@master/2020/0501/tencent_translate_user_7.png" alt="tencent_translate_user_7" width=1000 />
 
 如果已经创建完「子用户」，想重新查看秘钥，则进入 [「访问管理-用户-用户列表」](https://console.cloud.tencent.com/cam)，展开对应子用户，然后点击「查看用户详情」
 
-<img src="https://gitee.com/ripperhe/oss/raw/master/2020/0501/tencent_translate_secret_2_1.png" alt="tencent_translate_secret_2_1" width=1000 />
+<img src="https://cdn.jsdelivr.net/gh/ripperhe/oss@master/2020/0501/tencent_translate_secret_2_1.png" alt="tencent_translate_secret_2_1" width=1000 />
 
 点击「API 秘钥」，下图所示即可所需秘钥
 
-<img src="https://gitee.com/ripperhe/oss/raw/master/2020/0501/tencent_translate_secret_2_2.png" alt="tencent_translate_secret_2_2" width=1000 />
+<img src="https://cdn.jsdelivr.net/gh/ripperhe/oss@master/2020/0501/tencent_translate_secret_2_2.png" alt="tencent_translate_secret_2_2" width=1000 />
 
 ## 5. 填写秘钥
 
