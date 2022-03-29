@@ -1,11 +1,23 @@
-<?xml version="1.0" standalone="yes"?>
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" version="2.0">
-    <channel>
-        <title>Bob</title>
-        <item>
-            <title>0.8.0</title>
-            <description>
-            <![CDATA[
+  <channel>
+    <title>Bob</title>
+    <item>
+      <title>0.8.1</title>
+      <pubDate>周二, 29 3月 2022 22:14:00 +0800</pubDate>
+      <sparkle:minimumSystemVersion>10.13</sparkle:minimumSystemVersion>
+      <enclosure url="https://gitee.com/ripperhe/Bob/attach_files/1011267/download/Bob.zip" sparkle:version="18" sparkle:shortVersionString="0.8.1" length="13997135" type="application/octet-stream" sparkle:edSignature="hzf7rruUc+Faajc+EVB9b0FuCh5Uu/WnhRQ1W9aaGvYa9md8JXbYqoNZ9vhoot/ZsEmWRRxGMTnMjhreA9FLCA=="/>
+      <description><![CDATA[
+      <ul>
+      <li>修复离线文本识别严重内存泄漏的问题</li>
+      <li>修复划词翻译偶发崩溃的问题</li>
+      </ul>
+      ]]></description>
+    </item>
+    <item>
+      <title>0.8.0</title>
+      <description><![CDATA[
+            
             <ul>
             <li>新增离线文本识别服务，macOS 11 以上可用</li>
             <li>支持不保存翻译历史</li>
@@ -16,16 +28,16 @@
             <li>修复在文档文件夹创建 mmkv 文件夹的问题</li>
             <li>修复金山词霸无法查询大写的问题</li>
             </ul>
-            ]]>
-            </description>
-            <pubDate>周一, 28 2月 2022 16:25:23 +0800</pubDate>
-            <sparkle:minimumSystemVersion>10.13</sparkle:minimumSystemVersion>
-            <enclosure url="https://gitee.com/ripperhe/Bob/attach_files/980744/download/Bob.zip" sparkle:version="16" sparkle:shortVersionString="0.8.0" length="13998527" type="application/octet-stream" sparkle:edSignature="+QgmVWTp6WhLYq97ujWzpU6Qpr1b0LTWtdzghP9fpnW77nQQW+4fxjT5RP1c/bFud1notDCjPOW60FezJa5hBw=="/>
-        </item>
-        <item>
-            <title>0.7.0</title>
-            <description>
-            <![CDATA[
+            
+            ]]></description>
+      <pubDate>周一, 28 2月 2022 16:25:23 +0800</pubDate>
+      <sparkle:minimumSystemVersion>10.13</sparkle:minimumSystemVersion>
+      <enclosure url="https://gitee.com/ripperhe/Bob/attach_files/980744/download/Bob.zip" sparkle:version="16" sparkle:shortVersionString="0.8.0" length="13998527" type="application/octet-stream" sparkle:edSignature="+QgmVWTp6WhLYq97ujWzpU6Qpr1b0LTWtdzghP9fpnW77nQQW+4fxjT5RP1c/bFud1notDCjPOW60FezJa5hBw=="/>
+    </item>
+    <item>
+      <title>0.7.0</title>
+      <description><![CDATA[
+            
             <ul>
             <li>全新的偏好设置页面</li>
             <li>全新的快捷键系统，支持双击 command 等按键触发快捷键（由于换了快捷键系统，如果你之前修改过快捷键，请升级完再手动修改下）</li>
@@ -40,29 +52,29 @@
             <li>修复部分 PDF 软件的换行符无法替换为空格的问题</li>
             <li>修复一些崩溃</li>
             </ul>
-            ]]>
-            </description>
-            <pubDate>周六, 27 11月 2021 17:53:18 +0800</pubDate>
-            <sparkle:minimumSystemVersion>10.13</sparkle:minimumSystemVersion>
-            <enclosure url="https://gitee.com/ripperhe/Bob/attach_files/893969/download/Bob.zip" sparkle:version="13" sparkle:shortVersionString="0.7.0" length="13799354" type="application/octet-stream" sparkle:edSignature="cvKPHXB6EpCmjnRFWL6n8Yz7Waf4UhfOTjVPCd0QJENu3g6FIX1xpPpKgu3k7nCxm+VfShfpzVQXfWHMljdcDw=="/>
-        </item>
-        <item>
-            <title>0.6.1</title>
-            <description>
-            <![CDATA[
+            
+            ]]></description>
+      <pubDate>周六, 27 11月 2021 17:53:18 +0800</pubDate>
+      <sparkle:minimumSystemVersion>10.13</sparkle:minimumSystemVersion>
+      <enclosure url="https://gitee.com/ripperhe/Bob/attach_files/893969/download/Bob.zip" sparkle:version="13" sparkle:shortVersionString="0.7.0" length="13799354" type="application/octet-stream" sparkle:edSignature="cvKPHXB6EpCmjnRFWL6n8Yz7Waf4UhfOTjVPCd0QJENu3g6FIX1xpPpKgu3k7nCxm+VfShfpzVQXfWHMljdcDw=="/>
+    </item>
+    <item>
+      <title>0.6.1</title>
+      <description><![CDATA[
+            
             <ul>
             <li>修复截图翻译在 Catalina 崩溃的问题</li>
             </ul>
-            ]]>
-            </description>
-            <pubDate>周日, 14 3月 2021 16:31:12 +0800</pubDate>
-            <sparkle:minimumSystemVersion>10.13</sparkle:minimumSystemVersion>
-            <enclosure url="https://gitee.com/ripperhe/Bob/attach_files/635221/download/Bob.zip" sparkle:version="4" sparkle:shortVersionString="0.6.1" length="9457577" type="application/octet-stream" sparkle:edSignature="X2hiSdO5KEt05RgEuQ5febfzgyK1lkJsJXrMiPt73KAnuli4jUswmqIw/WFRttXOob4mrQ2uxYv9N8ZxMtx7DA=="/>
-        </item>
-        <item>
-            <title>0.6.0</title>
-            <description>
-            <![CDATA[
+            
+            ]]></description>
+      <pubDate>周日, 14 3月 2021 16:31:12 +0800</pubDate>
+      <sparkle:minimumSystemVersion>10.13</sparkle:minimumSystemVersion>
+      <enclosure url="https://gitee.com/ripperhe/Bob/attach_files/635221/download/Bob.zip" sparkle:version="4" sparkle:shortVersionString="0.6.1" length="9457577" type="application/octet-stream" sparkle:edSignature="X2hiSdO5KEt05RgEuQ5febfzgyK1lkJsJXrMiPt73KAnuli4jUswmqIw/WFRttXOob4mrQ2uxYv9N8ZxMtx7DA=="/>
+    </item>
+    <item>
+      <title>0.6.0</title>
+      <description><![CDATA[
+            
             <ul>
             <li>新增阿里翻译、小牛翻译、简明英汉词典增强版</li>
             <li>新增 Google OCR</li>
@@ -70,16 +82,16 @@
             <li>修复在 Safari 浏览器下查看 Google 文档无法取词的问题</li>
             <li>修复在部分系统下无法截图的问题</li>
             </ul>
-            ]]>
-            </description>
-            <pubDate>周日, 14 3月 2021 00:20:08 +0800</pubDate>
-            <sparkle:minimumSystemVersion>10.13</sparkle:minimumSystemVersion>
-            <enclosure url="https://gitee.com/ripperhe/Bob/attach_files/634978/download/Bob.zip" sparkle:version="1" sparkle:shortVersionString="0.6.0" length="9456536" type="application/octet-stream" sparkle:edSignature="tmhEtj3jw5fpB/dcRHZ6ZRCNTVfnbn0YXDPo/0b2/9yXjbVDd6DZXK3OHlNOHpiuCQwIgZnKQceBfaPjZ6v/Cg=="/>
-        </item>
-        <item>
-            <title>0.5.4</title>
-            <description>
-            <![CDATA[
+            
+            ]]></description>
+      <pubDate>周日, 14 3月 2021 00:20:08 +0800</pubDate>
+      <sparkle:minimumSystemVersion>10.13</sparkle:minimumSystemVersion>
+      <enclosure url="https://gitee.com/ripperhe/Bob/attach_files/634978/download/Bob.zip" sparkle:version="1" sparkle:shortVersionString="0.6.0" length="9456536" type="application/octet-stream" sparkle:edSignature="tmhEtj3jw5fpB/dcRHZ6ZRCNTVfnbn0YXDPo/0b2/9yXjbVDd6DZXK3OHlNOHpiuCQwIgZnKQceBfaPjZ6v/Cg=="/>
+    </item>
+    <item>
+      <title>0.5.4</title>
+      <description><![CDATA[
+            
             <ul>
             <li>适配 Big Sur 图标</li>
             <li>新增 Google 语音合成</li>
@@ -90,16 +102,16 @@
             <li>修复了在 Chrome 浏览器下 Google 表格无法取词的问题</li>
             <li>修复了百度 OCR 高精度版数字中间有空格的问题</li>
             </ul>
-            ]]>
-            </description>
-            <pubDate>周日, 27 12月 2020 23:58:32 +0800</pubDate>
-            <sparkle:minimumSystemVersion>10.13</sparkle:minimumSystemVersion>
-            <enclosure url="https://gitee.com/ripperhe/Bob/attach_files/562998/download/Bob.zip" sparkle:version="0.5.4.0" sparkle:shortVersionString="0.5.4" length="8924138" type="application/octet-stream" sparkle:edSignature="2jLhdAlitYAqSGQi/yQlWBxVNmgJ3Ds+PfPE5Bn0ahsQSv59Dxzsy7jKPTYUR5i9kCR+AyVnNv8qs2NvxotHAg=="/>
-        </item>
-        <item>
-            <title>0.5.3</title>
-            <description>
-            <![CDATA[
+            
+            ]]></description>
+      <pubDate>周日, 27 12月 2020 23:58:32 +0800</pubDate>
+      <sparkle:minimumSystemVersion>10.13</sparkle:minimumSystemVersion>
+      <enclosure url="https://gitee.com/ripperhe/Bob/attach_files/562998/download/Bob.zip" sparkle:version="0.5.4.0" sparkle:shortVersionString="0.5.4" length="8924138" type="application/octet-stream" sparkle:edSignature="2jLhdAlitYAqSGQi/yQlWBxVNmgJ3Ds+PfPE5Bn0ahsQSv59Dxzsy7jKPTYUR5i9kCR+AyVnNv8qs2NvxotHAg=="/>
+    </item>
+    <item>
+      <title>0.5.3</title>
+      <description><![CDATA[
+            
             <ul>
             <li>Intel 和 Apple Silicon 双架构支持</li>
             <li>修复部分机型在 Big Sur 下菜单栏图标显示异常的问题</li>
@@ -112,29 +124,29 @@
             <li>调整免费服务异常的提示</li>
             <li>调整导出日志的提示</li>
             </ul>
-            ]]>
-            </description>
-            <pubDate>周日, 29 11月 2020 18:42:05 +0800</pubDate>
-            <sparkle:minimumSystemVersion>10.13</sparkle:minimumSystemVersion>
-            <enclosure url="https://gitee.com/ripperhe/Bob/attach_files/534304/download/Bob.zip" sparkle:version="0.5.3.0" sparkle:shortVersionString="0.5.3" length="8842780" type="application/octet-stream" sparkle:edSignature="HNS0DAGiFaLIJ/FGq737PruWXogeo4fEr7qnj1iukYtDiA7eA3Ic+pgVvkm6OVfmVMsOzFK6WSagFM6lsolzCA=="/>
-        </item>
-        <item>
-            <title>0.5.2</title>
-            <description>
-            <![CDATA[
+            
+            ]]></description>
+      <pubDate>周日, 29 11月 2020 18:42:05 +0800</pubDate>
+      <sparkle:minimumSystemVersion>10.13</sparkle:minimumSystemVersion>
+      <enclosure url="https://gitee.com/ripperhe/Bob/attach_files/534304/download/Bob.zip" sparkle:version="0.5.3.0" sparkle:shortVersionString="0.5.3" length="8842780" type="application/octet-stream" sparkle:edSignature="HNS0DAGiFaLIJ/FGq737PruWXogeo4fEr7qnj1iukYtDiA7eA3Ic+pgVvkm6OVfmVMsOzFK6WSagFM6lsolzCA=="/>
+    </item>
+    <item>
+      <title>0.5.2</title>
+      <description><![CDATA[
+            
             <ul>
             <li>修复在 macOS High Sierra (10.13) 崩溃的问题</li>
             </ul>
-            ]]>
-            </description>
-            <pubDate>周五, 09 10月 2020 17:13:20 +0800</pubDate>
-            <sparkle:minimumSystemVersion>10.13</sparkle:minimumSystemVersion>
-            <enclosure url="https://gitee.com/ripperhe/Bob/attach_files/490477/download/Bob.app.zip" sparkle:version="0.5.2.1" sparkle:shortVersionString="0.5.2" length="7251230" type="application/octet-stream" sparkle:edSignature="mj24h+wy55P/uVHWdVsCiqpJm5sl2hc+9mCzVENuIXkMNahN+t5ltqTb7BsbVxurKvVwJRh+v8wAn3odz6CXAg=="/>
-        </item>
-        <item>
-            <title>0.5.1</title>
-            <description>
-            <![CDATA[
+            
+            ]]></description>
+      <pubDate>周五, 09 10月 2020 17:13:20 +0800</pubDate>
+      <sparkle:minimumSystemVersion>10.13</sparkle:minimumSystemVersion>
+      <enclosure url="https://gitee.com/ripperhe/Bob/attach_files/490477/download/Bob.app.zip" sparkle:version="0.5.2.1" sparkle:shortVersionString="0.5.2" length="7251230" type="application/octet-stream" sparkle:edSignature="mj24h+wy55P/uVHWdVsCiqpJm5sl2hc+9mCzVENuIXkMNahN+t5ltqTb7BsbVxurKvVwJRh+v8wAn3odz6CXAg=="/>
+    </item>
+    <item>
+      <title>0.5.1</title>
+      <description><![CDATA[
+            
             <ul>
             <li>接入了多家服务，通过申请私人秘钥使用</li>
             <li>支持多开翻译，最多可同时开启5个</li>
@@ -146,16 +158,16 @@
             <li>删除了原有的百度翻译、有道翻译和谷歌翻译</li>
             <li>更新内容详情<a href="https://ripperhe.gitee.io/bob/#/blog/2020-08-03-0.5.0-new-features">https://ripperhe.gitee.io/bob/#/blog/2020-08-03-0.5.0-new-features</a></li>
             </ul>
-            ]]>
-            </description>
-            <pubDate>周二, 06 10月 2020 22:08:34 +0800</pubDate>
-            <sparkle:minimumSystemVersion>10.13</sparkle:minimumSystemVersion>
-            <enclosure url="https://gitee.com/ripperhe/Bob/attach_files/489388/download/Bob.app.zip" sparkle:version="0.5.1.0" sparkle:shortVersionString="0.5.1" length="7251028" type="application/octet-stream" sparkle:edSignature="hwLGvvAN3jYAwGJoOfypTXk4WsEKbXB22tIdb5/O0hy4dyvHy4S+WfqSaNtk1DJAtaFbohXgRiLe+ts7UMT/BQ=="/>
-        </item>
-        <item>
-            <title>0.4.0</title>
-            <description>
-            <![CDATA[
+            
+            ]]></description>
+      <pubDate>周二, 06 10月 2020 22:08:34 +0800</pubDate>
+      <sparkle:minimumSystemVersion>10.13</sparkle:minimumSystemVersion>
+      <enclosure url="https://gitee.com/ripperhe/Bob/attach_files/489388/download/Bob.app.zip" sparkle:version="0.5.1.0" sparkle:shortVersionString="0.5.1" length="7251028" type="application/octet-stream" sparkle:edSignature="hwLGvvAN3jYAwGJoOfypTXk4WsEKbXB22tIdb5/O0hy4dyvHy4S+WfqSaNtk1DJAtaFbohXgRiLe+ts7UMT/BQ=="/>
+    </item>
+    <item>
+      <title>0.4.0</title>
+      <description><![CDATA[
+            
             <ul>
             <li>支持切换和自定义菜单栏图标</li>
             <li>支持隐藏菜单栏图标</li>
@@ -170,16 +182,16 @@
             <li>针对Chrome浏览器的取词做了特殊处理，开启相关权限后取词更准</li>
             <li>修复了系统外观选为「自动」的时候，深色浅色切换异常的问题</li>
             </ul>
-            ]]>
-            </description>
-            <pubDate>周一, 16 3月 2020 14:04:51 +0800</pubDate>
-            <sparkle:minimumSystemVersion>10.12</sparkle:minimumSystemVersion>
-            <enclosure url="https://github.com/ripperhe/Bob/releases/download/v0.4.0/Bob.app.zip" sparkle:version="0.4.0.0" sparkle:shortVersionString="0.4.0" length="6556874" type="application/octet-stream" sparkle:edSignature="zs2k5m/0iDLzxOtoHQtC0uQsSYgr2/axf8HLGT+JIW2hk8sSMO3h+fY+JAMaD7u/MnLnFe0O4qywUT//tR7aBA=="/>
-        </item>
-        <item>
-            <title>0.3.0</title>
-            <description>
-            <![CDATA[
+            
+            ]]></description>
+      <pubDate>周一, 16 3月 2020 14:04:51 +0800</pubDate>
+      <sparkle:minimumSystemVersion>10.12</sparkle:minimumSystemVersion>
+      <enclosure url="https://github.com/ripperhe/Bob/releases/download/v0.4.0/Bob.app.zip" sparkle:version="0.4.0.0" sparkle:shortVersionString="0.4.0" length="6556874" type="application/octet-stream" sparkle:edSignature="zs2k5m/0iDLzxOtoHQtC0uQsSYgr2/axf8HLGT+JIW2hk8sSMO3h+fY+JAMaD7u/MnLnFe0O4qywUT//tR7aBA=="/>
+    </item>
+    <item>
+      <title>0.3.0</title>
+      <description><![CDATA[
+            
             <ul>
             <li>新增了设置字体大小的功能</li>
             <li>支持 ESC 关闭翻译页面</li>
@@ -191,16 +203,16 @@
             <li>修复了翻译窗口超出屏幕底部偶尔无法回调屏幕的问题</li>
             <li>修复了 10.12 默认显示为深色的问题</li>
             </ul>
-            ]]>
-            </description>
-            <pubDate>周日, 02 2月 2020 21:29:58 +0800</pubDate>
-            <sparkle:minimumSystemVersion>10.12</sparkle:minimumSystemVersion>
-            <enclosure url="https://github.com/ripperhe/Bob/releases/download/v0.3.0/Bob.app.zip" sparkle:version="0.3.0.0" sparkle:shortVersionString="0.3.0" length="6435399" type="application/octet-stream" sparkle:edSignature="wA5iVvL/j3XqbDbheDpJJAmwrj426E18p89cQq/QJn0K8UkWdnX75hn8unTmU+oFi4Gt3zzv+xFjvTAJjnrFCw=="/>
-        </item>
-        <item>
-            <title>0.2.0</title>
-            <description>
-            <![CDATA[
+            
+            ]]></description>
+      <pubDate>周日, 02 2月 2020 21:29:58 +0800</pubDate>
+      <sparkle:minimumSystemVersion>10.12</sparkle:minimumSystemVersion>
+      <enclosure url="https://github.com/ripperhe/Bob/releases/download/v0.3.0/Bob.app.zip" sparkle:version="0.3.0.0" sparkle:shortVersionString="0.3.0" length="6435399" type="application/octet-stream" sparkle:edSignature="wA5iVvL/j3XqbDbheDpJJAmwrj426E18p89cQq/QJn0K8UkWdnX75hn8unTmU+oFi4Gt3zzv+xFjvTAJjnrFCw=="/>
+    </item>
+    <item>
+      <title>0.2.0</title>
+      <description><![CDATA[
+            
             <ul>
             <li>适配暗黑模式</li>
             <li>翻译视图 UI 微调</li>
@@ -212,17 +224,17 @@
             <li>解决了关闭翻译视图后无法停止朗读的问题</li>
             <li>修复了偏好设置以及检查更新弹窗不居中的问题</li>
             </ul>
-            ]]>
-            </description>
-            <pubDate>周六, 28 12月 2019 17:22:38 +0800</pubDate>
-            <sparkle:minimumSystemVersion>10.12</sparkle:minimumSystemVersion>
-            <enclosure url="https://github.com/ripperhe/Bob/releases/download/0.2.0/Bob.app.zip" sparkle:version="0.2.0.0" sparkle:shortVersionString="0.2.0" length="6413811" type="application/octet-stream" sparkle:edSignature="XlmsTBkRT4zIZ/K1o1eQEUPwMVYIyR+NQ+M9Ptk1g4WYfUqyRx3XLM6NynXPlFq++zp2w0DzNw3YUUsc45a+Dg=="/>
-        </item>
-        <item>
-            <title>0.1.0</title>
-            <pubDate>周日, 22 12月 2019 18:20:35 +0800</pubDate>
-            <sparkle:minimumSystemVersion>10.12</sparkle:minimumSystemVersion>
-            <enclosure url="https://github.com/ripperhe/Bob/releases/download/0.1.0/Bob.app.zip" sparkle:version="0.1.0.0" sparkle:shortVersionString="0.1.0" length="6393758" type="application/octet-stream" sparkle:edSignature="S/dUQQ2a8Mz7LxiV3L4Scm783xsaFyEMfeXROWW8gTlZOvTkD7Z+Qt2C62vNP4WqG5B7dgkxPQnShQBHNLGuBg=="/>
-        </item>
-    </channel>
+            
+            ]]></description>
+      <pubDate>周六, 28 12月 2019 17:22:38 +0800</pubDate>
+      <sparkle:minimumSystemVersion>10.12</sparkle:minimumSystemVersion>
+      <enclosure url="https://github.com/ripperhe/Bob/releases/download/0.2.0/Bob.app.zip" sparkle:version="0.2.0.0" sparkle:shortVersionString="0.2.0" length="6413811" type="application/octet-stream" sparkle:edSignature="XlmsTBkRT4zIZ/K1o1eQEUPwMVYIyR+NQ+M9Ptk1g4WYfUqyRx3XLM6NynXPlFq++zp2w0DzNw3YUUsc45a+Dg=="/>
+    </item>
+    <item>
+      <title>0.1.0</title>
+      <pubDate>周日, 22 12月 2019 18:20:35 +0800</pubDate>
+      <sparkle:minimumSystemVersion>10.12</sparkle:minimumSystemVersion>
+      <enclosure url="https://github.com/ripperhe/Bob/releases/download/0.1.0/Bob.app.zip" sparkle:version="0.1.0.0" sparkle:shortVersionString="0.1.0" length="6393758" type="application/octet-stream" sparkle:edSignature="S/dUQQ2a8Mz7LxiV3L4Scm783xsaFyEMfeXROWW8gTlZOvTkD7Z+Qt2C62vNP4WqG5B7dgkxPQnShQBHNLGuBg=="/>
+    </item>
+  </channel>
 </rss>
