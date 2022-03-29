@@ -7,7 +7,7 @@
 | category | string | ✅ | 插件类别，值只可以是 `translate`、`ocr` 和 `tts`，分别对应文本翻译、文本识别和语音合成。 |
 | name | string | ✅ | 插件名称，无限制，建议别太长。 |
 | summary | string | - | 插件描述信息。 |
-| icon | string | - | 插件图标标识符，如果插件根目录有 `icon.png` 文件，则会将其作为插件图标，不会读取该字段；如果没有，会读取该字段，值可以为 [这个图标列表](plugin/addtion/icon.md) 中所包含的任意一个ID。 |
+| icon | string | - | 插件图标标识符，如果插件根目录有 `icon.png` 文件，则会将其作为插件图标，不会读取该字段；如果没有，会读取该字段，值可以为 [这个图标列表](plugin/addition/icon.md) 中所包含的任意一个ID。 |
 | author | string | - | 插件作者。 |
 | homepage| string | - | 插件主页网址。 |
 | appcast | string | - | 插件发布信息 URL。详情见 [发布插件](plugin/quickstart/publish.md)。 |

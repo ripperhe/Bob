@@ -25,6 +25,6 @@
     * [ocr result](plugin/object/ocrresult.md)
     * [tts result](plugin/object/ttsresult.md)
 * **附录**
-    * [内置图标](plugin/addtion/icon.md)
-    * [语言代码](plugin/addtion/language.md)
+    * [内置图标](plugin/addition/icon.md)
+    * [语言代码](plugin/addition/language.md)
     

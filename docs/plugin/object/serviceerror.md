@@ -7,7 +7,7 @@
 | --- | --- | --- |
 | type | string | 错误类型，可设置为下方错误之一 |
 | message | string | 错误描述，用于展示给用户看 |
-| addtion | any | 附加信息，可以是任何可 json 序列化的数据类型，用于 debug |
+| addition | any | 附加信息，可以是任何可 json 序列化的数据类型，用于 debug |
 
 错误类型（`type`）如下：
 

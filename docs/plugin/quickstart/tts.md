@@ -31,7 +31,7 @@ function tts(query, completion) {
 | 属性 | 类型 | 说明 |
 | --- | --- | --- |
 | text | string | 需要合成的文本 |
-| lang | string | 当前文本的语言，一定不是 `auto`。查看 [语言代码](plugin/addtion/language.md)。 |
+| lang | string | 当前文本的语言，一定不是 `auto`。查看 [语言代码](plugin/addition/language.md)。 |
 
 示例：
 
