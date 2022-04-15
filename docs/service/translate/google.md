@@ -10,6 +10,8 @@
 | :-- | :-- | :-- | :-- |
 | Cloud Translation 基本版 (v2) | 每月50万字符 | 20美元/100万字符 | 600次/分钟 |
 
+?> [Google Cloud 免费计划](https://cloud.google.com/free/docs/gcp-free-tier?hl=zh_CN#free-tier-usage-limits) 中可以查看免费额度的详细信息
+
 ## 1. 申请条件
 
 Google 翻译 API 秘钥申请成本较高，我自己申请的过程也不是特别顺畅，**不能保证按照我的操作方式一定能申请成功**。

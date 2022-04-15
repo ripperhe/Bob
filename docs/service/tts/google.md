@@ -13,6 +13,8 @@
 
 > 注意：声音名称中带 `WaveNet` 即为 WaveNet 语音
 
+?> [Google Cloud 免费计划](https://cloud.google.com/free/docs/gcp-free-tier?hl=zh_CN#free-tier-usage-limits) 中可以查看免费额度的详细信息
+
 ## 1. 申请条件
 
 !> 注意，在国内使用 Google 语音合成 API 需要使用 VPN，如果不能接受这一点，不需要再往下看了。

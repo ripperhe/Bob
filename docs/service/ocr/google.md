@@ -10,6 +10,8 @@
 | :-- | :-- | :-- | :-- |
 | 文本检测（TEXT_DETECTION） | 每月1000次 👍 | 1.5美元/1000次 | 1800次/分钟 |
 
+?> [Google Cloud 免费计划](https://cloud.google.com/free/docs/gcp-free-tier?hl=zh_CN#free-tier-usage-limits) 中可以查看免费额度的详细信息
+
 ## 1. 申请条件
 
 !> 注意，在国内使用 Google 文本识别 API 需要使用 VPN，如果不能接受这一点，不需要再往下看了。
