@@ -32,23 +32,23 @@
 
 微信扫码关注服务号：小牛翻译云平台
 
-<img src="https://niutrans.com/cloud/static/img/public.a45648a.png" alt="niu_translate_qrcode" align="left" width=100 />
+<img src="https://niutrans.com/cloud/static/img/public.a45648a.png" alt="niu_translate_qrcode" width=100 />
 
 从消息列表进入公众号“小牛翻译云平台”，点击左下角的“菜单”按钮切换到菜单模式
 
-<img src="https://cdn.jsdelivr.net/gh/wwk7225/oss@main/image/bob/202204292235553.webp" alt="202204292235553" align="left" width=300 />
+<img src="https://cdn.jsdelivr.net/gh/wwk7225/oss@main/image/bob/202204292235553.webp" alt="202204292235553" width=300 />
 
 点击“每日打卡”
 
-<img src="https://cdn.jsdelivr.net/gh/wwk7225/oss@main/image/bob/202204292243633.webp" alt="202204292243633" align="left" width=300 />
+<img src="https://cdn.jsdelivr.net/gh/wwk7225/oss@main/image/bob/202204292243633.webp" alt="202204292243633" width=300 />
 
 绑定之前注册好的小牛翻译云平台账号
 
-<img src="https://cdn.jsdelivr.net/gh/wwk7225/oss@main/image/bob/202204292244318.webp" alt="202204292244318" align="left" width=300 />
+<img src="https://cdn.jsdelivr.net/gh/wwk7225/oss@main/image/bob/202204292244318.webp" alt="202204292244318" width=300 />
 
 点击中间的“立即签到”按钮，完成一次签到
 
-<img src="https://cdn.jsdelivr.net/gh/wwk7225/oss@main/image/bob/202204292246408.webp" alt="202204292246408" align="left" width=300 />
+<img src="https://cdn.jsdelivr.net/gh/wwk7225/oss@main/image/bob/202204292246408.webp" alt="202204292246408" width=300 />
 
 ## 3. 获取秘钥
 
