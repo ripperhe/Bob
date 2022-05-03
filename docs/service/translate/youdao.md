@@ -40,9 +40,9 @@
 
 !> 请妥善保管自己的秘钥，秘钥泄露可能会给你带来损失！
 
-进入 [「自然语言翻译服务-文本翻译」](https://ai.youdao.com/console/#/service-singleton/text-translation)，在「已开通本服务的应用」中找到第2步创建的应用，点击「应用 ID」和「应用密钥」旁的复制按钮可分别复制所需的应用 ID 和应用密钥
+进入 [「业务指南-业务总览」](https://ai.youdao.com/console/#/)，在「我的应用」中找到开通了「文本翻译」或「文本翻译 / 语音合成」服务的应用，点击「应用 ID」和「应用密钥」旁的复制按钮可分别复制所需的应用 ID 和应用密钥
 
-<img src="https://cdn.jsdelivr.net/gh/wakewon/oss@main/image/bob/202205032044439.webp" alt="youdao_translate_secret_1" width=1000 />
+<img src="https://cdn.jsdelivr.net/gh/wakewon/oss@main/image/bob/202205032219151.webp" alt="youdao_translate_secret_1" width=1000 />
 
 > 如果你在查词中，希望使用有道翻译结果中的发音按钮进行发音，请务必确保这里的服务卡片中同时写着「文本翻译 / 语音合成」两项服务。否则，请修改这一服务，并补充勾选「语音合成」项，或按照第2步重新创建一个同时勾选了「文本翻译」和「语音合成」两项服务的应用。
 
