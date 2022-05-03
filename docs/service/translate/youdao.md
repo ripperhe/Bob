@@ -1,4 +1,4 @@
-!> 注意：本文信息可能会过时，仅供参考，请以服务商最新官方文档为准。本文发布日期：2020 年 5 月 1 日。
+!> 注意：本文信息可能会过时，仅供参考，请以服务商最新官方文档为准。本文发布日期：2022 年 5 月 3 日。
 
 ?> 官方文档：https://ai.youdao.com/doc.s#guide
 
@@ -20,74 +20,34 @@
 
 <img src="https://cdn.jsdelivr.net/gh/ripperhe/oss@master/2020/0428/youdao_translate_login.png" alt="youdao_translate_login" width=1000 />
 
+> 注册完成后，按照页面提示添加有道客服微信并发送账号信息，可再获得50元体验金。
+
 ## 2. 创建应用
 
-登录完成后，进入 [「应用管理-我的应用」](https://ai.youdao.com/appmgr.s)，点击「创建应用」
+登录完成后，进入 [「业务指南-应用总览」](https://ai.youdao.com/console/#/app-overview)，点击「创建应用」
 
-<img src="https://cdn.jsdelivr.net/gh/ripperhe/oss@master/2020/0824/youdao_translate_app_1.png" alt="youdao_translate_app_1" width=1000 />
+<img src="https://cdn.jsdelivr.net/gh/wakewon/oss@main/image/bob/202205032017733.webp" alt="youdao_translate_app_1" width=1000 />
 
-应用名称随意填写，类别不用选，描述不用填，接入方式选「API」，然后点击「下一步」
+应用名称随意填写，服务需勾选「文本翻译」，并按需勾选「语音合成」，接入方式选「API」，应用类别可随意选择，其他信息不用填，然后点击「确定」
 
-<img src="https://cdn.jsdelivr.net/gh/ripperhe/oss@master/2020/0824/youdao_translate_app_2.png" alt="youdao_translate_app_2" width=1000 />
+> 在翻译单词时，有道翻译可以为单词提供额外的美音和英音发音。如希望使用有道提供的发音功能，此处需同时勾选「语音合成」。语音合成是收费服务，会单独按发音使用量计费，详见 [「智能语音合成服务-产品定价」](https://ai.youdao.com/product-tts.s)
 
-然后点击「创建应用」
+<img src="https://cdn.jsdelivr.net/gh/wakewon/oss@main/image/bob/202205032020904.webp" alt="youdao_translate_app_2" width=1000 />
 
-<img src="https://cdn.jsdelivr.net/gh/ripperhe/oss@master/2020/0824/youdao_translate_app_3.png" alt="youdao_translate_app_3" width=1000 />
+!> 请不要填写「服务器 IP」这一项设定，填写后很可能会导致你无法正常访问服务。
 
-## 3. 创建文本翻译实例
-
-应用创建完成，进入 [「自然语言翻译-翻译实例」](https://ai.youdao.com/fanyi-services.s) 创建实例
-
-<img src="https://cdn.jsdelivr.net/gh/ripperhe/oss@master/2020/0824/youdao_translate_service_1.png" alt="youdao_translate_service_1" width=1000 />
-
-实例名称随意填写，类型选「文本翻译」，然后点击「下一步」
-
-<img src="https://cdn.jsdelivr.net/gh/ripperhe/oss@master/2020/0824/youdao_translate_service_2.png" alt="youdao_translate_service_2" width=1000 />
-
-点击「创建实例」
-
-<img src="https://cdn.jsdelivr.net/gh/ripperhe/oss@master/2020/0824/youdao_translate_service_3.png" alt="youdao_translate_service_3" width=1000 />
-
-## 4. 创建语音合成实例
-
-!> 在查单词时，有道翻译结果中往往会有单词发音，需要创建语音合成实例并绑定到应用才能正常播放。
-
-进入 [「语音合成TTS-TTS实例」](https://ai.youdao.com/tts-services.s) 创建实例
-
-<img src="https://cdn.jsdelivr.net/gh/ripperhe/oss@master/2020/0824/youdao_translate_service_tts_1.png" alt="youdao_translate_service_tts_1" width=1000 />
-
-实例名称随意填写，然后点击「下一步」
-
-<img src="https://cdn.jsdelivr.net/gh/ripperhe/oss@master/2020/0824/youdao_translate_service_tts_2.png" alt="youdao_translate_service_tts_2" width="1000" />
-
-点击「创建实例」
-
-<img src="https://cdn.jsdelivr.net/gh/ripperhe/oss@master/2020/0824/youdao_translate_service_tts_3.png" alt="youdao_translate_service_tts_3" width="1000" />
-
-## 5. 将实例和应用绑定
-
-进入 [「应用管理-我的应用」](https://ai.youdao.com/appmgr.s)，点击刚才创建的应用右边的「绑定服务」
-
-<img src="https://cdn.jsdelivr.net/gh/ripperhe/oss@master/2020/0824/youdao_translate_bind_1.png" alt="youdao_translate_bind_1" width="1000" />
-
-勾选上刚才创建的**翻译实例**和**语音合成实例**，点击「提交更改」
-
-<img src="https://cdn.jsdelivr.net/gh/ripperhe/oss@master/2020/0824/youdao_translate_bind_2.png" alt="youdao_translate_bind_2" width="1000" />
-
-## 6. 获取秘钥
+## 3. 获取秘钥
 
 !> 请妥善保管自己的秘钥，秘钥泄露可能会给你带来损失！
 
-进入 [「应用管理-我的应用」](https://ai.youdao.com/appmgr.s)，点击第2步创建的应用
+进入 [「自然语言翻译服务-文本翻译」](https://ai.youdao.com/console/#/service-singleton/text-translation)，在「已开通本服务的应用」中找到第2步创建的应用，点击「应用 ID」和「应用密钥」旁的复制按钮可分别复制所需的应用 ID 和应用密钥
 
-<img src="https://cdn.jsdelivr.net/gh/ripperhe/oss@master/2020/0824/youdao_translate_secret_1.png" alt="youdao_translate_secret_1" width=1000 />
+<img src="https://cdn.jsdelivr.net/gh/wakewon/oss@main/image/bob/202205032044439.webp" alt="youdao_translate_secret_1" width=1000 />
 
-下图所示即为所需的秘钥
+> 如果你在查词中，希望使用有道翻译结果中的发音按钮进行发音，请务必确保这里的服务卡片中同时写着「文本翻译 / 语音合成」两项服务。否则，请修改这一服务，并补充勾选「语音合成」项，或按照第2步重新创建一个同时勾选了「文本翻译」和「语音合成」两项服务的应用。
 
-<img src="https://cdn.jsdelivr.net/gh/ripperhe/oss@master/2020/0824/youdao_translate_secret_2.png" alt="youdao_translate_secret_2" width=1000 />
+## 4. 填写秘钥
 
-## 7. 填写秘钥
-
-在 Bob 的 偏好设置 > 服务 中，选中「文本翻译」，点击 `+` 号，选中「有道翻译」，然后将刚才获取到的秘钥填写到对应位置即可。
+在 Bob 的 偏好设置 > 翻译 \> 服务 中，选中「文本翻译」，点击 `+` 号，选中「有道翻译」，然后将刚才获取到的应用 ID 和应用密钥填写到对应位置即可。
 
 详细使用方法可查看 [服务](general/quickstart/service) 页面。
