@@ -18,58 +18,30 @@
 
 <img src="https://cdn.jsdelivr.net/gh/ripperhe/oss@master/2020/0502/youdao_ocr_login.png" alt="youdao_ocr_login" width=1000 />
 
+> 注册完成后，按照页面提示添加有道客服微信并发送账号信息，可再获得50元体验金。
+
 ## 2.创建应用
 
-登录完成后，进入 [「应用管理-我的应用」](https://ai.youdao.com/appmgr.s)，点击「创建应用」
+登录完成后，进入 [「业务指南-应用总览」](https://ai.youdao.com/console/#/app-overview)，点击「创建应用」
 
-<img src="https://cdn.jsdelivr.net/gh/ripperhe/oss@master/2020/0502/youdao_ocr_app_1.png" alt="youdao_ocr_app_1" width=1000 />
+<img src="https://cdn.jsdelivr.net/gh/wakewon/oss@main/image/bob/202205032017733.webp" alt="youdao_translate_app_1" width=1000 />
 
-应用名称随意填写，类别不用选，描述不用填，接入方式选「API」，然后点击「下一步」
+应用名称随意填写，服务需勾选「通用文字识别」，接入方式选「API」，应用类别可随意选择，其他信息不用填，然后点击「确定」
 
-<img src="https://cdn.jsdelivr.net/gh/ripperhe/oss@master/2020/0502/youdao_ocr_app_2.png" alt="youdao_ocr_app_2" width=1000 />
+<img src="https://cdn.jsdelivr.net/gh/wakewon/oss@main/image/bob/202205032209379.webp" alt="youdao_ocr_app_2" width=1000 />
 
-然后点击「创建应用」
+!> 请不要填写「服务器 IP」这一项设定，填写后很可能会导致你无法正常访问服务。
 
-<img src="https://cdn.jsdelivr.net/gh/ripperhe/oss@master/2020/0502/youdao_ocr_app_3.png" alt="youdao_ocr_app_3" width=1000 />
-
-## 3. 创建OCR实例
-
-应用创建完成，进入 [「文字识别OCR-OCR实例」](https://ai.youdao.com/ocr-services.s) 创建实例
-
-<img src="https://cdn.jsdelivr.net/gh/ripperhe/oss@master/2020/0502/youdao_ocr_service_1.png" alt="youdao_ocr_service_1" width=1000 />
-
-实例名称随意填写，类型选「通用文本识别」，然后点击「下一步」
-
-<img src="https://cdn.jsdelivr.net/gh/ripperhe/oss@master/2020/0502/youdao_ocr_service_2.png" alt="youdao_ocr_service_2" width=1000 />
-
-点击「创建实例」
-
-<img src="https://cdn.jsdelivr.net/gh/ripperhe/oss@master/2020/0502/youdao_ocr_service_3.png" alt="youdao_ocr_service_3" width=1000 />
-
-## 4.  将OCR实例和应用绑定
-
-进入 [「文字识别OCR-OCR实例」](https://ai.youdao.com/ocr-services.s) ，点击刚才创建的OCR实例的「绑定应用」按钮
-
-<img src="https://cdn.jsdelivr.net/gh/ripperhe/oss@master/2020/0502/youdao_ocr_bind_1.png" alt="youdao_ocr_bind_1" width=1000 />
-
-勾选上第2步创建的应用，点击「提交更改」
-
-<img src="https://cdn.jsdelivr.net/gh/ripperhe/oss@master/2020/0502/youdao_ocr_bind_2.png" alt="youdao_ocr_bind_2" width=1000 />
-
-## 5. 获取秘钥
+## 3. 获取秘钥
 
 !> 请妥善保管自己的秘钥，秘钥泄露可能会给你带来损失！
 
-进入 [「应用管理-我的应用」](https://ai.youdao.com/appmgr.s)，点击第2步创建的应用
+进入 [「业务指南-业务总览」](https://ai.youdao.com/console/#/)，在「我的应用」中找到开通了「通用文字识别」服务的应用，点击「应用 ID」和「应用密钥」旁的复制按钮可分别复制所需的应用 ID 和应用密钥
 
-<img src="https://cdn.jsdelivr.net/gh/ripperhe/oss@master/2020/0502/youdao_ocr_secret_1.png" alt="youdao_ocr_secret_1" width=1000 />
+<img src="https://cdn.jsdelivr.net/gh/wakewon/oss@main/image/bob/202205032216257.webp" alt="youdao_ocr_secret_1" width=1000 />
 
-下图所示即为所需的秘钥
+## 4. 填写秘钥
 
-<img src="https://cdn.jsdelivr.net/gh/ripperhe/oss@master/2020/0502/youdao_ocr_secret_2.png" alt="youdao_ocr_secret_2" width=1000 />
-
-## 6. 填写秘钥
-
-在 Bob 的 偏好设置 > 服务 中，选中「文本识别」，点击 `+` 号，选中「有道智云通用OCR」，然后将刚才获取到的秘钥填写到对应位置即可。
+在 Bob 的 偏好设置 > 翻译 > 服务 中，选中「文本识别」，点击 `+` 号，选中「有道智云通用OCR」，然后将刚才获取到的应用 ID 和应用密钥填写到对应位置即可。
 
 详细使用方法可查看 [服务](general/quickstart/service) 页面。
