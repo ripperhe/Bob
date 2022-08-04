@@ -1,0 +1,10 @@
+https://cdn.jsdelivr.net/npm/docsify/lib/themes/vue.css
+https://cdn.jsdelivr.net/npm/docsify/lib/docsify.min.js
+https://cdn.jsdelivr.net/npm/docsify/lib/plugins/search.js
+https://cdn.jsdelivr.net/npm/docsify/lib/plugins/zoom-image.js
+https://cdn.jsdelivr.net/npm/docsify-copy-code
+
+https://cdn.jsdelivr.net/npm/prismjs/components/prism-javascript.min.js
+https://cdn.jsdelivr.net/npm/prismjs/components/prism-json.min.js
+https://cdn.jsdelivr.net/npm/prismjs/components/prism-applescript.min.js
+https://cdn.jsdelivr.net/npm/prismjs/components/prism-bash.min.js

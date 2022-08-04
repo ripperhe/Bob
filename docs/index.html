@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <!-- 网站标题 -->
+  <title>Bob</title>
+  <!-- 网站icon -->
+  <link rel="icon" href="_media/favicon.ico">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="description" content="Description">
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <!-- Theme 主题设置 [vue.css] [buble.css] [dark.css] [pure.css] -->
+  <link rel="stylesheet" href="_src/docsify/vue.css">
+</head>
+
+<body>
+  <!-- loading显示的文字 -->
+  <div id="app">Loading...</div>
+  <script>
+    window.$docsify = {
+      // ************************* Configuration *************************
+      // https://docsify.js.org/#/zh-cn/configuration
+      // --> 首页 「README.md」
+      homepage: 'README.md',
+      // --> 封面 「_coverpage.md」
+      coverpage: false,
+      // --> 侧边栏 [_sidebar.md]
+      loadSidebar: false,
+      // 说实话，没搞懂
+      maxLevel: 4,
+      // 设置侧边栏中，当前文章的最大目录层级；不设置，则不会显示当前文章目录
+      subMaxLevel: 2,
+      // --> 导航栏 [_navbar.md]
+      loadNavbar: false,
+      // 小屏设备下合并导航栏到侧边栏
+      mergeNavbar: true,
+      // --> 404页面 「_404.md」
+      notFoundPage: "README.md",
+      // 隐藏侧边栏
+      hideSidebar: true,
+
+      // 网址logo
+      // logo: '/_media/icon.svg',
+      // 文档标题，显示在侧边栏顶部
+      name: 'Bob',
+      // 仓库地址（设置之后，会在页面右上角渲染一个 GitHub Corner 挂件）
+      // repo: 'ripperhe/Bob',
+      // 页面切换之后，自动跳转到顶部
+      auto2top: true,
+      // 格式化
+      formatUpdated: '{MM}/{DD} {HH}:{mm}',
+
+      // ************************* Plugins *************************
+      // https://docsify.js.org/#/zh-cn/plugins
+      // 全文搜索 - Search
+      search: {
+        placeholder: '搜索',
+        noData: '找不到结果',
+      },
+      plugins: [
+        // Edit On Github
+        function (hook, vm) {
+          hook.beforeEach(function (html) {
+            var chatHtml = '[:rocket: 点击此处联系我](https://bobtranslate.com/general/contact.html)'
+            return html
+              + '\n\n----\n\n'
+              + chatHtml
+          })
+        },
+      ]
+    }
+  </script>
+  <script src="_src/docsify/docsify.min.js"></script>
+  <!-- ************************* Plugins ************************* -->
+  <!-- Plugins：全文搜索 -->
+  <script src="_src/docsify/search.js"></script>
+  <!-- Plugins：图片缩放 - Zoom image -->
+  <script src="_src/docsify/zoom-image.js"></script>
+  <!-- 点击代码块右上角复制代码 -->
+  <script src="_src/docsify/docsify-copy-code.js"></script>
+  <!-- Plugins：代码高亮 prism https://github.com/PrismJS/prism -->
+  <script src="_src/prismjs/prism-javascript.min.js"></script>
+  <script src="_src/prismjs/prism-json.min.js"></script>
+  <script src="_src/prismjs/prism-applescript.min.js"></script>
+  <script src="_src/prismjs/prism-bash.min.js"></script>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-4EK44EJ8FX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-4EK44EJ8FX');
+  </script>
+</body>
+
+</html>
