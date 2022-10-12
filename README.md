@@ -8,6 +8,8 @@
 
 # Bob
 
+[免费抽奖 🎁](https://www.v2ex.com/t/886485)
+
 Bob 是一款 macOS 平台 **翻译** 和 **OCR** 软件。
 
 翻译功能：
