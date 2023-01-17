@@ -99,6 +99,7 @@ Bob 是一个菜单栏软件，启动之后，菜单栏会出现一个图标，�
 
 * [uPic: 一个强大的图床工具](https://github.com/gee1k/uPic)
 * [MWeb Pro: 专业的 Markdown 写作、记笔记、静态博客生成软件](https://zh.mweb.im/)
+* [Picsee: 专业的图片采集收藏、照片整理标记、查找查看、分享协同软件](https://picsee.chitaner.com)
 
 ## 最后
 
