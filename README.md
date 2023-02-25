@@ -39,8 +39,6 @@ OCR 功能：
 
 [![Download on the Mac App Store](https://cdn.ripperhe.com/oss/master/2022/0626/Download_on_the_Mac_App_Store_Badge_US-UK_RGB_blk_092917.svg)](https://apps.apple.com/cn/app/id1630034110#?platform=mac)
 
-如果是社区版老用户，请查看 [这篇文档](https://bobtranslate.com/blog/2022-07-03-v1-coming.html)。
-
 ## 使用方法
 
 详细使用方法请直接查看文档 [👉 点此跳转文档](https://bobtranslate.com)
@@ -91,6 +89,7 @@ Bob 是一个菜单栏软件，启动之后，菜单栏会出现一个图标，�
 * 感谢 [@ix4n33](https://github.com/IsaacXen) 不定期提供技术支持
 * 感谢朋友们的赞赏 [赞赏列表](https://bobtranslate.com/general/reward.html)
 * 感谢作者们发文支持 Bob（时间倒序）
+    * @火山翻译：[双厨狂喜：Bob x 火山翻译梦幻联动！](https://mp.weixin.qq.com/s/c5zwcDsCgL10m_WdBiksEQ)
     * @奇客派：[macOS 翻译工具 Bob 大更新：支持更多翻译服务，增强 OCR 功能](https://sspai.com/post/62721)
     * @鹿額：[截图/划词/输入都能查，快捷高效的 macOS 翻译工具: Bob](https://sspai.com/post/58249)
     * @Newlearnerの自留地：[Bob：一款 macOS 全局翻译软件，支持划词翻译和截图翻译](https://t.me/NewlearnerChannel/3329)
