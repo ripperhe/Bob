@@ -1,4 +1,4 @@
-blank_issues_enabled: true
+blank_issues_enabled: false
 contact_links:
   - name: Bob 技术支持
     url: https://bobtranslate.com/general/contact.html
