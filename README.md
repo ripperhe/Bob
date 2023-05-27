@@ -3,7 +3,7 @@
 </p>
 <p align="center">
 	<a href="https://bobtranslate.com"><img src="https://img.shields.io/badge/%E5%AE%98%E6%96%B9%E7%BD%91%E7%AB%99-bobtranslate.com-brightgreen?logo=Safari" alt="Website" /></a>
-  <a href="https://bobtranslate.com/general/contact.html"><img src="https://img.shields.io/badge/QQ%20%E7%BE%A4-459542798-blue?logo=Tencent%20QQ" alt="QQ 群" /></a>
+  <a href="https://bobtranslate.com/general/contact.html"><img src="https://img.shields.io/badge/QQ%20%E7%BE%A4-696381611-blue?logo=Tencent%20QQ" alt="QQ 群" /></a>
 </p>
 
 # Bob
