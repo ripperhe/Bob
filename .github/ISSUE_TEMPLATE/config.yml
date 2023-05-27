@@ -1,1 +1,5 @@
 blank_issues_enabled: false
+contact_links:
+  - name: Bob 技术支持
+    url: https://bobtranslate.com/general/contact.html
+    about: 请通过这个网页描述的方式反馈问题或建议。
