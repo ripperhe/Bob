@@ -23,7 +23,7 @@ Bob 是一款 macOS 平台的 **翻译** 和 **OCR** 软件。
 
 ## 安装
 
-系统要求 **macOS 10.13** 以上，从 Mac App Store 安装。
+系统要求 **macOS 10.15** 以上，从 Mac App Store 安装。
 
 [![Download on the Mac App Store](https://cdn.ripperhe.com/oss/master/2022/0626/Download_on_the_Mac_App_Store_Badge_US-UK_RGB_blk_092917.svg)](https://apps.apple.com/cn/app/id1630034110#?platform=mac)
 
