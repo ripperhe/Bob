@@ -6,8 +6,6 @@
   <a href="https://bobtranslate.com/general/contact.html"><img src="https://img.shields.io/badge/QQ%20%E7%BE%A4-696381611-blue?logo=Tencent%20QQ" alt="QQ 群" /></a>
 </p>
 
-[🎉 限时折扣（仅限 7 月 2 日）](https://apps.apple.com/cn/app/id1630034110#?platform=mac)
-
 # Bob
 
 Bob 是一款 macOS 平台的 **翻译** 和 **OCR** 软件。
