@@ -85,6 +85,8 @@ Bob 是一个菜单栏软件，启动之后，菜单栏会出现一个图标，�
 * [uPic: 一个强大的图床工具](https://github.com/gee1k/uPic)
 * [MWeb Pro: 专业的 Markdown 写作、记笔记、静态博客生成软件](https://zh.mweb.im/)
 * [Picsee: 专业的图片采集收藏、照片整理标记、查找查看、分享协同软件](https://picsee.chitaner.com)
+* [赤友 NTFS 助手: Mac用户最喜欢的 NTFS for Mac 读写软件](https://aibotech.cn/ntfs-for-mac/)
+* [赤友右键超人: Mac 右键快捷操作工具，集合右键新建文件、卸载软件、压缩文件、剪切、截图录屏超多功能，一键快速搞定！](https://aibotech.cn/right-click-menu/)
 
 ## 最后
 
