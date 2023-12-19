@@ -6,6 +6,9 @@
   <a href="https://bobtranslate.com/general/contact.html"><img src="https://img.shields.io/badge/QQ%20%E7%BE%A4-696381611-blue?logo=Tencent%20QQ" alt="QQ 群" /></a>
 </p>
 
+> [!NOTE]
+> Bob 不是开源软件，本仓库曾经用于提供反馈渠道，现在请通过 [这个链接](https://bobtranslate.com/general/contact.html) 联系我们。
+
 # Bob
 
 Bob 是一款 macOS 平台的 **翻译** 和 **OCR** 软件。
@@ -88,8 +91,3 @@ Bob 是一个菜单栏软件，启动之后，菜单栏会出现一个图标，�
 * [赤友 NTFS 助手: Mac用户最喜欢的 NTFS for Mac 读写软件](https://aibotech.cn/ntfs-for-mac/)
 * [赤友右键超人: Mac 右键快捷操作工具，集合右键新建文件、卸载软件、压缩文件、剪切、截图录屏超多功能，一键快速搞定！](https://aibotech.cn/right-click-menu/)
 
-## 最后
-
-Bob 不是开源软件，本仓库曾经用于提供反馈渠道，现在请通过以下方式反馈问题或建议。
-
-[👉 点此查看联系方式](https://bobtranslate.com/general/contact.html)
