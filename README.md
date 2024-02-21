@@ -6,7 +6,7 @@
   <a href="https://bobtranslate.com/general/contact.html"><img src="https://img.shields.io/badge/QQ%20%E7%BE%A4-696381611-blue?logo=Tencent%20QQ" alt="QQ Group chat" /></a>
 </p>
 
-**English** · [简体中文](./README_CN.md)
+</center>**English** · [简体中文](./README_CN.md)</center>
 
 > [!NOTE]
 
