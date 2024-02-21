@@ -78,7 +78,7 @@ Select the corresponding picture file in the pop-up Finder window (you can selec
 
 <img src="https://cdn.ripperhe.com/oss/master/2022/0507/file_ocr.jpg" alt="Finder Selection OCR" width=600 />
 
-## Thanks
+## Acknowledgements
 
 * Thanks to [@isee15](https://github.com/isee15/Capture-Screen-For-Multi-Screens-On-Mac) for providing the original idea for the screenshot function
 * Thanks to [@Coca-Cola](https://github.com/wakewon) for long-term help in resolving user feedback
@@ -90,7 +90,7 @@ Select the corresponding picture file in the pop-up Finder window (you can selec
 * @Lu E: [Screenshot/word selection/input can all be checked, fast and efficient macOS translation tool: Bob](https://sspai.com/post/58249)
 * @Newlearner's Homestead: [Bob: A global translation software for macOS, supports word translation and screenshot translation](https://t.me/NewlearnerChannel/3329)
 
-## Excellent software recommendation
+## Recommended Awesome Softwares
 
 * [uPic: a powerful picture bed tool] (https://github.com/gee1k/uPic)
 * [MWeb Pro: Professional Markdown writing, note-taking, static blog generation software] (https://en.mweb.im/)
