@@ -6,6 +6,8 @@
   <a href="https://bobtranslate.com/general/contact.html"><img src="https://img.shields.io/badge/QQ%20%E7%BE%A4-696381611-blue?logo=Tencent%20QQ" alt="QQ Group chat" /></a>
 </p>
 
+**English** · [简体中文](./README_CN.md)
+
 > [!NOTE]
 
 > Bob is not open-source software. This repository was once used for providing feedback, but now please contact us through [this link](https://bobtranslate.com/general/contact.html).
