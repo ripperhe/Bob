@@ -6,6 +6,8 @@
   <a href="https://bobtranslate.com/general/contact.html"><img src="https://img.shields.io/badge/QQ%20%E7%BE%A4-696381611-blue?logo=Tencent%20QQ" alt="QQ 群" /></a>
 </p>
 
+[English](./README.md) · **简体中文**
+
 > [!NOTE]
 > Bob 不是开源软件，本仓库曾经用于提供反馈渠道，现在请通过 [这个链接](https://bobtranslate.com/general/contact.html) 联系我们。
 
