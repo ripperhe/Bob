@@ -9,7 +9,6 @@
 **English** · [简体中文](./README_CN.md)
 
 > [!NOTE]
-
 > Bob is not open-source software. This repository was once used for providing feedback, but now please contact us through [this link](https://bobtranslate.com/general/contact.html).
 
 # Bob
