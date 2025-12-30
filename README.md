@@ -73,6 +73,8 @@ Bob 是一个菜单栏软件，启动之后，菜单栏会出现一个图标，�
 
 ## 感谢
 
+* 感谢 [硅基流动](https://cloud.siliconflow.cn/i/OAwHW5q0) 为 Bob 用户免费提供 Qwen-8B 等大模型推理服务
+* 感谢 [智谱](https://bigmodel.cn/) 为 Bob 用户免费提供 GLM-4-Flash 大模型推理服务
 * 感谢 [@isee15](https://github.com/isee15/Capture-Screen-For-Multi-Screens-On-Mac) 提供最初版本截图功能的思路
 * 感谢 [@可口可乐](https://github.com/wakewon) 长期帮忙解决用户反馈
 * 感谢 [@ix4n33](https://github.com/IsaacXen) 不定期提供技术支持
